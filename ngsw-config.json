@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
-  "index": "/index.html",
+  "index": "/ar-kids-pwa/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -8,10 +8,10 @@
       "resources": {
         "files": [
           "/ar-kids-pwa/favicon.ico",
-          "/index.html",
-          "/manifest.webmanifest",
-          "/*.css",
-          "/*.js"
+          "/ar-kids-pwa/index.html",
+          "/ar-kids-pwa/manifest.webmanifest",
+          "/ar-kids-pwa/*.css",
+          "/ar-kids-pwa/*.js"
         ]
       }
     }, {
@@ -20,8 +20,8 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/ar-kids-pwa/assets/**",
+          "/ar-kids-pwa/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
     }
