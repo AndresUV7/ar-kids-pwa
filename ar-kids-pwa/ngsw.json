@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1578797719069,
+  "timestamp": 1578798003573,
   "index": "/ar-kids-pwa/index.html",
   "assetGroups": [
     {
@@ -49,7 +49,7 @@
     "/ar-kids-pwa/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/ar-kids-pwa/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/ar-kids-pwa/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/ar-kids-pwa/index.html": "408c8c617c77204363e15c38900f1a76f612b47f",
+    "/ar-kids-pwa/index.html": "d4b0082f3670a0003332044e71256cec2f060bc4",
     "/ar-kids-pwa/main-es2015.a92ce9af3a8c02d91f4e.js": "6db057e9dc66727f87d4cb8ec2cb7e444089e9cb",
     "/ar-kids-pwa/main-es5.a92ce9af3a8c02d91f4e.js": "62cd56a330ad706a1730e76dd970d01d9cb60ba4",
     "/ar-kids-pwa/manifest.webmanifest": "0964bfec1090eb7984d8ba099a8af0c76f2986dd",
