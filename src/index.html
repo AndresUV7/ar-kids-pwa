@@ -4,13 +4,43 @@
   <meta charset="utf-8">
   <title>ArKids</title>
   <base href="/ar-kids-pwa/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
 </head>
 <body>
   <app-root></app-root>
-  <noscript>Please  enable JavaScript to continue using this application.</noscript>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
+
+
+<script>
+  AFRAME.registerComponent('soundhandler', {
+   tick: function () {
+          var entity = document.querySelector('[sound]');
+          var btn = document.getElementById("myBtn");
+        if (document.querySelector('a-marker').object3D.visible == true) {
+           entity.components.sound.playSound();
+           btn.setAttribute('animation-mixer', {timeScale: 1});
+       } else {
+           entity.components.sound.pauseSound();
+           btn.setAttribute('animation-mixer', {timeScale: 0});
+       }
+  
+    }
+  });
+  </script>
+
+<script>
+  if (global === undefined) {
+    var global = window;
+  }
+</script>
+
+
 </html>
