@@ -6,6 +6,7 @@
   "display": "standalone",
   "scope": "/ar-kids-pwa/",
   "start_url": "/ar-kids-pwa/index.html",
+  "orientation": "landscape",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
