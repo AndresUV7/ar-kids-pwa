@@ -1,0 +1,17 @@
+<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+    
+      <a-assets>
+          <img id="my-image" src="/assets/img/pictoAR.jpg">
+          <audio id="audio" src="/assets/img/dientes.mp3" response-type="arraybuffer"></audio>
+    </a-assets>
+     <a-marker audiohandler emitevents="true" cursor="rayOrigin: mouse" preset="hiro">
+        
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+            
+          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" ></a-entity>
+            
+     </a-marker>
+     <a-entity camera></a-entity>
+</a-scene>
+

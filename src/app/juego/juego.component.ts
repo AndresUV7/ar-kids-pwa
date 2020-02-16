@@ -40,7 +40,7 @@ class NewScene extends Phaser.Scene {
     this.input.setDraggable(this.pajaro1);
 
     const eventos = Phaser.Input.Events;
-    
+     
     this.input.on(eventos.DRAG_START,(pointer, obj, dragX, dragY )=>{
         obj.setScale(.9);
 
