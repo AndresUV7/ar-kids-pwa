@@ -51,7 +51,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import { PictoComponent } from './picto/picto.component';
+import { CardComponent } from './card/card.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { PanelComponent } from './panel/panel.component';
+
+
 
 
 
@@ -62,7 +66,9 @@ import { PictoComponent } from './picto/picto.component';
     JuegoComponent,
     Juego2Component,
     MenuComponent,
-    PictoComponent,
+    CardComponent,
+    PanelComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -113,6 +119,7 @@ import { PictoComponent } from './picto/picto.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    FlexLayoutModule
 
   ],
   providers: [],
