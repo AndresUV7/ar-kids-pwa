@@ -54,6 +54,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { CardComponent } from './card/card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PanelComponent } from './panel/panel.component';
+import { PictoComponent } from './picto/picto.component';
 
 
 
@@ -67,6 +68,7 @@ import { PanelComponent } from './panel/panel.component';
     Juego2Component,
     MenuComponent,
     CardComponent,
+    PictoComponent,
     PanelComponent,
 
   ],
