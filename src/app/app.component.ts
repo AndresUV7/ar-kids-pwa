@@ -9,7 +9,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     console.log("OK!");
 
-    screen.orientation.lock('landscape');
+    // screen.orientation.lock('landscape');
   }
   title = 'ar-kids-pwa';
 }
