@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
     console.log("OK!");
 
     screen.orientation.lock('landscape');
+    
   }
   title = 'ar-kids-pwa';
 }
