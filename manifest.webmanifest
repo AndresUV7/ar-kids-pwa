@@ -3,7 +3,7 @@
   "short_name": "ar-kids-pwa",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "/ar-kids-pwa/",
   "start_url": "/ar-kids-pwa/index.html",
 
