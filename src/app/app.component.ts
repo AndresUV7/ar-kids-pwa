@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    console.log("object");
-    screen.orientation.lock('portrait');
+
   }
   title = 'ar-kids-pwa';
 }
