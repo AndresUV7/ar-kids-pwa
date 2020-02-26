@@ -52,10 +52,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { CardComponent } from './card/card.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { PanelComponent } from './panel/panel.component';
 import { PictoComponent } from './picto/picto.component';
-
+import { CarouselComponent } from './carousel/carousel.component';
+import { NguCarouselModule } from '@ngu/carousel';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -69,7 +69,7 @@ import { PictoComponent } from './picto/picto.component';
     MenuComponent,
     CardComponent,
     PictoComponent,
-    PanelComponent,
+    CarouselComponent,
 
   ],
   imports: [
@@ -121,6 +121,7 @@ import { PictoComponent } from './picto/picto.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    NguCarouselModule,
     FlexLayoutModule
 
   ],

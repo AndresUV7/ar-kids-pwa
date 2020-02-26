@@ -1,0 +1,30 @@
+<ngu-carousel fxLayout="column" fxFlexFill #myCarousel [inputs]="carouselConfig" [dataSource]="[first, second, third, fourth]">
+		<div  *nguCarouselDef="let item;" class="item">
+			<div class="tile">
+				<ng-container *ngTemplateOutlet="item"></ng-container>
+			</div>
+		</div>
+	
+		<ng-template #first>
+			<img src="/assets/img/wall1.png" alt="Juegos vestir" class="fondo">
+		</ng-template>
+	
+		<ng-template #second>
+			<img src="/assets/img/wall2.jpg" alt="Juegos vestir" class="fondo">
+
+		</ng-template>
+	
+		<ng-template #third>
+			<img src="/assets/img/wall3.png" alt="Juegos vestir" class="fondo">
+		</ng-template>
+
+		<ng-template #fourth>
+			<img src="/assets/img/wall4.jpg" alt="Juegos vestir" class="fondo">
+		</ng-template>
+	
+		<button NguCarouselNext class="rightRs">></button>
+		<button NguCarouselPrev class="leftRs"><</button>
+		<ul  class="myPoint" NguCarouselPoint>
+			<li *ngFor="let j of myCarousel.pointNumbers; let j = index" [class.active]="j==myCarousel.activePoint" (click)="myCarousel.moveTo(j)"></li>
+		</ul>
+</ngu-carousel>

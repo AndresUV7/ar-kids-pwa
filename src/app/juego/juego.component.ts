@@ -4,9 +4,12 @@ import Phaser from 'phaser';
 
 class NewScene extends Phaser.Scene {
 
-  pajaro1 : any
-  pajaro2 : any
-  pajaro3 : any
+  cabeza : any
+  tronco : any
+  piernas : any
+  pies : any
+  sueter : any
+  jean : any
   correcto: boolean
   
   constructor() {
@@ -17,27 +20,42 @@ class NewScene extends Phaser.Scene {
   }
 
   preload() {
-    // console.log('enter preload');
-    // this.load.path = '/assets/img/'
-    this.load.path = '/ar-kids-pwa/assets/img/'
 
-    this.load.image("pajaro1","bird.png");
+    this.load.path = '/assets/img/'
+
+    this.load.image("cabeza","mujer1_01.png");
+    this.load.image("tronco","mujer1_02.png");
+    this.load.image("piernas","mujer1_03.png");
+    this.load.image("pies","mujer1_04.png");
+    this.load.image("sueter","sueter.png");
+    this.load.image("jean","jean.png");
     this.load.image("pajaro2","bird_dos.png");
+    this.load.image("back","girlRoon.jpg");
     this.correcto=false;
     
   }
 
   create() {
     // console.log('enter create');
+    this.add.image(320,180,"back").setDepth(-1);
+    this.cabeza=this.add.image(210,68,"cabeza").setDepth(-1);
+    this.tronco=this.add.image(210,143,"tronco").setDepth(-1).setInteractive();
+    this.piernas=this.add.image(210,261,"piernas").setDepth(-1).setInteractive();
+    this.pies=this.add.image(210,348,"pies").setDepth(-1);
+    // this.sueter=this.add.image(210,150,"sueter").setInteractive();
+    this.sueter=this.add.image(410,150,"sueter").setInteractive();
+    // this.jean=this.add.image(218,253,"jean").setDepth(-1).setInteractive();
+    this.jean=this.add.image(518,253,"jean").setDepth(-1).setInteractive();
+    // this.pajaro2=this.add.image(400,240,"pajaro2").setDepth(-1).setInteractive();
+    // this.pajaro2.input.dropZone= true;
+    // this.pajaro3=this.add.image(400,310,"pajaro2").setDepth(-1).setInteractive();
+    this.piernas.input.dropZone = true;
+    this.tronco.input.dropZone = true;
+    this.piernas.name="hola";
     
-    this.pajaro1=this.add.image(50,100,"pajaro1").setInteractive();
-    this.pajaro2=this.add.image(400,110,"pajaro2").setDepth(-1).setInteractive();
-    this.pajaro2.input.dropZone= true;
-    this.pajaro3=this.add.image(400,310,"pajaro2").setDepth(-1).setInteractive();
-    this.pajaro3.input.dropZone= true;
-    this.pajaro3.name="hola";
-    
-    this.input.setDraggable(this.pajaro1);
+    this.input.setDraggable(this.sueter);
+    this.input.setDraggable(this.jean);
+    // this.input.setDraggable(this.pajaro1);
 
     const eventos = Phaser.Input.Events;
      
@@ -72,9 +90,8 @@ class NewScene extends Phaser.Scene {
     this.input.on(eventos.DROP,(pointer, obj, dropzone)=>{
       
       if(this.correcto){
-        console.log("entro")
-        obj.x = dropzone.x;
-        obj.y = dropzone.y;
+        obj.x = 218
+        obj.y = 253;
       }else{
         obj.x = obj.input.dragStartX;
         obj.y = obj.input.dragStartY;
@@ -82,86 +99,11 @@ class NewScene extends Phaser.Scene {
 
     })
 
-    // this.input.on(eventos.POINTER_DOWN, (evento) =>{
-    //     console.log("Se ha clicado en el canvas");
-    //     // console.log(evento);
-    // });
-    
-    // this.input.on(eventos.POINTER_UP, (evento) =>{
-    //     console.log("Se ha levantado el puntero en el canvas");
-    //     // console.log(evento);
-    // });
-    
-    // this.input.on(eventos.POINTER_MOVE, (evento) =>{
-    //     // console.log("Se ha movido el puntero en el canvas");
-    //     // console.log(evento);
-    //     if (evento.isDown){
-    //       this.pajaro1.x = evento.worldX;
-    //       this.pajaro1.y = evento.worldY;
-    //     }
-        
-    // });
 
-    // this.input.on(eventos.GAME_OVER,()=>{
-    //     console.log("Has entrado en el lienzo")
-    // });
-
-    
-    // this.input.on(eventos.GAME_OUT,()=>{
-    //   console.log("Has salido del lienzo")
-    // });
-
-    // this.input.on(eventos.POINTER_DOWN_OUTSIDE,()=>{
-    //   console.log("Has clicado fuera del lienzo")
-    // });
-
-
-    // this.input.on(eventos.POINTER_UP_OUTSIDE,()=>{
-    //   console.log("Has levantado fuera del lienzo")
-    // });
-
-    // // this.input.on(eventos.GAMEOBJECT_DOWN,(pointer, gameObject)=>{
-    // //     gameObject.setTint(0x00ff00);
-    // // });
-    
-    // // this.input.on(eventos.GAMEOBJECT_UP,(pointer, gameObject)=>{
-    // //     gameObject.clearTint();
-    // // });
-
-    // this.pajaro2.on(eventos.POINTER_DOWN, function() {
-    //     this.setTint(0x0000ff);
-    // });
-
-    
-    // this.pajaro2.on(eventos.POINTER_UP, function() {
-    //   this.clearTint();
-    // });
-
-    // // this.input.setDraggable(this.pajaro1);
-    // // this.input.setDraggable(this.pajaro2);
-
-    // // this.input.on('dragstart', function (pointer, gameObject) {
-
-    // //   this.children.bringToTop(gameObject);
-
-    // // }, this);
-
-    // // this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-  
-    // //     gameObject.x = dragX;
-    // //     gameObject.y = dragY;
-  
-    // // });
     }
 
   update(time, delta){
-    // console.log(delta);
-    // this.pajaro1.x++;
 
-    // if (this.pajaro1.x == 100){
-    //   this.pajaro1.x=50;
-      
-    // }
   }
 
 }
@@ -201,30 +143,10 @@ export class JuegoComponent implements OnInit {
 
   ngOnInit() {
 
-    
     this.phaserGame = new Phaser.Game(this.config);
 
-    
 
-  
     
   }
-
-
-
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event?) {
-  //  this.screenHeight = window.innerHeight;
-  //  this.screenWidth = window.innerWidth;
-  // }
-
-  // @HostListener('window:resize', ['$event'])
-  //   getScreenSize(event?) {
-  //     this.screenHeight = window.innerHeight;
-  //     this.screenWidth = window.innerWidth;
-  //     this.config.scale.height=this.screenHeight;
-  //     this.config.scale.width=this.screenWidth
-  //     console.log("===========>",this.config.scale.height, this.config.scale.width);
-  //   }
 
 }
