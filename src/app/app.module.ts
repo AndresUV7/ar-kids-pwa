@@ -56,7 +56,6 @@ import { PictoComponent } from './picto/picto.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NguCarouselModule } from '@ngu/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FineMotorComponent } from './fine-motor/fine-motor.component';
 import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-motor-skills.component';
 
 
@@ -72,7 +71,6 @@ import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-m
     CardComponent,
     PictoComponent,
     CarouselComponent,
-    FineMotorComponent,
     SandwichMotorSkillsComponent,
 
   ],
