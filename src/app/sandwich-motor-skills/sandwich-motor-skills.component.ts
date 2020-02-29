@@ -8,6 +8,12 @@ class NewScene extends Phaser.Scene {
   anular:any
   menique:any
   pulgar:any
+  pan:any
+  tomate:any
+  queso:any
+  jamon:any
+  lechuga:any
+  pan2:any
   
   constructor() {
       
@@ -22,23 +28,44 @@ class NewScene extends Phaser.Scene {
     // this.load.path = '/assets/img/'
 
     this.load.image("indice","indice.png");
-    this.load.image("medio","indice.png");
-    this.load.image("anular","indice.png");
-    this.load.image("menique","indice.png");
+    this.load.image("medio","medio.png");
+    this.load.image("anular","anular.png");
+    this.load.image("menique","menique.png");
     this.load.image("pulgar","pulgar.png");
-    
+    this.load.image("table","table.jpg");
+    this.load.image("pan","pan.png");
+    this.load.image("tomate","tomate.png");
+    this.load.image("queso","queso.png");
+    this.load.image("queso","queso.png");
+    this.load.image("jamon","jamon.png");
+    this.load.image("lechuga","lechuga.png");
+      
   }
 
   create() {
     // console.log('enter create');
    
     this.input.addPointer(1);
-    this.indice=this.add.image(90,310,"pulgar").setInteractive();
+    this.add.image(320,180,"table").setDepth(-1);
+    this.pulgar=this.add.image(110,280,"pulgar").setInteractive();
     this.indice=this.add.image(200,100,"indice").setInteractive();
-    this.indice=this.add.image(300,65,"medio").setInteractive();
-    this.indice=this.add.image(380,100,"anular").setInteractive();
-    this.indice=this.add.image(450,200,"menique").setInteractive();
+    this.medio=this.add.image(300,65,"medio").setInteractive();
+    this.anular=this.add.image(380,100,"anular").setInteractive();
+    this.menique=this.add.image(450,200,"menique").setInteractive();
+    this.pan=this.add.image(450,180,"pan").setInteractive();
+    this.lechuga=this.add.image(380,80,"lechuga").setInteractive();
+    this.jamon=this.add.image(380,80,"jamon").setInteractive();
+    this.queso=this.add.image(200,80,"queso").setInteractive();
+    this.tomate=this.add.image(300,45,"tomate").setInteractive();
+    this.pan2=this.add.image(300,45,"pan").setInteractive();
     
+
+    this.input.setDraggable(this.pan);
+    this.input.setDraggable(this.tomate);
+    this.input.setDraggable(this.jamon);
+    this.input.setDraggable(this.lechuga);
+    this.input.setDraggable(this.queso);
+    this.input.setDraggable(this.pan2);
 
     // console.log(this.angular1.x);     
 
@@ -100,7 +127,7 @@ export class SandwichMotorSkillsComponent implements OnInit {
 
     this.config = {
       type: Phaser.AUTO,
-      backgroundColor: '#34495e',
+      backgroundColor: '#FFFFFF',
       scene: [ NewScene ],
       physics: {
         default: 'arcade',
