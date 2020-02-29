@@ -3,8 +3,11 @@ import Phaser from 'phaser';
 
 class NewScene extends Phaser.Scene {
 
-  angular1:any
-  graphics:any
+  indice:any
+  medio:any
+  anular:any
+  menique:any
+  pulgar:any
   
   constructor() {
       
@@ -18,8 +21,11 @@ class NewScene extends Phaser.Scene {
     this.load.path = '/ar-kids-pwa/assets/img/'
     // this.load.path = '/assets/img/'
 
-    this.load.image("angular1","angular.png");
-    this.load.image("angular2","angular.png");
+    this.load.image("indice","indice.png");
+    this.load.image("medio","indice.png");
+    this.load.image("anular","indice.png");
+    this.load.image("menique","indice.png");
+    this.load.image("pulgar","pulgar.png");
     
   }
 
@@ -27,10 +33,14 @@ class NewScene extends Phaser.Scene {
     // console.log('enter create');
    
     this.input.addPointer(1);
-    this.angular1=this.add.image(210,65,"angular1").setInteractive();
-    this.input.setDraggable(this.angular1);
+    this.indice=this.add.image(90,310,"pulgar").setInteractive();
+    this.indice=this.add.image(200,100,"indice").setInteractive();
+    this.indice=this.add.image(300,65,"medio").setInteractive();
+    this.indice=this.add.image(380,100,"anular").setInteractive();
+    this.indice=this.add.image(450,200,"menique").setInteractive();
     
-    console.log(this.angular1.x);     
+
+    // console.log(this.angular1.x);     
 
     const eventos = Phaser.Input.Events;
 
@@ -51,11 +61,11 @@ class NewScene extends Phaser.Scene {
 
   update(time, delta){
 
-    if(this.input.pointer1.x>210){
+    // if(this.input.pointer1.x==0 && this.input.pointer1.x && this.input.pointer1.x && this.input.pointer1.x){
 
-      this.angular1.destroy();
+    //   this.angular1.destroy();
 
-    }
+    // }
     // if (this.input.pointer1.x==)
 
     // if (this.input.pointer1.isDown || this.input.pointer2.isDown)
