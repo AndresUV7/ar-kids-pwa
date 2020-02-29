@@ -27,21 +27,21 @@ class NewScene extends Phaser.Scene {
     // console.log('enter create');
    
     this.input.addPointer(2);
-    this.angular1=this.add.image(210,65,"angular1").setInteractive();
-    this.angular2=this.add.image(410,165,"angular2").setInteractive();
-    this.input.setDraggable(this.angular1);
-    this.input.setDraggable(this.angular2);
+    // this.angular1=this.add.image(210,65,"angular1").setInteractive();
+    // this.angular2=this.add.image(410,165,"angular2").setInteractive();
+    // this.input.setDraggable(this.angular1);
+    // this.input.setDraggable(this.angular2);
   
 
-    const eventos = Phaser.Input.Events;
+    // const eventos = Phaser.Input.Events;
 
-    this.input.on(eventos.DRAG,(pointer, obj, dragX, dragY )=>{
+    // this.input.on(eventos.DRAG,(pointer, obj, dragX, dragY )=>{
 
-        obj.x = dragX;
-        obj.y = dragY;
+    //     obj.x = dragX;
+    //     obj.y = dragY;
       
 
-    })
+    // })
 
 
     this.graphics = this.add.graphics();
@@ -51,6 +51,8 @@ class NewScene extends Phaser.Scene {
     }
 
   update(time, delta){
+
+
     if (this.input.pointer1.isDown || this.input.pointer2.isDown || this.input.pointer3.isDown)
     {
         this.graphics.clear();
