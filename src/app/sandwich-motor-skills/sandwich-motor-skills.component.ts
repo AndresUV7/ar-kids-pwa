@@ -86,11 +86,11 @@ class NewScene extends Phaser.Scene {
 
       // console.log(gameObject.name)
 
-      if (gameObject.name="pulgar"){
+      if (gameObject.name=="pulgar"){
         x= Math.floor(Math.random()*(3-0+1)+0);    
-        z= Math.floor(Math.random()*(3-0+1)+0);    
+        z= Math.floor(Math.random()*(4-0+1)+0);    
         while(z==0){
-          z= Math.floor(Math.random()*(3-0+1)+0);
+          z= Math.floor(Math.random()*(4-0+1)+0);
         }
         this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
          y= Math.floor(Math.random()*(3-0+1)+0);
