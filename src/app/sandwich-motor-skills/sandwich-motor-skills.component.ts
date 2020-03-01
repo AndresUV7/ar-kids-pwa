@@ -8,13 +8,14 @@ class NewScene extends Phaser.Scene {
   anular:any
   menique:any
   pulgar:any
-  pan:any
-  tomate:any
-  queso:any
-  jamon:any
-  lechuga:any
-  pan2:any
-  
+  ingrediente:any
+  ingredienteAux:any
+
+  checkpoints: boolean[]=[false,false,false,false,false,false]
+
+  posiciones:number[][]=[ [450,180],[380,80],[200,80],[300,45] ]
+  ingredientes:string[]=["pan","lechuga","jamon","queso","tomate"]
+
   constructor() {
       
     super('NewScene');
@@ -47,35 +48,156 @@ class NewScene extends Phaser.Scene {
    
     this.input.addPointer(1);
     this.add.image(320,180,"table").setDepth(-1);
-    this.pulgar=this.add.image(110,280,"pulgar").setInteractive();
+    this.pulgar=this.add.image(110,250,"pulgar").setInteractive();
     this.indice=this.add.image(200,100,"indice").setInteractive();
     this.medio=this.add.image(300,65,"medio").setInteractive();
     this.anular=this.add.image(380,100,"anular").setInteractive();
     this.menique=this.add.image(450,200,"menique").setInteractive();
-    this.pan=this.add.image(450,180,"pan").setInteractive();
-    this.lechuga=this.add.image(380,80,"lechuga").setInteractive();
-    this.jamon=this.add.image(380,80,"jamon").setInteractive();
-    this.queso=this.add.image(200,80,"queso").setInteractive();
-    this.tomate=this.add.image(300,45,"tomate").setInteractive();
-    this.pan2=this.add.image(300,45,"pan").setInteractive();
+    
+    
+    
+    console.log(this.checkpoints[5]);
+
     
 
-    this.input.setDraggable(this.pan);
-    this.input.setDraggable(this.tomate);
-    this.input.setDraggable(this.jamon);
-    this.input.setDraggable(this.lechuga);
-    this.input.setDraggable(this.queso);
-    this.input.setDraggable(this.pan2);
+      let x= Math.floor(Math.random()*(3-0+1)+0);    
+      let z= Math.floor(Math.random()*(3-0+1)+0);    
+      while(z==0){
+        z= Math.floor(Math.random()*(3-0+1)+0);
+      }
+      this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+      let y= Math.floor(Math.random()*(3-0+1)+0);
+      while(x==y){
+        y= Math.floor(Math.random()*(3-0+1)+0)
+      }
+      this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+      this.ingrediente.name="pan";
+    
+    // this.lechuga=this.add.image(380,80,"lechuga").setInteractive();
+    // this.jamon=this.add.image(380,80,"jamon").setInteractive();
+    // this.queso=this.add.image(200,80,"queso").setInteractive();
+    // this.tomate=this.add.image(300,45,"tomate").setInteractive();
+    // this.pan2=this.add.image(300,45,"pan").setInteractive();
+    
+
+    // this.input.setDraggable(this.pan);
+    // this.input.setDraggable(this.tomate);
+    // this.input.setDraggable(this.jamon);
+    // this.input.setDraggable(this.lechuga);
+    // this.input.setDraggable(this.queso);
+    // this.input.setDraggable(this.pan2);
 
     // console.log(this.angular1.x);     
 
     const eventos = Phaser.Input.Events;
 
-    this.input.on(eventos.DRAG,(pointer, obj, dragX, dragY )=>{
+    this.input.on(eventos.GAMEOBJECT_DOWN,(pointer, gameObject)=>{
 
-        obj.x = dragX;
-        obj.y = dragY;
+      // console.log(gameObject.name)
+      if (gameObject.name=="pan"){
+        
+        gameObject.x=580;
+        gameObject.y=300;
+        this.ingredienteAux.destroy();
+        x= Math.floor(Math.random()*(3-0+1)+0);    
+        z= Math.floor(Math.random()*(4-0+1)+0);    
+        while(z==1){
+          z= Math.floor(Math.random()*(4-0+1)+0);
+        }
+        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+        y= Math.floor(Math.random()*(3-0+1)+0);
+        while(x==y){
+          y= Math.floor(Math.random()*(3-0+1)+0)
+        }
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"lechuga").setInteractive();
+        this.ingrediente.name="lechuga";
+      }
       
+      if (gameObject.name=="lechuga"){
+        
+        gameObject.x=578;
+        gameObject.y=302;
+        this.ingredienteAux.destroy();
+        x= Math.floor(Math.random()*(3-0+1)+0);    
+        z= Math.floor(Math.random()*(4-0+1)+0);    
+        while(z==2){
+          z= Math.floor(Math.random()*(4-0+1)+0);
+        }
+        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+        y= Math.floor(Math.random()*(3-0+1)+0);
+        while(x==y){
+          y= Math.floor(Math.random()*(3-0+1)+0)
+        }
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"jamon").setInteractive();
+        this.ingrediente.name="jamon";
+      }
+      
+      if (gameObject.name=="jamon"){
+        
+        gameObject.x=578;
+        gameObject.y=303;
+        this.ingredienteAux.destroy();
+        x= Math.floor(Math.random()*(3-0+1)+0);    
+        z= Math.floor(Math.random()*(4-0+1)+0);    
+        while(z==3){
+          z= Math.floor(Math.random()*(4-0+1)+0);
+        }
+        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+        y= Math.floor(Math.random()*(3-0+1)+0);
+        while(x==y){
+          y= Math.floor(Math.random()*(3-0+1)+0)
+        }
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"queso").setInteractive();
+        this.ingrediente.name="queso";
+      } 
+      
+      if (gameObject.name=="queso"){
+        
+        gameObject.x=580;
+        gameObject.y=300;
+        this.ingredienteAux.destroy();
+        x= Math.floor(Math.random()*(3-0+1)+0);    
+        z= Math.floor(Math.random()*(4-0+1)+0);    
+        while(z==4){
+          z= Math.floor(Math.random()*(4-0+1)+0);
+        }
+        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+        y= Math.floor(Math.random()*(3-0+1)+0);
+        while(x==y){
+          y= Math.floor(Math.random()*(3-0+1)+0)
+        }
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"tomate").setInteractive();
+        this.ingrediente.name="tomate";
+      }
+    
+
+      if (gameObject.name=="tomate"){
+        
+        gameObject.x=580;
+        gameObject.y=300;
+        this.ingredienteAux.destroy();
+        x= Math.floor(Math.random()*(3-0+1)+0);    
+        z= Math.floor(Math.random()*(4-0+1)+0);    
+        while(z==0){
+          z= Math.floor(Math.random()*(4-0+1)+0);
+        }
+        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+        y= Math.floor(Math.random()*(3-0+1)+0);
+        while(x==y){
+          y= Math.floor(Math.random()*(3-0+1)+0)
+        }
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+        this.ingrediente.name="pan2";
+      }
+
+      if (gameObject.name=="pan2"){
+        
+        gameObject.x=580;
+        gameObject.y=290;
+        this.ingredienteAux.destroy();
+       
+      }
+
 
     })
 
@@ -87,6 +209,9 @@ class NewScene extends Phaser.Scene {
     }
 
   update(time, delta){
+
+
+
 
     // if(this.input.pointer1.x==0 && this.input.pointer1.x && this.input.pointer1.x && this.input.pointer1.x){
 
@@ -107,6 +232,8 @@ class NewScene extends Phaser.Scene {
     // this.graphics.fillRect(this.input.pointer2.x, this.input.pointer2.y, 44, 44);
 1
   }
+  
+
 
 }
 
