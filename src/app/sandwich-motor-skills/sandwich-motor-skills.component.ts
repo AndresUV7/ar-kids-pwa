@@ -49,7 +49,7 @@ class NewScene extends Phaser.Scene {
    
     this.input.addPointer(1);
     this.add.image(320,180,"table").setDepth(-1);
-    this.pulgar=this.add.image(110,250,"pulgar").setInteractive();
+    this.pulgar=this.add.image(110,250,"pulgar").setScale(1.3).setInteractive();
     this.indice=this.add.image(200,100,"indice").setInteractive();
     this.medio=this.add.image(300,65,"medio").setInteractive();
     this.anular=this.add.image(380,100,"anular").setInteractive();
@@ -102,7 +102,7 @@ class NewScene extends Phaser.Scene {
           while(x==y){
             y= Math.floor(Math.random()*(3-0+1)+0)
           }
-          this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+          this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setScale(1.2).setInteractive();
           this.ingrediente.name="pan";
           this.bandera=true
         }
@@ -124,7 +124,7 @@ class NewScene extends Phaser.Scene {
         while(x==y){
           y= Math.floor(Math.random()*(3-0+1)+0)
         }
-        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"lechuga").setInteractive();
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"lechuga").setScale(1.2).setInteractive();
         this.ingrediente.name="lechuga";
       }
       
@@ -143,7 +143,7 @@ class NewScene extends Phaser.Scene {
         while(x==y){
           y= Math.floor(Math.random()*(3-0+1)+0)
         }
-        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"jamon").setInteractive();
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"jamon").setScale(1.2).setInteractive();
         this.ingrediente.name="jamon";
       }
       
@@ -162,7 +162,7 @@ class NewScene extends Phaser.Scene {
         while(x==y){
           y= Math.floor(Math.random()*(3-0+1)+0)
         }
-        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"queso").setInteractive();
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"queso").setScale(1.2).setInteractive();
         this.ingrediente.name="queso";
       } 
       
@@ -181,7 +181,7 @@ class NewScene extends Phaser.Scene {
         while(x==y){
           y= Math.floor(Math.random()*(3-0+1)+0)
         }
-        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"tomate").setInteractive();
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"tomate").setScale(1.2).setInteractive();
         this.ingrediente.name="tomate";
       }
     
@@ -201,7 +201,7 @@ class NewScene extends Phaser.Scene {
         while(x==y){
           y= Math.floor(Math.random()*(3-0+1)+0)
         }
-        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setScale(1.2).setInteractive();
         this.ingrediente.name="pan2";
       }
 
