@@ -10,6 +10,7 @@ class NewScene extends Phaser.Scene {
   pulgar:any
   ingrediente:any
   ingredienteAux:any
+  pulgarPresionado: boolean
 
   checkpoints: boolean[]=[false,false,false,false,false,false]
 
@@ -53,25 +54,15 @@ class NewScene extends Phaser.Scene {
     this.medio=this.add.image(300,65,"medio").setInteractive();
     this.anular=this.add.image(380,100,"anular").setInteractive();
     this.menique=this.add.image(450,200,"menique").setInteractive();
-    
+    this.pulgar.name="pulgar";
+    this.pulgarPresionado=false; 
     
     
     console.log(this.checkpoints[5]);
 
-    
+    let x,y,z;
 
-      let x= Math.floor(Math.random()*(3-0+1)+0);    
-      let z= Math.floor(Math.random()*(3-0+1)+0);    
-      while(z==0){
-        z= Math.floor(Math.random()*(3-0+1)+0);
-      }
-      this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
-      let y= Math.floor(Math.random()*(3-0+1)+0);
-      while(x==y){
-        y= Math.floor(Math.random()*(3-0+1)+0)
-      }
-      this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
-      this.ingrediente.name="pan";
+      
     
     // this.lechuga=this.add.image(380,80,"lechuga").setInteractive();
     // this.jamon=this.add.image(380,80,"jamon").setInteractive();
@@ -94,7 +85,24 @@ class NewScene extends Phaser.Scene {
     this.input.on(eventos.GAMEOBJECT_DOWN,(pointer, gameObject)=>{
 
       // console.log(gameObject.name)
-      if (gameObject.name=="pan"){
+
+      if (gameObject.name="pulgar"){
+        x= Math.floor(Math.random()*(3-0+1)+0);    
+        z= Math.floor(Math.random()*(3-0+1)+0);    
+        while(z==0){
+          z= Math.floor(Math.random()*(3-0+1)+0);
+        }
+        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+         y= Math.floor(Math.random()*(3-0+1)+0);
+        while(x==y){
+          y= Math.floor(Math.random()*(3-0+1)+0)
+        }
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+        this.ingrediente.name="pan";
+        this.pulgarPresionado=true;  
+      }
+
+      if (gameObject.name=="pan" && this.pulgarPresionado){
         
         gameObject.x=580;
         gameObject.y=300;
@@ -113,7 +121,7 @@ class NewScene extends Phaser.Scene {
         this.ingrediente.name="lechuga";
       }
       
-      if (gameObject.name=="lechuga"){
+      if (gameObject.name=="lechuga" && this.pulgarPresionado){
         
         gameObject.x=578;
         gameObject.y=302;
@@ -132,7 +140,7 @@ class NewScene extends Phaser.Scene {
         this.ingrediente.name="jamon";
       }
       
-      if (gameObject.name=="jamon"){
+      if (gameObject.name=="jamon" && this.pulgarPresionado){
         
         gameObject.x=578;
         gameObject.y=303;
@@ -151,7 +159,7 @@ class NewScene extends Phaser.Scene {
         this.ingrediente.name="queso";
       } 
       
-      if (gameObject.name=="queso"){
+      if (gameObject.name=="queso" && this.pulgarPresionado){
         
         gameObject.x=580;
         gameObject.y=300;
@@ -171,7 +179,7 @@ class NewScene extends Phaser.Scene {
       }
     
 
-      if (gameObject.name=="tomate"){
+      if (gameObject.name=="tomate" && this.pulgarPresionado){
         
         gameObject.x=580;
         gameObject.y=300;
@@ -190,7 +198,7 @@ class NewScene extends Phaser.Scene {
         this.ingrediente.name="pan2";
       }
 
-      if (gameObject.name=="pan2"){
+      if (gameObject.name=="pan2" && this.pulgarPresionado){
         
         gameObject.x=580;
         gameObject.y=290;
@@ -198,6 +206,15 @@ class NewScene extends Phaser.Scene {
        
       }
 
+
+    })
+    
+    this.input.on(eventos.GAMEOBJECT_UP,(pointer, gameObject)=>{
+
+      if (gameObject.name="pulgar"){
+
+        this.pulgarPresionado=false;
+      }
 
     })
 
