@@ -20,7 +20,7 @@ class NewScene extends Phaser.Scene {
     this.load.path = '/ar-kids-pwa/assets/img/'
 
     this.load.image("cuchara","cuchara.png");
-    this.load.image("cuchara2","cuchara2.png");
+    this.load.image("cuchara2","silueta.png");
     
       
   }
