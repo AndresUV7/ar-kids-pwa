@@ -11,7 +11,7 @@ class NewScene extends Phaser.Scene {
   ingrediente:any
   ingredienteAux:any
   pulgarPresionado: boolean
-
+  bandera:boolean
   checkpoints: boolean[]=[false,false,false,false,false,false]
 
   posiciones:number[][]=[ [450,180],[380,80],[200,80],[300,45] ]
@@ -86,19 +86,25 @@ class NewScene extends Phaser.Scene {
 
       // console.log(gameObject.name)
 
+
       if (gameObject.name=="pulgar"){
-        x= Math.floor(Math.random()*(3-0+1)+0);    
-        z= Math.floor(Math.random()*(4-0+1)+0);    
-        while(z==0){
-          z= Math.floor(Math.random()*(4-0+1)+0);
+       
+        if (!this.bandera){
+          
+          x= Math.floor(Math.random()*(3-0+1)+0);    
+          z= Math.floor(Math.random()*(4-0+1)+0);    
+          while(z==0){
+            z= Math.floor(Math.random()*(4-0+1)+0);
+          }
+          this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+           y= Math.floor(Math.random()*(3-0+1)+0);
+          while(x==y){
+            y= Math.floor(Math.random()*(3-0+1)+0)
+          }
+          this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+          this.ingrediente.name="pan";
+          this.bandera=true
         }
-        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
-         y= Math.floor(Math.random()*(3-0+1)+0);
-        while(x==y){
-          y= Math.floor(Math.random()*(3-0+1)+0)
-        }
-        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
-        this.ingrediente.name="pan";
         this.pulgarPresionado=true;  
       }
 
