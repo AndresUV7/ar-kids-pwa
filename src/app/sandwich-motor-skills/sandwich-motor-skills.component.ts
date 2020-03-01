@@ -56,6 +56,7 @@ class NewScene extends Phaser.Scene {
     this.menique=this.add.image(450,200,"menique").setInteractive();
     this.pulgar.name="pulgar";
     this.pulgarPresionado=false; 
+    this.bandera=false;
     
     
     console.log(this.checkpoints[5]);
@@ -217,7 +218,7 @@ class NewScene extends Phaser.Scene {
     
     this.input.on(eventos.GAMEOBJECT_UP,(pointer, gameObject)=>{
 
-      if (gameObject.name="pulgar"){
+      if (gameObject.name=="pulgar"){
 
         this.pulgarPresionado=false;
       }
