@@ -111,7 +111,7 @@ class NewScene extends Phaser.Scene {
 
       if (gameObject.name=="pan" && this.pulgarPresionado){
         
-        gameObject.x=580;
+        gameObject.x=560;
         gameObject.y=300;
         gameObject.setScale(1.5);
         this.ingredienteAux.destroy();
@@ -131,7 +131,7 @@ class NewScene extends Phaser.Scene {
       
       if (gameObject.name=="lechuga" && this.pulgarPresionado){
         
-        gameObject.x=578;
+        gameObject.x=558;
         gameObject.y=302;
         gameObject.setScale(1.5);
 
@@ -152,7 +152,7 @@ class NewScene extends Phaser.Scene {
       
       if (gameObject.name=="jamon" && this.pulgarPresionado){
         
-        gameObject.x=578;
+        gameObject.x=558;
         gameObject.y=303;
         gameObject.setScale(1.5);
 
@@ -173,7 +173,7 @@ class NewScene extends Phaser.Scene {
       
       if (gameObject.name=="queso" && this.pulgarPresionado){
         
-        gameObject.x=580;
+        gameObject.x=560;
         gameObject.y=300;
         gameObject.setScale(1.5);
 
@@ -195,7 +195,7 @@ class NewScene extends Phaser.Scene {
 
       if (gameObject.name=="tomate" && this.pulgarPresionado){
         
-        gameObject.x=580;
+        gameObject.x=560;
         gameObject.y=300;
         gameObject.setScale(1.5);
 
@@ -216,7 +216,7 @@ class NewScene extends Phaser.Scene {
 
       if (gameObject.name=="pan2" && this.pulgarPresionado){
         
-        gameObject.x=580;
+        gameObject.x=560;
         gameObject.y=290;
         gameObject.setScale(1.5);
 
