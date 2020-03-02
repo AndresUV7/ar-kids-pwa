@@ -131,8 +131,8 @@ class NewScene extends Phaser.Scene {
       
       if (gameObject.name=="lechuga" && this.pulgarPresionado){
         
-        gameObject.x=558;
-        gameObject.y=302;
+        gameObject.x=557;
+        gameObject.y=303;
         gameObject.setScale(1.5);
 
         this.ingredienteAux.destroy();
