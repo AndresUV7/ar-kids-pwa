@@ -48,7 +48,7 @@ class NewScene extends Phaser.Scene {
     // console.log('enter create');
    
     this.input.addPointer(1);
-    // this.add.image(320,180,"table").setDepth(-1);
+    this.add.image(320,180,"table").setDepth(-1);
     this.pulgar=this.add.image(100,280,"pulgar").setInteractive();
     this.indice=this.add.image(200,90,"indice").setInteractive();
     this.medio=this.add.image(280,55,"medio").setInteractive();
