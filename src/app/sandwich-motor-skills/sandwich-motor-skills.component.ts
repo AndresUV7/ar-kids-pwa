@@ -113,6 +113,7 @@ class NewScene extends Phaser.Scene {
         
         gameObject.x=580;
         gameObject.y=300;
+        gameObject.setScale(1.5);
         this.ingredienteAux.destroy();
         x= Math.floor(Math.random()*(3-0+1)+0);    
         z= Math.floor(Math.random()*(4-0+1)+0);    
@@ -132,6 +133,8 @@ class NewScene extends Phaser.Scene {
         
         gameObject.x=578;
         gameObject.y=302;
+        gameObject.setScale(1.5);
+
         this.ingredienteAux.destroy();
         x= Math.floor(Math.random()*(3-0+1)+0);    
         z= Math.floor(Math.random()*(4-0+1)+0);    
@@ -151,6 +154,8 @@ class NewScene extends Phaser.Scene {
         
         gameObject.x=578;
         gameObject.y=303;
+        gameObject.setScale(1.5);
+
         this.ingredienteAux.destroy();
         x= Math.floor(Math.random()*(3-0+1)+0);    
         z= Math.floor(Math.random()*(4-0+1)+0);    
@@ -170,6 +175,8 @@ class NewScene extends Phaser.Scene {
         
         gameObject.x=580;
         gameObject.y=300;
+        gameObject.setScale(1.5);
+
         this.ingredienteAux.destroy();
         x= Math.floor(Math.random()*(3-0+1)+0);    
         z= Math.floor(Math.random()*(4-0+1)+0);    
@@ -190,6 +197,8 @@ class NewScene extends Phaser.Scene {
         
         gameObject.x=580;
         gameObject.y=300;
+        gameObject.setScale(1.5);
+
         this.ingredienteAux.destroy();
         x= Math.floor(Math.random()*(3-0+1)+0);    
         z= Math.floor(Math.random()*(4-0+1)+0);    
@@ -209,6 +218,8 @@ class NewScene extends Phaser.Scene {
         
         gameObject.x=580;
         gameObject.y=290;
+        gameObject.setScale(1.5);
+
         this.ingredienteAux.destroy();
        
       }
