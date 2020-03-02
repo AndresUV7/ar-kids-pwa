@@ -14,7 +14,7 @@ class NewScene extends Phaser.Scene {
   bandera:boolean
   checkpoints: boolean[]=[false,false,false,false,false,false]
 
-  posiciones:number[][]=[ [450,180],[380,80],[200,80],[300,45] ]
+  posiciones:number[][]=[ [420,180],[360,90],[200,90],[280,55] ]
   ingredientes:string[]=["pan","lechuga","jamon","queso","tomate"]
 
   constructor() {
@@ -48,12 +48,12 @@ class NewScene extends Phaser.Scene {
     // console.log('enter create');
    
     this.input.addPointer(1);
-    this.add.image(320,180,"table").setDepth(-1);
-    this.pulgar=this.add.image(110,250,"pulgar").setScale(1.1).setInteractive();
-    this.indice=this.add.image(200,100,"indice").setInteractive();
-    this.medio=this.add.image(300,65,"medio").setInteractive();
-    this.anular=this.add.image(380,100,"anular").setInteractive();
-    this.menique=this.add.image(450,200,"menique").setInteractive();
+    // this.add.image(320,180,"table").setDepth(-1);
+    this.pulgar=this.add.image(100,280,"pulgar").setInteractive();
+    this.indice=this.add.image(200,90,"indice").setInteractive();
+    this.medio=this.add.image(280,55,"medio").setInteractive();
+    this.anular=this.add.image(360,90,"anular").setInteractive();
+    this.menique=this.add.image(420,180,"menique").setInteractive();
     this.pulgar.name="pulgar";
     this.pulgarPresionado=false; 
     this.bandera=false;
