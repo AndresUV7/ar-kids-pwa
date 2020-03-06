@@ -13,9 +13,12 @@ class NewScene extends Phaser.Scene {
   pulgarPresionado: boolean
   bandera:boolean
   checkpoints: boolean[]=[false,false,false,false,false,false]
+  touch:boolean;
 
   posiciones:number[][]=[ [420,180],[360,90],[200,90],[280,55] ]
   ingredientes:string[]=["pan","lechuga","jamon","queso","tomate"]
+
+  
 
   constructor() {
       
@@ -26,8 +29,8 @@ class NewScene extends Phaser.Scene {
 
   preload() {
  
-    this.load.path = '/ar-kids-pwa/assets/img/'
-    // this.load.path = '/assets/img/'
+    // this.load.path = '/ar-kids-pwa/assets/img/'
+    this.load.path = '/assets/img/'
 
     this.load.image("indice","indice.png");
     this.load.image("medio","medio.png");
@@ -46,7 +49,6 @@ class NewScene extends Phaser.Scene {
 
   create() {
     // console.log('enter create');
-   
     this.input.addPointer(1);
     this.add.image(320,180,"table").setDepth(-1);
     this.pulgar=this.add.image(100,280,"pulgar").setInteractive();
@@ -57,7 +59,13 @@ class NewScene extends Phaser.Scene {
     this.pulgar.name="pulgar";
     this.pulgarPresionado=false; 
     this.bandera=false;
-    
+    this.touch=true;
+
+    if(!this.game.device.input.touch){
+      console.log("entro")
+      this.pulgarPresionado=true;
+      this.touch=false;
+    }
     
     console.log(this.checkpoints[5]);
 
@@ -229,7 +237,7 @@ class NewScene extends Phaser.Scene {
     
     this.input.on(eventos.GAMEOBJECT_UP,(pointer, gameObject)=>{
 
-      if (gameObject.name=="pulgar"){
+      if (gameObject.name=="pulgar" && this.touch){
 
         this.pulgarPresionado=false;
       }
@@ -265,7 +273,7 @@ class NewScene extends Phaser.Scene {
 
     // this.graphics.fillStyle(0x00ff00, 1);
     // this.graphics.fillRect(this.input.pointer2.x, this.input.pointer2.y, 44, 44);
-1
+
   }
   
 
@@ -289,7 +297,7 @@ export class SandwichMotorSkillsComponent implements OnInit {
 
     this.config = {
       type: Phaser.AUTO,
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#34495e',
       scene: [ NewScene ],
       physics: {
         default: 'arcade',

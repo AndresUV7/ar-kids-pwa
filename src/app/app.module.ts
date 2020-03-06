@@ -58,6 +58,7 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-motor-skills.component';
 import { CleannessFineMotorComponent } from './cleanness-fine-motor/cleanness-fine-motor.component';
+import { TestPcComponent } from './test-pc/test-pc.component';
 
 
 
@@ -74,6 +75,7 @@ import { CleannessFineMotorComponent } from './cleanness-fine-motor/cleanness-fi
     CarouselComponent,
     SandwichMotorSkillsComponent,
     CleannessFineMotorComponent,
+    TestPcComponent,
 
   ],
   imports: [
