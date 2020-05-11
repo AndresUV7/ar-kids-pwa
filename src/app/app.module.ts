@@ -59,6 +59,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-motor-skills.component';
 import { CleannessFineMotorComponent } from './cleanness-fine-motor/cleanness-fine-motor.component';
 import { TestPcComponent } from './test-pc/test-pc.component';
+import { JuegoService } from './services/juego.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ArSpeechComponent } from './ar-speech/ar-speech.component';
 
 
 
@@ -76,9 +79,11 @@ import { TestPcComponent } from './test-pc/test-pc.component';
     SandwichMotorSkillsComponent,
     CleannessFineMotorComponent,
     TestPcComponent,
+    ArSpeechComponent,
 
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
@@ -131,7 +136,9 @@ import { TestPcComponent } from './test-pc/test-pc.component';
     FlexLayoutModule
 
   ],
-  providers: [],
+  providers: [ 
+    JuegoService
+  ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
