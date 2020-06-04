@@ -62,7 +62,7 @@ class NewScene extends Phaser.Scene {
     this.cuchillo = this.add.image(310, 250, "cuchillo").setInteractive();
     this.tenedor = this.add.image(310, 250, "tenedor").setInteractive();
     this.plato = this.add.image(310, 250, "plato").setInteractive();
-    this.plato_hondo = this.add.image(310, 250, "plato-hondo").setInteractive();
+    this.plato_hondo = this.add.image(80, 250, "plato-hondo").setInteractive();
     this.vaso = this.add.image(310, 250, "vaso").setInteractive();
     this.servilleta = this.add.image(80, 250, "servilleta").setInteractive();
     this.plato_s = this.add.image(330, 250, "plato-s").setInteractive();
