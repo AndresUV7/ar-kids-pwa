@@ -217,7 +217,7 @@ class NewScene extends Phaser.Scene {
       // this.tenedor.x=this.tenedor.x-1.5;
       // this.tenedor.y=this.tenedor.y+1;
 
-      if (this.plato.x > 240 && this.plato.x < 420) {
+      if (this.plato.x > 250 && this.plato.x < 480) {
         if (
           this.input.pointer1.x > 210 &&
           this.input.pointer1.y > 250 &&
@@ -244,23 +244,23 @@ class NewScene extends Phaser.Scene {
     }
     
     
-    if (this.plato_hondo.x < 640 && !this.check_plato_hondo) {
+    if (this.plato_hondo.x < 640 && !this.check_plato_hondo && this.check_plato) {
       this.plato_hondo.x = this.plato_hondo.x + 1;
       // this.cuchillo.x=this.cuchillo.x+1.5;
       // this.tenedor.x=this.tenedor.x-1.5;
       // this.tenedor.y=this.tenedor.y+1;
 
-      if (this.plato_hondo.x > 270 && this.plato_hondo.x < 390) {
+      if (this.plato_hondo.x > 240 && this.plato_hondo.x < 470) {
         if (
-          this.input.pointer1.x > 240 &&
+          this.input.pointer1.x > 200 &&
           this.input.pointer1.y > 250 &&
-          this.input.pointer1.x < 420 &&
+          this.input.pointer1.x < 440 &&
           this.input.pointer1.y < 370
         ) {
           if (
-            this.input.pointer2.x > 240 &&
+            this.input.pointer2.x > 200 &&
             this.input.pointer2.y > 250 &&
-            this.input.pointer2.x < 420 &&
+            this.input.pointer2.x < 440 &&
             this.input.pointer2.y < 370
           ) {
             this.check_plato_hondo = true;
