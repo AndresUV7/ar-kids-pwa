@@ -249,7 +249,7 @@ class NewScene extends Phaser.Scene {
       // this.tenedor.x=this.tenedor.x-1.5;
       // this.tenedor.y=this.tenedor.y+1;
 
-      if (this.plato_hondo.x > 240 && this.plato_hondo.x < 470) {
+      if (this.plato_hondo.x > 240 && this.plato_hondo.x < 470 && this.check_plato) {
         if (
           this.input.pointer1.x > 200 &&
           this.input.pointer1.y > 250 &&
@@ -269,7 +269,7 @@ class NewScene extends Phaser.Scene {
     } else {
       if (!this.check_plato_hondo) {
         this.plato_hondo.x = 80;
-      } else if (this.check_plato) {
+      } else{
         this.plato_hondo.x = 330;
         this.plato_hondo.y = 250;
       }
