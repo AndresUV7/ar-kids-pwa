@@ -22,6 +22,7 @@ class NewScene extends Phaser.Scene {
   check_servilleta: boolean;
   check_plato: boolean;
   check_plato_hondo: boolean;
+  check_vaso: boolean;
 
   constructor() {
     super("NewScene");
@@ -55,6 +56,7 @@ class NewScene extends Phaser.Scene {
     this.check_servilleta = false;
     this.check_plato = false;
     this.check_plato_hondo = false;
+    this.check_vaso = false;
 
     this.input.addPointer(1);
 
@@ -63,7 +65,7 @@ class NewScene extends Phaser.Scene {
     this.tenedor = this.add.image(310, 250, "tenedor").setInteractive();
     this.plato = this.add.image(310, 250, "plato").setInteractive();
     this.plato_hondo = this.add.image(80, 250, "plato-hondo").setInteractive();
-    this.vaso = this.add.image(310, 250, "vaso").setInteractive();
+    this.vaso = this.add.image(80, 80, "vaso").setInteractive();
     this.servilleta = this.add.image(80, 250, "servilleta").setInteractive();
     this.plato_s = this.add.image(330, 250, "plato-s").setInteractive();
     this.plato_hondo_s = this.add
@@ -272,6 +274,38 @@ class NewScene extends Phaser.Scene {
       } else{
         this.plato_hondo.x = 330;
         this.plato_hondo.y = 250;
+      }
+    }
+    
+    if (this.vaso.x < 640 && !this.check_vaso) {
+      this.vaso.x = this.vaso.x + 1;
+      // this.cuchillo.x=this.cuchillo.x+1.5;
+      // this.tenedor.x=this.tenedor.x-1.5;
+      // this.tenedor.y=this.tenedor.y+1;
+
+      if (this.vaso.x > 440 && this.vaso.x < 560) {
+        if (
+          this.input.pointer1.x > 200 &&
+          this.input.pointer1.y > 80 &&
+          this.input.pointer1.x < 440 &&
+          this.input.pointer1.y < 150
+        ) {
+          if (
+            this.input.pointer2.x > 200 &&
+            this.input.pointer2.y > 80 &&
+            this.input.pointer2.x < 440 &&
+            this.input.pointer2.y < 150
+          ) {
+            this.check_vaso = true;
+          }
+        }
+      }
+    } else {
+      if (!this.check_vaso) {
+        this.vaso.x = 80;
+      } else{
+        this.vaso.x = 500;
+        this.vaso.y = 80;
       }
     }
   }
