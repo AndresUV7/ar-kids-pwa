@@ -19,7 +19,8 @@ class NewScene extends Phaser.Scene {
   servilleta_s:any
 
   
-  check:boolean
+  check_cuchara:boolean
+  check_cuchillo:boolean
 
   constructor() {
       
@@ -54,7 +55,8 @@ class NewScene extends Phaser.Scene {
   create() {
     
     this.add.image(320,180,"fondo").setDepth(-1);
-    this.check=false;
+    this.check_cuchara=false;
+    this.check_cuchillo=false;
     
     this.input.addPointer(1);
     
@@ -83,7 +85,7 @@ class NewScene extends Phaser.Scene {
     // console.log(this.input.pointer1.x)
     // console.log("pointer y")
     // console.log(this.input.pointer1.y)
-    if(this.cuchara.x<640 && !this.check){
+    if(this.cuchara.x<640 && !this.check_cuchara){
     
       this.cuchara.x=this.cuchara.x+1;
       // this.cuchillo.x=this.cuchillo.x+1.5;
@@ -93,20 +95,45 @@ class NewScene extends Phaser.Scene {
       if(this.cuchara.x>520 && this.cuchara.x<560){
       if(this.input.pointer1.x>480 && this.input.pointer1.y>250 && this.input.pointer1.x<600 && this.input.pointer1.y<370){
         if(this.input.pointer2.x>480 && this.input.pointer2.y>250 && this.input.pointer2.x<600 && this.input.pointer2.y<370){
-             this.check=true; 
+             this.check_cuchara=true; 
           }   
         }
       }
     }else{
-      if (!this.check){
+      if (!this.check_cuchara){
         
         this.cuchara.x=110;
-        this.cuchillo.x=110
       }else{
         this.cuchara.x=540;
         this.cuchara.y=250;
 
       }
+    
+    }
+
+      if(this.cuchillo.x<640 && !this.check_cuchillo){
+    
+        this.cuchillo.x=this.cuchillo.x+1;
+        // this.cuchillo.x=this.cuchillo.x+1.5;
+        // this.tenedor.x=this.tenedor.x-1.5;
+        // this.tenedor.y=this.tenedor.y+1;
+        
+        if(this.cuchara.x>450 && this.cuchara.x<490){
+        if(this.input.pointer1.x>410 && this.input.pointer1.y>250 && this.input.pointer1.x<540 && this.input.pointer1.y<370){
+          if(this.input.pointer2.x>410 && this.input.pointer2.y>250 && this.input.pointer2.x<540 && this.input.pointer2.y<370){
+               this.check_cuchillo=true; 
+            }   
+          }
+        }
+      }else{
+        if (!this.check_cuchillo){
+          
+          this.cuchillo.x=110
+        }else{
+          this.cuchillo.x=470;
+          this.cuchillo.y=250;
+  
+        }
     }
 
     
