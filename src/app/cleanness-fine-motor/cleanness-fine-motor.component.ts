@@ -25,7 +25,7 @@ class NewScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.path = "/assets/img/";
+    // this.load.path = "/assets/img/";
     this.load.path = "/ar-kids-pwa/assets/img/";
     this.load.image("fondo", "fondo-mesa.jpg");
     this.load.image("cuchara", "cuchara.png");
@@ -54,7 +54,7 @@ class NewScene extends Phaser.Scene {
 
     this.cuchara = this.add.image(310, 250, "cuchara").setInteractive();
     this.cuchillo = this.add.image(310, 250, "cuchillo").setInteractive();
-    this.tenedor = this.add.image(500, 50, "tenedor").setInteractive();
+    this.tenedor = this.add.image(310, 250, "tenedor").setInteractive();
     this.plato = this.add.image(310, 250, "plato").setInteractive();
     this.plato_hondo = this.add.image(310, 250, "plato-hondo").setInteractive();
     this.vaso = this.add.image(310, 250, "vaso").setInteractive();
