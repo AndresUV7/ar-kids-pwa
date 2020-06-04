@@ -4,7 +4,21 @@ class NewScene extends Phaser.Scene {
 
 
   cuchara:any
-  cuchara2:any
+  cuchillo:any
+  plato:any
+  plato_hondo:any
+  vaso:any
+  tenedor:any
+  servilleta:any
+  cuchara_s:any
+  cuchillo_s:any
+  plato_s:any
+  plato_hondo_s:any
+  vaso_s:any
+  tenedor_s:any
+  servilleta_s:any
+
+  
   check:boolean
 
   constructor() {
@@ -16,37 +30,65 @@ class NewScene extends Phaser.Scene {
 
   preload() {
  
-    // this.load.path = '/assets/img/'
-    this.load.path = '/ar-kids-pwa/assets/img/'
-
+    this.load.path = '/assets/img/'
+    // this.load.path = '/ar-kids-pwa/assets/img/'
+    this.load.image("fondo","fondo-mesa.jpg");
     this.load.image("cuchara","cuchara.png");
-    this.load.image("cuchara2","silueta.png");
-    
+    this.load.image("tenedor","tenedor.png");
+    this.load.image("cuchillo","cuchillo.png");
+    this.load.image("servilleta","servilleta.png");
+    this.load.image("vaso","vaso.png");
+    this.load.image("plato","plato.png");
+    this.load.image("plato-hondo","plato-hondo.png");
+    this.load.image("cuchara-s","cuchara-s.png");
+    this.load.image("vaso-s","vaso-s.png");
+    this.load.image("servilleta-s","servilleta-s.png");
+    this.load.image("plato-s","plato-s.png");
+    this.load.image("tenedor-s","tenedor-s.png");
+    this.load.image("cuchillo-s","cuchillo-s.png");
+    this.load.image("plato-hondo-s","plato-hondo-s.png");
       
+
   }
 
   create() {
     
-
+    this.add.image(320,180,"fondo").setDepth(-1);
     this.check=false;
     
     this.input.addPointer(1);
     
-    this.cuchara=this.add.image(110,250,"cuchara").setInteractive();
-    this.cuchara2=this.add.image(310,250,"cuchara2").setInteractive();
+    this.cuchara=this.add.image(310,250,"cuchara").setInteractive();
+    this.cuchillo=this.add.image(310,250,"cuchillo").setInteractive();
+    this.tenedor=this.add.image(500,50,"tenedor").setInteractive();
+    this.plato=this.add.image(310,250,"plato").setInteractive();
+    this.plato_hondo=this.add.image(310,250,"plato-hondo").setInteractive();
+    this.vaso=this.add.image(310,250,"vaso").setInteractive();
+    this.servilleta=this.add.image(310,250,"servilleta").setInteractive();
+    this.plato_s=this.add.image(330,250,"plato-s").setInteractive();
+    this.plato_hondo_s=this.add.image(330,250,"plato-hondo-s").setInteractive();
+    this.cuchara_s=this.add.image(540,250,"cuchara-s").setInteractive();
+    this.cuchillo_s=this.add.image(470,250,"cuchillo-s").setInteractive();
+    this.tenedor_s=this.add.image(190,250,"tenedor-s").setInteractive();
+    this.servilleta_s=this.add.image(120,250,"servilleta-s").setInteractive();
+    this.vaso_s=this.add.image(500,80,"vaso-s").setInteractive();
+
 
     }
 
   update(time, delta){
 
 
-    console.log("pointer x")
-    console.log(this.input.pointer1.x)
-    console.log("pointer y")
-    console.log(this.input.pointer1.y)
+    // console.log("pointer x")
+    // console.log(this.input.pointer1.x)
+    // console.log("pointer y")
+    // console.log(this.input.pointer1.y)
     if(this.cuchara.x<640 && !this.check){
     
       this.cuchara.x=this.cuchara.x+1;
+      // this.cuchillo.x=this.cuchillo.x+1.5;
+      // this.tenedor.x=this.tenedor.x-1.5;
+      // this.tenedor.y=this.tenedor.y+1;
       
       if(this.cuchara.x>220 && this.cuchara.y>220 && this.cuchara.x<340 && this.cuchara.y<340){
       if(this.input.pointer1.x>250 && this.input.pointer1.y>250 && this.input.pointer1.x<370 && this.input.pointer1.y<370){
@@ -59,6 +101,7 @@ class NewScene extends Phaser.Scene {
       if (!this.check){
         
         this.cuchara.x=110;
+        this.cuchillo.x=110
       }else{
         this.cuchara.x=310;
         this.cuchara.y=250;
@@ -84,7 +127,7 @@ class NewScene extends Phaser.Scene {
 
     // this.graphics.fillStyle(0x00ff00, 1);
     // this.graphics.fillRect(this.input.pointer2.x, this.input.pointer2.y, 44, 44);
-1
+
   }
   
 
