@@ -19,6 +19,7 @@ class NewScene extends Phaser.Scene {
   check_cuchara: boolean;
   check_cuchillo: boolean;
   check_tenedor: boolean;
+  check_servilleta: boolean;
 
   constructor() {
     super("NewScene");
@@ -49,6 +50,7 @@ class NewScene extends Phaser.Scene {
     this.check_cuchara = false;
     this.check_cuchillo = false;
     this.check_tenedor = false;
+    this.check_servilleta = false;
 
     this.input.addPointer(1);
 
@@ -170,6 +172,38 @@ class NewScene extends Phaser.Scene {
       } else {
         this.tenedor.x = 190;
         this.tenedor.y = 250;
+      }
+    }
+    
+    if (this.servilleta.x < 640 && !this.check_servilleta) {
+      this.servilleta.x = this.servilleta.x + 1;
+      // this.cuchillo.x=this.cuchillo.x+1.5;
+      // this.tenedor.x=this.tenedor.x-1.5;
+      // this.tenedor.y=this.tenedor.y+1;
+
+      if (this.servilleta.x > 100 && this.servilleta.x < 140) {
+        if (
+          this.input.pointer1.x > 60 &&
+          this.input.pointer1.y > 250 &&
+          this.input.pointer1.x < 250 &&
+          this.input.pointer1.y < 180
+        ) {
+          if (
+            this.input.pointer2.x > 60 &&
+            this.input.pointer2.y > 250 &&
+            this.input.pointer2.x < 250 &&
+            this.input.pointer2.y < 180
+          ) {
+            this.check_servilleta = true;
+          }
+        }
+      }
+    } else {
+      if (!this.check_servilleta) {
+        this.servilleta.x = 110;
+      } else {
+        this.servilleta.x = 120;
+        this.servilleta.y = 250;
       }
     }
 
