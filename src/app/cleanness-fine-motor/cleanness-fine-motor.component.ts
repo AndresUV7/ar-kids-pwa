@@ -52,6 +52,7 @@ class NewScene extends Phaser.Scene {
     this.check_cuchillo = false;
     this.check_tenedor = false;
     this.check_servilleta = false;
+    this.check_plato = false;
 
     this.input.addPointer(1);
 
