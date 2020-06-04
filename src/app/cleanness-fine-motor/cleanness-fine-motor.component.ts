@@ -285,15 +285,15 @@ class NewScene extends Phaser.Scene {
 
       if (this.vaso.x > 440 && this.vaso.x < 560) {
         if (
-          this.input.pointer1.x > 200 &&
+          this.input.pointer1.x > 430 &&
           this.input.pointer1.y > 80 &&
-          this.input.pointer1.x < 440 &&
+          this.input.pointer1.x < 570 &&
           this.input.pointer1.y < 150
         ) {
           if (
-            this.input.pointer2.x > 200 &&
+            this.input.pointer2.x > 430 &&
             this.input.pointer2.y > 80 &&
-            this.input.pointer2.x < 440 &&
+            this.input.pointer2.x < 570 &&
             this.input.pointer2.y < 150
           ) {
             this.check_vaso = true;
