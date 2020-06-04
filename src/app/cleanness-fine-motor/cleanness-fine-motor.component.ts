@@ -243,23 +243,24 @@ class NewScene extends Phaser.Scene {
       }
     }
     
+    
     if (this.plato_hondo.x < 640 && !this.check_plato_hondo) {
       this.plato_hondo.x = this.plato_hondo.x + 1;
       // this.cuchillo.x=this.cuchillo.x+1.5;
       // this.tenedor.x=this.tenedor.x-1.5;
       // this.tenedor.y=this.tenedor.y+1;
 
-      if (this.plato_hondo.x > 310 && this.plato_hondo.x < 350) {
+      if (this.plato_hondo.x > 270 && this.plato_hondo.x < 390) {
         if (
-          this.input.pointer1.x > 270 &&
+          this.input.pointer1.x > 240 &&
           this.input.pointer1.y > 250 &&
-          this.input.pointer1.x < 390 &&
+          this.input.pointer1.x < 420 &&
           this.input.pointer1.y < 370
         ) {
           if (
-            this.input.pointer2.x > 270 &&
+            this.input.pointer2.x > 240 &&
             this.input.pointer2.y > 250 &&
-            this.input.pointer2.x < 390 &&
+            this.input.pointer2.x < 420 &&
             this.input.pointer2.y < 370
           ) {
             this.check_plato_hondo = true;
@@ -274,6 +275,8 @@ class NewScene extends Phaser.Scene {
         this.plato_hondo.y = 250;
       }
     }
+    
+    
 
     // if(this.input.pointer1.x==0 && this.input.pointer1.x && this.input.pointer1.x && this.input.pointer1.x){
 
