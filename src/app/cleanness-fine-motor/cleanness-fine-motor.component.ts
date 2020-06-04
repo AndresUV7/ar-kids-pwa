@@ -118,7 +118,7 @@ class NewScene extends Phaser.Scene {
         // this.tenedor.x=this.tenedor.x-1.5;
         // this.tenedor.y=this.tenedor.y+1;
         
-        if(this.cuchara.x>450 && this.cuchara.x<490){
+        if(this.cuchillo.x>450 && this.cuchillo.x<490){
         if(this.input.pointer1.x>410 && this.input.pointer1.y>250 && this.input.pointer1.x<540 && this.input.pointer1.y<370){
           if(this.input.pointer2.x>410 && this.input.pointer2.y>250 && this.input.pointer2.x<540 && this.input.pointer2.y<370){
                this.check_cuchillo=true; 
