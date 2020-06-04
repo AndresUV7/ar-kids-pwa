@@ -31,7 +31,7 @@ class NewScene extends Phaser.Scene {
   preload() {
  
     this.load.path = '/assets/img/'
-    // this.load.path = '/ar-kids-pwa/assets/img/'
+    this.load.path = '/ar-kids-pwa/assets/img/'
     this.load.image("fondo","fondo-mesa.jpg");
     this.load.image("cuchara","cuchara.png");
     this.load.image("tenedor","tenedor.png");
