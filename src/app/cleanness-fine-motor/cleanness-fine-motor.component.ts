@@ -19,7 +19,7 @@ class NewScene extends Phaser.Scene {
   servilleta_s:any
 
   
-  check:boolean[]
+  check:boolean
 
   constructor() {
       
@@ -54,7 +54,7 @@ class NewScene extends Phaser.Scene {
   create() {
     
     this.add.image(320,180,"fondo").setDepth(-1);
-    
+    this.check=false;
     
     this.input.addPointer(1);
     
@@ -93,12 +93,12 @@ class NewScene extends Phaser.Scene {
       if(this.cuchara.x>520 && this.cuchara.x<560){
       if(this.input.pointer1.x>480 && this.input.pointer1.y>250 && this.input.pointer1.x<600 && this.input.pointer1.y<370){
         if(this.input.pointer2.x>480 && this.input.pointer2.y>250 && this.input.pointer2.x<600 && this.input.pointer2.y<370){
-             this.check[0]=true; 
+             this.check=true; 
           }   
         }
       }
     }else{
-      if (!this.check[0]){
+      if (!this.check){
         
         this.cuchara.x=110;
         this.cuchillo.x=110
