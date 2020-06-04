@@ -98,7 +98,7 @@ class NewScene extends Phaser.Scene {
         }
       }
     }else{
-      if (!this.check){
+      if (!this.check[0]){
         
         this.cuchara.x=110;
         this.cuchillo.x=110
