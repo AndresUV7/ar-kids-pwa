@@ -186,13 +186,13 @@ class NewScene extends Phaser.Scene {
           this.input.pointer1.x > 60 &&
           this.input.pointer1.y > 250 &&
           this.input.pointer1.x < 200 &&
-          this.input.pointer1.y < 180
+          this.input.pointer1.y < 370
         ) {
           if (
             this.input.pointer2.x > 60 &&
             this.input.pointer2.y > 250 &&
             this.input.pointer2.x < 200 &&
-            this.input.pointer2.y < 180
+            this.input.pointer2.y < 370
           ) {
             this.check_servilleta = true;
           }
