@@ -217,15 +217,15 @@ class NewScene extends Phaser.Scene {
       // this.tenedor.x=this.tenedor.x-1.5;
       // this.tenedor.y=this.tenedor.y+1;
 
-      if (this.plato.x > 250 && this.plato.x < 420) {
+      if (this.plato.x > 240 && this.plato.x < 420) {
         if (
-          this.input.pointer1.x > 220 &&
+          this.input.pointer1.x > 210 &&
           this.input.pointer1.y > 250 &&
           this.input.pointer1.x < 450 &&
           this.input.pointer1.y < 370
         ) {
           if (
-            this.input.pointer2.x > 220 &&
+            this.input.pointer2.x > 210 &&
             this.input.pointer2.y > 250 &&
             this.input.pointer2.x < 450 &&
             this.input.pointer2.y < 370
