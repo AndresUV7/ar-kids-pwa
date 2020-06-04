@@ -146,7 +146,7 @@ class NewScene extends Phaser.Scene {
         this.cuchillo.y = 250;
       }
     }
-    
+
     if (this.tenedor.x < 640 && !this.check_tenedor) {
       this.tenedor.x = this.tenedor.x + 1;
       // this.cuchillo.x=this.cuchillo.x+1.5;
@@ -178,7 +178,7 @@ class NewScene extends Phaser.Scene {
         this.tenedor.y = 250;
       }
     }
-    
+
     if (this.servilleta.x < 640 && !this.check_servilleta) {
       this.servilleta.x = this.servilleta.x + 1;
       // this.cuchillo.x=this.cuchillo.x+1.5;
@@ -210,7 +210,7 @@ class NewScene extends Phaser.Scene {
         this.servilleta.y = 250;
       }
     }
-    
+
     if (this.plato.x < 640 && !this.check_plato) {
       this.plato.x = this.plato.x + 1;
       // this.cuchillo.x=this.cuchillo.x+1.5;
@@ -242,8 +242,7 @@ class NewScene extends Phaser.Scene {
         this.plato.y = 250;
       }
     }
-    
-    
+
     if (this.plato_hondo.x < 640 && !this.check_plato_hondo) {
       this.plato_hondo.x = this.plato_hondo.x + 1;
       // this.cuchillo.x=this.cuchillo.x+1.5;
@@ -270,32 +269,30 @@ class NewScene extends Phaser.Scene {
     } else {
       if (!this.check_plato_hondo) {
         this.plato_hondo.x = 80;
-      } else (this.check_plato) {
+      } else if (this.check_plato) {
         this.plato_hondo.x = 330;
         this.plato_hondo.y = 250;
       }
     }
-    
-    
-
-    // if(this.input.pointer1.x==0 && this.input.pointer1.x && this.input.pointer1.x && this.input.pointer1.x){
-
-    //   this.angular1.destroy();
-
-    // }
-    // if (this.input.pointer1.x==)
-
-    // if (this.input.pointer1.isDown || this.input.pointer2.isDown)
-    // {
-    //     this.graphics.clear();
-    // }
-
-    // this.graphics.fillStyle(0xff0000, 1);
-    // this.graphics.fillRect(this.input.pointer1.x, this.input.pointer1.y, 44, 44);
-
-    // this.graphics.fillStyle(0x00ff00, 1);
-    // this.graphics.fillRect(this.input.pointer2.x, this.input.pointer2.y, 44, 44);
   }
+
+  // if(this.input.pointer1.x==0 && this.input.pointer1.x && this.input.pointer1.x && this.input.pointer1.x){
+
+  //   this.angular1.destroy();
+
+  // }
+  // if (this.input.pointer1.x==)
+
+  // if (this.input.pointer1.isDown || this.input.pointer2.isDown)
+  // {
+  //     this.graphics.clear();
+  // }
+
+  // this.graphics.fillStyle(0xff0000, 1);
+  // this.graphics.fillRect(this.input.pointer1.x, this.input.pointer1.y, 44, 44);
+
+  // this.graphics.fillStyle(0x00ff00, 1);
+  // this.graphics.fillRect(this.input.pointer2.x, this.input.pointer2.y, 44, 44);
 }
 
 @Component({
