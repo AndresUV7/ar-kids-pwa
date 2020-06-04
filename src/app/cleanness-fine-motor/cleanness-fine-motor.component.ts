@@ -103,7 +103,7 @@ class NewScene extends Phaser.Scene {
         this.cuchara.x=110;
         this.cuchillo.x=110
       }else{
-        this.cuchara.x=310;
+        this.cuchara.x=540;
         this.cuchara.y=250;
 
       }
