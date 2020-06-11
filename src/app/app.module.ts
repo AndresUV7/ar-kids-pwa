@@ -62,6 +62,7 @@ import { TestPcComponent } from './test-pc/test-pc.component';
 import { JuegoService } from './services/juego.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ArSpeechComponent } from './ar-speech/ar-speech.component';
+import { HygieneAntistressSkillComponent } from './hygiene-antistress-skill/hygiene-antistress-skill.component';
 
 
 
@@ -80,6 +81,7 @@ import { ArSpeechComponent } from './ar-speech/ar-speech.component';
     CleannessFineMotorComponent,
     TestPcComponent,
     ArSpeechComponent,
+    HygieneAntistressSkillComponent,
 
   ],
   imports: [
