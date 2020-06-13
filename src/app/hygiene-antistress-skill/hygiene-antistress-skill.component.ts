@@ -48,6 +48,7 @@ class NewScene extends Phaser.Scene {
 
   update(time, delta) {
   
+    //logica
   }
 
 
