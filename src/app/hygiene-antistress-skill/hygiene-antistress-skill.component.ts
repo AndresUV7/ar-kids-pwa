@@ -55,6 +55,7 @@ class NewScene extends Phaser.Scene {
 
   create(){
 
+    
     this.boca_izq_sup = this.add.image(160, 145, "boca_izq_sup_01_x").setInteractive();
     this.boca_izq_sup_2 = this.add.image(280, 145, "boca_izq_sup_02_x").setInteractive();
     this.boca_der_sup = this.add.image(350, 145, "boca_der_sup_01_x").setInteractive();
