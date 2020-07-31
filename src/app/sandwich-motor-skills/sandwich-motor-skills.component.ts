@@ -78,7 +78,7 @@ class NewScene extends Phaser.Scene {
     }
     
     console.log(this.checkpoints[5]);
-    console.log(NewScene.touch)
+    console.log("Tiene touch: "+ NewScene.touch)
 
     let x,y,z;
 
