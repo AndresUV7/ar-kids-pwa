@@ -1,0 +1,46 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px" fxFlexFill>
+    <mat-card class="example-card" fxFlex="calc(20%-25px)" fxFlex.sm="calc(20%-25px)">
+      <mat-card-header>
+        <mat-card-title>Inicio de Sesión / Registro</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Iniciar sesión">
+            <mat-form-field class="example-full-width">
+              <mat-label>Cédula</mat-label>
+              <input [(ngModel)]="credenciales.cedula" matInput placeholder="Cédula" value="">
+              <mat-icon matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width">
+              <mat-label>Contraseña</mat-label>
+              <input [(ngModel)]="credenciales.contrasena" type="password" matInput placeholder="Contraseña">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <button mat-button color="primary"(click)='login()'>Iniciar sesión</button>
+          </mat-tab>
+          <mat-tab label="Registrarse">
+            <mat-form-field class="example-full-width">
+              <mat-label>Cédula</mat-label>
+              <input matInput placeholder="Cédula" value="">
+              <mat-icon matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width">
+              <mat-label>Contraseña</mat-label>
+              <input type="password" matInput placeholder="Contraseña">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Contraseña</mat-label>
+              <input type="password" matInput placeholder="Contraseña">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+            </mat-form-field>
+            <button mat-button color="primary">Registrarse</button>
+          </mat-tab>
+        </mat-tab-group>
+  
+      </mat-card-content>
+  
+    </mat-card>
+  </div>

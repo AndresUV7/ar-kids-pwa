@@ -1,24 +1,25 @@
 <a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false; ; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
     
+     <a-sound id="audio" src="https://drive.google.com/file/d/1L_1yy09GANszlEOMuFx_rTPBRHUn0bX5/view?usp=sharing" response-type="arraybuffer"></a-sound>
+
       <a-assets>
-          <img id="my-image" src="/assets/img/pictoAR.jpg">
-          <audio id="audio" src="/assets/img/dientes.mp3" response-type="arraybuffer"></audio>
+          <img id="my-image" src="https://lh3.googleusercontent.com/3Be41KRCo-THeo72NGuPONj2Wf28OjWSsXsR-KYiz4JJ4bE4rdE1e_QzdVACcTohD0VjsfU-nCo=s220">
     </a-assets>
-     <a-marker audiohandler emitevents="true" cursor="rayOrigin: mouse" preset="hiro">
+     <a-marker emitevents="true" cursor="rayOrigin: mouse" preset="kanji">
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
             
-          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" ></a-entity>
+          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity>
             
      </a-marker>
      
-     <a-marker audiohandler emitevents="true" preset='custom'  type="pattern" url="/assets/img/letterB.patt">
+     <a-marker emitevents="true" preset='custom'  type="pattern" url="/assets/img/letterB.patt">
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
             
-          <a-entity cursor="rayOrigin: mouse" geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" ></a-entity>
+          <a-entity cursor="rayOrigin: mouse" geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity>
             
      </a-marker>
      <a-entity camera></a-entity>

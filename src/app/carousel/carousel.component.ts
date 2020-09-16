@@ -1,20 +1,23 @@
 import { Component, AfterViewInit, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent {
+export class CarouselComponent implements OnInit  {
 
   
   name = 'Angular';
   slideNo = 0;
   withAnim = true;
   resetAnim = true;
+  loadComponent = true;
   
-  
+  message : any
 
   @ViewChild('myCarousel',null) myCarousel: NguCarousel;
   carouselConfig: NguCarouselConfig = {
@@ -26,8 +29,12 @@ export class CarouselComponent {
     velocity: 0.2
   }
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef,  private router:Router, private service: DataService) {}
 
+  ngOnInit() {
+    this.service.currentMessage.subscribe(message => this.message = message)
+    console.log(this.message)
+  }
 
   
   ngAfterViewInit() {
@@ -38,10 +45,22 @@ export class CarouselComponent {
     this.myCarousel.reset(!this.resetAnim);
   }
   
-  moveTo(slide) {
+  moveTo(slide) {      
     this.myCarousel.moveTo(slide, !this.withAnim);
   }
   
+  test2(){
+    console.log("hola")
+    this.router.navigate(['actividades/listar']);
+    this.loadComponent = !this.loadComponent;
+  }
 
+  test22(){
+    console.log("hola2")
+    
+  }
+
+  
+    
 
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
+import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -60,9 +60,20 @@ import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-m
 import { CleannessFineMotorComponent } from './cleanness-fine-motor/cleanness-fine-motor.component';
 import { TestPcComponent } from './test-pc/test-pc.component';
 import { JuegoService } from './services/juego.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ArSpeechComponent } from './ar-speech/ar-speech.component';
 import { HygieneAntistressSkillComponent } from './hygiene-antistress-skill/hygiene-antistress-skill.component';
+import { VestirHombreComponent } from './vestir-hombre/vestir-hombre.component';
+import { CardResponsiveComponent } from './card-responsive/card-responsive.component';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './services/login.service';
+import { AuthGuard } from './services/auth.guard';
+import { LoggedGuard } from './services/logged.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { DataService } from './services/data.service';
+import { PartidaService } from './services/partida.service';
+
 
 
 
@@ -82,6 +93,9 @@ import { HygieneAntistressSkillComponent } from './hygiene-antistress-skill/hygi
     TestPcComponent,
     ArSpeechComponent,
     HygieneAntistressSkillComponent,
+    VestirHombreComponent,
+    CardResponsiveComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -135,11 +149,23 @@ import { HygieneAntistressSkillComponent } from './hygiene-antistress-skill/hygi
     PortalModule,
     ScrollingModule,
     NguCarouselModule,
-    FlexLayoutModule
+    FlexLayoutModule, 
+    FormsModule,
+    
 
   ],
   providers: [ 
-    JuegoService
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    AuthGuard,
+    LoginService,
+    DeviceDetectorService,
+    DataService,
+    PartidaService
+    
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

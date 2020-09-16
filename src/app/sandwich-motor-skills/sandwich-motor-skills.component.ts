@@ -38,8 +38,8 @@ class NewScene extends Phaser.Scene {
 
   preload() {
  
-    this.load.path = '/ar-kids-pwa/assets/img/'
-    // this.load.path = '/assets/img/'
+    // this.load.path = '/ar-kids-pwa/assets/img/'
+    this.load.path = '/assets/img/'
 
     this.load.image("indice","indice.png");
     this.load.image("medio","medio.png");
@@ -78,25 +78,28 @@ class NewScene extends Phaser.Scene {
     }
     
     console.log(this.checkpoints[5]);
-    console.log("Tiene touch: "+ NewScene.touch)
+    console.log(NewScene.touch)
 
     let x,y,z;
 
 
-    if (!NewScene.touch){
-
-      x= Math.floor(Math.random()*(4-0+1)+0);    
-      z= Math.floor(Math.random()*(4-0+1)+0);    
-      while(this.ingredientes[z]=="pan"){
-        z= Math.floor(Math.random()*(4-0+1)+0);
+    
+      if (!NewScene.touch){
+        x= Math.floor(Math.random()*(4-0+1)+0);    
+        z= Math.floor(Math.random()*(4-0+1)+0);    
+        while(this.ingredientes[z]=="pan"){
+          z= Math.floor(Math.random()*(4-0+1)+0);
+        }
+        this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+        y= Math.floor(Math.random()*(4-0+1)+0);
+        while(x==y){
+          y= Math.floor(Math.random()*(4-0+1)+0)
+        }
+        this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+        this.ingrediente.name = "pan"
       }
-      this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
-      y= Math.floor(Math.random()*(4-0+1)+0);
-      while(x==y){
-        y= Math.floor(Math.random()*(4-0+1)+0)
-      }
-      this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
-    }
+      
+   
 
       
     
@@ -120,32 +123,33 @@ class NewScene extends Phaser.Scene {
 
     this.input.on(eventos.GAMEOBJECT_DOWN,(pointer, gameObject)=>{
 
-      // console.log(gameObject.name)
+      console.log(gameObject.name)
       
       
       if (NewScene.touch){
-        if (gameObject.name=="pan" && this.pulgarPresionado){
+        
           if (gameObject.name=="pulgar"){
-         
-            if (!this.bandera){
-              
-              x= Math.floor(Math.random()*(3-1+1)+1);    
-              z= Math.floor(Math.random()*(4-1+1)+1);    
-              while(z==0){
-                z= Math.floor(Math.random()*(4-1+1)+1);
-              }
-              this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
-              y= Math.floor(Math.random()*(3-1+1)+1);
-              while(x==y){
-                y= Math.floor(Math.random()*(3-1+1)+1)
-              }
-              this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
-              this.ingrediente.name="pan";
-              this.bandera=true
-            }
-            this.pulgarPresionado=true;  
+            this.pulgarPresionado = true;
           }
-            
+
+          if (this.pulgarPresionado && !this.bandera){
+            x= Math.floor(Math.random()*(4-1+1)+1);    
+            z= Math.floor(Math.random()*(4-1+1)+1);    
+            while(this.ingredientes[z]=="pan"){
+              z= Math.floor(Math.random()*(4-1+1)+1);
+            }
+            this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive();
+            y= Math.floor(Math.random()*(4-1+1)+1);
+            while(x==y){
+              y= Math.floor(Math.random()*(4-1+1)+1)
+            }
+            this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive();
+            this.ingrediente.name = "pan"
+            this.bandera = true;
+          }
+
+          if (gameObject.name=="pan" && this.pulgarPresionado){
+         
             gameObject.x=560;
             gameObject.y=300;
             gameObject.setScale(1.5);
@@ -161,8 +165,11 @@ class NewScene extends Phaser.Scene {
               y= Math.floor(Math.random()*(3-1+1)+1)
             }
             this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"lechuga").setInteractive();
-            this.ingrediente.name="lechuga";
+            this.ingrediente.name="lechuga";  
           }
+            
+            
+         
           
           if (gameObject.name=="lechuga" && this.pulgarPresionado){
             
@@ -185,7 +192,7 @@ class NewScene extends Phaser.Scene {
             this.ingrediente.name="jamon";
           }
           
-          if (gameObject.name=="jamon" && this.pulgarPresionado){
+          if (gameObject.name=="jamon" && this.pulgarPresionado ){
             
             gameObject.x=558;
             gameObject.y=303;
@@ -249,7 +256,7 @@ class NewScene extends Phaser.Scene {
             this.ingrediente.name="pan2";
           }
     
-          if (gameObject.name=="pan2" && this.pulgarPresionado){
+          if (gameObject.name=="pan2"&& this.pulgarPresionado){
             
             gameObject.x=560;
             gameObject.y=290;
@@ -279,170 +286,173 @@ class NewScene extends Phaser.Scene {
 
     // this.add.text(10, 10, 'Multi touch drag test', { font: '16px Courier', fill: '#000000' });
 
-    this.graphics = this.add.graphics({x: 0, y: 0});
+    if (!NewScene.touch){
+      this.graphics = this.add.graphics({x: 0, y: 0});
     
     
     
-    this.input.on('pointermove', function (pointer) {
-      
-      
-      if (pointer.isDown)
-      {
-        
-        this.graphicsPath.push({x: pointer.x, y: pointer.y})
-
-        if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==0){
-        
-          this.contador=1;
-           
-        }
-        
-        if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==2){
-        
-          this.contador=3;
-           
-        }
-        
-        if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==4){
-        
-          this.contador=5;
-           
-        }
-
-        if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==6){
-        
-          this.contador=7;
-           
-        }
-
-        if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==8){
-        
-          this.contador=9;
-           
-        }
-        
-        if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==10){
-        
-          this.contador=11;
-           
-        }
+      this.input.on('pointermove', function (pointer) {
         
         
-        
-        
-        
-      }else{
-        
-        console.log(this.contador);
-        if (this.contador==1){
-          console.log("object")
-          this.ingredienteAux.destroy();
-            this.ingrediente.destroy();
-            this.ingrediente_=this.add.image(560,300,"pan").setScale(1.3).setInteractive();
-            x= Math.floor(Math.random()*(4-0+1)+0);    
-            z= Math.floor(Math.random()*(4-0+1)+0);    
-            while(this.ingredientes[z]=="lechuga"){
-              z= Math.floor(Math.random()*(4-0+1)+0);
-            }
-            this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
-            y= Math.floor(Math.random()*(4-0+1)+0);
-            while(x==y){
-              y= Math.floor(Math.random()*(4-0+1)+0)
-            }
-            this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"lechuga").setInteractive().setDepth(-1);
-            this.contador=2;
-        }
-
-        if (this.contador==3){
-          console.log("object")
-          this.ingredienteAux.destroy();
-            this.ingrediente.destroy();
-            this.ingrediente_=this.add.image(555,305,"lechuga").setScale(1.3).setInteractive();
-            x= Math.floor(Math.random()*(4-0+1)+0);    
-            z= Math.floor(Math.random()*(4-0+1)+0);    
-            while(this.ingredientes[z]=="jamon"){
-              z= Math.floor(Math.random()*(4-0+1)+0);
-            }
-            this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
-            y= Math.floor(Math.random()*(4-0+1)+0);
-            while(x==y){
-              y= Math.floor(Math.random()*(4-0+1)+0)
-            }
-            this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"jamon").setInteractive().setDepth(-1);
-            this.contador=4;
-        }
-
-        
-        if (this.contador==5){
-          console.log("object")
-          this.ingredienteAux.destroy();
-            this.ingrediente.destroy();
-            this.ingrediente_=this.add.image(558,303,"jamon").setScale(1.3).setInteractive();
-            x= Math.floor(Math.random()*(4-0+1)+0);    
-            z= Math.floor(Math.random()*(4-0+1)+0);    
-            while(this.ingredientes[z]=="queso"){
-              z= Math.floor(Math.random()*(4-0+1)+0);
-            }
-            this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
-            y= Math.floor(Math.random()*(4-0+1)+0);
-            while(x==y){
-              y= Math.floor(Math.random()*(4-0+1)+0)
-            }
-            this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"queso").setInteractive().setDepth(-1);
-            this.contador=6;
-        }
-
-        if (this.contador==7){
-          console.log("object")
-          this.ingredienteAux.destroy();
-            this.ingrediente.destroy();
-            this.ingrediente_=this.add.image(558,303,"queso").setScale(1.3).setInteractive();
-            x= Math.floor(Math.random()*(4-0+1)+0);    
-            z= Math.floor(Math.random()*(4-0+1)+0);    
-            while(this.ingredientes[z]=="tomate"){
-              z= Math.floor(Math.random()*(4-0+1)+0);
-            }
-            this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
-            y= Math.floor(Math.random()*(4-0+1)+0);
-            while(x==y){
-              y= Math.floor(Math.random()*(4-0+1)+0)
-            }
-            this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"tomate").setInteractive().setDepth(-1);
-            this.contador=8;
-        }
-
-        if (this.contador==9){
-          console.log("object tomato")
-          this.ingredienteAux.destroy();
-            this.ingrediente.destroy();
-            this.ingrediente_=this.add.image(560,300,"tomate").setScale(1.3).setInteractive();
-            x= Math.floor(Math.random()*(4-0+1)+0);    
-            z= Math.floor(Math.random()*(4-0+1)+0);    
-            while(this.ingredientes[z]=="pan"){
-              z= Math.floor(Math.random()*(4-0+1)+0);
-            }
-            this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
-            y= Math.floor(Math.random()*(4-0+1)+0);
-            while(x==y){
-              y= Math.floor(Math.random()*(4-0+1)+0)
-            }
-            this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive().setDepth(-1);
-            this.contador=10;
-        }
-        
-        if (this.contador==11){
+        if (pointer.isDown)
+        {
+          
+          this.graphicsPath.push({x: pointer.x, y: pointer.y})
+  
+          if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==0){
+          
+            this.contador=1;
+             
+          }
+          
+          if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==2){
+          
+            this.contador=3;
+             
+          }
+          
+          if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==4){
+          
+            this.contador=5;
+             
+          }
+  
+          if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==6){
+          
+            this.contador=7;
+             
+          }
+  
+          if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==8){
+          
+            this.contador=9;
+             
+          }
+          
+          if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==10){
+          
+            this.contador=11;
+             
+          }
+          
+          
+          
+          
+          
+        }else{
+          
+          console.log(this.contador);
+          if (this.contador==1){
+            console.log("object")
             this.ingredienteAux.destroy();
-            this.ingrediente.destroy();
-            this.ingrediente_=this.add.image(560,290,"pan").setScale(1.3).setInteractive();
-           
+              this.ingrediente.destroy();
+              this.ingrediente_=this.add.image(560,300,"pan").setScale(1.3).setInteractive();
+              x= Math.floor(Math.random()*(4-0+1)+0);    
+              z= Math.floor(Math.random()*(4-0+1)+0);    
+              while(this.ingredientes[z]=="lechuga"){
+                z= Math.floor(Math.random()*(4-0+1)+0);
+              }
+              this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
+              y= Math.floor(Math.random()*(4-0+1)+0);
+              while(x==y){
+                y= Math.floor(Math.random()*(4-0+1)+0)
+              }
+              this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"lechuga").setInteractive().setDepth(-1);
+              this.contador=2;
+          }
+  
+          if (this.contador==3){
+            console.log("object")
+            this.ingredienteAux.destroy();
+              this.ingrediente.destroy();
+              this.ingrediente_=this.add.image(555,305,"lechuga").setScale(1.3).setInteractive();
+              x= Math.floor(Math.random()*(4-0+1)+0);    
+              z= Math.floor(Math.random()*(4-0+1)+0);    
+              while(this.ingredientes[z]=="jamon"){
+                z= Math.floor(Math.random()*(4-0+1)+0);
+              }
+              this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
+              y= Math.floor(Math.random()*(4-0+1)+0);
+              while(x==y){
+                y= Math.floor(Math.random()*(4-0+1)+0)
+              }
+              this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"jamon").setInteractive().setDepth(-1);
+              this.contador=4;
+          }
+  
+          
+          if (this.contador==5){
+            console.log("object")
+            this.ingredienteAux.destroy();
+              this.ingrediente.destroy();
+              this.ingrediente_=this.add.image(558,303,"jamon").setScale(1.3).setInteractive();
+              x= Math.floor(Math.random()*(4-0+1)+0);    
+              z= Math.floor(Math.random()*(4-0+1)+0);    
+              while(this.ingredientes[z]=="queso"){
+                z= Math.floor(Math.random()*(4-0+1)+0);
+              }
+              this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
+              y= Math.floor(Math.random()*(4-0+1)+0);
+              while(x==y){
+                y= Math.floor(Math.random()*(4-0+1)+0)
+              }
+              this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"queso").setInteractive().setDepth(-1);
+              this.contador=6;
+          }
+  
+          if (this.contador==7){
+            console.log("object")
+            this.ingredienteAux.destroy();
+              this.ingrediente.destroy();
+              this.ingrediente_=this.add.image(558,303,"queso").setScale(1.3).setInteractive();
+              x= Math.floor(Math.random()*(4-0+1)+0);    
+              z= Math.floor(Math.random()*(4-0+1)+0);    
+              while(this.ingredientes[z]=="tomate"){
+                z= Math.floor(Math.random()*(4-0+1)+0);
+              }
+              this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
+              y= Math.floor(Math.random()*(4-0+1)+0);
+              while(x==y){
+                y= Math.floor(Math.random()*(4-0+1)+0)
+              }
+              this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"tomate").setInteractive().setDepth(-1);
+              this.contador=8;
+          }
+  
+          if (this.contador==9){
+            console.log("object tomato")
+            this.ingredienteAux.destroy();
+              this.ingrediente.destroy();
+              this.ingrediente_=this.add.image(560,300,"tomate").setScale(1.3).setInteractive();
+              x= Math.floor(Math.random()*(4-0+1)+0);    
+              z= Math.floor(Math.random()*(4-0+1)+0);    
+              while(this.ingredientes[z]=="pan"){
+                z= Math.floor(Math.random()*(4-0+1)+0);
+              }
+              this.ingredienteAux=this.add.image(this.posiciones[x][0],this.posiciones[x][1],this.ingredientes[z]).setInteractive().setDepth(-1);
+              y= Math.floor(Math.random()*(4-0+1)+0);
+              while(x==y){
+                y= Math.floor(Math.random()*(4-0+1)+0)
+              }
+              this.ingrediente=this.add.image(this.posiciones[y][0],this.posiciones[y][1],"pan").setInteractive().setDepth(-1);
+              this.contador=10;
+          }
+          
+          if (this.contador==11){
+              this.ingredienteAux.destroy();
+              this.ingrediente.destroy();
+              this.ingrediente_=this.add.image(560,290,"pan").setScale(1.3).setInteractive();
+             
+          }
+  
+          this.graphics.clear();
+          this.graphicsPath.length = 0;
+          
         }
-
-        this.graphics.clear();
-        this.graphicsPath.length = 0;
         
-      }
-      
-    }, this);
+      }, this);
+    }
+   
 
     }
 
@@ -469,40 +479,43 @@ class NewScene extends Phaser.Scene {
     // this.graphics.fillStyle(0x00ff00, 1);
     // this.graphics.fillRect(this.input.pointer2.x, this.input.pointer2.y, 44, 44);
 
-    let x, y,z;
-    var length = this.graphicsPath.length;
-    this.graphics.clear();
-    this.graphics.lineStyle(10.0, 0xFFFF00, 1.0);
-    this.graphics.beginPath();
-    for (var i = 0; i < length; ++i)
-    {
-      var node = this.graphicsPath[i];
-      
-      if (i !== 0)
+    if (!NewScene.touch){
+      let x, y,z;
+      var length = this.graphicsPath.length;
+      this.graphics.clear();
+      this.graphics.lineStyle(10.0, 0xFFFF00, 1.0);
+      this.graphics.beginPath();
+      for (var i = 0; i < length; ++i)
       {
-        this.graphics.lineTo(node.x, node.y);
-      }
-      else
-      {
-        this.graphics.moveTo(node.x, node.y);
-      }
-      
-
-      // x= Math.floor(Math.random()*(3-0+1)+0); 
-      // z= Math.floor(Math.random()*(3-0+1)+0);    
-      // y= Math.floor(Math.random()*(4-0+1)+0);   
-      
-      
-      // if (node.x>this.posiciones[x][0] && node.y>this.posiciones[x][1] ){
+        var node = this.graphicsPath[i];
         
-      //     this.ingrediente=this.add.image(560,300,"pan").setScale(1.3).setInteractive();
-
-      // }
-
+        if (i !== 0)
+        {
+          this.graphics.lineTo(node.x, node.y);
+        }
+        else
+        {
+          this.graphics.moveTo(node.x, node.y);
+        }
+        
+  
+        // x= Math.floor(Math.random()*(3-0+1)+0); 
+        // z= Math.floor(Math.random()*(3-0+1)+0);    
+        // y= Math.floor(Math.random()*(4-0+1)+0);   
+        
+        
+        // if (node.x>this.posiciones[x][0] && node.y>this.posiciones[x][1] ){
+          
+        //     this.ingrediente=this.add.image(560,300,"pan").setScale(1.3).setInteractive();
+  
+        // }
+  
+      }
+      this.graphics.strokePath();
+      this.graphics.closePath();
+  
     }
-    this.graphics.strokePath();
-    this.graphics.closePath();
-
+    
   }
   
 
