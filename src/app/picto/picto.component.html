@@ -1,8 +1,9 @@
 <a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' vr-mode-ui="enabled: false" gesture-detector>
    
       <a-assets>
-          <img id="my-image" src="/ar-kids-pwa/assets/img/pictoAR.jpg">
+          <img id="my-image" src="https://lh3.googleusercontent.com/9Bbn7ZaaSXsO6o8m6aqouEd3iz-CDu-uPwW5hDO42FhBctmngFfczKXJXc67eG9CuoCxyX_rZ8Q=s220">
           <audio id="audio" src="/ar-kids-pwa/assets/img/dientes.mp3" response-type="arraybuffer"></audio>
+          <!-- <audio id="audio" src="/assets/img/dientes.mp3" response-type="arraybuffer"></audio> -->
     </a-assets>
      <a-marker emitevents="true" cursor="rayOrigin: mouse" preset="kanji">
         
@@ -14,6 +15,7 @@
      </a-marker>
      
      <a-marker emitevents="true" preset='custom'  type="pattern" url="/ar-kids-pwa/assets/img/letterB.patt">
+     <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/assets/img/letterB.patt"> -->
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
