@@ -1,7 +1,7 @@
 <a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' vr-mode-ui="enabled: false" gesture-detector>
    
       <a-assets>
-          <img id="my-image" src="https://lh3.googleusercontent.com/9Bbn7ZaaSXsO6o8m6aqouEd3iz-CDu-uPwW5hDO42FhBctmngFfczKXJXc67eG9CuoCxyX_rZ8Q=s220">
+          <img id="my-image" crossorigin="anonymous" src="https://lh3.googleusercontent.com/9Bbn7ZaaSXsO6o8m6aqouEd3iz-CDu-uPwW5hDO42FhBctmngFfczKXJXc67eG9CuoCxyX_rZ8Q=s220">
           <audio id="audio" src="/ar-kids-pwa/assets/img/dientes.mp3" response-type="arraybuffer"></audio>
           <!-- <audio id="audio" src="/assets/img/dientes.mp3" response-type="arraybuffer"></audio> -->
     </a-assets>
@@ -19,6 +19,8 @@
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+          <!-- <a-entity cursor="rayOrigin: mouse" geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity> -->
+
             
           <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity>
             
