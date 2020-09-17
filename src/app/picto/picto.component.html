@@ -1,7 +1,7 @@
-<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false; ; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-    
+<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' vr-mode-ui="enabled: false" gesture-detector>
+   
       <a-assets>
-          <img id="my-image" src="/ar-kids-pwa/assets/img/pictoAR.jpg">
+          <img id="my-image" src="/ar-kids-pwa//assets/img/pictoAR.jpg">
           <audio id="audio" src="/ar-kids-pwa//assets/img/dientes.mp3" response-type="arraybuffer"></audio>
     </a-assets>
      <a-marker emitevents="true" cursor="rayOrigin: mouse" preset="kanji">
@@ -9,7 +9,7 @@
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
             
-          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity>
+          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity>
             
      </a-marker>
      
@@ -18,7 +18,7 @@
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
             
-          <a-entity cursor="rayOrigin: mouse" geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity>
+          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity>
             
      </a-marker>
      <a-entity camera></a-entity>
