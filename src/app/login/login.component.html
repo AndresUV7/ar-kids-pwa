@@ -28,7 +28,7 @@
       <mat-card-content>
         <mat-tab-group (selectedTabChange)="tabClick($event)">
           <mat-tab label="Iniciar sesión">
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit(credenciales)"  #formDirective="ngForm" >
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  #formDirective="ngForm" >
             <mat-form-field class="example-full-width">
               <mat-label>Cédula</mat-label>
               <input
