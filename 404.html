@@ -1,61 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ArKids</title>
- <base href="/ar-kids-pwa/">
-  <!-- <base href="/"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
-  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
-  <link rel="manifest" href="manifest.webmanifest">
-  <script src="assets/phaser.js"></script>
-  <script src="assets/inflate.min.js"></script>
-  <meta name="theme-color" content="#1976d2">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="styles.6d16510cc83c4bdf678d.css"></head>
-<body>
-  <app-root></app-root>
-  <noscript>Please enable JavaScript to continue using this application.</noscript>
-<script src="runtime-es2015.edb2fcf2778e7bf1d426.js" type="module"></script><script src="runtime-es5.edb2fcf2778e7bf1d426.js" nomodule defer></script><script src="polyfills-es5.ef4b1e1fc703b3ff76e3.js" nomodule defer></script><script src="polyfills-es2015.2987770fde9daa1d8a2e.js" type="module"></script><script src="main-es2015.ecf01c243576907c5888.js" type="module"></script><script src="main-es5.ecf01c243576907c5888.js" nomodule defer></script></body>
+  <head>
+    <meta charset="utf-8" />
+    <title>ArKids</title>
+    <base href="/ar-kids-pwa/">
+    <!-- <base href="/" /> -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script src="assets/phaser.js"></script>
+    <script src="assets/inflate.min.js"></script>
+    <meta name="theme-color" content="#1976d2" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="styles.6d16510cc83c4bdf678d.css"></head>
+  <body>
+    <app-root></app-root>
+    <noscript
+      >Please enable JavaScript to continue using this application.</noscript
+    >
+  <script src="runtime.a8ef3a8272419c2e2c66.js" defer></script><script src="polyfills-es5.d30832bf70493aed5d6c.js" nomodule defer></script><script src="polyfills.b948c5521048b3f55fad.js" defer></script><script src="scripts.d412d679375191fad44e.js" defer></script><script src="main.e207f6a405f651e92e86.js" defer></script></body>
 
-
-<script>
-  AFRAME.registerComponent('soundhandler', {
-   tick: function () {
-          var entity = document.querySelector('[sound]');
-          var btn = document.getElementById("myBtn");
-        if (document.querySelector('a-marker').object3D.visible == true) {
-           entity.components.sound.playSound();
-           btn.setAttribute('animation-mixer', {timeScale: 1});
-       } else {
-           entity.components.sound.pauseSound();
-           btn.setAttribute('animation-mixer', {timeScale: 0});
-       }
   
-    }
-  });
-</script>
+  <script>
+    let ban = false;
+    AFRAME.registerComponent("soundhandler", {
+      init: function () {
+        var entity1 = document.querySelector("[sound]");
+        entity1.addEventListener("sound-ended", function() {
+       // play the second one     
+         ban = true;
+        })
+      },
+      tick: function () {
+        var entity = document.querySelector("[sound]");
+        var btn = document.getElementById("myBtn");
+        if (document.querySelector("a-marker").object3D.visible == true) {
+          entity.components.sound.playSound();
+          btn.setAttribute("animation-mixer", { timeScale: 1 });
+        } else {
+          entity.components.sound.pauseSound();
+          btn.setAttribute("animation-mixer", { timeScale: 0 });
+        }
+        if(ban){
+          entity.components.sound.stopSound();
+          ban = false;
+        }
+      },
+    });
+  </script>
 
-<script>
-  AFRAME.registerComponent('audiohandler', {
-  init:function() {
-     let playing = false;
-     let audio = document.querySelector("[sound]");
-     this.el.addEventListener('click', () => {
-          console.log("click")
-          audio.components.sound.playSound();
-     });
-  }
-})
-</script>
+  <script>
+    AFRAME.registerComponent("audiohandler", {
+      init: function () {
+        let playing = false;
+        let audio = document.querySelector("[sound]");
+        this.el.addEventListener("click", () => {
+          if (document.querySelector("a-marker").object3D.visible == true) {
+            console.log("click");
+            audio.components.sound.playSound();
+          }
+        });
+      },
+    });
+  </script>
 
-<!-- <script>
+  <!-- <script>
   AFRAME.registerComponent('markerhandler', {
 
   init: function() {
@@ -74,13 +98,38 @@
   }});
 </script> -->
 
-<script>
-  if (global === undefined) {
-    var global = window;
-  }
-</script>
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
 
+  <script>
+    let vid; 
+    let aux = 0;
+    AFRAME.registerComponent("video-handler", {
+      init: function () {
+        let el = this.el;
+        vid = document.querySelector("#penguin-sledding");
+        // vid.pause();
+        
+        this.el.addEventListener("click", (e) => {
+          e.preventDefault();
+          vid.play();
+          aux=aux+1;
+         if (aux > 1 ){
+           vid.pause();
+           aux = 0;
+         }
+        });
+      },
+      tick: function (){
+        if (document.querySelector("a-marker").object3D.visible == false) {
+          vid.pause();
+           aux = 0;
 
-
-
+        }
+      }
+    });
+  </script>
 </html>
