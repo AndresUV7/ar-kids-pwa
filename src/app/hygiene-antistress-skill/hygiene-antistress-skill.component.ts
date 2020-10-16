@@ -1,4 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, DoCheck, OnInit, OnDestroy } from '@angular/core';
+import { Juego } from '../models/Juego';
+import { JuegoService } from '../services/juegos/juego.service';
+import { DetallePartida } from '../models/DetallePartida';
 
 class NewScene extends Phaser.Scene {
   boca_der_sup: any;
@@ -20,12 +23,20 @@ class NewScene extends Phaser.Scene {
   cepillo: any;
   contador1: number[];
   contador2: number[];
+  timer : any;
+  text : any;
+  textP : any;
+  initialTime : number;
+  puntaje: number;
+  gameOver : boolean;
 
   constructor() {
     super("NewScene");
   }
 
   preload() {
+    
+    this.gameOver = false;
     this.contador1 = [0, 0, 0, 0, 0, 0, 0, 0];
     this.contador2 = [0, 0, 0, 0, 0, 0, 0, 0];
     this.load.path = "/ar-kids-pwa/assets/img/";
@@ -70,6 +81,25 @@ class NewScene extends Phaser.Scene {
   }
 
   create() {
+    
+    
+
+   
+
+    this.puntaje = 0; 
+    this.initialTime = 180;
+  
+    this.timer = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
+
+    this.text = this.add.text(0, 0 ,this.formatTime(this.initialTime), {
+      color : "black",
+      fontSize : 40
+    });
+    
+    this.textP = this.add.text(420, 0 ,"Puntos: "+this.puntaje.toString(), {
+      color : "black",
+      fontSize : 35
+    });
     this.boca_izq_sup = this.add
       .image(160, 145, "boca_izq_sup_01_x")
       .setInteractive();
@@ -146,7 +176,7 @@ class NewScene extends Phaser.Scene {
       if (
         this.contador1.reduce(function (a, b) {
           return a + b;
-        }, 0) === 800
+        }, 0) === 808
       ) {
         // console.log("x: " + obj.x);
         // console.log("y: " + obj.y);
@@ -174,120 +204,152 @@ class NewScene extends Phaser.Scene {
         if (obj.x > 230 && obj.x < 240 && obj.y > 210 && obj.y < 220) {
           console.log("vale");
 
-          if (this.contador2[0] < 100) {
+          if (this.contador2[0] < 50) {
             this.contador2[0] += 1;
           }
-          if (this.contador2[0] == 100) {
+          if (this.contador2[0] == 50) {
             this.boca_abierta_1_1.destroy();
             this.boca_abierta_1_1 = this.add
               .image(250, 70, "boca_abierta_1_1")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[0] = 51
+
           }
         }
 
         if (obj.x > 220 && obj.x < 230 && obj.y > 265 && obj.y < 280) {
           console.log("vale2");
 
-          if (this.contador2[1] < 100) {
+          if (this.contador2[1] < 50) {
             this.contador2[1] += 1;
           }
-          if (this.contador2[1] == 100) {
+          if (this.contador2[1] == 50) {
             this.boca_abierta_1_2.destroy();
             this.boca_abierta_1_2 = this.add
               .image(250, 150, "boca_abierta_1_2")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[1] = 51
+
+
           }
         }
 
         if (obj.x > 375 && obj.x < 385 && obj.y > 210 && obj.y < 220) {
           console.log("vale3");
 
-          if (this.contador2[2] < 100) {
+          if (this.contador2[2] < 50) {
             this.contador2[2] += 1;
           }
-          if (this.contador2[2] == 100) {
+          if (this.contador2[2] == 50) {
             this.boca_abierta_2_1.destroy();
             this.boca_abierta_2_1 = this.add
               .image(365, 70, "boca_abierta_2_1")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[2] = 51
+
+
           }
         }
 
         if (obj.x > 380 && obj.x < 390 && obj.y > 265 && obj.y < 280) {
           console.log("vale4");
 
-          if (this.contador2[3] < 100) {
+          if (this.contador2[3] < 50) {
             this.contador2[3] += 1;
           }
-          if (this.contador2[3] == 100) {
+          if (this.contador2[3] == 50) {
             this.boca_abierta_2_2.destroy();
             this.boca_abierta_2_2 = this.add
               .image(365, 150, "boca_abierta_2_2")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[3] = 51
+
+
           }
         }
 
         if (obj.x > 230 && obj.x < 240 && obj.y > 330 && obj.y < 345) {
           console.log("vale5");
 
-          if (this.contador2[4] < 100) {
+          if (this.contador2[4] < 50) {
             this.contador2[4] += 1;
           }
-          if (this.contador2[4] == 100) {
+          if (this.contador2[4] == 50) {
             this.boca_abierta_3_1.destroy();
             this.boca_abierta_3_1 = this.add
               .image(250, 210, "boca_abierta_3_1")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[4] = 51
+
+
           }
         }
 
         if (obj.x > 245 && obj.x < 255 && obj.y > 380 && obj.y < 390) {
           console.log("vale6");
 
-          if (this.contador2[5] < 100) {
+          if (this.contador2[5] < 50) {
             this.contador2[5] += 1;
           }
-          if (this.contador2[5] == 100) {
+          if (this.contador2[5] == 50) {
             this.boca_abierta_3_2.destroy();
             this.boca_abierta_3_2 = this.add
               .image(250, 290, "boca_abierta_3_2")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[5] = 51
+
+
           }
         }
 
         if (obj.x > 375 && obj.x < 390 && obj.y > 325 && obj.y < 335) {
           console.log("vale7");
 
-          if (this.contador2[6] < 100) {
+          if (this.contador2[6] < 50) {
             this.contador2[6] += 1;
           }
-          if (this.contador2[6] == 100) {
+          if (this.contador2[6] == 50) {
             this.boca_abierta_4_1.destroy();
             this.boca_abierta_4_1 = this.add
               .image(365, 210, "boca_abierta_4_1")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[6] = 51
+
+
           }
         }
 
         if (obj.x > 350 && obj.x < 365 && obj.y > 370 && obj.y < 385) {
           console.log("vale8");
 
-          if (this.contador2[7] < 100) {
+          if (this.contador2[7] < 50) {
             this.contador2[7] += 1;
           }
-          if (this.contador2[7] == 100) {
+          if (this.contador2[7] == 50) {
             this.boca_abierta_4_2.destroy();
             this.boca_abierta_4_2 = this.add
               .image(365, 290, "boca_abierta_4_2")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador2[7] = 51
+
+
           }
         }
 
         if (
           this.contador2.reduce(function (a, b) {
             return a + b;
-          }, 0) === 800
+          }, 0) === 408
         ) {
+          this.gameOver = true;
           this.boca_izq_sup = this.add
             .image(160, 145, "boca_izq_sup_01")
             .setInteractive();
@@ -335,6 +397,8 @@ class NewScene extends Phaser.Scene {
             this.boca_izq_sup = this.add
               .image(160, 145, "boca_izq_sup_01")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador1[0] = 101
           }
         }
 
@@ -348,6 +412,10 @@ class NewScene extends Phaser.Scene {
             this.boca_izq_sup_2 = this.add
               .image(280, 145, "boca_izq_sup_02")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador1[1] = 101
+
+
           }
         }
 
@@ -361,6 +429,10 @@ class NewScene extends Phaser.Scene {
             this.boca_der_sup = this.add
               .image(350, 145, "boca_der_sup_01")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador1[2] = 101
+
+
           }
         }
 
@@ -374,6 +446,10 @@ class NewScene extends Phaser.Scene {
             this.boca_der_sup_2 = this.add
               .image(470, 145, "boca_der_sup_02")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador1[3] = 101
+
+
           }
         }
 
@@ -387,6 +463,10 @@ class NewScene extends Phaser.Scene {
             this.boca_izq_inf = this.add
               .image(169, 273, "boca_izq_inf_01")
               .setInteractive();
+              this.actualizaPuntaje();
+              this.contador1[4] = 101
+
+
           }
         }
 
@@ -400,6 +480,9 @@ class NewScene extends Phaser.Scene {
             this.boca_izq_inf_2 = this.add
               .image(289, 273, "boca_izq_inf_02")
               .setInteractive();
+              this.actualizaPuntaje()
+              this.contador1[5] = 101
+              
           }
         }
 
@@ -413,6 +496,11 @@ class NewScene extends Phaser.Scene {
             this.boca_der_inf = this.add
               .image(343, 273, "boca_der_inf_01")
               .setInteractive();
+              this.actualizaPuntaje()
+              this.contador1[6] = 101
+
+
+
           }
         }
 
@@ -426,17 +514,66 @@ class NewScene extends Phaser.Scene {
             this.boca_der_inf_2 = this.add
               .image(463, 273, "boca_der_inf_02")
               .setInteractive();
+              this.actualizaPuntaje()
+              this.contador1[7] = 101
+
+
           }
         }
       }
     });
+
+    
 
     this.cameras.main.setBackgroundColor("#FFFFFF");
   }
 
   update(time, delta) {
     //logica
+    if (this.initialTime == 0){
+      this.gameOver = true;
+    }
+
+    if (this.gameOver){
+      this.scene.pause();
+    }
+    
+    
   }
+
+  formatTime(seconds){
+    // Minutes
+    var minutes = Math.floor(seconds/60);
+    // Seconds
+    var partInSeconds = seconds%60;
+    // Adds left zeros to seconds
+    var partInSeconds2 = partInSeconds.toString().padStart(2,'0');
+    // Returns formated time
+    return `${minutes}:${partInSeconds2}`;
+  }
+
+  onEvent(){
+
+    if (this.initialTime > 0 && !this.gameOver){
+
+      this.initialTime -= 1; // One second
+  
+      this.text.setText(this.formatTime(this.initialTime))
+    
+    }
+  }
+
+  actualizaPuntaje(){
+    this.puntaje+=2;
+    this.textP.setText("Puntos: "+this.puntaje)
+
+  }
+// 
+  // plus(){
+  //   this.counter=this.counter;
+  //   console.log(this.counter);
+  // }
+
 }
 
 @Component({
@@ -444,15 +581,19 @@ class NewScene extends Phaser.Scene {
   templateUrl: "./hygiene-antistress-skill.component.html",
   styleUrls: ["./hygiene-antistress-skill.component.css"],
 })
-export class HygieneAntistressSkillComponent implements OnInit {
+export class HygieneAntistressSkillComponent implements OnInit, DoCheck, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
-
-  constructor() {
+  scene: NewScene;
+  juego: Juego;
+  checkpoint: boolean;
+  constructor(private juegoService: JuegoService) {
+    this.checkpoint = false;
+    this.scene = new NewScene();
     this.config = {
       type: Phaser.AUTO,
       backgroundColor: "#34495e",
-      scene: [NewScene],
+      scene: [this.scene],
       physics: {
         default: "arcade",
       },
@@ -463,10 +604,82 @@ export class HygieneAntistressSkillComponent implements OnInit {
         width: 640,
         height: 360,
       },
+      
     };
   }
 
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
+
+    this.juegoService
+      .selectJuego(localStorage.getItem("id_juego"))
+      .subscribe((res) => {
+        this.juego = res;
+
+        this.juego.partidas.push({
+          fecha_inicio: new Date(),
+        });
+
+        this.juegoService.updateJuego(this.juego).subscribe((res) => {
+          this.juego = res;
+
+          localStorage.setItem(
+            "id_partida",
+            this.juego.partidas.slice(-1)[0]._id
+          );
+        });
+      });
+  }
+
+  ngDoCheck(){
+    
+    if (this.scene.gameOver && !this.checkpoint){
+        this.generarDetalle();
+    }
+  }
+
+
+  generarDetalle(){
+
+    let complete = false;
+
+    if (this.scene.puntaje == 32){
+      complete = true;
+    }
+
+    const detalle: DetallePartida = {
+      ok: complete,
+
+      objetivo: "Puntaje",
+
+      accion: this.scene.puntaje.toString(),
+    };
+
+    const detalle2: DetallePartida = {
+      ok: complete,
+
+      objetivo: "Tiempo",
+
+      accion: (180 - this.scene.initialTime).toString(),
+    };
+
+    this.juego.partidas.map((p) =>
+      p._id === localStorage.getItem("id_partida")
+        ? p.detalles_partida.push(detalle, detalle2)
+        : p
+    );
+
+
+
+    this.juegoService.updateJuego(this.juego).subscribe((res2) => {
+      console.log(res2);
+    });
+    this.checkpoint =true;
+    
+  }
+
+
+  ngOnDestroy(){
+    this.phaserGame.destroy(true);
   }
 }

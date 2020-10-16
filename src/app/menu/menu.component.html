@@ -1,7 +1,17 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
     <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <button mat-icon-button (click)="snav.toggle()" [fxShow]="showBar.show"><mat-icon>menu_open</mat-icon></button>
       <h1 class="example-app-name">AR-Kids</h1>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>more_vert</mat-icon>
+      </button>
     </mat-toolbar>
   
     <mat-sidenav-container class="example-sidenav-container"
@@ -9,7 +19,14 @@
       <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list>
-          <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+          <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
+          <a mat-list-item routerLink="." ><mat-icon>privacy_tip</mat-icon>Privacidad</a>
+          <a mat-list-item routerLink="." ><mat-icon>settings</mat-icon>Administración</a>
+          <a mat-list-item routerLink="." ><mat-icon>history</mat-icon>Historial</a>
+          <a mat-list-item routerLink="." ><mat-icon>signal_cellular_alt</mat-icon>Estadísticas</a>
+          <a mat-list-item routerLink="." ><mat-icon>file_copy</mat-icon>Recursos</a>
+          <a mat-list-item routerLink="." ><mat-icon>help_outline</mat-icon>Ayuda</a>
+          <a mat-list-item routerLink="." (click)="logOut()" ><mat-icon>exit_to_app</mat-icon>Salir</a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>

@@ -1,9 +1,14 @@
+import { Recurso } from './Recurso';
+import { Partida } from './Partida';
 export interface Juego {
 
-    id : number;
+    _id ?: string;
+    usuario : string;
     nombre : string;
     descripcion : string;
-    estado?: string;
+    partidas ?: Partida[],
+    recursos ?: Recurso[],
+    estado?: number
 
 
 }    

@@ -32,8 +32,10 @@ export class CarouselComponent implements OnInit  {
   constructor(private cdr: ChangeDetectorRef,  private router:Router, private service: DataService) {}
 
   ngOnInit() {
-    this.service.currentMessage.subscribe(message => this.message = message)
-    console.log(this.message)
+    // this.service.currentMessage.subscribe(message => this.message = message)
+    // console.log(this.message)
+    // console.log(this.service.getMessage());
+
   }
 
   
@@ -49,16 +51,24 @@ export class CarouselComponent implements OnInit  {
     this.myCarousel.moveTo(slide, !this.withAnim);
   }
   
-  test2(){
-    console.log("hola")
+  higiene(){
     this.router.navigate(['actividades/listar']);
-    this.loadComponent = !this.loadComponent;
+    localStorage.setItem("cat_act", "1");
+  }
+  vestir(){
+    this.router.navigate(['actividades/listar']);
+    localStorage.setItem("cat_act", "2");
+  }
+  cocina(){
+    this.router.navigate(['actividades/listar']);
+    localStorage.setItem("cat_act", "3");
+  }
+  hogar(){
+    this.router.navigate(['actividades/listar']);
+    localStorage.setItem("cat_act", "4");
   }
 
-  test22(){
-    console.log("hola2")
-    
-  }
+ 
 
   
     

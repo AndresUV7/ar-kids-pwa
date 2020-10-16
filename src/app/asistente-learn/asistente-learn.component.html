@@ -1,0 +1,31 @@
+<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+    <button (click)="listen()">
+        GRABAR...
+    </button>
+</div>
+<a-scene 
+  arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+  vr-mode-ui="enabled: false"
+  gesture-detector
+
+  
+>
+
+
+  <a-marker preset="hiro"> 
+    <a-entity
+      id="myBtn"
+      crossorigin="anonymous"
+      [attr.gltf-model]="ruta"
+      position="0 0 0"
+      scale="0.2 0.2 0.2"
+      animation-mixer
+      gesture-handler
+      [attr.sound]="ruta2" 
+      soundhandler
+     
+    ></a-entity>
+  </a-marker>
+
+  <a-entity camera></a-entity>
+</a-scene>

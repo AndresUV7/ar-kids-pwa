@@ -1,5 +1,20 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-container {
+  display: flex;
+  /* flex-direction: column; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 .example-card {
   max-width: 400px;
+  margin-top: 70px;
 }
 
 .center-content {
@@ -13,13 +28,23 @@
 }
 
 .example-full-width {
-  margin-top: 10px;
+  margin-top: 3px;
   width: 100%;
 }
 .mat-button {
-  margin-top: 10px;
+  /* margin-top: 5px; */
   width: 100%;
   color: white;
   height: 40px;
   background-color: #3f51b5;
 }
+
+#bg {
+  
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/fondo.jpg?alt=media&token=387b7d5e-66ed-4613-8a94-d5c57e03c0e4');
+}
+

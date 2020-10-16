@@ -1,28 +1,31 @@
 <a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' vr-mode-ui="enabled: false" gesture-detector>
    
       <a-assets>
-          <img id="my-image" crossorigin="anonymous" src="https://lh3.googleusercontent.com/9Bbn7ZaaSXsO6o8m6aqouEd3iz-CDu-uPwW5hDO42FhBctmngFfczKXJXc67eG9CuoCxyX_rZ8Q=s220">
-          <audio id="audio" src="/ar-kids-pwa/assets/img/dientes.mp3" response-type="arraybuffer"></audio>
+          <!-- <img id="my-image" crossorigin="anonymous" src='{{ruta}}'> -->
+          <!-- <audio id="audio" src="/ar-kids-pwa/assets/img/dientes.mp3" response-type="arraybuffer"></audio> -->
           <!-- <audio id="audio" src="/assets/img/dientes.mp3" response-type="arraybuffer"></audio> -->
+          <video id="penguin-sledding" src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75"></video>
+          
     </a-assets>
      <a-marker emitevents="true" cursor="rayOrigin: mouse" preset="kanji">
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
-            
-          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity>
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+          <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video>
+          <!-- <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity> -->
             
      </a-marker>
      
-     <a-marker emitevents="true" preset='custom'  type="pattern" url="/ar-kids-pwa/assets/img/letterB.patt">
-     <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/assets/img/letterB.patt"> -->
+     <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/ar-kids-pwa/assets/img/letterB.patt"> -->
+     <a-marker emitevents="true" preset='custom'  type="pattern" url="/assets/img/letterB.patt">
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-entity cursor="rayOrigin: mouse" geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity> -->
 
             
-          <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity>
+          <!-- <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity> -->
             
      </a-marker>
      <a-entity camera></a-entity>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
+
+declare function test():any;
 
 @Component({
   selector: 'app-prueba',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PruebaComponent implements OnInit {
 
+  aux = 0;
   isLoaded = false;
 
   loaded($event){
@@ -16,6 +19,8 @@ export class PruebaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(test());
   }
 
 }
+

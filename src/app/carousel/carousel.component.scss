@@ -1,6 +1,6 @@
 .tile {
-    min-height: 640px;
-    min-width: 640px;
+    min-height: 1024px;
+    min-width: 1024px;
     background-color: #ccc;
     background-size: cover !important;
     display: flex;
@@ -36,10 +36,10 @@
   .myPoint {
     list-style-type: none;
     text-align: center;
-    padding: 12px;
+    padding: 9px;
     margin: 0;
     white-space: nowrap;
-    overflow: auto;
+    overflow: hidden;
     box-sizing: border-box;
   }
   .myPoint  li {
@@ -76,14 +76,14 @@
     }
   }
 
-.fondo{
-    background-image: url("/assets/img/bird.png");
-    min-height: 640px;
-    min-width: 640px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+// .fondo{
+//     background-image: url("/assets/img/bird.png");
+//     min-height: 640px;
+//     min-width: 640px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
 
 [hidden] {
   display: none !important;

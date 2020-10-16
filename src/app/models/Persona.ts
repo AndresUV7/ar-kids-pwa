@@ -1,4 +1,5 @@
 import { Curso } from './Curso';
+import { Usuario } from './Usuario';
 export interface Persona {
 
     _id : string;
@@ -13,9 +14,11 @@ export interface Persona {
     
     sexo : string;
 
-    observaciones ?: string;
+    usuario : Usuario;
 
     curso ?: Curso;
+
+    observaciones ?: string;
 
     estado ?: number;
 

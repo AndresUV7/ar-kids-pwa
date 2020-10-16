@@ -8,7 +8,7 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-  Url="http://localhost:3000/login";
+  Url="https://192.168.100.2:3000/login";
 
 
   login(credenciales){
@@ -21,6 +21,7 @@ export class LoginService {
   
   logOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('_id');
   }
 
   getToken(){

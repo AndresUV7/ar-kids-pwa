@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import Phaser from "phaser";
 import { Router } from "@angular/router";
 import { DataService } from "../services/data.service";
@@ -237,7 +237,7 @@ class NewScene extends Phaser.Scene {
   templateUrl: "./vestir-hombre.component.html",
   styleUrls: ["./vestir-hombre.component.css"],
 })
-export class VestirHombreComponent implements OnInit {
+export class VestirHombreComponent implements OnInit, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
@@ -281,5 +281,10 @@ export class VestirHombreComponent implements OnInit {
 
   regresar() {
     this.router.navigate(["actividades/listar"]);
+  }
+
+  
+  ngOnDestroy(){
+    this.phaserGame.destroy(true);
   }
 }

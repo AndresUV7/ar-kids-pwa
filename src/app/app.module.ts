@@ -56,16 +56,15 @@ import { PictoComponent } from './picto/picto.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NguCarouselModule } from '@ngu/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-motor-skills.component';
 import { CleannessFineMotorComponent } from './cleanness-fine-motor/cleanness-fine-motor.component';
 import { TestPcComponent } from './test-pc/test-pc.component';
-import { JuegoService } from './services/juego.service';
+import { JuegoService } from './services/juegos/juego.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ArSpeechComponent } from './ar-speech/ar-speech.component';
 import { HygieneAntistressSkillComponent } from './hygiene-antistress-skill/hygiene-antistress-skill.component';
 import { VestirHombreComponent } from './vestir-hombre/vestir-hombre.component';
 import { CardResponsiveComponent } from './card-responsive/card-responsive.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent, DialogContentExampleDialog, PizzaPartyComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './services/auth.guard';
 import { LoggedGuard } from './services/logged.guard';
@@ -73,7 +72,15 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { DataService } from './services/data.service';
 import { PartidaService } from './services/partida.service';
-
+import { RegisterService } from './services/register.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AsistenteLearnComponent } from './asistente-learn/asistente-learn.component';
+import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-motor-skills.component';
+import {
+  RxSpeechRecognitionService,
+  SpeechRecognitionModule,
+} from '@kamiazya/ngx-speech-recognition';
+import { InstruccionesComponent } from './instrucciones/instrucciones.component';
 
 
 
@@ -88,7 +95,6 @@ import { PartidaService } from './services/partida.service';
     CardComponent,
     PictoComponent,
     CarouselComponent,
-    SandwichMotorSkillsComponent,
     CleannessFineMotorComponent,
     TestPcComponent,
     ArSpeechComponent,
@@ -96,6 +102,11 @@ import { PartidaService } from './services/partida.service';
     VestirHombreComponent,
     CardResponsiveComponent,
     LoginComponent,
+    DialogContentExampleDialog,
+    PizzaPartyComponent,
+    AsistenteLearnComponent,
+    SandwichMotorSkillsComponent,
+    InstruccionesComponent
 
   ],
   imports: [
@@ -150,9 +161,14 @@ import { PartidaService } from './services/partida.service';
     ScrollingModule,
     NguCarouselModule,
     FlexLayoutModule, 
-    FormsModule,
-    
+    FormsModule.withConfig({ warnOnDeprecatedNgFormSelector: "never" }),
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    SpeechRecognitionModule
 
+  ],
+  entryComponents: [
+    DialogContentExampleDialog,
+    PizzaPartyComponent
   ],
   providers: [ 
     {
@@ -164,7 +180,8 @@ import { PartidaService } from './services/partida.service';
     LoginService,
     DeviceDetectorService,
     DataService,
-    PartidaService
+    RegisterService,
+    RxSpeechRecognitionService
     
   ],
   bootstrap: [AppComponent],

@@ -1,46 +1,122 @@
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px" fxFlexFill>
-    <mat-card class="example-card" fxFlex="calc(20%-25px)" fxFlex.sm="calc(20%-25px)">
-      <mat-card-header>
-        <mat-card-title>Inicio de Sesión / Registro</mat-card-title>
-      </mat-card-header>
+
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="space-around center"
+  fxLayoutGap="25px"
+  fxFlexFill
+  id="bg"
+>
+<mat-toolbar color="primary" class="example-toolbar example-container" >
+  <!-- <button mat-icon-button><mat-icon>menu_open</mat-icon></button> -->
+  <h1 class="example-app-name">AR-Kids</h1>
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button> -->
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>login</mat-icon>
+  </button>
+</mat-toolbar>
+  <mat-card
+    class="example-card"
+    fxFlex="calc(20%-25px)"
+    fxFlex.sm="calc(20%-25px)"
+  >
       <mat-card-content>
-        <mat-tab-group>
+        <mat-tab-group (selectedTabChange)="tabClick($event)">
           <mat-tab label="Iniciar sesión">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit(credenciales)"  #formDirective="ngForm" >
             <mat-form-field class="example-full-width">
               <mat-label>Cédula</mat-label>
-              <input [(ngModel)]="credenciales.cedula" matInput placeholder="Cédula" value="">
+              <input
+                [(ngModel)]="credenciales.cedula"
+                matInput
+                placeholder="Cédula"
+                formControlName="cedula"
+                required [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }"
+                class="form-control"
+              />
               <mat-icon matSuffix>account_circle</mat-icon>
             </mat-form-field>
-  
+            <div
+              *ngIf="submitted && f.cedula.errors"
+              class="invalid-feedback"
+            >
+            </div>
+
             <mat-form-field class="example-full-width">
               <mat-label>Contraseña</mat-label>
-              <input [(ngModel)]="credenciales.contrasena" type="password" matInput placeholder="Contraseña">
+              <input
+                [(ngModel)]="credenciales.contrasena"
+                type="password"
+                matInput
+                placeholder="Contraseña"
+                formControlName="contrasena"
+                required [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }"
+                class="form-control"
+
+              />
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
-            <button mat-button color="primary"(click)='login()'>Iniciar sesión</button>
+            <div
+              *ngIf="submitted && f.contrasena.errors"
+              class="invalid-feedback"
+            >
+            </div>
+            <button mat-button color="primary">
+              Iniciar sesión
+            </button>
+          </form>
           </mat-tab>
           <mat-tab label="Registrarse">
+            <form [formGroup]="registerForm2" (ngSubmit)="onSubmit2(credenciales2)" #formDirective2="ngForm">
             <mat-form-field class="example-full-width">
               <mat-label>Cédula</mat-label>
-              <input matInput placeholder="Cédula" value="">
+              <input
+              [(ngModel)]="credenciales2.cedula"
+              matInput
+              placeholder="Cédula"
+              formControlName="cedula"
+              required [ngClass]="{ 'is-invalid': submitted2 && f2.cedula.errors }"
+              class="form-control"
+              />
               <mat-icon matSuffix>account_circle</mat-icon>
             </mat-form-field>
-  
+
             <mat-form-field class="example-full-width">
               <mat-label>Contraseña</mat-label>
-              <input type="password" matInput placeholder="Contraseña">
+              <input
+              [(ngModel)]="credenciales2.contrasena"
+              type="password"
+              matInput
+              placeholder="Contraseña"
+              formControlName="contrasena"
+              required [ngClass]="{ 'is-invalid': submitted2 && f2.contrasena.errors }"
+              class="form-control"
+              />
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>Contraseña</mat-label>
-              <input type="password" matInput placeholder="Contraseña">
+              <input 
+              [(ngModel)]="credenciales2.contrasena2"
+              type="password"
+              matInput
+              placeholder="Contraseña"
+              formControlName="contrasena2"
+              required [ngClass]="{ 'is-invalid': submitted2 && f2.contrasena.errors }"
+              class="form-control" />
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
-            <button mat-button color="primary">Registrarse</button>
+            <button mat-button color="primary">
+              Registrarse
+            </button>
+          </form>
           </mat-tab>
         </mat-tab-group>
-  
       </mat-card-content>
-  
-    </mat-card>
-  </div>
+  </mat-card>
+</div>

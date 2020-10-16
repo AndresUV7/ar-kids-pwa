@@ -8,22 +8,22 @@
 	
 		<ng-template #first>
 			<picture>
-				<source media="(min-width: 900px)" srcset="/assets/img/wall1.png" (click)="test2()">
-				<source media="(min-width: 480px)" srcset="/assets/img/wall3.png" (click)="test2()">
-				<img src="/assets/img/bividi.png" alt="IfItDoesntMatchAnyMedia" (click)="test2()">
+				<source media="(min-width: 900px)" srcset="/assets/img/banner_Hi.png" (click)="higiene()">
+				<source media="(min-width: 480px)" srcset="/assets/img/banner-hh.jpg" (click)="higiene()">
+				<img src="/assets/img/banner-hh.jpg" alt="IfItDoesntMatchAnyMedia" (click)="higiene()">
 			</picture>
 		</ng-template>
 	
 		<ng-template #second>
-			<img src="/assets/img/wall2.jpg" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" >
+			<img src="/assets/img/banner_V.png" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" (click)="vestir()" >
 		</ng-template>
 	
 		<ng-template #third>
-			<img src="/assets/img/wall6.jpg" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)"  >
+			<img src="/assets/img/banner_C.png" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" (click)="cocina()" >
 		</ng-template>
 
 		<ng-template #fourth>
-			<img src="/assets/img/wall7.jpg" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" >
+			<img src="/assets/img/banner_Ho.png" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" (click)="hogar()" >
 		</ng-template>
 	
 		<button NguCarouselNext class="rightRs">></button>

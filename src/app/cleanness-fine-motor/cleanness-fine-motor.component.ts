@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 
 class NewScene extends Phaser.Scene {
   cuchara: any;
@@ -104,6 +104,7 @@ class NewScene extends Phaser.Scene {
 
     const keyCodes = Phaser.Input.Keyboard.KeyCodes;
 
+
     if (this.cuchara) {
       if (this.cuchara.x < 640 && !this.check_cuchara) {
         this.cuchara.x = this.cuchara.x + 4;
@@ -120,6 +121,8 @@ class NewScene extends Phaser.Scene {
                 this.input.keyboard.addKey(keyCodes.C)
               )
             ) {
+
+              
               this.check_cuchara = true;
               this.servilleta = this.add
                 .image(500, 80, "servilleta")
@@ -144,6 +147,14 @@ class NewScene extends Phaser.Scene {
                 .image(500, 80, "servilleta")
                 .setInteractive();
             }
+          }
+        }else{
+          if (
+            Phaser.Input.Keyboard.JustDown(
+              this.input.keyboard.addKey(keyCodes.C)
+            )
+          ) {
+            console.log("-1")
           }
         }
       } else {
@@ -190,6 +201,14 @@ class NewScene extends Phaser.Scene {
             ) {
               this.check_cuchillo = true;
             }
+          }
+        }else{
+          if (
+            Phaser.Input.Keyboard.JustDown(
+              this.input.keyboard.addKey(keyCodes.C)
+            )
+          ) {
+            console.log("-1")
           }
         }
       } else {
@@ -241,6 +260,14 @@ class NewScene extends Phaser.Scene {
                 .setInteractive();
             }
           }
+        }else{
+          if (
+            Phaser.Input.Keyboard.JustDown(
+              this.input.keyboard.addKey(keyCodes.T)
+            )
+          ) {
+            console.log("-1")
+          }
         }
       } else {
         if (!this.check_tenedor) {
@@ -290,6 +317,14 @@ class NewScene extends Phaser.Scene {
               this.check_servilleta = true;
             }
           }
+        }else{
+          if (
+            Phaser.Input.Keyboard.JustDown(
+              this.input.keyboard.addKey(keyCodes.S)
+            )
+          ) {
+            console.log("-1")
+          }
         }
       } else {
         if (!this.check_servilleta) {
@@ -321,6 +356,7 @@ class NewScene extends Phaser.Scene {
               this.input.keyboard.addKey(keyCodes.P)
             )
           ) {
+            console.log("press");
             this.check_plato = true;
             this.vaso = this.add.image(80, 80, "vaso").setInteractive();
           }
@@ -340,7 +376,19 @@ class NewScene extends Phaser.Scene {
           ) {
             this.check_plato = true;
             this.vaso = this.add.image(80, 80, "vaso").setInteractive();
+          }else{
+            console.log("-1")
           }
+        }else{
+          // console.log("-1")
+        }
+      }else{
+        if (
+          Phaser.Input.Keyboard.JustDown(
+            this.input.keyboard.addKey(keyCodes.P)
+          )
+        ) {
+          console.log("-1")
         }
       }
     } else {
@@ -416,6 +464,14 @@ class NewScene extends Phaser.Scene {
                 .setInteractive();
             }
           }
+        }else{
+          if (
+            Phaser.Input.Keyboard.JustDown(
+              this.input.keyboard.addKey(keyCodes.P)
+            )
+          ) {
+            console.log("-1")
+          }
         }
       } else {
         if (!this.check_plato_hondo) {
@@ -471,6 +527,14 @@ class NewScene extends Phaser.Scene {
                 .setInteractive();
             }
           }
+        }else{
+          if (
+            Phaser.Input.Keyboard.JustDown(
+              this.input.keyboard.addKey(keyCodes.V)
+            )
+          ) {
+            console.log("-1")
+          }
         }
       } else {
         if (!this.check_vaso) {
@@ -491,6 +555,7 @@ class NewScene extends Phaser.Scene {
 
     this.input.pointer1.position.x = 0;
     this.input.pointer1.position.y = 0;
+
   }
 
   // if(this.input.pointer1.x==0 && this.input.pointer1.x && this.input.pointer1.x && this.input.pointer1.x){
@@ -517,15 +582,17 @@ class NewScene extends Phaser.Scene {
   templateUrl: "./cleanness-fine-motor.component.html",
   styleUrls: ["./cleanness-fine-motor.component.css"],
 })
-export class CleannessFineMotorComponent implements OnInit {
+export class CleannessFineMotorComponent implements OnInit, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
+  scene: NewScene;
 
   constructor() {
+    this.scene = new NewScene();
     this.config = {
       type: Phaser.AUTO,
       backgroundColor: "#34495e",
-      scene: [NewScene],
+      scene: [this.scene],
       physics: {
         default: "arcade",
       },
@@ -540,6 +607,18 @@ export class CleannessFineMotorComponent implements OnInit {
   }
 
   ngOnInit() {
+
+      
     this.phaserGame = new Phaser.Game(this.config);
+    
+   
   }
+
+  ngOnDestroy(){
+
+    this.phaserGame.destroy(true);
+  }
+
+ 
+  
 }
