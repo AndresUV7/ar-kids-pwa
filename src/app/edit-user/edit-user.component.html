@@ -1,0 +1,104 @@
+<div class="font">
+  <mat-toolbar class="barra">
+    <span class="title">Nuevo Usuario</span>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+      (click)="close()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    #formDirective="ngForm"
+    class="example-form"
+    fxLayout="column"
+  >
+    <mat-divider></mat-divider>
+
+    <br />
+    <div fxLayout="row" fxLayoutGap="10%" >
+      <mat-form-field class="example-full-width">
+        <mat-label>Cédula</mat-label>
+        <input matInput placeholder="Ej. 0105874122" [(ngModel)]="usuario.cedula" formControlName="cedula"
+        required [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }"
+        class="form-control" />
+      </mat-form-field>
+
+      <mat-radio-group
+        aria-label="Select an option"
+        fxLayout="row"
+        fxLayoutGap="10%"
+        class="radio"
+        [(ngModel)]="usuario.sexo"
+        formControlName="sexo"
+        (change)="radioChange($event)"
+      >
+      <mat-label>Sexo</mat-label>
+       
+
+        <mat-radio-button value="M"  [checked] = "usuario.sexo == 'M' ? true : false" matTooltip="Masculino" matTooltipPosition="above">M</mat-radio-button>
+        <mat-radio-button value="F" [checked] = "usuario.sexo == 'F' ? true : false" matTooltip="Femenino" matTooltipPosition="above">F</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    
+    <div fxLayout="row" fxLayoutGap="5%">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Ej. Juan"  [(ngModel)]="usuario.nombre" formControlName="nombre" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Apellido</mat-label>
+        <input matInput placeholder="Ej. Pérez"  [(ngModel)]="usuario.apellido" formControlName="apellido" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="3%">
+      <mat-form-field class="fecha">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="usuario.fecha_nacimiento" formControlName="fecha_nacimiento" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. juan@gmail.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- <mat-form-field class="example-full-width">
+      <input
+        type="text"
+        placeholder="Grupo"
+        aria-label="Number"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field> -->
+    <br>
+    <div fxLayoutAlign="center center">
+      <button mat-raised-button color="accent" class="font2">GUARDAR</button>
+    </div>
+  </form>
+</div>

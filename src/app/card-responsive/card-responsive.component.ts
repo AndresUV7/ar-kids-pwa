@@ -25,7 +25,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     if (localStorage.getItem("cat_act") == "1") {
       this.members = [
         {
-          title: "GLOSSARY",
+          title: "PREGUNTADOS",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -33,7 +33,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/A",
         },
         {
-          title: "PICTORGRAM",
+          title: "PICTOGRAM",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -60,7 +60,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     } else if (localStorage.getItem("cat_act") == "2") {
       this.members = [
         {
-          title: "GLOSSARY",
+          title: "PREGUNTADOS",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -95,7 +95,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     } else if (localStorage.getItem("cat_act") == "3") {
       this.members = [
         {
-          title: "GLOSSARY",
+          title: "PREGUNTADOS",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -130,7 +130,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     } else {
       this.members = [
         {
-          title: "GLOSSARY",
+          title: "PREGUNTADOS",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -171,10 +171,83 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     this.deviceInfo = !this.deviceService.isMobile();
   }
 
+  AR(){
+    this.router.navigate(["actividades/asistente"]);
+
+  }
+
   prueba(title) {
 
     localStorage.setItem("tip_act", title);
     
+
+    if (title == "PREGUNTADOS"){
+      if (localStorage.getItem("cat_act") == "1") {
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "Preguntados: Utensilios de higiene personal",
+          descripcion: "Juego para reconocer los utensilios de higiene personal y sus usos",
+        };
+
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
+
+          localStorage.setItem("id_juego", res._id);
+
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+      }else  if (localStorage.getItem("cat_act") == "2") {
+        console.log("vale")
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "Preguntados: Prendas de Vestir",
+          descripcion: "Juego para reconocer las prendas de vestir y sus usos",
+        };
+  
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
+  
+          localStorage.setItem("id_juego", res._id);
+  
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+    } else
+    if (localStorage.getItem("cat_act") == "3") {
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Preguntados: Utensilios de Cocina",
+        descripcion: "Juego para reconocer los utensilios  de cocina y sus usos",
+      };
+
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
+
+        localStorage.setItem("id_juego", res._id);
+
+        this.router.navigate(["actividades/instrucciones"]);
+      });
+
+      
+    } else {
+     
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Preguntados: Objetos apara tareas hogar",
+        descripcion: "Juego para reconocer objetos para las tareas del hogar",
+      };
+
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
+
+        localStorage.setItem("id_juego", res._id);
+
+        this.router.navigate(["actividades/instrucciones"]);
+      });
+    }
+
+    }
+
+
     if (title == "GAME") {
       
       if (localStorage.getItem("cat_act") == "1") {
@@ -240,5 +313,12 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
       });
     }
     } 
+
+    if(title == "PICTOGRAM"){
+      this.router.navigate(["actividades/pictogram"]);
+
+    }
+
+
   }
 }

@@ -1,0 +1,153 @@
+<div id="gameContainer" style="
+position: fixed;">
+
+</div>
+
+
+<div  style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+    <button 
+    (click)="salir()">
+        SALIR
+    </button>
+</div>
+
+<div  style='position: fixed; top: 40px; width:100%; text-align: center; z-index: 1;'>
+    <button 
+    (click)="responder()">
+        RESPONDER
+    </button>
+</div>
+
+<div  style='position: fixed; top: 70px; width:100%; text-align: center; z-index: 1;'>
+    <button 
+    (click)="completar()">
+        COMPLETAR
+    </button>
+</div>
+
+
+<div  style='position: fixed; top: 100px; width:100%; text-align: center; z-index: 1;'>
+   {{palabra}}
+</div>
+
+
+
+
+<div *ngIf="hw" style='position: fixed; top: 50%; width:100%; text-align: center; z-index: 1;'>
+    <iframe width="100%" height="100%" frameBorder="0" src="../../assets/js/handwriting.js-master/prueba.html"></iframe>
+</div>
+
+
+
+<!-- <div *ngIf="esTiempo" style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+    <button>
+        PRUEBA
+    </button>
+</div> -->
+
+
+<a-scene arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+vr-mode-ui="enabled: false"
+renderer="colorManagement: true; logarithmicDepthBuffer: true;"
+gesture-detector>
+
+<a-assets>
+    <video  id='{{playList[0].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[0].ruta}}'></video>
+    <video id='{{playList[1].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[1].ruta}}'></video>
+    <video id='{{playList[2].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[2].ruta}}'></video>
+    <video id='{{playList[3].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[3].ruta}}'></video>
+    <video id='{{playList[4].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[4].ruta}}'></video>
+    <video id='{{playList[5].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[5].ruta}}'></video>
+          
+</a-assets>
+
+
+<!-- <a-entity  raycaster = "objects: .clickable"  cursor="rayOrigin: mouse" > </a-entity >  -->
+
+
+
+
+    
+    <a-marker id="kanji" preset="kanji" smooth="true"
+    smoothCount="10"
+    smoothTolerance="0.01"
+    smoothThreshold="5"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"  videohandler>
+        
+        
+        <a-video gesture-handler class="clickable" [attr.src]="playList[0].id" width="1" height="1" rotation="-90 0 0"  ></a-video>
+        
+    </a-marker>
+    
+    <a-marker id="letterA" preset='custom' type="pattern" url="../../assets/patterns/letterA.patt"  smooth="true"
+    smoothCount="10"
+    smoothTolerance="0.01"
+    smoothThreshold="5"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"  videohandler2>
+            
+              
+            <a-video gesture-handler class="clickable" [attr.src]="playList[1].id" width="1" height="1"  rotation="-90 0 0"  ></a-video>
+      
+    </a-marker>    
+
+    <a-marker id="letterB" preset='custom'  type="pattern" url="../../assets/patterns/letterB.patt"  smooth="true"
+    smoothCount="10"
+    smoothTolerance="0.01"
+    smoothThreshold="5"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"  videohandler3>
+            
+              
+            <a-video gesture-handler class="clickable" [attr.src]="playList[2].id" width="1" height="1"  rotation="-90 0 0"  ></a-video>
+      
+    </a-marker>    
+
+    <a-marker id="letterC" preset='custom'  type="pattern" url="../../assets/patterns/letterC.patt"  smooth="true"
+    smoothCount="10"
+    smoothTolerance="0.01"
+    smoothThreshold="5"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"  videohandler4>
+            
+              
+            <a-video gesture-handler class="clickable" [attr.src]="playList[3].id" width="1" height="1"  rotation="-90 0 0" ></a-video>
+      
+    </a-marker>    
+
+    <a-marker id="letterD" preset='custom'  type="pattern" url="../../assets/patterns/letterD.patt"  smooth="true"
+    smoothCount="10"
+    smoothTolerance="0.01"
+    smoothThreshold="5"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"  videohandler5>
+            
+              
+            <a-video gesture-handler class="clickable" [attr.src]="playList[4].id" width="1" height="1"  rotation="-90 0 0" ></a-video>
+      
+    </a-marker>    
+
+    <a-marker id="letterF" preset='custom'  type="pattern" url="../../assets/patterns/letterF.patt"  smooth="true"
+    smoothCount="10"
+    smoothTolerance="0.01"
+    smoothThreshold="5"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"  videohandler6>
+            
+              
+            <a-video gesture-handler class="clickable" [attr.src]="playList[5].id" width="1" height="1"  rotation="-90 0 0" ></a-video>
+      
+    </a-marker>
+
+    <a-entity camera></a-entity>
+</a-scene>
+
+
+

@@ -1,0 +1,140 @@
+<a-scene arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+vr-mode-ui="enabled: false"
+renderer="colorManagement: true; logarithmicDepthBuffer: true;">
+   
+      <a-assets>
+          <img id="my-image" crossorigin="anonymous" src='{{ruta}}'>
+          <img id="my-image2" crossorigin="anonymous" src='{{ruta2}}'>
+          <img id="my-image3" crossorigin="anonymous" src='{{ruta3}}'>
+          <img id="my-image4" crossorigin="anonymous" src='{{ruta4}}'>
+          <img id="my-image5" crossorigin="anonymous" src='{{ruta5}}'>
+          <img id="my-image6" crossorigin="anonymous" src='{{ruta6}}'>
+          <img id="my-image7" crossorigin="anonymous" src='{{ruta7}}'>
+          <img id="my-image8" crossorigin="anonymous" src='{{ruta8}}'>
+          <!-- <audio id="audio" src="/ar-kids-pwa/assets/img/dientes.mp3" response-type="arraybuffer"></audio> -->
+          <audio id="audio" src="/assets/audios/dientes1.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio2" src="/assets/audios/dientes2.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio3" src="/assets/audios/dientes3.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio4" src="/assets/audios/dientes4.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio5" src="/assets/audios/dientes5.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio6" src="/assets/audios/dientes6.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio7" src="/assets/audios/dientes7.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio8" src="/assets/audios/dientes8.mp3" response-type="arraybuffer"></audio>
+          <!-- <video id="penguin-sledding" src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75"></video> -->
+          
+    </a-assets>
+
+    <!-- <a-entity  raycaster = "objects: .clickable"  cursor="fuse: false; rayOrigin: mouse" > </a-entity >  -->
+
+     <a-marker id="m0" type="barcode" value="0" registerevents 
+     >
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity id="p0"  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" audiohandler2="p:#p0; m:#m0" position="0 1 0" class="clickable"  geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio;" ></a-entity>
+          <a-entity id="cylinderGroup"></a-entity>
+          <a-entity id="cylinderGroup2"></a-entity>
+          <a-sphere radius="0.10" color="red"></a-sphere>
+
+     </a-marker>   
+     
+     <a-marker  id="m1" type="barcode" value="1" registerevents 
+      >
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" audiohandler2="p:#p1; m:#m1"  id="p1" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image2" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio2;" ></a-entity>
+          <a-sphere radius="0.10" color="red"></a-sphere>
+          
+     </a-marker>   
+     
+     
+     <a-marker  id="m2" type="barcode" value="2" registerevents>
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity  id="p2"  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image3" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio3;" audiohandler2="p:#p2; m:#m2" ></a-entity>
+          <a-sphere radius="0.10" color="red"></a-sphere>
+          
+     </a-marker>      
+     
+     <a-marker  id="m3" type="barcode" value="3" registerevents>
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity id="p3"  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image4" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio4;" audiohandler2="p:#p3; m:#m3"  ></a-entity>
+     </a-marker>      
+     
+     <a-marker  id="m4" type="barcode" value="4" registerevents>
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity id="p4"  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image5" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio5;" audiohandler2="p:#p4; m:#m4" ></a-entity>
+     </a-marker>     
+     
+     
+     <a-marker  id="m5" type="barcode" value="5" registerevents>
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity id="p5"  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image6" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio6;" audiohandler2="p:#p5; m:#m5"  ></a-entity>
+     </a-marker>     
+     
+     <a-marker  id="m6" type="barcode" value="6" registerevents>
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity  id="p6"  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image7" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio7;" audiohandler2="p:#p6; m:#m6"  ></a-entity>
+     </a-marker>   
+     
+     <a-marker  id="m7" type="barcode" value="7" registerevents>
+        
+          
+          <!-- Using the asset management system. -->
+          <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="0 0 0" video-handler></a-video> -->
+          <a-entity  id="p7"  raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image8" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio8;" audiohandler2="p:#p7; m:#m7"  ></a-entity>
+     </a-marker>  
+     
+
+     
+    
+     <a-entity camera></a-entity>
+     <a-entity run></a-entity>
+</a-scene>
+
+
+
+     <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/ar-kids-pwa/assets/img/letterB.patt"> -->
+          <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/assets/img/letterB.patt">
+        
+               <!-- Using the asset management system. -->
+               <!-- <a-plane src="#my-image" height="1" width="1" rotation="0 0 0"></a-plane> -->
+               <!-- <a-entity cursor="rayOrigin: mouse" geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio;" ></a-entity> -->
+     
+                 
+               <!-- <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="0 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity> -->
+                 
+        

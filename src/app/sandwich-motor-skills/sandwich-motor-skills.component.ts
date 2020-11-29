@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck, OnDestroy } from "@angular/core";
 import Phaser from "phaser";
 import { Juego } from "../models/Juego";
 import { JuegoService } from "../services/juegos/juego.service";
+import { DetallePartida } from '../models/DetallePartida';
 
 class NewScene extends Phaser.Scene {
   indice: any;
@@ -234,7 +235,7 @@ class NewScene extends Phaser.Scene {
               this.track.accion = this.ingredienteAux.name;
 
             } else if (gameObject.name != "pulgar") {
-              this.track.accion = "vacío";
+              this.track.accion = "falla";
             }
           } else {
             this.track.accion = "Suelta pulgar";
@@ -289,7 +290,7 @@ class NewScene extends Phaser.Scene {
               this.track.accion = this.ingredienteAux.name;
 
             } else if (gameObject.name != "pulgar") {
-              this.track.accion = "vacío";
+              this.track.accion = "falla";
 
             }
           } else {
@@ -344,7 +345,7 @@ class NewScene extends Phaser.Scene {
               this.track.accion = this.ingredienteAux.name;
 
             } else if (gameObject.name != "pulgar") {
-              this.track.accion = "vacío";
+              this.track.accion = "falla";
 
             }
           } else {
@@ -399,7 +400,7 @@ class NewScene extends Phaser.Scene {
             if (gameObject.name == this.ingredienteAux.name) {
               this.track.accion = this.ingredienteAux.name;
             } else if (gameObject.name != "pulgar") {
-              this.track.accion = "vacío";
+              this.track.accion = "falla";
             }
           } else {
             this.track.accion = "Suelta pulgar";
@@ -453,7 +454,7 @@ class NewScene extends Phaser.Scene {
               this.track.accion = this.ingredienteAux.name;
 
             } else if (gameObject.name != "pulgar") {
-              this.track.accion = "vacío";
+              this.track.accion = "falla";
             }
           } else {
             this.track.accion = "Suelta pulgar";
@@ -485,7 +486,7 @@ class NewScene extends Phaser.Scene {
               this.track.accion = this.ingredienteAux.name;
 
             } else if (gameObject.name != "pulgar") {
-              this.track.accion = "vacío";
+              this.track.accion = "falla";
             }
           } else {
             this.track.accion = "Suelta pulgar";
@@ -507,6 +508,7 @@ class NewScene extends Phaser.Scene {
     if (!NewScene.touch) {
       this.graphics = this.add.graphics({ x: 0, y: 0 });
 
+      
       this.input.on("pointerdown", function (pointer) {
         NewScene.x_ = pointer.x;
         NewScene.y_ = pointer.y;
@@ -523,6 +525,7 @@ class NewScene extends Phaser.Scene {
             this.checkpoints[4] = true;
             this.checkpoints[5] = true;
 
+            
             this.graphicsPath.push({ x: pointer.x, y: pointer.y });
 
             // if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==0){
@@ -530,12 +533,19 @@ class NewScene extends Phaser.Scene {
             //   this.contador=1;
 
             // }
+            
+            console.log(this.graphicsPath[this.graphicsPath.length -1])
+            console.log(this.posiciones[y][0] , this.posiciones[y][1] )
+            console.log(this.graphicsPath.length)
 
+            if ( this.graphicsPath[this.graphicsPath.length -1].x < this.posiciones[y][0]  + 40 &&
+              this.graphicsPath[this.graphicsPath.length -1].y < this.posiciones[y][1]  + 40 && this.graphicsPath[this.graphicsPath.length -1].x > this.posiciones[y][0]  - 40 &&
+              this.graphicsPath[this.graphicsPath.length -1].y > this.posiciones[y][1]  - 40 && this.graphicsPath.length >120 && this.graphicsPath.length <170){
             if (
-              pointer.x > 460 &&
-              pointer.x < 630 &&
-              pointer.y > 250 &&
-              pointer.y < 340 &&
+              pointer.x > this.posiciones[y][0]   - 40 &&
+              pointer.x < this.posiciones[y][0]  + 40 &&
+              pointer.y > this.posiciones[y][1]  - 40 &&
+              pointer.y < this.posiciones[y][1]  + 40 &&
               this._x > this.posiciones[y][0] - 40 &&
               this._x < this.posiciones[y][0] + 40 &&
               this._y > this.posiciones[y][1] - 40 &&
@@ -546,10 +556,12 @@ class NewScene extends Phaser.Scene {
             }
 
             if (
-              pointer.x > 460 &&
-              pointer.x < 630 &&
-              pointer.y > 250 &&
-              pointer.y < 340 &&
+              this.graphicsPath.length > 100 &&
+              this.graphicsPath.length < 150 &&
+              pointer.x > this.posiciones[y][0] - 40 &&
+              pointer.x < this.posiciones[y][0] + 40 &&
+              pointer.y > this.posiciones[y][1] - 40 &&
+              pointer.y < this.posiciones[y][1] + 40 &&
               this._x > this.posiciones[y][0] - 40 &&
               this._x < this.posiciones[y][0] + 40 &&
               this._y > this.posiciones[y][1] - 40 &&
@@ -560,10 +572,12 @@ class NewScene extends Phaser.Scene {
             }
 
             if (
-              pointer.x > 460 &&
-              pointer.x < 630 &&
-              pointer.y > 250 &&
-              pointer.y < 340 &&
+              this.graphicsPath.length > 100 &&
+              this.graphicsPath.length < 150 &&
+              pointer.x > this.posiciones[y][0] - 40 &&
+              pointer.x < this.posiciones[y][0] + 40 &&
+              pointer.y > this.posiciones[y][1] - 40 &&
+              pointer.y < this.posiciones[y][1] + 40 &&
               this._x > this.posiciones[y][0] - 40 &&
               this._x < this.posiciones[y][0] + 40 &&
               this._y > this.posiciones[y][1] - 40 &&
@@ -574,10 +588,12 @@ class NewScene extends Phaser.Scene {
             }
 
             if (
-              pointer.x > 460 &&
-              pointer.x < 630 &&
-              pointer.y > 250 &&
-              pointer.y < 340 &&
+              this.graphicsPath.length > 100 &&
+              this.graphicsPath.length < 150 &&
+              pointer.x > this.posiciones[y][0] - 40 &&
+              pointer.x < this.posiciones[y][0] + 40 &&
+              pointer.y > this.posiciones[y][1] - 40 &&
+              pointer.y < this.posiciones[y][1] + 40 &&
               this._x > this.posiciones[y][0] - 40 &&
               this._x < this.posiciones[y][0] + 40 &&
               this._y > this.posiciones[y][1] - 40 &&
@@ -588,10 +604,12 @@ class NewScene extends Phaser.Scene {
             }
 
             if (
-              pointer.x > 460 &&
-              pointer.x < 630 &&
-              pointer.y > 250 &&
-              pointer.y < 340 &&
+              this.graphicsPath.length > 100 &&
+              this.graphicsPath.length < 150 &&
+              pointer.x > this.posiciones[y][0] - 40 &&
+              pointer.x < this.posiciones[y][0] + 40 &&
+              pointer.y > this.posiciones[y][1] - 40 &&
+              pointer.y < this.posiciones[y][1] + 40 &&
               this._x > this.posiciones[y][0] - 40 &&
               this._x < this.posiciones[y][0] + 40 &&
               this._y > this.posiciones[y][1] - 40 &&
@@ -602,10 +620,12 @@ class NewScene extends Phaser.Scene {
             }
 
             if (
-              pointer.x > 460 &&
-              pointer.x < 630 &&
-              pointer.y > 250 &&
-              pointer.y < 340 &&
+              this.graphicsPath.length > 100 &&
+              this.graphicsPath.length < 150 &&
+              pointer.x > this.posiciones[y][0] - 40 &&
+              pointer.x < this.posiciones[y][0] + 40 &&
+              pointer.y > this.posiciones[y][1] - 40 &&
+              pointer.y < this.posiciones[y][1] + 40 &&
               this._x > this.posiciones[y][0] - 40 &&
               this._x < this.posiciones[y][0] + 40 &&
               this._y > this.posiciones[y][1] - 40 &&
@@ -614,6 +634,7 @@ class NewScene extends Phaser.Scene {
             ) {
               this.contador = 11;
             }
+          }
           } else {
             this._y = pointer.y;
             this._x = pointer.x;
@@ -662,7 +683,7 @@ class NewScene extends Phaser.Scene {
                 ) {
                   this.track.accion = this.ingredienteAux.texture.key;
                 } else {
-                  this.track.accion = "vacío";
+                  this.track.accion = "falla";
                 }
 
                 this.checkpoints[0] = false;
@@ -716,7 +737,7 @@ class NewScene extends Phaser.Scene {
               ) {
                 this.track.accion = this.ingredienteAux.texture.key;
               } else {
-                this.track.accion = "vacío";
+                this.track.accion = "falla";
               }
               this.checkpoints[1] = false;
               this.track.on = true;
@@ -768,7 +789,7 @@ class NewScene extends Phaser.Scene {
               ) {
                 this.track.accion = this.ingredienteAux.texture.key;
               } else {
-                this.track.accion = "vacío";
+                this.track.accion = "falla";
               }
               this.checkpoints[2] = false;
               this.track.on = true;
@@ -820,7 +841,7 @@ class NewScene extends Phaser.Scene {
               ) {
                 this.track.accion = this.ingredienteAux.texture.key;
               } else {
-                this.track.accion = "vacío";
+                this.track.accion = "falla";
               }
               this.checkpoints[3] = false;
               this.track.on = true;
@@ -871,7 +892,7 @@ class NewScene extends Phaser.Scene {
               ) {
                 this.track.accion = this.ingredienteAux.texture.key;
               } else {
-                this.track.accion = "vacío";
+                this.track.accion = "falla";
               }
               this.checkpoints[4] = false;
               this.track.on = true;
@@ -899,7 +920,7 @@ class NewScene extends Phaser.Scene {
               ) {
                 this.track.accion = this.ingredienteAux.texture.key;
               } else {
-                this.track.accion = "vacío";
+                this.track.accion = "falla";
               }
               this.checkpoints[5] = false;
               this.track.on = true;
@@ -1035,6 +1056,7 @@ export class SandwichMotorSkillsComponent
     if (!this.banderas[0]) {
       if (this.scene.track) {
         if (this.scene.track.on) {
+          this.tracking(0);
           console.log(this.scene.track);
           this.scene.track.on = false;
           if (this.scene.track.ok) {
@@ -1045,6 +1067,7 @@ export class SandwichMotorSkillsComponent
     } else if (!this.banderas[1]) {
       if (this.scene.track) {
         if (this.scene.track.on) {
+          this.tracking(1);
           console.log(this.scene.track);
           this.scene.track.on = false;
           if (this.scene.track.ok) {
@@ -1055,6 +1078,7 @@ export class SandwichMotorSkillsComponent
     } else if (!this.banderas[2]) {
       if (this.scene.track) {
         if (this.scene.track.on) {
+          this.tracking(2);
           console.log(this.scene.track);
           this.scene.track.on = false;
           if (this.scene.track.ok) {
@@ -1065,6 +1089,7 @@ export class SandwichMotorSkillsComponent
     } else if (!this.banderas[3]) {
       if (this.scene.track) {
         if (this.scene.track.on) {
+          this.tracking(3);
           console.log(this.scene.track);
           this.scene.track.on = false;
           if (this.scene.track.ok) {
@@ -1075,6 +1100,7 @@ export class SandwichMotorSkillsComponent
     } else if (!this.banderas[4]) {
       if (this.scene.track) {
         if (this.scene.track.on) {
+          this.tracking(4);
           console.log(this.scene.track);
           this.scene.track.on = false;
           if (this.scene.track.ok) {
@@ -1085,6 +1111,7 @@ export class SandwichMotorSkillsComponent
     } else if (!this.banderas[5]) {
       if (this.scene.track) {
         if (this.scene.track.on) {
+          this.tracking(5);
           console.log(this.scene.track);
           this.scene.track.on = false;
           if (this.scene.track.ok) {
@@ -1094,68 +1121,32 @@ export class SandwichMotorSkillsComponent
       }
     }
     
-    if (!this.banderas[0]) {
-      if (this.scene.track) {
-        if (this.scene.track.on) {
-          console.log(this.scene.track);
-          this.scene.track.on = false;
-          if (this.scene.track.ok) {
-            this.banderas[0] = true;
-          }
-        }
-      }
-    } else if (!this.banderas[1]) {
-      if (this.scene.track) {
-        if (this.scene.track.on) {
-          console.log(this.scene.track);
-          this.scene.track.on = false;
-          if (this.scene.track.ok) {
-            this.banderas[1] = true;
-          }
-        }
-      }
-    } else if (!this.banderas[2]) {
-      if (this.scene.track) {
-        if (this.scene.track.on) {
-          console.log(this.scene.track);
-          this.scene.track.on = false;
-          if (this.scene.track.ok) {
-            this.banderas[2] = true;
-          }
-        }
-      }
-    } else if (!this.banderas[3]) {
-      if (this.scene.track) {
-        if (this.scene.track.on) {
-          console.log(this.scene.track);
-          this.scene.track.on = false;
-          if (this.scene.track.ok) {
-            this.banderas[3] = true;
-          }
-        }
-      }
-    } else if (!this.banderas[4]) {
-      if (this.scene.track) {
-        if (this.scene.track.on) {
-          console.log(this.scene.track);
-          this.scene.track.on = false;
-          if (this.scene.track.ok) {
-            this.banderas[4] = true;
-          }
-        }
-      }
-    } else if (!this.banderas[5]) {
-      if (this.scene.track) {
-        if (this.scene.track.on) {
-          console.log(this.scene.track);
-          this.scene.track.on = false;
-          if (this.scene.track.ok) {
-            this.banderas[5] = true;
-          }
-        }
-      }
-    }
+   
   }
+
+  tracking(i) {
+    
+    console.log("AQUI->  "+i)
+    const detalle: DetallePartida = {
+      ok: this.scene.track.ok,
+
+      objetivo: this.scene.track.objetivo,
+
+      accion: this.scene.track.accion,
+    };
+
+    this.juego.partidas.map((p) =>
+      p._id === localStorage.getItem("id_partida")
+        ? p.detalles_partida.push(detalle)
+        : p
+    );
+
+    this.juegoService.updateJuego(this.juego).subscribe((res2) => {
+      console.log(res2);
+    });
+
+  }
+
 
   ngOnDestroy() {
     this.phaserGame.destroy(true);

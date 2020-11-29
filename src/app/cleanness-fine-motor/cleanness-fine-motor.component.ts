@@ -1,4 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
+import { JuegoService } from '../services/juegos/juego.service';
+import { Juego } from '../models/Juego';
+import { DetallePartida } from '../models/DetallePartida';
 
 class NewScene extends Phaser.Scene {
   cuchara: any;
@@ -18,6 +21,7 @@ class NewScene extends Phaser.Scene {
   vaso_s: any;
   tenedor_s: any;
   servilleta_s: any;
+  gameOver : boolean;
 
   check_cuchara: boolean;
   check_cuchillo: boolean;
@@ -26,7 +30,12 @@ class NewScene extends Phaser.Scene {
   check_plato: boolean;
   check_plato_hondo: boolean;
   check_vaso: boolean;
-
+  puntaje : number;
+  text : any;
+  timer : any;
+  lifes : any;
+  stars : any
+  initialTime : number;
   static touch: boolean;
 
   constructor() {
@@ -34,6 +43,10 @@ class NewScene extends Phaser.Scene {
   }
 
   preload() {
+    this.gameOver = false;
+ 
+    this.lifes = [ null, null, null, null, null, null, null]
+    this.puntaje = 0;
     this.load.path = "/assets/img/";
     // this.load.path = "/ar-kids-pwa/assets/img/";
     this.load.image("fondo", "fondo-mesa.jpg");
@@ -51,13 +64,30 @@ class NewScene extends Phaser.Scene {
     this.load.image("tenedor-s", "tenedor-s.png");
     this.load.image("cuchillo-s", "cuchillo-s.png");
     this.load.image("plato-hondo-s", "plato-hondo-s.png");
+    this.load.image("life", "lifes.png");
   }
 
   create() {
+    var x = 25;
+    for (let i = 0; i < this.lifes.length; i++) {
+        this.lifes[i]= this.add.image(x, 30, "life");
+        x+=25;
+      
+    }
+
+    this.initialTime = 0;
+
+    this.timer = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
+
+    // this.text = this.add.text(0, 0 ,this.formatTime(this.initialTime), {
+    //   color : "black",
+    //   fontSize : 40
+    // });
     NewScene.touch = true;
 
     if (!this.game.device.input.touch) {
       console.log("entro");
+      
       NewScene.touch = false;
     }
 
@@ -94,6 +124,12 @@ class NewScene extends Phaser.Scene {
       .image(120, 250, "servilleta-s")
       .setInteractive();
     this.vaso_s = this.add.image(500, 80, "vaso-s").setInteractive();
+
+    
+    if (this.puntaje == 14 || this.lifes == 0){
+      this.gameOver = true;
+    }
+   
   }
 
   update(time, delta) {
@@ -123,13 +159,21 @@ class NewScene extends Phaser.Scene {
             ) {
 
               
+            this.puntaje+=2;
+            console.log(this.puntaje)
+
               this.check_cuchara = true;
               this.servilleta = this.add
                 .image(500, 80, "servilleta")
                 .setInteractive();
+            }else{
+            this.quitarVida();
+
             }
           }
 
+          if(!this.input.pointer1.isDown &&
+            !this.input.pointer2.isDown ){
           if (
             this.input.pointer1.x > 480 &&
             this.input.pointer1.y > 250 &&
@@ -143,19 +187,35 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 370
             ) {
               this.check_cuchara = true;
+              
+
               this.servilleta = this.add
                 .image(500, 80, "servilleta")
                 .setInteractive();
+            }else{
+              if (  this.input.pointer1.position.x != 0 &&
+                this.input.pointer1.position.y != 0 &&
+                this.input.pointer2.position.x != 0 &&
+                this.input.pointer2.position.y != 0 ){
+                  this.quitarVida();
+
+                }
             }
+          }else{
+            if (  this.input.pointer1.position.x != 0 &&
+              this.input.pointer1.position.y != 0 &&
+              this.input.pointer2.position.x != 0 &&
+              this.input.pointer2.position.y != 0 ){
+                
+                this.quitarVida();
+
+              }
           }
-        }else{
-          if (
-            Phaser.Input.Keyboard.JustDown(
-              this.input.keyboard.addKey(keyCodes.C)
-            )
-          ) {
-            console.log("-1")
-          }
+          this.input.pointer1.position.x = 0;
+          this.input.pointer1.position.y = 0;
+          this.input.pointer2.position.x = 0;
+          this.input.pointer2.position.y = 0;
+        }
         }
       } else {
         if (!this.check_cuchara) {
@@ -183,10 +243,19 @@ class NewScene extends Phaser.Scene {
                 this.input.keyboard.addKey(keyCodes.C)
               )
             ) {
+              
+            this.puntaje+=2;
+            console.log(this.puntaje)
+
               this.check_cuchillo = true;
               
+            }else{
+            this.quitarVida();
+
             }
           }
+          if(!this.input.pointer1.isDown &&
+            !this.input.pointer2.isDown ){
           if (
             this.input.pointer1.x > 410 &&
             this.input.pointer1.y > 250 &&
@@ -200,16 +269,30 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 370
             ) {
               this.check_cuchillo = true;
+              
+
+            }else{
+              if (  this.input.pointer1.position.x != 0 &&
+                this.input.pointer1.position.y != 0 &&
+                this.input.pointer2.position.x != 0 &&
+                this.input.pointer2.position.y != 0 ){
+                  this.quitarVida();
+
+                }
             }
+          }else{
+            if (  this.input.pointer1.position.x != 0 &&
+              this.input.pointer1.position.y != 0 &&
+              this.input.pointer2.position.x != 0 &&
+              this.input.pointer2.position.y != 0 ){
+                this.quitarVida();
+              }
           }
-        }else{
-          if (
-            Phaser.Input.Keyboard.JustDown(
-              this.input.keyboard.addKey(keyCodes.C)
-            )
-          ) {
-            console.log("-1")
-          }
+          this.input.pointer1.position.x = 0;
+          this.input.pointer1.position.y = 0;
+          this.input.pointer2.position.x = 0;
+          this.input.pointer2.position.y = 0;
+        }
         }
       } else {
         if (!this.check_cuchillo) {
@@ -217,6 +300,7 @@ class NewScene extends Phaser.Scene {
         } else {
           this.cuchillo.x = 470;
           this.cuchillo.y = 250;
+
         }
       }
     }
@@ -236,12 +320,21 @@ class NewScene extends Phaser.Scene {
                 this.input.keyboard.addKey(keyCodes.T)
               )
             ) {
+              
+            this.puntaje+=2;
+            console.log(this.puntaje)
+
               this.check_tenedor = true;
               this.cuchara = this.add
                 .image(110, 100, "cuchara")
                 .setInteractive();
+            }else{
+            this.quitarVida();
+              
             }
           }
+          if(!this.input.pointer1.isDown &&
+            !this.input.pointer2.isDown ){
           if (
             this.input.pointer1.x > 130 &&
             this.input.pointer1.y > 250 &&
@@ -255,19 +348,35 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 370
             ) {
               this.check_tenedor = true;
+            
+
               this.cuchara = this.add
                 .image(110, 100, "cuchara")
                 .setInteractive();
+            }else{
+              if (  this.input.pointer1.position.x != 0 &&
+                this.input.pointer1.position.y != 0 &&
+                this.input.pointer2.position.x != 0 &&
+                this.input.pointer2.position.y != 0 ){
+                    this.quitarVida();
+
+                }
             }
+          }else{
+            if (  this.input.pointer1.position.x != 0 &&
+              this.input.pointer1.position.y != 0 &&
+              this.input.pointer2.position.x != 0 &&
+              this.input.pointer2.position.y != 0 ){
+                this.quitarVida();
+
+              }
+
           }
-        }else{
-          if (
-            Phaser.Input.Keyboard.JustDown(
-              this.input.keyboard.addKey(keyCodes.T)
-            )
-          ) {
-            console.log("-1")
-          }
+          this.input.pointer1.position.x = 0;
+          this.input.pointer1.position.y = 0;
+          this.input.pointer2.position.x = 0;
+          this.input.pointer2.position.y = 0;
+        }
         }
       } else {
         if (!this.check_tenedor) {
@@ -275,6 +384,7 @@ class NewScene extends Phaser.Scene {
         } else {
           this.tenedor.x = 190;
           this.tenedor.y = 250;
+
         }
       }
     }
@@ -298,10 +408,18 @@ class NewScene extends Phaser.Scene {
                 this.input.keyboard.addKey(keyCodes.S)
               )
             ) {
+              
+            this.puntaje+=2;
+            console.log(this.puntaje)
+
               this.check_servilleta = true;
+            }else{
+            this.quitarVida();
+
             }
           }
-
+          if(!this.input.pointer1.isDown &&
+            !this.input.pointer2.isDown ){
           if (
             this.input.pointer1.x > 60 &&
             this.input.pointer1.y > 250 &&
@@ -315,16 +433,30 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 370
             ) {
               this.check_servilleta = true;
+            
+
+            }else{
+              if (  this.input.pointer1.position.x != 0 &&
+                this.input.pointer1.position.y != 0 &&
+                this.input.pointer2.position.x != 0 &&
+                this.input.pointer2.position.y != 0 ){
+                  this.quitarVida();
+
+                }
             }
+          }else{
+            if (  this.input.pointer1.position.x != 0 &&
+              this.input.pointer1.position.y != 0 &&
+              this.input.pointer2.position.x != 0 &&
+              this.input.pointer2.position.y != 0 ){
+                this.quitarVida();
+              }
           }
-        }else{
-          if (
-            Phaser.Input.Keyboard.JustDown(
-              this.input.keyboard.addKey(keyCodes.S)
-            )
-          ) {
-            console.log("-1")
-          }
+          this.input.pointer1.position.x = 0;
+          this.input.pointer1.position.y = 0;
+          this.input.pointer2.position.x = 0;
+          this.input.pointer2.position.y = 0;
+        }
         }
       } else {
         if (!this.check_servilleta) {
@@ -333,11 +465,13 @@ class NewScene extends Phaser.Scene {
         } else {
           this.servilleta.x = 120;
           this.servilleta.y = 250;
+
         }
       }
     }
 
     if (this.plato.y < 500 && !this.check_plato) {
+
       this.plato.y = this.plato.y + 2;
       this.aux1.x = this.aux1.x + 6;
       this.aux2.x = this.aux2.x - 9;
@@ -356,40 +490,69 @@ class NewScene extends Phaser.Scene {
               this.input.keyboard.addKey(keyCodes.P)
             )
           ) {
-            console.log("press");
+            this.puntaje+=2;
+            console.log(this.puntaje)
+
             this.check_plato = true;
+      
             this.vaso = this.add.image(80, 80, "vaso").setInteractive();
+          }else {
+            this.quitarVida();
           }
         }
 
-        if (
-          this.input.pointer1.x > 210 &&
-          this.input.pointer1.y > 250 &&
-          this.input.pointer1.x < 450 &&
-          this.input.pointer1.y < 370
-        ) {
-          if (
-            this.input.pointer2.x > 210 &&
-            this.input.pointer2.y > 250 &&
-            this.input.pointer2.x < 450 &&
-            this.input.pointer2.y < 370
-          ) {
-            this.check_plato = true;
-            this.vaso = this.add.image(80, 80, "vaso").setInteractive();
-          }else{
-            console.log("-1")
+        if(!this.input.pointer1.isDown &&
+          !this.input.pointer2.isDown ){
+            if (
+          
+              this.input.pointer1.x > 210 &&
+              this.input.pointer1.y > 250 &&
+              this.input.pointer1.x < 450 &&
+              this.input.pointer1.y < 370
+            ) {
+              if (
+                this.input.pointer2.x > 210 &&
+                this.input.pointer2.y > 250 &&
+                this.input.pointer2.x < 450 &&
+                this.input.pointer2.y < 370
+              ) {
+                this.check_plato = true;
+
+                this.vaso = this.add.image(80, 80, "vaso").setInteractive();
+              }else{
+                
+                if (  this.input.pointer1.position.x != 0 &&
+                  this.input.pointer1.position.y != 0 &&
+                  this.input.pointer2.position.x != 0 &&
+                  this.input.pointer2.position.y != 0 ){
+
+
+                    this.quitarVida();
+
+                  }
+              }
+            }else{
+              if (  this.input.pointer1.position.x != 0 &&
+                this.input.pointer1.position.y != 0 &&
+                this.input.pointer2.position.x != 0 &&
+                this.input.pointer2.position.y != 0 ){
+                  
+
+                  
+                  this.quitarVida();
+
+                     
+    
+                }
+            
+              // console.log("-1")
+            }
+            this.input.pointer1.position.x = 0;
+            this.input.pointer1.position.y = 0;
+            this.input.pointer2.position.x = 0;
+            this.input.pointer2.position.y = 0;
           }
-        }else{
-          // console.log("-1")
-        }
-      }else{
-        if (
-          Phaser.Input.Keyboard.JustDown(
-            this.input.keyboard.addKey(keyCodes.P)
-          )
-        ) {
-          console.log("-1")
-        }
+        
       }
     } else {
       if (!this.check_plato) {
@@ -434,15 +597,24 @@ class NewScene extends Phaser.Scene {
                 this.input.keyboard.addKey(keyCodes.P)
               )
             ) {
+              
+            this.puntaje+=2;
+            console.log(this.puntaje)
               this.check_plato_hondo = true;
+
               this.cuchillo = this.add
                 .image(0, 250, "cuchillo")
                 .setInteractive();
               this.tenedor = this.add
                 .image(640, 250, "tenedor")
                 .setInteractive();
+            }else{
+            this.quitarVida();
+
             }
           }
+          if(!this.input.pointer1.isDown &&
+            !this.input.pointer2.isDown ){
           if (
             this.input.pointer1.x > 200 &&
             this.input.pointer1.y > 250 &&
@@ -456,22 +628,41 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 370
             ) {
               this.check_plato_hondo = true;
+              
+
               this.cuchillo = this.add
                 .image(310, 250, "cuchillo")
                 .setInteractive();
               this.tenedor = this.add
                 .image(550, 250, "tenedor")
                 .setInteractive();
+            }else{
+              if (  this.input.pointer1.position.x != 0 &&
+                this.input.pointer1.position.y != 0 &&
+                this.input.pointer2.position.x != 0 &&
+                this.input.pointer2.position.y != 0){
+
+
+                  this.quitarVida();
+
+                }
             }
+          }else{
+            if (  this.input.pointer1.position.x != 0 &&
+              this.input.pointer1.position.y != 0 &&
+              this.input.pointer2.position.x != 0 &&
+              this.input.pointer2.position.y != 0){
+
+
+                this.quitarVida();
+
+              }
           }
-        }else{
-          if (
-            Phaser.Input.Keyboard.JustDown(
-              this.input.keyboard.addKey(keyCodes.P)
-            )
-          ) {
-            console.log("-1")
-          }
+          this.input.pointer1.position.x = 0;
+          this.input.pointer1.position.y = 0;
+          this.input.pointer2.position.x = 0;
+          this.input.pointer2.position.y = 0;
+        }
         }
       } else {
         if (!this.check_plato_hondo) {
@@ -479,6 +670,7 @@ class NewScene extends Phaser.Scene {
         } else {
           this.plato_hondo.x = 330;
           this.plato_hondo.y = 250;
+
         }
       }
     }
@@ -503,12 +695,21 @@ class NewScene extends Phaser.Scene {
                 this.input.keyboard.addKey(keyCodes.V)
               )
             ) {
+              
+            this.puntaje+=2;
+            console.log(this.puntaje)
+
               this.check_vaso = true;
               this.plato_hondo = this.add
                 .image(330, 250, "plato-hondo")
                 .setInteractive();
+            }else{
+            this.quitarVida();
+
             }
           }
+          if(!this.input.pointer1.isDown &&
+            !this.input.pointer2.isDown ){
           if (
             this.input.pointer1.x > 430 &&
             this.input.pointer1.y > 80 &&
@@ -522,19 +723,36 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 150
             ) {
               this.check_vaso = true;
+         
+
               this.plato_hondo = this.add
                 .image(330, 250, "plato-hondo")
                 .setInteractive();
+            }else{
+              if (  this.input.pointer1.position.x != 0 &&
+                this.input.pointer1.position.y != 0 &&
+                this.input.pointer2.position.x != 0 &&
+                this.input.pointer2.position.y != 0){
+
+                  this.quitarVida();
+
+                }
             }
+          }else{
+            if (  this.input.pointer1.position.x != 0 &&
+              this.input.pointer1.position.y != 0 &&
+              this.input.pointer2.position.x != 0 &&
+              this.input.pointer2.position.y != 0){
+
+                this.quitarVida();
+
+              }
           }
-        }else{
-          if (
-            Phaser.Input.Keyboard.JustDown(
-              this.input.keyboard.addKey(keyCodes.V)
-            )
-          ) {
-            console.log("-1")
-          }
+          this.input.pointer1.position.x = 0;
+          this.input.pointer1.position.y = 0;
+          this.input.pointer2.position.x = 0;
+          this.input.pointer2.position.y = 0;
+        }
         }
       } else {
         if (!this.check_vaso) {
@@ -548,15 +766,85 @@ class NewScene extends Phaser.Scene {
           this.vaso.x = 500;
           this.vaso.y = 80;
           this.vaso.rotation=0
+
           this.aux3.destroy();
         }
       }
     }
 
-    this.input.pointer1.position.x = 0;
-    this.input.pointer1.position.y = 0;
+    if (this.puntaje == 14 || this.lifes == 0){
+      this.gameOver = true;
+    }
+
+    if (this.gameOver){
+
+      setTimeout(() => {
+        
+        this.scene.pause();
+      }, 2000);
+    }
 
   }
+
+
+  formatTime(seconds){
+    // Minutes
+    var minutes = Math.floor(seconds/60);
+    // Seconds
+    var partInSeconds = seconds%60;
+    // Adds left zeros to seconds
+    var partInSeconds2 = partInSeconds.toString().padStart(2,'0');
+    // Returns formated time
+    return `${minutes}:${partInSeconds2}`;
+  }
+
+  onEvent(){
+
+  
+
+      this.initialTime ++; // One second
+  
+      // this.text.setText(this.formatTime(this.initialTime))
+    
+
+  }
+
+
+
+  quitarVida(){
+    if (NewScene.touch){
+      if(this.lifes.length > 0){
+        this.lifes[this.lifes.length -1].destroy();
+        this.lifes.pop();
+      }
+    }else{
+      const keyCodes = Phaser.Input.Keyboard.KeyCodes;
+
+    if (
+      Phaser.Input.Keyboard.JustDown(
+        this.input.keyboard.addKey(keyCodes.P)
+      )|| Phaser.Input.Keyboard.JustDown(
+        this.input.keyboard.addKey(keyCodes.S)
+      )|| Phaser.Input.Keyboard.JustDown(
+        this.input.keyboard.addKey(keyCodes.C)
+      )|| Phaser.Input.Keyboard.JustDown(
+        this.input.keyboard.addKey(keyCodes.V)
+      )|| Phaser.Input.Keyboard.JustDown(
+        this.input.keyboard.addKey(keyCodes.T)
+      )){
+
+        if(this.lifes.length > 0){
+            
+          this.lifes[this.lifes.length -1].destroy();
+          this.lifes.pop();
+        }
+
+      }
+    }
+    
+   
+  }
+
 
   // if(this.input.pointer1.x==0 && this.input.pointer1.x && this.input.pointer1.x && this.input.pointer1.x){
 
@@ -586,8 +874,10 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
-
-  constructor() {
+  juego: Juego;
+  checkpoint: boolean;
+  constructor(private juegoService: JuegoService ) {
+    this.checkpoint = false;
     this.scene = new NewScene();
     this.config = {
       type: Phaser.AUTO,
@@ -611,7 +901,80 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
       
     this.phaserGame = new Phaser.Game(this.config);
     
+    this.juegoService
+      .selectJuego(localStorage.getItem("id_juego"))
+      .subscribe((res) => {
+        this.juego = res;
+
+        this.juego.partidas.push({
+          fecha_inicio: new Date(),
+        });
+
+        this.juegoService.updateJuego(this.juego).subscribe((res) => {
+          this.juego = res;
+
+          localStorage.setItem(
+            "id_partida",
+            this.juego.partidas.slice(-1)[0]._id
+          );
+        });
+      });
    
+  }
+
+  ngDoCheck(){
+    
+    if (this.scene.gameOver && !this.checkpoint){
+        this.generarDetalle();
+    }
+  }
+
+  generarDetalle(){
+
+    let complete = false;
+
+    if (this.scene.puntaje == 14){
+      complete = true;
+    }
+
+    const detalle: DetallePartida = {
+      ok: complete,
+
+      objetivo: "Puntaje",
+
+      accion: this.scene.puntaje.toString(),
+    };
+
+    const detalle2: DetallePartida = {
+      ok: complete,
+
+      objetivo: "Tiempo",
+
+      accion: (this.scene.initialTime).toString(),
+    };
+
+
+    const detalle3: DetallePartida = {
+      ok: complete,
+
+      objetivo: "Intentos",
+
+      accion: (7 - this.scene.lifes).toString(),
+    };
+
+    this.juego.partidas.map((p) =>
+      p._id === localStorage.getItem("id_partida")
+        ? p.detalles_partida.push(detalle, detalle2)
+        : p
+    );
+
+
+
+    this.juegoService.updateJuego(this.juego).subscribe((res2) => {
+      console.log(res2);
+    });
+    this.checkpoint =true;
+    
   }
 
   ngOnDestroy(){

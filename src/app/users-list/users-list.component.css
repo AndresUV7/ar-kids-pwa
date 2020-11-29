@@ -1,0 +1,52 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 25%;
+  }
+  
+  td, th {
+    width: 0%;
+  }
+
+  .formateado{
+      margin-left: 2%;
+      margin-top: 1%;
+  }
+
+  .md-fab-bottom-right{
+    margin-top: 1%;
+    position: fixed !important;
+    right: 15px; /* Add this and change value to set the margin you want */
+    background-color:#26c998;
+}  
+
+.md-fab-bottom-rightt{
+    margin-top: 1%;
+    position: fixed !important;
+    right: 15px; /* Add this and change value to set the margin you want */
+   background-color: #eb584d
+}
+
+.mat-row:hover {
+    background-color: whitesmoke;
+  }
+
+  .mat-header-row{
+    background-color: whitesmoke;
+    
+    
+}
+
+.mat-header-cell{
+    color: #3f51b5;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color: #3f51b5;
+
+  }
+
+ 

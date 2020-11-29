@@ -3,21 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <title>ArKids</title>
-    <base href="/ar-kids-pwa/">
-    <!-- <base href="/" /> -->
+    <!-- <base href="/ar-kids-pwa/"> -->
+    <base href="/" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
     />
+    
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-    <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+    <!-- <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script> -->
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar.js"></script> -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
     <link rel="manifest" href="manifest.webmanifest" />
-    <script src="assets/phaser.js"></script>
-    <script src="assets/inflate.min.js"></script>
+    <!-- <script src="assets/phaser.js"></script>
+    <script src="assets/inflate.min.js"></script> -->
     <meta name="theme-color" content="#1976d2" />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
@@ -36,48 +43,289 @@
   </body>
 
   
-  <script>
+  <!-- <script>
     let ban = false;
+   
     AFRAME.registerComponent("soundhandler", {
       init: function () {
         var entity1 = document.querySelector("[sound]");
         entity1.addEventListener("sound-ended", function() {
-       // play the second one     
-         ban = true;
+          
+          ban = false;
         })
       },
       tick: function () {
         var entity = document.querySelector("[sound]");
         var btn = document.getElementById("myBtn");
-        if (document.querySelector("a-marker").object3D.visible == true) {
+        if (document.querySelector("a-marker").object3D.visible == true && !ban) {
           entity.components.sound.playSound();
+          ban = true;
           btn.setAttribute("animation-mixer", { timeScale: 1 });
-        } else {
+        } else  if (document.querySelector("a-marker").object3D.visible == false && ban){
           entity.components.sound.pauseSound();
+          ban = false;
           btn.setAttribute("animation-mixer", { timeScale: 0 });
         }
-        if(ban){
+        // if(ban){
+        //   entity.components.sound.stopSound();
+        //   ban = false;
+        // }
+      },
+    });
+  </script> -->
+  <script>
+
+  let ban = false;
+  let ban2 = false;
+  
+    AFRAME.registerComponent("soundhandler", {
+      init: function () {
+        this.bar = "Hola";
+        var entity1 = document.querySelector("[sound]");
+        // entity1.addEventListener("sound-ended", function() {
+       
+        //   ban = false;
+        // })
+      },
+      tick: function () {
+        var entity = document.querySelector("[sound]");
+
+        var btn = document.getElementById("myBtn");
+        if (document.querySelector("a-marker").object3D.visible == true && !ban && !ban2) {
+          entity.components.sound.playSound(); 
+          ban = true;
+          ban2 = true;
+          btn.setAttribute("animation-mixer", { timeScale: 1 });
+        } else  if (document.querySelector("a-marker").object3D.visible == false && ban){
           entity.components.sound.stopSound();
           ban = false;
+          btn.setAttribute("animation-mixer", { timeScale: 0 });
         }
+
+       
+        // if(ban){
+        //   entity.components.sound.stopSound();
+        //   ban = false;
+        // }
       },
+      qux: function () {
+        ban = false;
+        ban2 = false;
+      },
+      
     });
   </script>
 
   <script>
-    AFRAME.registerComponent("audiohandler", {
-      init: function () {
-        let playing = false;
-        let audio = document.querySelector("[sound]");
-        this.el.addEventListener("click", () => {
-          if (document.querySelector("a-marker").object3D.visible == true) {
-            console.log("click");
-            audio.components.sound.playSound();
-          }
-        });
+ 
+  AFRAME.registerComponent("movehandler", {
+    init: function () {
+        this.move = false;
       },
+      tick: function () {
+       
+        if (document.querySelector("a-marker").object3D.visible == true) {
+          this.move = true;
+          this.rotacionX = document.querySelector("a-marker").object3D.rotation.x;
+          this.rotacionY = document.querySelector("a-marker").object3D.rotation.y;
+        }else{
+          this.move = false;
+        } 
+
+      },
+     
+  
+  })
+
+
+  </script>
+
+
+  
+  <script>
+  let playing2 = false;
+    AFRAME.registerComponent("audiohandler2", {
+        schema: {
+        p: {type: 'string'},
+        m: {type: 'string'}
+      },
+      init: function () {
+        console.log("aqui2")
+
+
+        let audio = document.querySelector(this.data.p);
+        audio.addEventListener("click", () => {
+         console.log(audio)
+          if (playing2 == false){
+            if (document.querySelector(this.data.m).object3D.visible == true) {
+              console.log("click");
+              playing2 = true;
+              audio.components.sound.playSound();
+            }
+          }
+          
+        });
+
+
+        this.el.addEventListener("sound-ended", () => {
+       
+          console.log("va")
+           playing2 = false;
+        })
+      
+      },
+
     });
   </script>
+
+
+<script>
+
+let markerVisible = { m0: false, m1: false, m2: false, m4: false, m5: false };
+
+AFRAME.registerComponent('registerevents', {
+    init: function () 
+    {
+        let marker = this.el;
+        
+        marker.addEventListener('markerFound', function() {
+            markerVisible[ marker.id ] = true;
+        });
+
+        marker.addEventListener('markerLost', function() {
+            markerVisible[ marker.id ] = false;
+        });
+    }
+});
+  AFRAME.registerComponent('run', {
+    init: function()
+    {
+        this.m0 = document.querySelector("#m0");
+        this.m1 = document.querySelector("#m1");
+        this.m2 = document.querySelector("#m2");
+        this.m3 = document.querySelector("#m3");
+        this.m4 = document.querySelector("#m4");
+        this.p0 = new THREE.Vector3();
+        this.p1 = new THREE.Vector3();  
+        this.p2 = new THREE.Vector3();  
+        this.p3 = new THREE.Vector3();  
+        this.p4 = new THREE.Vector3();  
+        
+        let geometry = new THREE.CylinderGeometry( 0.05, 0.05, 1, 12 );
+        geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
+        geometry.applyMatrix( new THREE.Matrix4().makeRotationX( THREE.Math.degToRad( 90 ) ) );
+        let material = new THREE.MeshLambertMaterial( {color: 0xFF0000} );
+        this.cylinder = new THREE.Mesh( geometry, material );
+        this.cylinder2 = new THREE.Mesh( geometry, material );
+        this.cylinder3 = new THREE.Mesh( geometry, material );
+        this.cylinder4 = new THREE.Mesh( geometry, material );
+        this.cylinderGroup = document.querySelector('#cylinderGroup').object3D;
+        this.cylinderGroup2 = document.querySelector('#cylinderGroup2').object3D;
+        this.cylinderGroup3 = document.querySelector('#cylinderGroup3').object3D;
+        this.cylinderGroup4 = document.querySelector('#cylinderGroup4').object3D;
+        this.cylinderGroup.add( this.cylinder );
+        this.cylinderGroup2.add( this.cylinder2 );
+        this.cylinderGroup3.add( this.cylinder3 );
+        this.cylinderGroup4.add( this.cylinder4 );
+    },
+    
+    tick: function (time, deltaTime) 
+    {
+
+
+        if ( markerVisible["m0"] && markerVisible["m1"] && markerVisible["m2"] )
+        {
+            this.m0.object3D.getWorldPosition(this.p0);
+            this.m1.object3D.getWorldPosition(this.p1);
+            this.m2.object3D.getWorldPosition(this.p2);
+           
+            
+            let distance = this.p0.distanceTo( this.p1 );
+            let distance2 = this.p0.distanceTo( this.p2 );
+           
+            this.cylinderGroup.lookAt( this.p1 );            
+            this.cylinderGroup2.lookAt( this.p2 );            
+            
+            this.cylinder.scale.set(1,1,distance);
+            this.cylinder2.scale.set(1,1,distance2);
+           
+            this.cylinder.visible = true;
+            this.cylinder2.visible = true;
+          
+        }
+        else
+        {
+            this.cylinder.visible = false;
+            this.cylinder2.visible = false;
+            
+        }
+
+        if ( markerVisible["m0"] && !markerVisible["m1"] && markerVisible["m2"] ){
+          this.m3.object3D.getWorldPosition(this.p3);
+            this.m4.object3D.getWorldPosition(this.p4);
+            let distance3 = this.p2.distanceTo( this.p3 );
+            let distance4 = this.p2.distanceTo( this.p4 );
+            this.cylinderGroup3.lookAt( this.p3 );            
+            this.cylinderGroup4.lookAt( this.p4 );  
+            this.cylinder3.scale.set(1,1,distance3);
+            this.cylinder4.scale.set(1,1,distance4); 
+            this.cylinder3.visible = true;
+            this.cylinder4.visible = true;     
+
+            this.m2.object3D.getWorldPosition(this.p2);
+            let distance2 = this.p0.distanceTo( this.p2 );
+            this.cylinderGroup2.lookAt( this.p2 );  
+            this.cylinder2.visible = true;
+        }else{
+          this.cylinder3.visible = false;
+            this.cylinder4.visible = false;
+        }
+    }
+});
+</script>
+
+
+<script>
+let markerVisible2 = { i1: false, i2: false, i3: false };
+
+AFRAME.registerComponent('registerevents2', {
+    init: function () 
+    {
+        let marker = this.el;
+
+        marker.addEventListener('markerFound', function() {
+            markerVisible[ marker.id ] = true;
+            // console.log( markerVisible );
+        });
+
+        marker.addEventListener('markerLost', function() {
+            markerVisible[ marker.id ] = false;
+            // console.log( markerVisible );
+        });
+    }
+});
+
+AFRAME.registerComponent('loop', 
+{   
+    init: function()
+    {
+        //this.box = document.querySelector("#theBox");
+    },
+    
+    tick: function (time, deltaTime) 
+    {
+        // for convenience
+        
+        if ( markerVisible["i1"] && markerVisible["i2"] && markerVisible["i3"] ){
+
+        }else{
+
+        }
+        
+    }
+});
+
+</script>
 
   <!-- <script>
   AFRAME.registerComponent('markerhandler', {
@@ -105,31 +353,292 @@
   </script>
 
   <script>
-    let vid; 
     let aux = 0;
-    AFRAME.registerComponent("video-handler", {
+    AFRAME.registerComponent("videohandler", {
       init: function () {
-        let el = this.el;
-        vid = document.querySelector("#penguin-sledding");
+        this.vid = document.querySelector("#k");
         // vid.pause();
+        console.log(this.vid)
+    
         
         this.el.addEventListener("click", (e) => {
+          
           e.preventDefault();
-          vid.play();
-          aux=aux+1;
-         if (aux > 1 ){
-           vid.pause();
-           aux = 0;
-         }
+          if (document.querySelector("#kanji").object3D.visible == true) {
+            this.active = true;
+            console.log("object")
+            this.vid.play();
+            
+            aux=aux+1;
+           if (aux > 1 ){
+             this.vid.pause();
+             aux = 0;
+           }
+          }else{
+            this.active = false;
+          }
+        
         });
       },
       tick: function (){
-        if (document.querySelector("a-marker").object3D.visible == false) {
-          vid.pause();
+
+        if (document.querySelector("#kanji").object3D.visible == false) {
+          this.active = false;
+          this.vid.pause();
            aux = 0;
+        }else{
+          this.active = true;
 
         }
+        
       }
+     
     });
   </script>
+  
+  
+  <script>
+    let aux2 = 0;
+    AFRAME.registerComponent("videohandler2", {
+      init: function () {
+        this.vid = document.querySelector("#a");
+        // vid.pause();
+        console.log(this.vid)
+    
+        
+        this.el.addEventListener("click", (e) => {
+          
+          e.preventDefault();
+          if (document.querySelector("#letterA").object3D.visible == true) {
+            console.log("object2")
+            this.active = true;
+            this.vid.play();
+            
+            aux2=aux2+1;
+           if (aux2 > 1 ){
+             this.vid.pause();
+             aux2 = 0;
+           }
+          }else{
+            this.active = false;
+          }
+        
+        });
+      },
+      tick: function (){
+
+        if (document.querySelector("#letterA").object3D.visible == false) {
+          this.active = false;
+
+          this.vid.pause();
+           aux2 = 0;
+        }else{
+          this.active = true;
+        }
+        
+      }
+     
+    });
+  </script> 
+  
+  <script>
+    let aux3 = 0;
+    AFRAME.registerComponent("videohandler3", {
+      init: function () {
+        this.vid = document.querySelector("#b");
+        // vid.pause();
+        console.log(this.vid)
+    
+        
+        this.el.addEventListener("click", (e) => {
+          
+          e.preventDefault();
+          if (document.querySelector("#letterB").object3D.visible == true) {
+            console.log("object2")
+            this.active = true;
+            this.vid.play();
+            
+            aux3=aux3+1;
+           if (aux3 > 1 ){
+             this.vid.pause();
+             aux3 = 0;
+           }
+          }else{
+            this.active = false;
+          }
+        
+        });
+      },
+      tick: function (){
+
+        if (document.querySelector("#letterB").object3D.visible == false) {
+          this.active = false;
+
+          this.vid.pause();
+           aux3 = 0;
+        }else{
+          this.active = true;
+        }
+        
+      }
+     
+    });
+  </script> 
+  
+  <script>
+    let aux4 = 0;
+    AFRAME.registerComponent("videohandler4", {
+      init: function () {
+        this.vid = document.querySelector("#c");
+        // vid.pause();
+        console.log(this.vid)
+    
+        
+        this.el.addEventListener("click", (e) => {
+          
+          e.preventDefault();
+          if (document.querySelector("#letterC").object3D.visible == true) {
+            console.log("object2")
+            this.active = true;
+            this.vid.play();
+            
+            aux4=aux4+1;
+           if (aux4 > 1 ){
+             this.vid.pause();
+             aux4 = 0;
+           }
+          }else{
+            this.active = false;
+          }
+        
+        });
+      },
+      tick: function (){
+
+        if (document.querySelector("#letterC").object3D.visible == false) {
+          this.active = false;
+
+          this.vid.pause();
+           aux4 = 0;
+        }else{
+          this.active = true;
+        }
+        
+      }
+     
+    });
+  </script>  
+  
+  
+  <script>
+    let aux5 = 0;
+    AFRAME.registerComponent("videohandler5", {
+      init: function () {
+        this.vid = document.querySelector("#d");
+        // vid.pause();
+        console.log(this.vid)
+    
+        
+        this.el.addEventListener("click", (e) => {
+          
+          e.preventDefault();
+          if (document.querySelector("#letterD").object3D.visible == true) {
+            console.log("object2")
+            this.active = true;
+            this.vid.play();
+            
+            aux5=aux5+1;
+           if (aux5 > 1 ){
+             this.vid.pause();
+             aux5 = 0;
+           }
+          }else{
+            this.active = false;
+          }
+        
+        });
+      },
+      tick: function (){
+
+        if (document.querySelector("#letterD").object3D.visible == false) {
+          this.active = false;
+
+          this.vid.pause();
+           aux5 = 0;
+        }else{
+          this.active = true;
+        }
+        
+      }
+     
+    });
+  </script>   
+
+
+  <script>
+    let aux6 = 0;
+    AFRAME.registerComponent("videohandler6", {
+      init: function () {
+        this.vid = document.querySelector("#f");
+        // vid.pause();
+        
+        console.log(this.vid)
+    
+        
+        this.el.addEventListener("click", (e) => {
+          
+          e.preventDefault();
+          if (document.querySelector("#letterF").object3D.visible == true) {
+            this.active = true;
+            console.log("object2")
+            this.vid.play();
+            
+            aux6=aux6+1;
+           if (aux6 > 1 ){
+             this.vid.pause();
+             aux6 = 0;
+           }
+          }else{
+            this.active = false;
+          }
+        
+        });
+      },
+      tick: function (){
+
+        if (document.querySelector("#letterF").object3D.visible == false) {
+          this.active = false;
+          this.vid.pause();
+           aux6 = 0;
+        }else{
+          this.active = true;
+        }
+        
+      }
+     
+    });
+  </script> 
+  
+  
+  <script>
+ 
+    AFRAME.registerComponent("clickhandler", {
+      init: function () {
+       
+    
+        
+        this.el.addEventListener("click", (e) => {
+          
+          e.preventDefault();
+          console.log("si detecta");
+        
+        });
+      },
+  
+     
+    });
+  </script>
+  
+
+  
 </html>

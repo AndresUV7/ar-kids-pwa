@@ -93,10 +93,8 @@ export class LoginComponent implements OnInit {
         // this.service3.insertPartida(this.partida).subscribe(res => {
         //   console.log(res);
         // });
-        this._communicationService.changeMessage(this.credenciales);
         
         this.router.navigate(["actividades/principal"]);
-        this._communicationService.emitChange({property: true});
       },
       (err) => {
         this.openSnackBar(err.error, "X");
@@ -141,7 +139,6 @@ export class LoginComponent implements OnInit {
       // });
 
       this.router.navigate(["actividades/principal"]);
-      this._communicationService.emitChange({property: true});
 
     });
   }
@@ -213,10 +210,7 @@ export class DialogContentExampleDialog implements OnInit {
   constructor(private service: DataService) {}
 
   ngOnInit() {
-    this.service.currentMessage.subscribe(
-      (message) => (this.message = message)
-    );
-    console.log(this.message);
+   
   }
 }
 

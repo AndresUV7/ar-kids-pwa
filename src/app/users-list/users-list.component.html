@@ -1,0 +1,96 @@
+<mat-tab-group color="accent">
+    <mat-tab label="USUARIOS"> 
+
+            <button [fxShow]="!deleteBtn" class="md-fab md-fab-bottom-right" mat-mini-fab aria-label="Example icon button with a plus one icon" (click)="nuevoUsuario()">
+                <mat-icon>person_add</mat-icon>
+              </button>
+              
+              <button [fxShow]="deleteBtn" class="md-fab md-fab-bottom-rightt" mat-mini-fab aria-label="Example icon button with a plus one icon" (click)="eliminar()">
+                <mat-icon>person_remove</mat-icon>
+              </button>
+   
+
+        <mat-form-field class="formateado" color="accent">
+            <mat-label color="accent">Buscar</mat-label>
+            <input color="accent" matInput (keyup)="applyFilter($event)" placeholder="Datos de la persona..." #input>
+            <mat-icon color="accent" matSuffix>person_search</mat-icon>
+            
+          </mat-form-field>
+          
+
+           
+          
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+          
+                 <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+              
+                </th>
+                <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? showOptions(row) : null"
+                                [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+                </td>
+            </ng-container>
+            
+              <!-- ID Column -->
+              <ng-container matColumnDef="cedula">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> CÉDULA </th>
+                <td mat-cell *matCellDef="let row"> {{row.cedula}}  </td>
+              </ng-container>
+          
+              <!-- Progress Column -->
+              <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
+                <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="apellido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> APELLIDO </th>
+                <td mat-cell *matCellDef="let row"> {{row.apellido}} </td>
+              </ng-container>
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="sexo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> SEXO </th>
+                <td mat-cell *matCellDef="let row"> {{row.sexo}} </td>
+              </ng-container>
+          
+              <!-- Color Column -->
+              <ng-container matColumnDef="fecha_nacimiento">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> EDAD </th>
+                <td mat-cell *matCellDef="let row"> {{yearsDiff(row.fecha_nacimiento)}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO </th>
+                <td mat-cell *matCellDef="let row"> {{row.estado == 1 ? 'Registrado' : 'Pendiente'}} </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row  (click)="openDialog(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+            
+
+            
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+          
+    </mat-tab>
+
+    <mat-tab label="ESTADISTICAS"><mat-icon>signal_cellular_alt</mat-icon>ESTADISTICAS</mat-tab>
+</mat-tab-group>
+
+   
+
+  
+  
+  <!-- Copyright 2020 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

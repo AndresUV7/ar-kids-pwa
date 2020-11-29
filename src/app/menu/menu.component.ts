@@ -1,19 +1,18 @@
 import {MediaMatcher} from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnDestroy, OnInit {
+export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
 
-  showBar = {
-    show: false
-  };
+  showBar = false;
+  showSide = true;
 
   // showBar = false;
 
@@ -29,15 +28,12 @@ export class MenuComponent implements OnDestroy, OnInit {
        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
 
   private _mobileQueryListener: () => void;
-    constructor(private router: Router, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _communicationService: DataService, private loginService: LoginService) {
+    constructor(private router: Router, private changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private loginService: LoginService, private data: DataService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
-    _communicationService.changeEmitted$.subscribe(data => {
-      this.showBar.show = data.property;  
-    })
-
+    
 
   }
 
@@ -46,10 +42,16 @@ export class MenuComponent implements OnDestroy, OnInit {
 
   }
 
-  ngOnInit(){
+  ngAfterViewChecked(){
 
+    this.data.currentBarState.subscribe(message => this.showSide = message)
+    this.changeDetectorRef.detectChanges();
+  }
+
+  ngOnInit(){
+    
     if(this.loginService.isLoggedIn()){
-      this.showBar.show = true;
+      this.showBar= true;
     }
    
   }
@@ -57,9 +59,27 @@ export class MenuComponent implements OnDestroy, OnInit {
   logOut(){
     this.loginService.logOut();
     this.router.navigate(["/"]);
-    this.showBar.show = false;
+    this.showBar = false;
     // window.location.reload();
   }
+
+  irAdmin(){
+    this.router.navigate(["actividades/admin-users"]);
+
+  }
+
+  prueba(){
+    this.router.navigate(['actividades/ar-box']);
+  }
+  
+  irPremios(){
+    this.router.navigate(['actividades/premios']);
+  }
+
+  irHome(){
+    this.router.navigate(["/"]);
+  }
+
 
   shouldRun = true;
 }

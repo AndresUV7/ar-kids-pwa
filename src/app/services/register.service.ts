@@ -8,7 +8,7 @@ export class RegisterService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.2:3000/persona/";
+  Url="https://192.168.100.4:3000/persona/";
   
   registerUser(credenciales){
     

@@ -1,0 +1,36 @@
+<a-scene
+arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; videoTexture: true;"
+vr-mode-ui="enabled: false"
+gesture-detector
+renderer="colorManagement: true; logarithmicDepthBuffer: true;"
+    >
+
+    <a-entity  raycaster = "objects: .clickable"  cursor="fuse: false; rayOrigin: mouse" > </a-entity > 
+
+          <a-entity
+            gltf-model="url(../../assets/pasta.glb)"
+            scale="0.6 0.6 0.6"
+            position="0 0 0"
+            look-at="[gps-camera]"
+            gesture-handler
+            gps-entity-place="latitude:  -2.9047333
+            ; longitude: -79.0247700;"
+          ></a-entity>
+          
+          <a-entity
+            gltf-model="url(../../assets/mascarilla.glb)"
+            scale="0.6 0.6 0.6"
+            position="0 0 0"
+            look-at="[gps-camera]"
+            gesture-handler
+            gps-entity-place="latitude:  -2.9046383000000002
+            ; longitude: -79.0248546;"
+            clickhandler
+            class="clickable"
+          ></a-entity>
+
+
+
+      <a-camera gps-camera rotation-reader> </a-camera>
+
+    </a-scene>

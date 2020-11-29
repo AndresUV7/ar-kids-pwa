@@ -22,7 +22,7 @@ export class CarouselComponent implements OnInit  {
   @ViewChild('myCarousel',null) myCarousel: NguCarousel;
   carouselConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-    load: 3,
+    load: 4,
     interval: {timing: 4000, initialDelay: 1000},
     loop: true,
     touch: true,
@@ -35,6 +35,7 @@ export class CarouselComponent implements OnInit  {
     // this.service.currentMessage.subscribe(message => this.message = message)
     // console.log(this.message)
     // console.log(this.service.getMessage());
+  
 
   }
 

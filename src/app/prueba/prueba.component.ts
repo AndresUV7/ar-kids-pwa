@@ -1,6 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 
-declare function test():any;
 
 @Component({
   selector: 'app-prueba',
@@ -9,6 +8,7 @@ declare function test():any;
 })
 export class PruebaComponent implements OnInit {
 
+  bien = true;
   aux = 0;
   isLoaded = false;
 
@@ -19,7 +19,10 @@ export class PruebaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(test());
+  }
+
+  probar(){
+    this.bien
   }
 
 }

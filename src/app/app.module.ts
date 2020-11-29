@@ -79,9 +79,18 @@ import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-m
 import {
   RxSpeechRecognitionService,
   SpeechRecognitionModule,
+  SpeechRecognitionService,
 } from '@kamiazya/ngx-speech-recognition';
 import { InstruccionesComponent } from './instrucciones/instrucciones.component';
-
+import { UsersListComponent } from './users-list/users-list.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+import { DePasoComponent } from './de-paso/de-paso.component';
+import { ClasificaloComponent } from './clasificalo/clasificalo.component';
+import { PremiosComponent } from './premios/premios.component';
+import { ArBoxComponent } from './ar-box/ar-box.component';
+import { EncuentraloComponent } from './encuentralo/encuentralo.component';
+import { SonigramComponent } from './sonigram/sonigram.component';
 
 
 
@@ -106,7 +115,15 @@ import { InstruccionesComponent } from './instrucciones/instrucciones.component'
     PizzaPartyComponent,
     AsistenteLearnComponent,
     SandwichMotorSkillsComponent,
-    InstruccionesComponent
+    InstruccionesComponent,
+    UsersListComponent,
+    EditUserComponent,
+    DePasoComponent,
+    ClasificaloComponent,
+    PremiosComponent,
+    ArBoxComponent,
+    EncuentraloComponent,
+    SonigramComponent,
 
   ],
   imports: [
@@ -163,7 +180,8 @@ import { InstruccionesComponent } from './instrucciones/instrucciones.component'
     FlexLayoutModule, 
     FormsModule.withConfig({ warnOnDeprecatedNgFormSelector: "never" }),
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
-    SpeechRecognitionModule
+    SpeechRecognitionModule,
+    // BackButtonDisableModule.forRoot()
 
   ],
   entryComponents: [
@@ -181,10 +199,12 @@ import { InstruccionesComponent } from './instrucciones/instrucciones.component'
     DeviceDetectorService,
     DataService,
     RegisterService,
-    RxSpeechRecognitionService
+    RxSpeechRecognitionService,
+    SpeechRecognitionService
     
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
+

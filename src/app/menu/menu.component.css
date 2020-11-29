@@ -34,3 +34,18 @@
     flex: 1 1 auto;
   }
   
+mat-nav-list mat-icon {
+  color:#26c998;
+}
+
+mat-nav-list a {
+  color:white;
+}
+
+#bg{
+  background-color: #1f1f1f;
+}
+
+.contenido{
+  background-color: white;
+}

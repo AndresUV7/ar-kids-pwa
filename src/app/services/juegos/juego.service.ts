@@ -9,7 +9,7 @@ export class JuegoService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.2:3000/juego";
+  Url="https://192.168.100.4:3000/juego";
 
 
   insertJuego(juego:Juego){

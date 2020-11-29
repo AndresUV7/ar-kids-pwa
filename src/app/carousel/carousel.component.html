@@ -1,5 +1,5 @@
-<div fxLayout="column" fxFlexFill>
-	<ngu-carousel fxLayout="column" fxFlexFill  #myCarousel [inputs]="carouselConfig" [dataSource]="[first, second, third, fourth]">
+<div fxLayout="column" >
+	<ngu-carousel class="contenido" fxLayout="column"  fxFlexFill #myCarousel [inputs]="carouselConfig" [dataSource]="[first, second, third, fourth]">
 		<div  *nguCarouselDef="let item;" class="item">
 			<div class="tile">
 				<ng-container *ngTemplateOutlet="item"></ng-container>
@@ -7,23 +7,21 @@
 		</div>
 	
 		<ng-template #first>
-			<picture>
-				<source media="(min-width: 900px)" srcset="/assets/img/banner_Hi.png" (click)="higiene()">
-				<source media="(min-width: 480px)" srcset="/assets/img/banner-hh.jpg" (click)="higiene()">
-				<img src="/assets/img/banner-hh.jpg" alt="IfItDoesntMatchAnyMedia" (click)="higiene()">
-			</picture>
+			
+			
+			<img src="/assets/img/banner_Hi.jpg" alt="Juegos vestir"  (click)="higiene()" >
 		</ng-template>
 	
 		<ng-template #second>
-			<img src="/assets/img/banner_V.png" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" (click)="vestir()" >
+			<img src="/assets/img/banner_V.jpg" alt="Juegos vestir"  (click)="vestir()" >
 		</ng-template>
 	
 		<ng-template #third>
-			<img src="/assets/img/banner_C.png" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" (click)="cocina()" >
+			<img src="/assets/img/banner_C.jpg" alt="Juegos vestir"  (click)="cocina()" >
 		</ng-template>
 
 		<ng-template #fourth>
-			<img src="/assets/img/banner_Ho.png" alt="Juegos vestir" fxFlex.sm="calc(20%-25px)" (click)="hogar()" >
+			<img src="/assets/img/banner_Ho.jpg" alt="Juegos vestir" (click)="hogar()" >
 		</ng-template>
 	
 		<button NguCarouselNext class="rightRs">></button>
@@ -33,4 +31,8 @@
 		</ul>
 </ngu-carousel>
 </div>
-
+<!-- 
+<picture>
+	<source class="embebido" media="(min-width: 900px)" srcset="/assets/img/banner_Hi2.jpg" (click)="higiene()">
+	<!-- <source media="(min-width: 480px)" srcset="/assets/img/banner-hh.jpg" (click)="higiene()">
+	<img src="/assets/img/banner-hh.jpg" alt="IfItDoesntMatchAnyMedia" (click)="higiene()"> --> 

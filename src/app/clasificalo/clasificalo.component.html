@@ -1,0 +1,28 @@
+<!-- <img class= "imagen" src="../../assets/img/angular.png" alt="Girl in a jacket" width="50" height="50"> -->
+
+
+<div id="gameContainer" style="
+position: fixed;">
+
+</div>
+
+
+<a-scene
+  arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+  vr-mode-ui="enabled: false"
+  renderer="colorManagement: true; logarithmicDepthBuffer: true;"
+>
+
+<a-marker preset="kanji"> 
+  <a-entity
+    id="sueterMove"
+    crossorigin="anonymous"
+    movehandler
+    scale=".1 .1 .1"
+    gltf-model = "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/flecha.glb?alt=media&token=0a1aa5c5-26fe-4800-aa70-29903929640c"
+
+   
+  ></a-entity>
+</a-marker>
+  <a-entity camera></a-entity>
+</a-scene>

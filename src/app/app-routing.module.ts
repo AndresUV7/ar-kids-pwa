@@ -9,15 +9,28 @@ import { LoggedGuard } from "./services/logged.guard";
 import { AsistenteLearnComponent } from "./asistente-learn/asistente-learn.component";
 import { MenuComponent } from "./menu/menu.component";
 import { JuegoComponent } from "./juego/juego.component";
-import { InstruccionesComponent } from './instrucciones/instrucciones.component';
-import { HygieneAntistressSkillComponent } from './hygiene-antistress-skill/hygiene-antistress-skill.component';
-import { SandwichMotorSkillsComponent } from './sandwich-motor-skills/sandwich-motor-skills.component';
-import { CleannessFineMotorComponent } from './cleanness-fine-motor/cleanness-fine-motor.component';
+import { InstruccionesComponent } from "./instrucciones/instrucciones.component";
+import { HygieneAntistressSkillComponent } from "./hygiene-antistress-skill/hygiene-antistress-skill.component";
+import { SandwichMotorSkillsComponent } from "./sandwich-motor-skills/sandwich-motor-skills.component";
+import { CleannessFineMotorComponent } from "./cleanness-fine-motor/cleanness-fine-motor.component";
+import { UsersListComponent } from './users-list/users-list.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { DePasoComponent } from './de-paso/de-paso.component';
+import { ClasificaloComponent } from './clasificalo/clasificalo.component';
+import { PremiosComponent } from './premios/premios.component';
+import { PictoComponent } from './picto/picto.component';
+import { ArBoxComponent } from './ar-box/ar-box.component';
+import { PruebaComponent } from './prueba/prueba.component';
+import { EncuentraloComponent } from './encuentralo/encuentralo.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent, canActivate: [LoggedGuard] },
   { path: "actividades/asistente", component: AsistenteLearnComponent },
-  
+  { path: "actividades/clasificalo", component: ClasificaloComponent },
+  { path: "actividades/pictogram", component: PictoComponent },
+  { path: "actividades/ar-box", component: ArBoxComponent},
+  { path: "actividades/encuentralo", component: EncuentraloComponent},
+
   // {path:'actividades/vestir', component:VestirHombreComponent},
 
   {
@@ -27,11 +40,19 @@ const routes: Routes = [
     children: [
       { path: "actividades/listar", component: CardResponsiveComponent },
       { path: "actividades/principal", component: CarouselComponent },
-      { path: "actividades/vestir", component: JuegoComponent },
-      { path: "actividades/dientes", component: HygieneAntistressSkillComponent },
-  { path: "actividades/sandwich", component: SandwichMotorSkillsComponent },
-  { path: "actividades/mesa", component: CleannessFineMotorComponent },
-      {path:'actividades/instrucciones', component: InstruccionesComponent}
+      { path: "actividades/vestir", component: VestirHombreComponent },
+      {
+        path: "actividades/dientes",
+        component: HygieneAntistressSkillComponent,
+      },
+      { path: "actividades/sandwich", component: SandwichMotorSkillsComponent },
+      { path: "actividades/mesa", component: CleannessFineMotorComponent },
+      { path: "actividades/instrucciones", component: InstruccionesComponent },
+      { path: "actividades/premios", component: PremiosComponent },
+
+  { path: "actividades/admin-users", component: UsersListComponent },
+  { path: "actividades/edit-users", component: EditUserComponent },
+
     ],
   },
 ];

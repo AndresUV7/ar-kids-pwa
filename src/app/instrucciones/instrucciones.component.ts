@@ -57,6 +57,12 @@ export class InstruccionesComponent implements OnInit {
         this.router.navigate(['actividades/mesa']);
       }
     }
+    
+    if (localStorage.getItem("tip_act") == "PREGUNTADOS"){
+      
+        this.router.navigate(['actividades/asistente']);
+     
+    }
     // this.router.navigate(['actividades/vestir']);
     
   }

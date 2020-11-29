@@ -1,7 +1,9 @@
-import { Component, DoCheck, OnInit, OnDestroy } from '@angular/core';
+import { Component, DoCheck, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
 import { Juego } from '../models/Juego';
 import { JuegoService } from '../services/juegos/juego.service';
 import { DetallePartida } from '../models/DetallePartida';
+import { DataService } from '../services/data.service';
+import { HIGIENE } from '../../utils/recursos';
 
 class NewScene extends Phaser.Scene {
   boca_der_sup: any;
@@ -587,7 +589,9 @@ export class HygieneAntistressSkillComponent implements OnInit, DoCheck, OnDestr
   scene: NewScene;
   juego: Juego;
   checkpoint: boolean;
-  constructor(private juegoService: JuegoService) {
+  showBar: boolean
+  constructor(private juegoService: JuegoService, private data:DataService) {
+    this.showBar = false;
     this.checkpoint = false;
     this.scene = new NewScene();
     this.config = {
@@ -609,8 +613,14 @@ export class HygieneAntistressSkillComponent implements OnInit, DoCheck, OnDestr
   }
 
   ngOnInit() {
+
+    this.newMessage(false);
+
+    console.log(HIGIENE);
+    
     this.phaserGame = new Phaser.Game(this.config);
 
+    this.data.currentBarState.subscribe(message => this.showBar = message);
     this.juegoService
       .selectJuego(localStorage.getItem("id_juego"))
       .subscribe((res) => {
@@ -681,5 +691,14 @@ export class HygieneAntistressSkillComponent implements OnInit, DoCheck, OnDestr
 
   ngOnDestroy(){
     this.phaserGame.destroy(true);
+    this.newMessage(true);
+
+  }
+
+
+
+  newMessage(state:boolean) {
+    console.log("aqui")
+    this.data.changeMessage(state);
   }
 }

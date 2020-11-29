@@ -1,22 +1,6 @@
-<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-    <button>
-        HIDE OBJECTS
+<div style='position: fixed; top: 40px; width:100%; text-align: center; z-index: 1;'>
+    <button (click)="probar()">
+        GRABAR1...
     </button>
 </div>
-
-
-<a-scene arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' vr-mode-ui="enabled: false" gesture-detector>
-    <a-assets>
-         <audio id="sound" crossorigin="anonymous" src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/2%20-%20Historias%20X%20Cambiar.mp3?alt=media&token=9246a167-95f4-4e6e-9663-fb8da29669c3" response-type="arraybuffer"></audio>
-         <!-- <audio id="sound" src="/assets/minecraft/2 - Historias X Cambiar.mp3" preload="auto"></audio> -->
-     </a-assets>
-     <a-marker preset="kanji">
-      
-            <a-entity id="myBtn" crossorigin="anonymous" gltf-model="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/frigo.glb?alt=media&token=10d83eab-2b52-4925-9855-79f24a941ff1"  position='0 0 0' scale=".01 .01 .01" crossOrigin="anonymous"  sound="src: #sound" autoplay="false" animation-mixer soundhandler gesture-handler>
-            <!-- <a-entity id="myBtn" gltf-model="/assets/minecraft/scene.gltf" position='0 0 -2' scale=".2 .2 .2" crossOrigin="anonymous" animation-mixer soundhandler> -->
-            </a-entity>
-            <!-- <a-entity sound="src: #sound" autoplay="false"></a-entity> -->
-            
-     </a-marker>
-     <a-entity camera></a-entity>
-</a-scene>
+<app-asistente-learn *ngIf="bien"></app-asistente-learn>

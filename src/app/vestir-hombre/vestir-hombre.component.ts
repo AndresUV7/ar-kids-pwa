@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import Phaser from "phaser";
 import { Router } from "@angular/router";
-import { DataService } from "../services/data.service";
+import { DetallePartida } from '../models/DetallePartida';
+import { JuegoService } from '../services/juegos/juego.service';
+import { Juego } from '../models/Juego';
 
 class NewScene extends Phaser.Scene {
   // joven: any;
@@ -17,12 +19,17 @@ class NewScene extends Phaser.Scene {
   pies: any;
   correcto: boolean[];
   aux: any[];
+  tracker: any;
+
 
   constructor() {
     super("NewScene");
   }
 
   preload() {
+    this.tracker = { error: false, objetivo: "", accion: ""};
+    this.correcto = [false, false, false, false, false, false];
+
     this.load.path = "/assets/img/";
 
     this.load.image("habitacion", "habitacion.png");
@@ -41,7 +48,6 @@ class NewScene extends Phaser.Scene {
 
   create() {
     // console.log('enter create');
-    this.correcto = [false, false, false, false, false, false];
     this.add.image(320, 180, "habitacion").setDepth(-1);
     this.cabeza = this.add.image(100, 70, "cabeza").setInteractive();
     this.tronco = this.add.image(100, 140, "tronco").setInteractive();
@@ -161,10 +167,13 @@ class NewScene extends Phaser.Scene {
 
     this.input.on(eventos.DROP, (pointer, obj, target) => {
       let bandera = false;
-
+      this.tracker.accion = target.name;
       // console.log(obj.name);
       // console.log(target.name);
       if (obj.name == "pantalon") {
+
+        this.tracker.objetivo = "pantalon";
+
         if (target.name == "piernas") {
           this.pantalon.setRotation(0);
           obj.x = 102.5;
@@ -172,52 +181,97 @@ class NewScene extends Phaser.Scene {
           this.correcto[0] = true;
           bandera = true;
         }else{
-          
+          this.tracker.error = true;
         }
       }
 
-      if (obj.name == "camiseta" && target.name == "tronco") {
-        if (this.correcto[4]) {
-          this.camiseta.setFlipX(false).setRotation(0);
-          obj.x = 97.5;
-          obj.y = 149.5;
-          this.correcto[1] = true;
-          bandera = true;
+      if (obj.name == "camiseta") {
+        this.tracker.objetivo = "camiseta";
+
+        if(target.name == "tronco"){
+          if (this.correcto[4]) {
+            this.camiseta.setFlipX(false).setRotation(0);
+            obj.x = 97.5;
+            obj.y = 149.5;
+            this.correcto[1] = true;
+            bandera = true;
+          }else{
+            this.tracker.accion = this.tracker.accion +" (falta bividi)";
+            this.tracker.error = true;
+          }
+        }else{
+          this.tracker.error = true;
+
         }
       }
+       
+    
 
-      if (obj.name == "calcetines" && target.name == "pies") {
+      if (obj.name == "calcetines" ) {
+        this.tracker.objetivo = "calcetines";
+
+        if (target.name == "pies"){
         this.calcetines.setRotation(0);
         obj.x = 104;
         obj.y = 355;
         this.correcto[2] = true;
         bandera = true;
-      }
+      }else{
+        this.tracker.error = true;
+      }}
 
-      if (obj.name == "zapatos" && target.name == "pies") {
-        if (this.correcto[2] && this.correcto[0]) {
+      if (obj.name == "zapatos") {
+        this.tracker.objetivo = "zapatos";
+
+        if(target.name == "pies"){
+        if (this.correcto[2]) {
+          if (this.correcto[0]){
           obj.x = 102;
           obj.y = 354;
           this.correcto[3] = true;
           bandera = true;
+        }else{
+          this.tracker.accion = this.tracker.accion +" (falta pantalon)";
+          this.tracker.error = true;
         }
-      }
+      }else{
+        this.tracker.accion = this.tracker.accion +" (falta calcetines)";
+        this.tracker.error = true;
+        }
+      }else{
+        this.tracker.error = true;
+      }}
 
-      if (obj.name == "bividi" && target.name == "tronco") {
+      if (obj.name == "bividi") {
+        this.tracker.objetivo = "bividi";
+
+        if (target.name == "tronco"){
         obj.x = 99;
         obj.y = 153.5;
         this.correcto[4] = true;
         bandera = true;
-      }
+      }else{
+        this.tracker.error = true;
 
-      if (obj.name == "gorra" && target.name == "cabeza") {
+      }}
+
+      if (obj.name == "gorra") {
+        this.tracker.objetivo = "gorra";
+
+        if ( target.name == "cabeza"){
         if (this.correcto[1]) {
           this.gorra.setFlipX(false).setRotation(0);
           obj.x = 104;
           obj.y = 47;
           this.correcto[5] = true;
           bandera = true;
+        }else{
+          this.tracker.accion = this.tracker.accion +" (falta bividi y/o camiseta)";
+          this.tracker.error = true;
         }
+      }else{
+        this.tracker.error = true;
+      }
       }
 
       if (!bandera) {
@@ -237,14 +291,17 @@ class NewScene extends Phaser.Scene {
   templateUrl: "./vestir-hombre.component.html",
   styleUrls: ["./vestir-hombre.component.css"],
 })
-export class VestirHombreComponent implements OnInit, OnDestroy {
+export class VestirHombreComponent implements OnInit, OnDestroy, DoCheck {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
+  juego: Juego;
 
-  message: any;
+  checkpoints: boolean[];
 
-  constructor(private router: Router, private service: DataService) {
+
+  constructor(private router: Router, private juegoService: JuegoService) {
+    this.checkpoints = [false, false, false, false, false, false];
     this.scene = new NewScene();
 
     this.config = {
@@ -266,22 +323,103 @@ export class VestirHombreComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
-    this.service.currentMessage.subscribe(
-      (message) => (this.message = message)
-    );
-    console.log(this.message);
+
+    this.juegoService
+      .selectJuego(localStorage.getItem("id_juego"))
+      .subscribe((res) => {
+        this.juego = res;
+
+        this.juego.partidas.push({
+          fecha_inicio: new Date(),
+        });
+        
+        
+
+      
+        this.juegoService.updateJuego(this.juego).subscribe((res) => {
+          this.juego = res;
+          localStorage.setItem(
+            "id_partida",
+            this.juego.partidas.slice(-1)[0]._id
+          );
+
+        });
+      });
+    
   }
 
-  ngDoCheck(): void {
-    // if (this.scene.aux === true){
-    //   this.router.navigate(['actividades/listar']);
-    //   this.scene.aux = false;
-    // }
+  ngDoCheck() {
+
+
+      if (this.scene.tracker){
+  
+        if ((this.scene.correcto[0] || this.scene.tracker.error) && !this.checkpoints[0]){
+    
+         
+          this.tracking(0);
+        
+        }else if ((this.scene.correcto[1] || this.scene.tracker.error) && !this.checkpoints[1]){
+    
+         
+          this.tracking(1);
+        
+        }else if ((this.scene.correcto[2]|| this.scene.tracker.error) && !this.checkpoints[2]){
+    
+         
+          this.tracking(2);
+        
+        }else if ((this.scene.correcto[3] || this.scene.tracker.error) && !this.checkpoints[3]){
+    
+         
+          this.tracking(3);
+        
+        }else if ((this.scene.correcto[4] || this.scene.tracker.error) && !this.checkpoints[4]){
+    
+         
+          this.tracking(4);
+        
+        }else if ((this.scene.correcto[5] || this.scene.tracker.error) && !this.checkpoints[5]){
+    
+         
+          this.tracking(5);
+        
+        }
+      }
+      
   }
 
   regresar() {
     this.router.navigate(["actividades/listar"]);
   }
+
+  tracking(i) {
+    
+    console.log("AQUI->  "+i)
+    const detalle: DetallePartida = {
+      ok: !this.scene.tracker.error,
+
+      objetivo: this.scene.tracker.objetivo,
+
+      accion: this.scene.tracker.accion,
+    };
+
+    this.juego.partidas.map((p) =>
+      p._id === localStorage.getItem("id_partida")
+        ? p.detalles_partida.push(detalle)
+        : p
+    );
+
+    this.juegoService.updateJuego(this.juego).subscribe((res2) => {
+      console.log(res2);
+    });
+
+    if (!this.scene.tracker.error) {
+      this.checkpoints[i] = true;
+    } else {
+      this.scene.tracker.error = false;
+    }
+  }
+
 
   
   ngOnDestroy(){
