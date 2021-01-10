@@ -89,7 +89,7 @@ export class UsersListComponent implements OnInit{
     
      this.dialog.open(EditUserComponent, {
       width: "420px",
-      data: JSON.parse(JSON.stringify(row)),
+      data: { data : JSON.parse(JSON.stringify(row)), title: 'Editar Usuario'},
       disableClose: true,
       
       
@@ -108,12 +108,10 @@ export class UsersListComponent implements OnInit{
 
     this.dialog.open(EditUserComponent, {
       width: "420px",
-      data: {},
       disableClose: true,
       
     }).afterClosed().subscribe(result => {
       if (result){
-        
         this.guardarUsuario(result);
       }
         

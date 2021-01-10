@@ -31,7 +31,6 @@ export class EditUserComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   usuario: Persona = {
-    _id : '',
     
     cedula : '',
 
@@ -48,6 +47,7 @@ export class EditUserComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
   myControl = new FormControl();
+  titulo = 'Nuevo Usuario';
   // options: string[] = ['One', 'Two', 'Three'];
   // filteredOptions: Observable<string[]>;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<EditUserComponent>, private formBuilder: FormBuilder, private userService: UsersService) { 
@@ -56,12 +56,12 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    console.log(this.usuario)
+    
+    console.log(this.usuario);
     
      if (this.data){
-
-      this.usuario = this.data;
+      this.titulo = this.data.title;
+      this.usuario = this.data.data;
      }
 
    console.log(this.usuario)

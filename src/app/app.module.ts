@@ -91,8 +91,11 @@ import { PremiosComponent } from './premios/premios.component';
 import { ArBoxComponent } from './ar-box/ar-box.component';
 import { EncuentraloComponent } from './encuentralo/encuentralo.component';
 import { SonigramComponent } from './sonigram/sonigram.component';
-
-
+import { HistorialComponent } from './historial/historial.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RecursosComponent } from './recursos/recursos.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { AyudaComponent } from './ayuda/ayuda.component';
 
 @NgModule({
   declarations: [
@@ -124,11 +127,16 @@ import { SonigramComponent } from './sonigram/sonigram.component';
     ArBoxComponent,
     EncuentraloComponent,
     SonigramComponent,
+    HistorialComponent,
+    RecursosComponent,
+    PerfilComponent,
+    AyudaComponent,
 
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
     BrowserAnimationsModule,
@@ -207,4 +215,3 @@ import { SonigramComponent } from './sonigram/sonigram.component';
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
-

@@ -3,6 +3,7 @@ import { AfterViewChecked, ChangeDetectorRef, Component, OnDestroy, OnInit } fro
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import {  } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-menu',
@@ -69,7 +70,7 @@ export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
   }
 
   prueba(){
-    this.router.navigate(['actividades/ar-box']);
+    this.router.navigate(['actividades/perfil']);
   }
   
   irPremios(){
@@ -78,6 +79,10 @@ export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
 
   irHome(){
     this.router.navigate(["/"]);
+  } 
+  
+  irHistorial(){
+    this.router.navigate(["actividades/historial"]);
   }
 
 

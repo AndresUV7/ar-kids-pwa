@@ -104,6 +104,8 @@ class NewScene extends Phaser.Scene {
 
     this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
       if (obj.name == "pantalon" && !this.correcto[0]) {
+        window.navigator.vibrate(200);
+
         obj.setScale(0.9);
       }
 

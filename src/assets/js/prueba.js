@@ -253,3 +253,8 @@ can1.recognize();
 
 
 }
+
+
+function push(){
+   console.log("push")
+}

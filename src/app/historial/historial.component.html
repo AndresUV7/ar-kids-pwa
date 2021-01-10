@@ -1,0 +1,75 @@
+
+<!-- <div *ngFor="let item of historial">
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div> -->
+
+<!-- <h1>{{ name }}</h1>
+
+<ng-container *ngIf="infinite | async; let items">
+
+	<cdk-virtual-scroll-viewport class="example-viewport"
+   [itemSize]="itemSize" [minBufferPx]="itemSize" [maxBufferPx]="itemSize">
+		<div *cdkVirtualFor="let item of items; trackBy: trackByIdx"
+         class="example-item">
+         <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{item.d.nombre}}</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            {{item.t}}
+          </mat-card-content>
+        </mat-card>
+     </div>
+	</cdk-virtual-scroll-viewport>
+
+</ng-container> -->
+
+<h4>HISTORIAL</h4>
+<div class="search-results"
+      infinite-scroll
+      [infiniteScrollDistance]="scrollDistance"
+      [infiniteScrollUpDistance]="scrollUpDistance"
+      [infiniteScrollThrottle]="throttle"
+      (scrolled)="onScrollDown()"
+      (scrolledUp)="onUp()"
+      [scrollWindow]="false">
+      
+  <div *ngFor="let i of array">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>{{i.d.nombre}}</mat-card-title>
+        <!-- <mat-card-subtitle>{Dog Breed}</mat-card-subtitle> -->
+      </mat-card-header>
+      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      <mat-card-content>
+        <p>
+          {{convertirDate(i.t)}}
+        </p>
+      </mat-card-content>
+      <!-- <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+    </mat-card>
+  </div>
+  
+</div>

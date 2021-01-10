@@ -22,6 +22,8 @@ import { PictoComponent } from './picto/picto.component';
 import { ArBoxComponent } from './ar-box/ar-box.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { EncuentraloComponent } from './encuentralo/encuentralo.component';
+import { HistorialComponent } from './historial/historial.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent, canActivate: [LoggedGuard] },
@@ -40,7 +42,7 @@ const routes: Routes = [
     children: [
       { path: "actividades/listar", component: CardResponsiveComponent },
       { path: "actividades/principal", component: CarouselComponent },
-      { path: "actividades/vestir", component: VestirHombreComponent },
+      { path: "actividades/vestir", component: JuegoComponent },
       {
         path: "actividades/dientes",
         component: HygieneAntistressSkillComponent,
@@ -52,6 +54,9 @@ const routes: Routes = [
 
   { path: "actividades/admin-users", component: UsersListComponent },
   { path: "actividades/edit-users", component: EditUserComponent },
+  { path: "actividades/historial", component: HistorialComponent },
+  { path: "actividades/perfil", component: PerfilComponent},
+
 
     ],
   },

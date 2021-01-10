@@ -162,6 +162,7 @@ class NewScene extends Phaser.Scene {
       this.sound.stopAll();
 
       if (obj.name == "jean" && !this.correcto) {
+        
         obj.x = dragX;
         obj.y = dragY;
       }

@@ -2,7 +2,7 @@ import { Curso } from './Curso';
 import { Usuario } from './Usuario';
 export interface Persona {
 
-    _id : string;
+    _id ?: string;
     
     cedula : string;
 
