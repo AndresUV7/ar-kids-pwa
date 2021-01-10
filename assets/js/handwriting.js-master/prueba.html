@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./handwriting.canvas.js"></script>
+    
+    
+</head>
+
+<style>
+    #outer {
+    width: 100%;
+    text-align: center;
+    }
+
+    #inner {
+    display: inline-block;
+    }
+</style>
+<body>
+
+    <div id ="outer">
+        <div id ="inner">
+            <canvas id="can" width="300" height="100" style="border: 2px solid; cursor: crosshair;"></canvas>
+            <br>
+            <button  onclick = "reconocer()">OK </button>
+            <button  onclick = "borrar()">X </button>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var can1 = new handwriting.Canvas(document.getElementById("can"));
+ 
+  can1.setCallBack(function(data, err) {
+    if(err) throw err;
+    else window.parent.window.postMessage({"for":"user","data":data[0]}, 'https://192.168.100.3:4200');
+});
+
+
+
+//Set options
+can1.setOptions(
+    {
+        language: "en",
+        numOfReturn: 3
+    }
+);
+
+
+</script>
+
+<script>
+    function reconocer(){
+        can1.recognize()
+        
+    }   
+    
+     function borrar(){
+        can1.erase()
+        
+    }
+</script>
+</html>
