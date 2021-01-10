@@ -48,7 +48,8 @@
       [infiniteScrollDistance]="scrollDistance"
       [infiniteScrollUpDistance]="scrollUpDistance"
       [infiniteScrollThrottle]="throttle"
-      (scrolled)="onScrollDown()"
+      (scrolled)="onScrollDown($event)"
+      (scrolledUp)="onUp($event)"
       [scrollWindow]="false">
       
   <div *ngFor="let i of array">
