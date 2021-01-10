@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { JuegoService } from '../services/juegos/juego.service';
 import { Juego } from '../models/Juego';
 import { DetallePartida } from '../models/DetallePartida';
+import Phaser from 'phaser';
 
 class NewScene extends Phaser.Scene {
   cuchara: any;

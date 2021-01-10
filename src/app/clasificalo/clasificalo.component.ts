@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 declare function movimiento(): any;
 declare function validar(): any;
-
+import Phaser from 'phaser';
 class NewScene extends Phaser.Scene {
   cursor: any;
   recta: any;

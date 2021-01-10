@@ -6,6 +6,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 declare function getTime(p): any;
 declare function getActive(): any;
 declare function mediaPlayer(p, q): any;
+import Phaser from 'phaser';
 
 class NewScene extends Phaser.Scene {
 

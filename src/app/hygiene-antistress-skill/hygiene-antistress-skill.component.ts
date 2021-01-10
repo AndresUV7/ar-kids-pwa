@@ -4,6 +4,7 @@ import { JuegoService } from '../services/juegos/juego.service';
 import { DetallePartida } from '../models/DetallePartida';
 import { DataService } from '../services/data.service';
 import { HIGIENE } from '../../utils/recursos';
+import Phaser from 'phaser';
 
 class NewScene extends Phaser.Scene {
   boca_der_sup: any;
