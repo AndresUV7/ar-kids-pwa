@@ -11,7 +11,6 @@ export class AppComponent implements OnInit{
   ngOnInit(){
 
     navigator.serviceWorker.register('ngsw-worker.js').then(function(registration) {
-      document.querySelector('.some-button').addEventListener('click', function onClick() {
           webNotification.showNotification('Example Notification', {
               serviceWorkerRegistration: registration,
               body: 'Notification Text...',
@@ -40,7 +39,6 @@ export class AppComponent implements OnInit{
               }
           });
       });
-  });
 }
   
 }
