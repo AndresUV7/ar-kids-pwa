@@ -9,8 +9,8 @@ export class AppComponent implements OnInit{
   title = 'ar-kids-pwa';
   
   ngOnInit(){
-    
-    navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+
+    navigator.serviceWorker.register('ngsw-worker.js').then(function(registration) {
       document.querySelector('.some-button').addEventListener('click', function onClick() {
           webNotification.showNotification('Example Notification', {
               serviceWorkerRegistration: registration,
