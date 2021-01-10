@@ -96,7 +96,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RecursosComponent } from './recursos/recursos.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
-
 @NgModule({
   declarations: [
     AppComponent,
