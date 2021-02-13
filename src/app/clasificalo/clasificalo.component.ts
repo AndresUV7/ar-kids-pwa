@@ -164,9 +164,18 @@ class NewScene extends Phaser.Scene {
     this.physics.add.collider(this.prenda, this.rectas[5]);
     this.physics.add.collider(this.prenda, this.rectas[6]);
     this.physics.add.collider(this.prenda, this.rectas[7]);
+
   }
 
-  update() {}
+  update() {
+
+    if(this.prenda.x > 25 && this.prenda.x < 75 && this.prenda.y > 60 && this.prenda.y < 80  ){
+
+      this.prenda.destroy();
+
+    }
+
+  }
 
   izquierda() {
     this.prenda.body.setVelocityX(-50);
@@ -184,6 +193,8 @@ class NewScene extends Phaser.Scene {
   abajo() {
     this.prenda.body.setVelocityY(50);
   }
+
+ 
 }
 
 @Component({

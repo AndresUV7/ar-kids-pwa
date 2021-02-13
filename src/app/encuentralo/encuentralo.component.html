@@ -9,11 +9,10 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;"
 
           <a-entity
             gltf-model="url(../../assets/3d/frutas/fresa.glb)"
-            scale="0.6 0.6 0.6"
+            scale="1 1 1"
             position="0 0 0"
             look-at="[gps-camera]"
-            gps-entity-place="latitude:  -2.9046383000000002
-            ; longitude: -79.0248546;"
+            [attr.gps-entity-place]="positions"
             
           ></a-entity>
           
@@ -21,16 +20,27 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;"
 
             gltf-model="url(../../assets/3d/plato/lechuga.glb)"
             scale="1 1 1"
-            position="0 0 0"
+            position="2 1 0"
             look-at="[gps-camera]"
-            gps-entity-place="latitude:  -2.9047333
-            ; longitude: -79.0247700;"
+            [attr.gps-entity-place]="positions"
             clickhandler
             class="clickable"
           ></a-entity>
 
+          <a-entity
 
+          gltf-model="url(../../assets/3d/plato/aguacate.glb)"
+          scale="1 1 1"
+          position="6 2 0"
+          look-at="[gps-camera]"
+          [attr.gps-entity-place]="positions"
+          clickhandler
+          class="clickable"
+        ></a-entity>
 
+        
       <a-camera gps-camera rotation-reader> </a-camera>
+
+    
 
     </a-scene>

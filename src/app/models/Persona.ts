@@ -10,6 +10,8 @@ export interface Persona {
 
     apellido : string;
 
+    email: string;
+
     fecha_nacimiento : Date;
     
     sexo : string;

@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 // import Speech from 'speak-tts'
+import { FormControl, Validators, FormGroupDirective, NgForm, FormGroup, FormBuilder } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { Persona } from '../models/Persona';
+import { UsersService } from '../services/usuarios/users.service';
+import { RegisterService } from '../services/register.service';
 declare var webNotification: any
 declare function push(): any;
 @Component({
@@ -7,15 +12,85 @@ declare function push(): any;
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']
 })
-export class PerfilComponent implements OnInit {
+export class PerfilComponent implements OnInit, AfterViewChecked {
+  @ViewChild("formDirective", null) private formDirective: NgForm;
 
-  constructor() {
+  avatar: string;
+  showEmail: boolean;
+  showContra: boolean;
+  emailBlock: boolean;
+  contraBlock: boolean;
+  
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
+  matcher = new MyErrorStateMatcher();
+  
+  usuario: Persona = {
+    
+    cedula : '',
+    
+    nombre : '',
+    
+    apellido : '',
+    
+    fecha_nacimiento : null,
+    
+    sexo : 'M',
+    
+    usuario: null,
+
+    email: ''
+  };
+
+  credenciales2 = {
+    cedula: "",
+    contrasena: "",
+    contrasena2: "",
+  };
+
+  
+  profileForm: FormGroup;
+  constructor(private userService: UsersService, private formBuilder: FormBuilder, private registerService:RegisterService) {
+
+    this.showEmail = false;
+    this.showContra = false;
+    this.emailBlock = false;
+    this.contraBlock = false;
+   }
+
+
+   get f() { return this.profileForm.controls; }
+
+   ngAfterViewChecked(): void {
+     //Called after every check of the component's view. Applies to components only.
+     //Add 'implements AfterViewChecked' to the class.
+     if(!this.emailFormControl.hasError('email') && this.usuario.email !== ''){
+      this.emailBlock = false;
+    }else{
+      this.emailBlock = true;
+    }
    }
 
   ngOnInit() {
 
-    push();
+    this.profileForm = this.formBuilder.group({
+      contrasena: ["", Validators.required],
+      contrasena2: ["", Validators.required],
+    });
+
+    this.userService.selectPersona(localStorage.getItem("_id")).subscribe(res =>{
+      
+      console.log(res)
+      this.usuario  = res;
+      this.avatar = "https://icotar.com/initials/"+this.usuario.nombre[0];
+      console.log(this.avatar)
+
+   })
+
+    // push();
 
    
 
@@ -61,4 +136,55 @@ export class PerfilComponent implements OnInit {
     //   })
   }
 
+  
+  toggle(e){
+    
+    if (this.showEmail){
+      this.userService.updatePersona(this.usuario).subscribe(res =>{
+      
+        console.log(res)
+  
+     })
+  
+    }
+
+    if(this.usuario.email !== ''){
+      this.showEmail = !this.showEmail;
+    }
+    
+
+
+  }
+  
+  toggle2(e){
+
+    if(this.usuario.usuario.contrasena !== ''){
+      this.showContra = !this.showContra;
+    }
+
+    if (this.credenciales2.contrasena !== ''){
+
+      if (this.credenciales2.contrasena === this.credenciales2.contrasena2){
+  
+        this.credenciales2.cedula = this.usuario.cedula;
+  
+        this.registerService.registerUser2(this.credenciales2).subscribe(res =>{
+        
+          console.log(res)
+    
+       });
+  
+      }
+    }
+
+    this.formDirective.resetForm();
+  }
+
+}
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }

@@ -26,6 +26,7 @@ class NewScene extends Phaser.Scene {
   checkT: boolean[] = [false, false, false, false, false, false];
   track: any;
   trackT: any;
+  text: any;
 
   graphics: Phaser.GameObjects.Graphics;
   graphicsPath: any = [];
@@ -50,6 +51,7 @@ class NewScene extends Phaser.Scene {
     this.trackT = { ok: false, objetivo: "", accion: "", on: false };
     this.load.path = "/assets/img/";
 
+    this.load.audio("cancion", ["cancion_sandwich.mp3"]);
     this.load.image("indice", "indice.png");
     this.load.image("medio", "medio.png");
     this.load.image("anular", "anular.png");
@@ -67,6 +69,14 @@ class NewScene extends Phaser.Scene {
 
   create() {
     // console.log('enter create');
+
+    const cancion = this.sound.add("cancion", {loop: true});
+    this.text = this.add.text(440, 40 ,"PAN", {
+      color : "#26c998",
+      fontSize : 35,
+      fontFamily: '"Potta One", cursive'
+    });
+    cancion.play();
     this.input.addPointer(1);
     this.add.image(320, 180, "table").setDepth(-1);
     this.pulgar = this.add
@@ -187,6 +197,8 @@ class NewScene extends Phaser.Scene {
           this.pulgarPresionado &&
           !this.checkT[0]
         ) {
+          this.text.setText("LECHUGA");
+          window.navigator.vibrate(200);
           gameObject.x = 560 - 10;
           gameObject.y = 300;
           gameObject.setScale(1.5);
@@ -249,6 +261,8 @@ class NewScene extends Phaser.Scene {
           this.checkT[0] &&
           !this.checkT[1]
         ) {
+          this.text.setText("JAMÓN");
+          window.navigator.vibrate(200);
           gameObject.x = 557 - 10;
           gameObject.y = 303;
           gameObject.setScale(1.5);
@@ -304,6 +318,8 @@ class NewScene extends Phaser.Scene {
           !this.checkT[2] &&
           this.checkT[1]
         ) {
+          this.text.setText("QUESO");
+          window.navigator.vibrate(200);
           gameObject.x = 558 - 10;
           gameObject.y = 303;
           gameObject.setScale(1.5);
@@ -359,6 +375,8 @@ class NewScene extends Phaser.Scene {
           !this.checkT[3] &&
           this.checkT[2]
         ) {
+          this.text.setText("TOMATE");
+          window.navigator.vibrate(200);
           gameObject.x = 560 - 10;
           gameObject.y = 300;
           gameObject.setScale(1.5);
@@ -413,6 +431,9 @@ class NewScene extends Phaser.Scene {
           !this.checkT[4] &&
           this.checkT[3]
         ) {
+          this.text.setText("PAN");
+          window.navigator.vibrate(200);
+
           gameObject.x = 560 - 10;
           gameObject.y = 300;
           gameObject.setScale(1.5);
@@ -467,6 +488,9 @@ class NewScene extends Phaser.Scene {
           !this.checkT[5] &&
           this.checkT[4]
         ) {
+          this.text.setText("LISTO!!");
+          window.navigator.vibrate(200);
+
           gameObject.x = 560 - 10;
           gameObject.y = 290;
           gameObject.setScale(1.5);
@@ -497,6 +521,7 @@ class NewScene extends Phaser.Scene {
 
     this.input.on(eventos.GAMEOBJECT_UP, (pointer, gameObject) => {
       if (gameObject.name == "pulgar" && NewScene.touch) {
+        window.navigator.vibrate(200);
         this.pulgarPresionado = false;
       }
     });
@@ -640,6 +665,8 @@ class NewScene extends Phaser.Scene {
             this._x = pointer.x;
 
             if (this.contador == 1) {
+              this.text.setText("LECHUGA");
+
               this.ingredienteAux.destroy();
               this.ingrediente.destroy();
               this.ingrediente_ = this.add
@@ -694,6 +721,8 @@ class NewScene extends Phaser.Scene {
             }
 
             if (this.contador == 3) {
+              this.text.setText("JAMÓN");
+
               console.log("object");
               this.ingredienteAux.destroy();
               this.ingrediente.destroy();
@@ -746,6 +775,8 @@ class NewScene extends Phaser.Scene {
             }
 
             if (this.contador == 5) {
+              this.text.setText("QUESO");
+
               console.log("object");
               this.ingredienteAux.destroy();
               this.ingrediente.destroy();
@@ -798,6 +829,8 @@ class NewScene extends Phaser.Scene {
             }
 
             if (this.contador == 7) {
+              this.text.setText("TOMATE");
+
               console.log("object");
               this.ingredienteAux.destroy();
               this.ingrediente.destroy();
@@ -850,6 +883,8 @@ class NewScene extends Phaser.Scene {
             }
 
             if (this.contador == 9) {
+              this.text.setText("PAN");
+
               this.ingredienteAux.destroy();
               this.ingrediente.destroy();
               this.ingrediente_ = this.add
@@ -901,6 +936,8 @@ class NewScene extends Phaser.Scene {
             }
 
             if (this.contador == 11) {
+              this.text.setText("LISTO!!");
+
               this.ingredienteAux.destroy();
               this.ingrediente.destroy();
               this.ingrediente_ = this.add

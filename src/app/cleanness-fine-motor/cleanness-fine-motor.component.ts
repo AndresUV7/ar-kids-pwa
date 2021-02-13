@@ -38,6 +38,13 @@ class NewScene extends Phaser.Scene {
   stars : any
   initialTime : number;
   static touch: boolean;
+  cucharaAudio: any;
+  cuchilloAudio: any;
+  tenedorAudio: any;
+  platoAudio: any;
+  platoHondoAudio: any;
+  servilletaAudio: any;
+  tazaAudio: any;
 
   constructor() {
     super("NewScene");
@@ -50,6 +57,15 @@ class NewScene extends Phaser.Scene {
     this.puntaje = 0;
     this.load.path = "/assets/img/";
     // this.load.path = "/ar-kids-pwa/assets/img/";
+    this.load.audio("cuchara", ["cuchara.mp3"]);
+    this.load.audio("tenedor", ["tenedor.mp3"]);
+    this.load.audio("plato", ["plato.mp3"]);
+    this.load.audio("plato_hondo", ["plato hondo.mp3"]);
+    this.load.audio("servilleta", ["servilleta.mp3"]);
+    this.load.audio("taza", ["taza.mp3"]);
+    this.load.audio("cuchillo", ["cuchillo.mp3"]);
+    
+
     this.load.image("fondo", "fondo-mesa.jpg");
     this.load.image("cuchara", "cuchara.png");
     this.load.image("tenedor", "tenedor.png");
@@ -69,6 +85,15 @@ class NewScene extends Phaser.Scene {
   }
 
   create() {
+
+    this.cucharaAudio =  this.sound.add("cuchara");
+    this.cuchilloAudio =  this.sound.add("cuchillo");
+    this.tenedorAudio =  this.sound.add("tenedor");
+    this.platoAudio =  this.sound.add("plato");
+    this.platoHondoAudio =  this.sound.add("plato_hondo");
+    this.servilletaAudio =  this.sound.add("servilleta");
+    this.tazaAudio =  this.sound.add("taza");
+
     var x = 25;
     for (let i = 0; i < this.lifes.length; i++) {
         this.lifes[i]= this.add.image(x, 30, "life");
@@ -161,6 +186,8 @@ class NewScene extends Phaser.Scene {
 
               
             this.puntaje+=2;
+            this.cucharaAudio.play();
+            
             console.log(this.puntaje)
 
               this.check_cuchara = true;
@@ -187,6 +214,8 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.x < 600 &&
               this.input.pointer2.y < 370
             ) {
+            
+            this.cucharaAudio.play();
               this.check_cuchara = true;
               
 
@@ -246,6 +275,8 @@ class NewScene extends Phaser.Scene {
             ) {
               
             this.puntaje+=2;
+            this.cuchilloAudio.play();
+
             console.log(this.puntaje)
 
               this.check_cuchillo = true;
@@ -269,6 +300,9 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.x < 540 &&
               this.input.pointer2.y < 370
             ) {
+            
+            this.cuchilloAudio.play();
+
               this.check_cuchillo = true;
               
 
@@ -323,6 +357,8 @@ class NewScene extends Phaser.Scene {
             ) {
               
             this.puntaje+=2;
+            this.tenedorAudio.play();
+
             console.log(this.puntaje)
 
               this.check_tenedor = true;
@@ -349,7 +385,10 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 370
             ) {
               this.check_tenedor = true;
-            
+              this.tenedorAudio.play();
+              
+
+              
 
               this.cuchara = this.add
                 .image(110, 100, "cuchara")
@@ -411,6 +450,8 @@ class NewScene extends Phaser.Scene {
             ) {
               
             this.puntaje+=2;
+            this.servilletaAudio.play();
+
             console.log(this.puntaje)
 
               this.check_servilleta = true;
@@ -434,6 +475,10 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.y < 370
             ) {
               this.check_servilleta = true;
+            this.servilletaAudio.play();
+
+            
+
             
 
             }else{
@@ -492,6 +537,8 @@ class NewScene extends Phaser.Scene {
             )
           ) {
             this.puntaje+=2;
+            this.platoAudio.play();
+
             console.log(this.puntaje)
 
             this.check_plato = true;
@@ -517,6 +564,9 @@ class NewScene extends Phaser.Scene {
                 this.input.pointer2.x < 450 &&
                 this.input.pointer2.y < 370
               ) {
+            
+                this.platoAudio.play();
+
                 this.check_plato = true;
 
                 this.vaso = this.add.image(80, 80, "vaso").setInteractive();
@@ -600,6 +650,8 @@ class NewScene extends Phaser.Scene {
             ) {
               
             this.puntaje+=2;
+            this.platoHondoAudio.play();
+
             console.log(this.puntaje)
               this.check_plato_hondo = true;
 
@@ -628,6 +680,9 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.x < 440 &&
               this.input.pointer2.y < 370
             ) {
+            
+            this.platoHondoAudio.play();
+
               this.check_plato_hondo = true;
               
 
@@ -693,11 +748,13 @@ class NewScene extends Phaser.Scene {
           if (!NewScene.touch) {
             if (
               Phaser.Input.Keyboard.JustDown(
-                this.input.keyboard.addKey(keyCodes.V)
+                this.input.keyboard.addKey(keyCodes.T)
               )
             ) {
               
             this.puntaje+=2;
+            this.tazaAudio.play();
+
             console.log(this.puntaje)
 
               this.check_vaso = true;
@@ -723,6 +780,9 @@ class NewScene extends Phaser.Scene {
               this.input.pointer2.x < 570 &&
               this.input.pointer2.y < 150
             ) {
+            
+            this.tazaAudio.play();
+
               this.check_vaso = true;
          
 
@@ -813,7 +873,10 @@ class NewScene extends Phaser.Scene {
 
 
   quitarVida(){
+
     if (NewScene.touch){
+      window.navigator.vibrate(200);
+
       if(this.lifes.length > 0){
         this.lifes[this.lifes.length -1].destroy();
         this.lifes.pop();

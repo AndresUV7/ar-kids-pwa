@@ -9,7 +9,7 @@ export class HistorialService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.14:3000/historial";
+  Url="https://192.168.100.7:3000/historial";
 
   
   selectHistorial(user_id) {

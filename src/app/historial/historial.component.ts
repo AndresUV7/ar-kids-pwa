@@ -11,6 +11,7 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
   templateUrl: './historial.component.html',
   styleUrls: ['./historial.component.css']
 })
+
 export class HistorialComponent {
 
   array = [];
@@ -20,10 +21,14 @@ export class HistorialComponent {
   scrollUpDistance = 2;
   direction = "";
   modalOpen = false;
+  aux: string;
+  aux2: string;
   private historial: Historial[];
 
 
   constructor(private historialService: HistorialService) {
+    this.aux = "";
+    this.aux2 = "";
   this.historialService.selectHistorial(localStorage.getItem("_id"))
       .subscribe((res) => {
         this.historial = res;
@@ -79,7 +84,25 @@ export class HistorialComponent {
   }
 
   convertirDate(d: string){
-    return d.substring(0,10)+' / '+d.substring(11,16);
+
+    if (this.aux === d.substring(0,10)+' / '+d.substring(11,16)){
+      
+      return "";
+    }else{
+      
+      this.aux = d.substring(0,10)+' / '+d.substring(11,16);
+      return this.aux;
+    }
+  }
+  
+  convertirDate2(d: string){
+
+    if (this.aux2 === d.substring(0,10)+' / '+d.substring(11,16)){
+      return "";
+    }else{
+      this.aux2 = d.substring(0,10)+' / '+d.substring(11,16);
+      return this.aux2;
+    }
   }
 }
 

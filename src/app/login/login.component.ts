@@ -81,10 +81,10 @@ export class LoginComponent implements OnInit {
     this.service.login(this.credenciales).subscribe(
       (res) => {
         //console.log(res);
-        //alert(res);
-
         localStorage.setItem("token", res.token);
         localStorage.setItem("_id", res._id);
+        localStorage.setItem("gender", res.gender);
+        
 
         // this.partida = {
         //     usuario : localStorage.getItem('_id')

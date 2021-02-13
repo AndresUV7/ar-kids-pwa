@@ -25,7 +25,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     if (localStorage.getItem("cat_act") == "1") {
       this.members = [
         {
-          title: "PREGUNTADOS",
+          title: "PREGUNTA2",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -33,7 +33,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/A",
         },
         {
-          title: "PICTOGRAM",
+          title: "AR-BOX",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -41,7 +41,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/B",
         },
         {
-          title: "MAGIC CUBE",
+          title: "PICTOGRAM",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -49,7 +49,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/C",
         },
         {
-          title: "GAME",
+          title: "CEPILLA2",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -68,7 +68,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/E",
         },
         {
-          title: "PUZZLE",
+          title: "AR-BOX",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -76,7 +76,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/F",
         },
         {
-          title: "MAGIC CUBE",
+          title: "CLASIFÍCALO",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -84,7 +84,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/G",
         },
         {
-          title: "GAME",
+          title: "A VESTIR",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -95,7 +95,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     } else if (localStorage.getItem("cat_act") == "3") {
       this.members = [
         {
-          title: "PREGUNTADOS",
+          title: "PREGUNTA2",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -103,7 +103,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/I",
         },
         {
-          title: "CHALLENGE",
+          title: "AR-BOX",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -111,7 +111,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/J",
         },
         {
-          title: "MAGIC CUBE",
+          title: "ENCUÉNTRALO",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -119,7 +119,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/K",
         },
         {
-          title: "GAME",
+          title: "LUNCH TIME",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -138,7 +138,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/M",
         },
         {
-          title: "MEMORAMA",
+          title: "AR-BOX",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -146,7 +146,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/N",
         },
         {
-          title: "MAGIC CUBE",
+          title: "SONIGRAMA",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -154,7 +154,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           url: "https://icotar.com/initials/O",
         },
         {
-          title: "GAME",
+          title: "LA MESA",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -181,7 +181,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     localStorage.setItem("tip_act", title);
     
 
-    if (title == "PREGUNTADOS"){
+    if (title == "PREGUNTA2"){
       if (localStorage.getItem("cat_act") == "1") {
         let juego: Juego = {
           usuario: localStorage.getItem("_id"),
@@ -232,7 +232,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
      
       let juego: Juego = {
         usuario: localStorage.getItem("_id"),
-        nombre: "Preguntados: Objetos apara tareas hogar",
+        nombre: "Preguntados: Objetos para tareas hogar",
         descripcion: "Juego para reconocer objetos para las tareas del hogar",
       };
 
@@ -247,40 +247,41 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
 
     }
 
+    if (title == "CEPILLA2") {
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Cepillado de dientes",
+        descripcion: "Juego para practicar el cepillado de dientes",
+      };
 
-    if (title == "GAME") {
-      
-      if (localStorage.getItem("cat_act") == "1") {
-        let juego: Juego = {
-          usuario: localStorage.getItem("_id"),
-          nombre: "Cepillado de dientes",
-          descripcion: "Juego para practicar el cepillado de dientes",
-        };
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
 
-        this.juegoService.insertJuego(juego).subscribe((res) => {
-          console.log(res);
+        localStorage.setItem("id_juego", res._id);
 
-          localStorage.setItem("id_juego", res._id);
+        this.router.navigate(["actividades/instrucciones"]);
+      });
+    }
 
-          this.router.navigate(["actividades/instrucciones"]);
-        });
-      }else  if (localStorage.getItem("cat_act") == "2") {
-        console.log("vale")
-        let juego: Juego = {
-          usuario: localStorage.getItem("_id"),
-          nombre: "Vestir Mujer",
-          descripcion: "Juego para aprender a vestirse (mujeres)",
-        };
-  
-        this.juegoService.insertJuego(juego).subscribe((res) => {
-          console.log(res);
-  
-          localStorage.setItem("id_juego", res._id);
-  
-          this.router.navigate(["actividades/instrucciones"]);
-        });
-    } else
-    if (localStorage.getItem("cat_act") == "3") {
+
+    if (title == "A VESTIR") {
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Vestir Mujer",
+        descripcion: "Juego para aprender a vestirse (mujeres)",
+      };
+
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
+
+        localStorage.setItem("id_juego", res._id);
+
+        this.router.navigate(["actividades/instrucciones"]);
+      });
+    }
+
+    if (title == "LUNCH TIME") {
+
       let juego: Juego = {
         usuario: localStorage.getItem("_id"),
         nombre: "Preparación de un sandwich",
@@ -295,9 +296,10 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
         this.router.navigate(["actividades/instrucciones"]);
       });
 
-      
-    } else {
-     
+
+    }
+
+    if (title == "LA MESA") {
       let juego: Juego = {
         usuario: localStorage.getItem("_id"),
         nombre: "Servir la mesa",
@@ -311,14 +313,20 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
 
         this.router.navigate(["actividades/instrucciones"]);
       });
+
     }
-    } 
+
+
 
     if(title == "PICTOGRAM"){
       this.router.navigate(["actividades/pictogram"]);
+
 
     }
 
 
   }
+
+
+ 
 }

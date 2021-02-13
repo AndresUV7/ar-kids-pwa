@@ -6,6 +6,7 @@ import { DataService } from '../services/data.service';
 import { HIGIENE } from '../../utils/recursos';
 import Phaser from 'phaser';
 
+
 class NewScene extends Phaser.Scene {
   boca_der_sup: any;
   boca_der_sup_2: any;
@@ -42,8 +43,14 @@ class NewScene extends Phaser.Scene {
     this.gameOver = false;
     this.contador1 = [0, 0, 0, 0, 0, 0, 0, 0];
     this.contador2 = [0, 0, 0, 0, 0, 0, 0, 0];
-    this.load.path = "/ar-kids-pwa/assets/img/";
+    // this.load.path = "/ar-kids-pwa/assets/img/";
     this.load.path = "/assets/img/";
+    // this.load.image("font", "font.png");
+    // this.load.json("font_json", "font.json")
+
+  
+    this.load.audio("cancion", ["cancion_dientes.mp3"]);
+    
     this.load.image("boca_der_sup_01_x", "boca-der-sup_01_x.png");
     this.load.image("boca_der_sup_01", "boca-der-sup_01.png");
     this.load.image("boca_der_sup_02", "boca-der-sup_02.png");
@@ -81,27 +88,40 @@ class NewScene extends Phaser.Scene {
     this.load.image("boca_abierta_4_2", "boca-abierta_04_02.png");
 
     this.load.image("cepillo", "cepillo_dientes.png");
+
+  
   }
 
   create() {
     
     
+    // const fontConfig = this.cache.json.get("font_json");
+    // this.cache.bitmapFont.add('myFont', Phaser.GameObjects.RetroFont.Parse(this, fontConfig));
+    
 
-   
+    const cancion = this.sound.add("cancion");
+    cancion.play();
 
     this.puntaje = 0; 
     this.initialTime = 180;
   
     this.timer = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
 
-    this.text = this.add.text(0, 0 ,this.formatTime(this.initialTime), {
-      color : "black",
-      fontSize : 40
+    // this.text = this.add.bitmapText(0, 0, 'myFont', this.formatTime(this.initialTime), 30, 10).setTint(0x3f51b5);
+
+    this.text = this.add.text(30, 0 ,this.formatTime(this.initialTime), {
+      color : "#3f51b5",
+      fontSize : 40,
+      fontFamily: '"Potta One", cursive',
+      fontStyle: 'bold'
+
     });
-    
-    this.textP = this.add.text(420, 0 ,"Puntos: "+this.puntaje.toString(), {
-      color : "black",
-      fontSize : 35
+
+    this.textP = this.add.text(460, 0 ,"PUNTOS: "+this.puntaje.toString(), {
+      color : "#26c998",
+      fontSize : 30,
+      fontFamily: '"Potta One", cursive',
+      fontStyle: 'bold'
     });
     this.boca_izq_sup = this.add
       .image(160, 145, "boca_izq_sup_01_x")
@@ -568,7 +588,8 @@ class NewScene extends Phaser.Scene {
 
   actualizaPuntaje(){
     this.puntaje+=2;
-    this.textP.setText("Puntos: "+this.puntaje)
+    window.navigator.vibrate(200);
+    this.textP.setText("PUNTOS: "+this.puntaje)
 
   }
 // 

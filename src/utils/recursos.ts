@@ -43,8 +43,8 @@ export const HIGIENE: Recurso[] = [
         nombre : 'corta uñas',
         rutas : [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/higiene%2Fcortaunas.glb?alt=media&token=9ae4a219-8a48-443b-bad6-e0ca195cada1',
-            'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fcortaunas_r.mp3?alt=media&token=e4661663-bcb0-4fe9-b6f5-83c2695eb940',
-            'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fcepillo_r.mp3?alt=media&token=24bcf07b-658d-4592-b381-8f7a43c817d2'    
+            'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fcortaunas_p.mp3?alt=media&token=0ce0bcf6-3efc-4f5a-93af-60111ad1ff3e',
+            'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fcortaunas_r.mp3?alt=media&token=e4661663-bcb0-4fe9-b6f5-83c2695eb940'    
         ],
         claves: [
             'uñas'
@@ -667,7 +667,7 @@ export const HOGAR : Recurso[] = [
         escala : '0.5 0.5 0.5'
     },
     {
-        nombre : 'esponja',
+        nombre : 'Esponja',
         rutas : [
 
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/hogar%2Fesponja.glb?alt=media&token=f21713cf-e261-4258-9948-4dd2739187e0',

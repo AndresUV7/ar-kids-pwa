@@ -32,6 +32,25 @@ class NewScene extends Phaser.Scene {
 
     this.load.path = "/assets/img/";
 
+    this.load.audio("bividi_c", ["bividi_c.mp3"]);
+    this.load.audio("bividi_e_l", ["bividi_e_l.mp3"]);
+    this.load.audio("calcetines_c", ["calcetines_c.mp3"]);
+    this.load.audio("calcetines_e_l", ["calcetines_e_l.mp3"]);
+    this.load.audio("camiseta_e_b", ["camiseta_e_b.mp3"]);
+    this.load.audio("camiseta_e_l", ["camiseta_e_l.mp3"]);
+    this.load.audio("camiseta_c", ["camiseta_c.mp3"]);
+    this.load.audio("gorra_c", ["gorra_c.mp3"]);
+    this.load.audio("gorra_e_c", ["gorra_e_c.mp3"]);
+    this.load.audio("gorra_e_l", ["gorra_e_l.mp3"]);
+    this.load.audio("pantalon_c", ["pantalon_c.mp3"]);
+    this.load.audio("pantalon_e_l", ["pantalon_e_l.mp3"]);
+    this.load.audio("zapatos_e_c", ["zapatos_e_c.mp3"]);
+    this.load.audio("zapatos_e_l", ["zapatos_e_l.mp3"]);
+    this.load.audio("zapatos_e_p", ["zapatos_e_p.mp3"]);
+    this.load.audio("zapatos_c", ["zapatos_c.mp3"]);
+
+
+
     this.load.image("habitacion", "habitacion.png");
     // this.load.image("joven", "hombre1.png");
     this.load.image("camiseta", "camiseta1.png");
@@ -48,6 +67,25 @@ class NewScene extends Phaser.Scene {
 
   create() {
     // console.log('enter create');
+    const bividiAudio1 = this.sound.add("bividi_c");
+    const bividiAudio2 = this.sound.add("bividi_e_l");
+    const calcetinesAudio1 = this.sound.add("calcetines_c");
+    const calcetinesAudio2 = this.sound.add("calcetines_e_l");
+    const camisetaAudio1 = this.sound.add("camiseta_c");
+    const camisetaAudio2 = this.sound.add("camiseta_e_l");
+    const camisetaAudio3 = this.sound.add("camiseta_e_b");
+    const gorraAudio1 = this.sound.add("gorra_c");
+    const gorraAudio2 = this.sound.add("gorra_e_l");
+    const gorraAudio3 = this.sound.add("gorra_e_c");
+    const pantalonAudio1 = this.sound.add("pantalon_c");
+    const pantalonAudio2 = this.sound.add("pantalon_e_l");
+    const zapatosAudio1 = this.sound.add("zapatos_c");
+    const zapatosAudio2 = this.sound.add("zapatos_e_l");
+    const zapatosAudio3 = this.sound.add("zapatos_e_c");
+    const zapatosAudio4 = this.sound.add("zapatos_e_p");
+
+
+
     this.add.image(320, 180, "habitacion").setDepth(-1);
     this.cabeza = this.add.image(100, 70, "cabeza").setInteractive();
     this.tronco = this.add.image(100, 140, "tronco").setInteractive();
@@ -110,27 +148,34 @@ class NewScene extends Phaser.Scene {
       }
 
       if (obj.name == "camiseta" && !this.correcto[1]) {
+        window.navigator.vibrate(200);
         obj.setScale(0.9);
       }
 
       if (obj.name == "calcetines" && !this.correcto[2]) {
+        window.navigator.vibrate(200);
         obj.setScale(0.9);
       }
 
       if (obj.name == "zapatos" && !this.correcto[3]) {
+        window.navigator.vibrate(200);
         obj.setScale(0.9);
       }
 
       if (obj.name == "bividi" && !this.correcto[4]) {
+        window.navigator.vibrate(200);
         obj.setScale(0.9);
       }
 
       if (obj.name == "gorra" && !this.correcto[5]) {
+        window.navigator.vibrate(200);
         obj.setScale(0.9);
       }
     });
 
     this.input.on(eventos.DRAG, (pointer, obj, dragX, dragY) => {
+      this.sound.stopAll();
+
       if (obj.name == "pantalon" && !this.correcto[0]) {
         obj.x = dragX;
         obj.y = dragY;
@@ -180,9 +225,11 @@ class NewScene extends Phaser.Scene {
           this.pantalon.setRotation(0);
           obj.x = 102.5;
           obj.y = 260;
+          pantalonAudio1.play();
           this.correcto[0] = true;
           bandera = true;
         }else{
+          pantalonAudio2.play();
           this.tracker.error = true;
         }
       }
@@ -195,13 +242,16 @@ class NewScene extends Phaser.Scene {
             this.camiseta.setFlipX(false).setRotation(0);
             obj.x = 97.5;
             obj.y = 149.5;
+            camisetaAudio1.play();
             this.correcto[1] = true;
             bandera = true;
           }else{
+            camisetaAudio3.play();
             this.tracker.accion = this.tracker.accion +" (falta bividi)";
             this.tracker.error = true;
           }
         }else{
+          camisetaAudio2.play();
           this.tracker.error = true;
 
         }
@@ -216,9 +266,11 @@ class NewScene extends Phaser.Scene {
         this.calcetines.setRotation(0);
         obj.x = 104;
         obj.y = 355;
+        calcetinesAudio1.play();
         this.correcto[2] = true;
         bandera = true;
       }else{
+        calcetinesAudio2.play();
         this.tracker.error = true;
       }}
 
@@ -230,17 +282,21 @@ class NewScene extends Phaser.Scene {
           if (this.correcto[0]){
           obj.x = 102;
           obj.y = 354;
+          zapatosAudio1.play();
           this.correcto[3] = true;
           bandera = true;
         }else{
+          zapatosAudio4.play();
           this.tracker.accion = this.tracker.accion +" (falta pantalon)";
           this.tracker.error = true;
         }
       }else{
+        zapatosAudio3.play();
         this.tracker.accion = this.tracker.accion +" (falta calcetines)";
         this.tracker.error = true;
         }
       }else{
+        zapatosAudio2.play();
         this.tracker.error = true;
       }}
 
@@ -250,9 +306,11 @@ class NewScene extends Phaser.Scene {
         if (target.name == "tronco"){
         obj.x = 99;
         obj.y = 153.5;
+        bividiAudio1.play();
         this.correcto[4] = true;
         bandera = true;
       }else{
+        bividiAudio2.play();
         this.tracker.error = true;
 
       }}
@@ -265,13 +323,16 @@ class NewScene extends Phaser.Scene {
           this.gorra.setFlipX(false).setRotation(0);
           obj.x = 104;
           obj.y = 47;
+          gorraAudio1.play();
           this.correcto[5] = true;
           bandera = true;
         }else{
+          gorraAudio3.play();
           this.tracker.accion = this.tracker.accion +" (falta bividi y/o camiseta)";
           this.tracker.error = true;
         }
       }else{
+        gorraAudio2.play();
         this.tracker.error = true;
       }
       }

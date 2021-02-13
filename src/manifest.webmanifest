@@ -9,7 +9,7 @@
   "orientation": "landscape",
   "icons": [
     {
-      "src": "assets/icons/icon-72x72.png",
+      "src": "assets/icons/icono.png",
       "sizes": "72x72",
       "type": "image/png"
     },

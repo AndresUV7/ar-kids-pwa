@@ -8,7 +8,7 @@ export class RegisterService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.14:3000/persona/";
+  Url="https://192.168.100.7:3000/persona/";
   
   registerUser(credenciales){
     
@@ -21,6 +21,20 @@ export class RegisterService {
 
 
     return this.http.put<any>(this.Url + credenciales.cedula, usuario);
+   
+  }
+
+  registerUser2(credenciales){
+    
+    const usuario ={
+      usuario:{
+      _id : "guest",
+      contrasena : credenciales.contrasena
+      }
+    }
+
+
+    return this.http.put<any>(this.Url + "contrasena/"+credenciales.cedula, usuario);
    
   }
 

@@ -41,6 +41,9 @@ class NewScene extends Phaser.Scene {
     this.input.setDraggable(this.cepillo);
 
     this.input.on(eventos.DRAG_START,(pointer, obj, dragX, dragY )=>{
+
+      window.navigator.vibrate(200);
+
       obj.setScale(.9);
 
   })

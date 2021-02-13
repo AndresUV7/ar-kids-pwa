@@ -22,7 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class EditUserComponent implements OnInit {
 
-
+  del: boolean;
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -42,7 +42,9 @@ export class EditUserComponent implements OnInit {
     
     sexo : 'M',
 
-    usuario: null
+    usuario: null,
+
+    email: ''
   };
   submitted = false;
   registerForm: FormGroup;
@@ -51,7 +53,7 @@ export class EditUserComponent implements OnInit {
   // options: string[] = ['One', 'Two', 'Three'];
   // filteredOptions: Observable<string[]>;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<EditUserComponent>, private formBuilder: FormBuilder, private userService: UsersService) { 
-
+    this.del = false;
 
   }
 
@@ -62,6 +64,7 @@ export class EditUserComponent implements OnInit {
      if (this.data){
       this.titulo = this.data.title;
       this.usuario = this.data.data;
+      this.del = this.data.del
      }
 
    console.log(this.usuario)
@@ -108,5 +111,9 @@ export class EditUserComponent implements OnInit {
 
   }
 
+  elimina(){
+    this.dialogRef.close("elimina");
+
+  }
 
 }

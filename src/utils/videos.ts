@@ -1,6 +1,6 @@
 import { Video } from '../app/models/Video';
 export const HIGIENE_VIDEOS : Video[] = [
-    
+
     
     {
         nombre: "k",
@@ -16,7 +16,7 @@ export const HIGIENE_VIDEOS : Video[] = [
             "No"
         ],
         respuestas2 : [
-            "tapados",
+            "Tapados",
         ],
         id : "#k"
     },
@@ -24,7 +24,7 @@ export const HIGIENE_VIDEOS : Video[] = [
     {
         nombre: "a",
         ruta : "../../assets/video/ducha.mp4",
-        checkpoints : [17, 24],
+        checkpoints : [17, 94],
         preguntas : [
             "¿Cada que tiempo hay que ducharse?",
             "Completa: Nos recortamos las uñas con el ...",
@@ -35,7 +35,7 @@ export const HIGIENE_VIDEOS : Video[] = [
             "Dos veces a la semana"
         ],
         respuestas2 : [
-            "cortauñas",
+            "Cortauñas",
         ],
         id : "#a"
     },   
@@ -54,7 +54,7 @@ export const HIGIENE_VIDEOS : Video[] = [
             "Pies"
         ],
         respuestas2 : [
-            "facil"
+            "Fácil"
         ],
         id : "#b"
     },     
@@ -73,7 +73,7 @@ export const HIGIENE_VIDEOS : Video[] = [
             "Con agua y jabón"
         ],
         respuestas2 : [
-            "toalla"
+            "Toalla"
         ],
         id: "#c"
     },   
@@ -92,7 +92,7 @@ export const HIGIENE_VIDEOS : Video[] = [
             "2"
         ],
         respuestas2 : [
-            "lengua",
+            "Lengua",
         ],
         id : "#d"
     },    
@@ -111,7 +111,7 @@ export const HIGIENE_VIDEOS : Video[] = [
             "5"
         ],
         respuestas2 : [
-            "agua"
+            "Agua"
         ],
         id : "#f"
     },   
@@ -131,7 +131,7 @@ export const VESTIR_VIDEOS : Video[] = [
             "Cintura"
         ],
         respuestas2 : [
-            "vestido",
+            "Vestido",
         ]
     },    
     
@@ -149,7 +149,7 @@ export const VESTIR_VIDEOS : Video[] = [
             "Pinzas de madera"
         ],
         respuestas2 : [
-            "cintura",
+            "Cintura",
         ]
     },
 
@@ -167,7 +167,7 @@ export const VESTIR_VIDEOS : Video[] = [
             "Puños"
         ],
         respuestas2 : [
-            "botones",
+            "Botones",
         ]
     },   
 
@@ -185,7 +185,7 @@ export const VESTIR_VIDEOS : Video[] = [
             "Por color"
         ],
         respuestas2 : [
-            "hora"
+            "Hora"
         ]
     },     
 
@@ -203,7 +203,7 @@ export const VESTIR_VIDEOS : Video[] = [
             "4"
         ],
         respuestas2 : [
-            "ordenado"
+            "Ordenado"
         ]
     },        
 
@@ -221,7 +221,7 @@ export const VESTIR_VIDEOS : Video[] = [
             "Pulgar e índice"
         ],
         respuestas2 : [
-            "cordones"
+            "Cordones"
         ]
     },   
 ]
@@ -240,7 +240,7 @@ export const COCINA_VIDEOS : Video[] = [
             "1"
         ],
         respuestas2 : [
-            "desayuno",
+            "Desayuno",
         ]
     },    
     
@@ -258,7 +258,7 @@ export const COCINA_VIDEOS : Video[] = [
             "Cáscara y semillas"
         ],
         respuestas2 : [
-            "naranjas",
+            "Naranjas",
         ]
     },
 
@@ -276,7 +276,7 @@ export const COCINA_VIDEOS : Video[] = [
             "10"
         ],
         respuestas2 : [
-            "espátula",
+            "Espátula",
         ]
     },   
 
@@ -294,7 +294,7 @@ export const COCINA_VIDEOS : Video[] = [
             "Ninguno"
         ],
         respuestas2 : [
-            "primavera"
+            "Primavera"
         ]
     },     
 
@@ -312,7 +312,7 @@ export const COCINA_VIDEOS : Video[] = [
             "2"
         ],
         respuestas2 : [
-            "sopa"
+            "Sopa"
         ]
     },        
 
@@ -330,7 +330,7 @@ export const COCINA_VIDEOS : Video[] = [
             "2 libras"
         ],
         respuestas2 : [
-            "doradas"
+            "Doradas"
         ]
     },   
 ]
@@ -349,7 +349,7 @@ export const HOGAR_VIDEOS : Video[] = [
             "Enjuagado"
         ],
         respuestas2 : [
-            "ambiente",
+            "Ambiente",
         ]
     },    
     
@@ -367,7 +367,7 @@ export const HOGAR_VIDEOS : Video[] = [
             "Cobijas"
         ],
         respuestas2 : [
-            "edredón",
+            "Edredón",
         ]
     },
 
@@ -382,10 +382,10 @@ export const HOGAR_VIDEOS : Video[] = [
         ],
         respuestas1 : [
             "De arriba hacia abajo",
-            "De abajo hacia arriba"
+            "De izquierda a derecha"
         ],
         respuestas2 : [
-            "papel",
+            "Papel",
         ]
     },   
 
@@ -403,7 +403,7 @@ export const HOGAR_VIDEOS : Video[] = [
             "Plato base"
         ],
         respuestas2 : [
-            "tenedor"
+            "Tenedor"
         ]
     },     
 
@@ -421,7 +421,7 @@ export const HOGAR_VIDEOS : Video[] = [
             "Solo con agua"
         ],
         respuestas2 : [
-            "agarrador"
+            "Agarrador"
         ]
     },        
 
@@ -439,7 +439,7 @@ export const HOGAR_VIDEOS : Video[] = [
             "No"
         ],
         respuestas2 : [
-            "todos"
+            "Todos"
         ]
     },   
 ]

@@ -96,6 +96,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RecursosComponent } from './recursos/recursos.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
+import { RecoverPassComponent } from './recover-pass/recover-pass.component';
+import { LostPassComponent } from './lost-pass/lost-pass.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -130,6 +133,8 @@ import { AyudaComponent } from './ayuda/ayuda.component';
     RecursosComponent,
     PerfilComponent,
     AyudaComponent,
+    RecoverPassComponent,
+    LostPassComponent,
 
   ],
   imports: [

@@ -131,8 +131,14 @@ export class AsistenteLearnComponent implements OnInit, DoCheck, OnDestroy {
       this.objeto = this.objetos[rand];
       this.validadores.push(rand);
       this.rutaObj = this.objeto.rutas[0];
-      this.rutaAudioObj =
-        "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fvestir_p.mp3?alt=media&token=bdd2c8d5-cdac-4c61-886f-278249118c2e); volume: 10";
+      
+      if (this.objeto.nombre == 'armario' || this.objeto.nombre == 'tendedero'){
+        this.rutaAudioObj =
+          "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fvestir_p2.mp3?alt=media&token=5de16382-8d35-4e5c-9484-976e191e4723); volume: 10";  
+      }else{ 
+        this.rutaAudioObj =
+          "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fvestir_p.mp3?alt=media&token=bdd2c8d5-cdac-4c61-886f-278249118c2e); volume: 10";
+      }
       // this.rutaAudioObj = "src: url("+this.objeto.rutas[1]+")"
       this.escalaObj = this.objeto.escala;
 
@@ -193,8 +199,15 @@ export class AsistenteLearnComponent implements OnInit, DoCheck, OnDestroy {
         "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fhigiene_p.mp3?alt=media&token=27f6e6a6-334d-4860-9d5c-28dadc324dc4); volume: 10";
     }
     if (localStorage.getItem("cat_act") == "2") {
-      this.rutaAudioObj =
-        "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fvestir_p.mp3?alt=media&token=bdd2c8d5-cdac-4c61-886f-278249118c2e); volume: 10";
+      
+      if (this.objeto.nombre == 'armario' || this.objeto.nombre == 'tendedero' || this.objeto.nombre == 'plancha' || this.objeto.nombre == 'planchador'){
+        this.rutaAudioObj =
+          "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fvestir_p2.mp3?alt=media&token=5de16382-8d35-4e5c-9484-976e191e4723); volume: 10";  
+      }else{ 
+        this.rutaAudioObj =
+          "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fvestir_p.mp3?alt=media&token=bdd2c8d5-cdac-4c61-886f-278249118c2e); volume: 10";
+      }
+    
     }
 
     if (localStorage.getItem("cat_act") == "3") {

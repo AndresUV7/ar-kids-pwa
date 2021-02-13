@@ -1,4 +1,4 @@
-<mat-tab-group color="accent">
+<mat-tab-group color="accent" (selectedTabChange)="yourFn($event)">
     <mat-tab label="USUARIOS"> 
 
             <button [fxShow]="!deleteBtn" class="md-fab md-fab-bottom-right" mat-mini-fab aria-label="Example icon button with a plus one icon" (click)="nuevoUsuario()">
@@ -21,6 +21,7 @@
            
           
           <div class="mat-elevation-z8">
+            <mat-progress-bar *ngIf="elim" mode="indeterminate"></mat-progress-bar>
             <table mat-table [dataSource]="dataSource" matSort>
           
                  <!-- Checkbox Column -->
@@ -68,7 +69,7 @@
               
               <ng-container matColumnDef="estado">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO </th>
-                <td mat-cell *matCellDef="let row"> {{row.estado == 1 ? 'Registrado' : 'Pendiente'}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.estado == 1 ? 'Registrado' : 'Preinscrito'}} </td>
               </ng-container>
           
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -81,12 +82,18 @@
           
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
           </div>
-          
     </mat-tab>
 
-    <mat-tab label="ESTADISTICAS"><mat-icon>signal_cellular_alt</mat-icon>ESTADISTICAS</mat-tab>
-</mat-tab-group>
+    <mat-tab label="ESTADISTICAS" (selectedTabChange)="onTabChanged($event);">
+      
+      <mat-icon>signal_cellular_alt</mat-icon>ESTADISTICAS
+    
+      <div id="plot_div"></div>
 
+    
+    </mat-tab>
+
+</mat-tab-group>
    
 
   

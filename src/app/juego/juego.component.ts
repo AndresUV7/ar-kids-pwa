@@ -3,6 +3,7 @@ import Phaser from "phaser";
 import { JuegoService } from "../services/juegos/juego.service";
 import { Juego } from "../models/Juego";
 import { DetallePartida } from "../models/DetallePartida";
+import { DataService } from '../services/data.service';
 
 class NewScene extends Phaser.Scene {
   cabeza: any;
@@ -144,16 +145,28 @@ class NewScene extends Phaser.Scene {
 
     this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
       if (obj.name == "sueter" && !this.correcto2) {
+        window.navigator.vibrate(200);
+
         obj.setScale(0.9);
       } else if (obj.name == "jean" && !this.correcto) {
+        window.navigator.vibrate(200);
+
         obj.setScale(0.9);
       } else if (obj.name == "blusa" && !this.blusaCorrecta) {
+        window.navigator.vibrate(200);
+
         obj.setScale(0.9);
       } else if (obj.name == "botas" && !this.botasCorrectas) {
+        window.navigator.vibrate(200);
+
         obj.setScale(0.9);
       } else if (obj.name == "medias" && !this.mediasCorrectas) {
+        window.navigator.vibrate(200);
+
         obj.setScale(0.9);
       } else if (obj.name == "gorra" && !this.gorraCorrecta) {
+        window.navigator.vibrate(200);
+
         obj.setScale(0.9);
       }
     });
@@ -340,10 +353,12 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
   juego: Juego;
+  showBar: boolean
 
   checkpoints: boolean[];
 
-  constructor(private juegoService: JuegoService) {
+  constructor(private juegoService: JuegoService, private data:DataService) {
+    this.showBar = false;
     this.checkpoints = [false, false, false, false, false, false];
 
     this.scene = new NewScene();
@@ -368,6 +383,7 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
 
+    this.data.currentBarState.subscribe(message => this.showBar = message);
     this.juegoService
       .selectJuego(localStorage.getItem("id_juego"))
       .subscribe((res) => {

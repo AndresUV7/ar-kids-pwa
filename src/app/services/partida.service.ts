@@ -9,7 +9,7 @@ export class PartidaService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.14:3000/persona/";
+  Url="https://192.168.100.7:3000/persona/";
 
 
   insertPartida(partida: Partida){

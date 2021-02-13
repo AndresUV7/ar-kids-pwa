@@ -8,7 +8,7 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.14:3000/login";
+  Url="https://192.168.100.7:3000/login";
 
 
   login(credenciales){

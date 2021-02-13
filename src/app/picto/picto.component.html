@@ -12,14 +12,33 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <img id="my-image7" crossorigin="anonymous" src='{{ruta7}}'>
           <img id="my-image8" crossorigin="anonymous" src='{{ruta8}}'>
           <!-- <audio id="audio" src="/ar-kids-pwa/assets/img/dientes.mp3" response-type="arraybuffer"></audio> -->
-          <audio id="audio" src="/assets/audios/dientes1.mp3" response-type="arraybuffer"></audio>
+          <!-- <audio id="audio" src="/assets/audios/dientes1.mp3" response-type="arraybuffer"></audio>
           <audio id="audio2" src="/assets/audios/dientes2.mp3" response-type="arraybuffer"></audio>
           <audio id="audio3" src="/assets/audios/dientes3.mp3" response-type="arraybuffer"></audio>
           <audio id="audio4" src="/assets/audios/dientes4.mp3" response-type="arraybuffer"></audio>
           <audio id="audio5" src="/assets/audios/dientes5.mp3" response-type="arraybuffer"></audio>
           <audio id="audio6" src="/assets/audios/dientes6.mp3" response-type="arraybuffer"></audio>
           <audio id="audio7" src="/assets/audios/dientes7.mp3" response-type="arraybuffer"></audio>
-          <audio id="audio8" src="/assets/audios/dientes8.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio8" src="/assets/audios/dientes8.mp3" response-type="arraybuffer"></audio> -->
+<!-- 
+          <audio id="audio" src="/assets/audios/ducha1.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio2" src="/assets/audios/ducha2.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio3" src="/assets/audios/ducha3.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio4" src="/assets/audios/ducha4.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio5" src="/assets/audios/ducha5.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio6" src="/assets/audios/ducha6.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio7" src="/assets/audios/ducha7.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio8" src="/assets/audios/ducha8.mp3" response-type="arraybuffer"></audio> -->
+          
+
+          
+          <audio id="audio" src="/assets/audios/manos1.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio2" src="/assets/audios/manos2.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio3" src="/assets/audios/manos3.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio4" src="/assets/audios/manos4.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio5" src="/assets/audios/manos5.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio6" src="/assets/audios/manos6.mp3" response-type="arraybuffer"></audio>
+
           <!-- <video id="penguin-sledding" src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75"></video> -->
           
     </a-assets>
@@ -103,18 +122,18 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <a-sphere radius="0.10" color="red"></a-sphere>
      </a-marker>     
      
-     <a-marker  id="m6" type="barcode" value="6" registerevents>
+     <a-marker *ngIf="!manos" id="m6" type="barcode" value="6" registerevents>
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image7" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio7; on: click" ></a-entity>
+          <a-entity  *ngIf="!manos" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image7" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio7; on: click" ></a-entity>
           <a-entity id="cylinderGroup7"></a-entity>
           <a-sphere radius="0.10" color="red"></a-sphere>
      </a-marker>   
      
-     <a-marker  id="m7" type="barcode" value="7" registerevents>
+     <a-marker *ngIf="!manos" id="m7" type="barcode" value="7" registerevents>
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
@@ -128,7 +147,7 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
      
     
      <a-entity camera></a-entity>
-     <a-entity run></a-entity>
+     <a-entity run="p:#p0; m:#m0"></a-entity>
 </a-scene>
 
 

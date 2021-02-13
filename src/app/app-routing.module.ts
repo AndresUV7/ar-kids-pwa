@@ -24,6 +24,8 @@ import { PruebaComponent } from './prueba/prueba.component';
 import { EncuentraloComponent } from './encuentralo/encuentralo.component';
 import { HistorialComponent } from './historial/historial.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { RecoverPassComponent } from './recover-pass/recover-pass.component';
+import { SonigramComponent } from './sonigram/sonigram.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent, canActivate: [LoggedGuard] },
@@ -32,8 +34,10 @@ const routes: Routes = [
   { path: "actividades/pictogram", component: PictoComponent },
   { path: "actividades/ar-box", component: ArBoxComponent},
   { path: "actividades/encuentralo", component: EncuentraloComponent},
+  { path: "actividades/recover/:token", component: RecoverPassComponent},
+  { path: "actividades/sonigram", component: SonigramComponent},
 
-  // {path:'actividades/vestir', component:VestirHombreComponent},
+
 
   {
     path: "",
@@ -42,7 +46,9 @@ const routes: Routes = [
     children: [
       { path: "actividades/listar", component: CardResponsiveComponent },
       { path: "actividades/principal", component: CarouselComponent },
-      { path: "actividades/vestir", component: JuegoComponent },
+      { path: "actividades/vestir-f", component: JuegoComponent },
+      {path:'actividades/vestir-m', component:VestirHombreComponent},
+
       {
         path: "actividades/dientes",
         component: HygieneAntistressSkillComponent,

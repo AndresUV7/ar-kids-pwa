@@ -9,7 +9,7 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.14:3000/persona";
+  Url="https://192.168.100.7:3000/persona";
 
   insertPersona(persona:Persona){
     console.log(persona);

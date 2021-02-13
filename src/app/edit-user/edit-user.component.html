@@ -1,4 +1,4 @@
-<div class="font">
+<div class="font" *ngIf="!del">
   <mat-toolbar class="barra">
     <span class="title">{{titulo}}</span>
     <span class="example-spacer"></span>
@@ -68,7 +68,7 @@
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-               placeholder="Ex. juan@gmail.com">
+               placeholder="Ex. juan@gmail.com" [(ngModel)]="usuario.email" >
         <mat-hint>Errors appear instantly!</mat-hint>
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
           Please enter a valid email address
@@ -98,7 +98,30 @@
     </mat-form-field> -->
     <br>
     <div fxLayoutAlign="center center">
-      <button mat-raised-button color="accent" class="font2">GUARDAR</button>
+      <button mat-raised-button color="accent" class="font3">GUARDAR</button>
     </div>
   </form>
+</div>
+
+
+<div class="font" *ngIf="del">
+  <mat-toolbar class="barra">
+    <span class="title">{{titulo}}</span>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+      (click)="close()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+  <br>
+   ¿Estás segur@ que deseas eliminar el/los usuario(s) seleccionado(s)?
+   <br>
+   <br>
+  <div fxLayoutAlign="center center">
+    <button mat-raised-button color="accent" class="font2" (click)="elimina()">ELIMINAR</button>
+  </div>
 </div>

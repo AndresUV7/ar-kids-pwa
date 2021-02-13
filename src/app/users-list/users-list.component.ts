@@ -9,7 +9,8 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 import { UsersService } from '../services/usuarios/users.service';
 import { Persona } from '../models/Persona';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-
+import { JuegoService } from '../services/juegos/juego.service';
+declare function danfo(res): any;
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -24,18 +25,21 @@ export class UsersListComponent implements OnInit{
   dataSource =  new MatTableDataSource<Persona>();
   selection = new SelectionModel<Persona>(true, []);
   deleteBtn = false;
+  users: any;
   eliminacionRef;
+  elim: boolean;
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true } ) sort: MatSort;
   
 
-  constructor(private dialog: MatDialog, public userService: UsersService) {
+  constructor(private dialog: MatDialog, public userService: UsersService, public juegoService: JuegoService) {
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
+    this.elim = false;
   }
 
 
@@ -68,10 +72,13 @@ export class UsersListComponent implements OnInit{
   }
 
   ngOnInit(){
+
+
     this.paginator._intl.itemsPerPageLabel="Usuarios por página";
 
     this.userService.selectPersonas().subscribe(res =>{
       
+      this.users = res;
        this.dataSource = new MatTableDataSource(res);
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort;
@@ -175,23 +182,62 @@ export class UsersListComponent implements OnInit{
 
   eliminar(){
 
-    this.dataSource.data.forEach(row1 => {
-      if (this.selection.isSelected(row1)){
-        
-        this.userService.deletePersona(row1).subscribe(res =>{
-          console.log(res);
-          this.userService.selectPersonas().subscribe(res =>{
-            this.dataSource.data = res;
-     
-         })
-          
-        });
-      }
-    
-    })
+    this.dialog.open(EditUserComponent, {
+      width: "480px",
+      disableClose: true,
+      data: {del: true, title: "Eliminar usuario(s)"}
+      
+    }).afterClosed().subscribe(result => {
 
-    this.deleteBtn = false;
+      if (result){
+        this.dataSource.data.forEach(row1 => {
+          if (this.selection.isSelected(row1)){
+            
+            this.userService.deletePersona(row1).subscribe(res =>{
+              this.elim = true;
+              console.log(res);
+              this.userService.selectPersonas().subscribe(res =>{
+                this.elim = false;
+                this.dataSource.data = res;
+                 
+             })
+              
+            });
+          }
+        
+        })
+        
+        this.deleteBtn = false;
+      }
+       
+        
+
+      
+      
+    });
     
+  }
+
+  onTabChanged($event){
+    let clickedIndex = $event.index;
+    console.log(clickedIndex);
+  }
+
+  yourFn($event){
+
+
+    console.log($event.index);
+    if ($event.index){
+
+      this.juegoService.selectJuegos().subscribe(res =>{
+      
+        danfo(res);
+
+      
+  
+      })
+
+    }
   }
 }
 

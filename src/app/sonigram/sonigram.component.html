@@ -1,1 +1,29 @@
-<p>sonigram works!</p>
+<a-scene arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+vr-mode-ui="enabled: false"
+renderer="colorManagement: true; logarithmicDepthBuffer: true;">
+    <a-marker preset="hiro">
+            
+        <!-- Using the asset management system. -->
+        <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+        <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <a-entity geometry="primitive:box;" material="shader:gif;src:url(/assets/img/lavadora.gif);;opacity:1"></a-entity>
+ 
+
+    </a-marker> 
+<a-entity camera></a-entity>
+</a-scene>
+
+
+
+     <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/ar-kids-pwa/assets/img/letterB.patt"> -->
+          <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/assets/img/letterB.patt">
+        
+               <!-- Using the asset management system. -->
+               <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+               <!-- <a-entity cursor="rayOrigin: mouse" geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity> -->
+     
+                 
+               <!-- <a-entity geometry="primitive: plane; height: 1; width: 1;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio" audiohandler ></a-entity> -->
+                 
+        

@@ -73,6 +73,7 @@ export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
     this.router.navigate(['actividades/perfil']);
   }
   
+  
   irPremios(){
     this.router.navigate(['actividades/premios']);
   }
