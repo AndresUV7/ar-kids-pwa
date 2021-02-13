@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>ArKids</title>
-    <base href="/ar-kids-pwa/">
-    <!-- <base href="/" /> -->
+    <!-- <base href="/ar-kids-pwa/"> -->
+    <base href="/" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
@@ -15,13 +15,18 @@
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
     <!-- <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script> -->
-    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar.js"></script> -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.1.0/aframe/build/aframe-ar.js"></script>
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/sagiegurari/simple-web-notification/master/web-notification.js"></script>
+    <script
+      type="text/javascript"
+      src="https://rawgit.com/sagiegurari/simple-web-notification/master/web-notification.js"
+    ></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     <!-- <script type = "text/javascript" src="node_modules/simple-web-notification/web-notification.js" > </script>   -->
+    <script src="https://cdn.jsdelivr.net/npm/danfojs@0.1.1/dist/index.min.js"></script>
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
@@ -48,7 +53,7 @@
     <noscript
       >Please enable JavaScript to continue using this application.</noscript
     >
-  <script src="runtime.a8ef3a8272419c2e2c66.js" defer></script><script src="polyfills-es5.d30832bf70493aed5d6c.js" nomodule defer></script><script src="polyfills.b948c5521048b3f55fad.js" defer></script><script src="scripts.a7b0bb182810c92bcb02.js" defer></script><script src="main.ae86163cb1c1ceb4b88f.js" defer></script></body>
+  <script src="runtime.a8ef3a8272419c2e2c66.js" defer></script><script src="polyfills-es5.d30832bf70493aed5d6c.js" nomodule defer></script><script src="polyfills.b948c5521048b3f55fad.js" defer></script><script src="scripts.8b708259c11dc649ffd1.js" defer></script><script src="main.925c0b094d8addd82f87.js" defer></script></body>
 
   <!-- <script>
     let ban = false;
@@ -204,24 +209,31 @@
       },
     });
     AFRAME.registerComponent("run", {
+      schema: {
+        p: { type: "string" },
+      },
       init: function () {
-
+        
         this.m0 = document.querySelector("#m0");
         this.m1 = document.querySelector("#m1");
         this.m2 = document.querySelector("#m2");
         this.m3 = document.querySelector("#m3");
         this.m4 = document.querySelector("#m4");
         this.m5 = document.querySelector("#m5");
-        this.m6 = document.querySelector("#m6");
-        this.m7 = document.querySelector("#m7");
+        if (this.data.p === "dientes") {
+          this.m6 = document.querySelector("#m6");
+          this.m7 = document.querySelector("#m7");
+        }
         this.p0 = new THREE.Vector3();
         this.p1 = new THREE.Vector3();
         this.p2 = new THREE.Vector3();
         this.p3 = new THREE.Vector3();
         this.p4 = new THREE.Vector3();
         this.p5 = new THREE.Vector3();
-        this.p6 = new THREE.Vector3();
-        this.p7 = new THREE.Vector3();
+        if (this.data.p === "dientes") {
+          this.p6 = new THREE.Vector3();
+          this.p7 = new THREE.Vector3();
+        }
 
         let geometry = new THREE.CylinderGeometry(0.05, 0.05, 1, 12);
         geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0.5, 0));
@@ -234,8 +246,10 @@
         this.cylinder3 = new THREE.Mesh(geometry, material);
         this.cylinder4 = new THREE.Mesh(geometry, material);
         this.cylinder5 = new THREE.Mesh(geometry, material);
+        if (this.data.p === "dientes") {
         this.cylinder6 = new THREE.Mesh(geometry, material);
         this.cylinder7 = new THREE.Mesh(geometry, material);
+        }
         this.cylinderGroup = document.querySelector("#cylinderGroup").object3D;
         this.cylinderGroup2 = document.querySelector(
           "#cylinderGroup2"
@@ -249,19 +263,24 @@
         this.cylinderGroup5 = document.querySelector(
           "#cylinderGroup5"
         ).object3D;
-        this.cylinderGroup6 = document.querySelector(
-          "#cylinderGroup6"
-        ).object3D;
-        this.cylinderGroup7 = document.querySelector(
-          "#cylinderGroup7"
-        ).object3D;
+
+        if (this.data.p === "dientes") {
+          this.cylinderGroup6 = document.querySelector(
+            "#cylinderGroup6"
+          ).object3D;
+          this.cylinderGroup7 = document.querySelector(
+            "#cylinderGroup7"
+          ).object3D;
+        }
         this.cylinderGroup.add(this.cylinder);
         this.cylinderGroup2.add(this.cylinder2);
         this.cylinderGroup3.add(this.cylinder3);
         this.cylinderGroup4.add(this.cylinder4);
         this.cylinderGroup5.add(this.cylinder5);
-        this.cylinderGroup6.add(this.cylinder6);
-        this.cylinderGroup7.add(this.cylinder7);
+        if (this.data.p === "dientes") {
+          this.cylinderGroup6.add(this.cylinder6);
+          this.cylinderGroup7.add(this.cylinder7);
+        }
       },
 
       tick: function (time, deltaTime) {
@@ -320,33 +339,35 @@
                   if (distance5 < 5) {
                     this.cylinder5.visible = true;
                   }
-                  if (markerVisible["m6"]) {
-                    this.m6.object3D.getWorldPosition(this.p6);
-                    let distance6 = this.p5.distanceTo(this.p6);
 
-                    this.cylinderGroup6.lookAt(this.p6);
-                    this.cylinder6.scale.set(1, 1, distance6);
+                  if (this.data.p === "dientes") {
+                    if (markerVisible["m6"]) {
+                      this.m6.object3D.getWorldPosition(this.p6);
+                      let distance6 = this.p5.distanceTo(this.p6);
 
-                    if (distance6 < 5) {
-                      this.cylinder6.visible = true;
-                    }
-                    if (markerVisible["m7"]) {
-                      this.m7.object3D.getWorldPosition(this.p7);
-                      let distance7 = this.p6.distanceTo(this.p7);
+                      this.cylinderGroup6.lookAt(this.p6);
+                      this.cylinder6.scale.set(1, 1, distance6);
 
-                      this.cylinderGroup7.lookAt(this.p7);
-                      this.cylinder7.scale.set(1, 1, distance7);
+                      if (distance6 < 5) {
+                        this.cylinder6.visible = true;
+                      }
+                      if (markerVisible["m7"]) {
+                        this.m7.object3D.getWorldPosition(this.p7);
+                        let distance7 = this.p6.distanceTo(this.p7);
 
-                      if (distance7 < 5) {
-                        this.cylinder7.visible = true;
+                        this.cylinderGroup7.lookAt(this.p7);
+                        this.cylinder7.scale.set(1, 1, distance7);
+
+                        if (distance7 < 5) {
+                          this.cylinder7.visible = true;
+                        }
+                      } else {
+                        this.cylinder7.visible = false;
                       }
                     } else {
-                      this.cylinder7.visible = false;
+                      this.cylinder6.visible = false;
                     }
-                  } else {
-                    this.cylinder6.visible = false;
                   }
-
                 } else {
                   this.cylinder5.visible = false;
                 }

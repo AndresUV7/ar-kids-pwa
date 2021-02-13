@@ -258,3 +258,23 @@ can1.recognize();
 function push(){
    console.log("push")
 }
+
+function danfo(json_data){
+ 
+  var json_array = [];
+  console.log(json_data)
+  for (let index = 0; index < json_data.length; index++) {
+    for (let index2 = 0; index2 < json_data[index].partidas.length; index2++) {
+      var temp = json_data[index].partidas[index2];
+      temp['item']=json_data[index].nombre;
+      json_array.push(temp)
+
+    }
+    
+  }
+  df = new dfd.DataFrame(json_array)
+  // df.plot("plot_div").table()
+  df['item'].plot("plot_div").hist()
+              
+  df.print()
+}

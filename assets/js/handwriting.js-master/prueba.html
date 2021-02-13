@@ -23,7 +23,7 @@
 
     <div id ="outer">
         <div id ="inner">
-            <canvas id="can" width="300" height="100" style="border: 2px solid; cursor: crosshair;"></canvas>
+            <canvas id="can" width="500" height="100" style="border: none ; cursor: crosshair;"></canvas>
             <br>
             <button  onclick = "reconocer()">OK </button>
             <button  onclick = "borrar()">X </button>
@@ -37,7 +37,7 @@
  
   can1.setCallBack(function(data, err) {
     if(err) throw err;
-    else window.parent.window.postMessage({"for":"user","data":data[0]}, 'https://192.168.100.3:4200');
+    else window.parent.window.postMessage({"for":"user","data":data[0]}, 'https://192.168.100.5:4200');
 });
 
 
@@ -45,7 +45,7 @@
 //Set options
 can1.setOptions(
     {
-        language: "en",
+        language: "es",
         numOfReturn: 3
     }
 );
