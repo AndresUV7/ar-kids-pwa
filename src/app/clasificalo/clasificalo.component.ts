@@ -11,6 +11,8 @@ import Phaser from "phaser";
 import { OnDestroy } from '@angular/core';
 import { JuegoService } from '../services/juegos/juego.service';
 import { Juego } from '../models/Juego';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 class NewScene extends Phaser.Scene {
   cursor: any;
   recta: any;
@@ -212,6 +214,9 @@ class NewScene extends Phaser.Scene {
           this.colliders();
         }
       }
+    }else{
+      this.scene.pause();
+      
     }
   }
 
@@ -335,7 +340,7 @@ export class ClasificaloComponent implements OnInit, DoCheck, OnDestroy {
   checkpoints: boolean[];
   juego: Juego;
 
-  constructor(public juegoService: JuegoService) {
+  constructor(public juegoService: JuegoService, private _snackBar: MatSnackBar, private router: Router) {
     this.scene = new NewScene();
 
     this.config = {
@@ -399,9 +404,28 @@ export class ClasificaloComponent implements OnInit, DoCheck, OnDestroy {
         this.scene.prenda.body.setVelocityY(0);
       }
     }
+
+    if (this.scene.randArray.length == 5){
+      this.scene.randArray = null;
+      this.openSnackBar("GAME OVER","🚩")
+      setTimeout(() => {
+        this.router.navigate(["actividades/principal"]);
+      }, 5000);
+
+    }
   }
 
-  probar() {}
+  probar() {
+
+  
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
+  }
 
   ngOnDestroy(){
     this.phaserGame.destroy(true);

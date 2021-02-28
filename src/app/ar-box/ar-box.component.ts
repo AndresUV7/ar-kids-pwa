@@ -312,7 +312,7 @@ class NewScene extends Phaser.Scene {
     this.text = this.add.text(0, 30, "", {
       color: "#3f51b5",
       fontSize: 35,
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'Roboto',
       fontStyle: "bold",
       wordWrap: { width: 640, useAdvancedWrap: true },
     });

@@ -11,21 +11,17 @@ export class AppComponent implements OnInit{
   ngOnInit(){
 
     navigator.serviceWorker.register('ngsw-worker.js').then(function(registration) {
-          webNotification.showNotification('Example Notification', {
+          webNotification.showNotification('Bienvenid@ a AR-KIDS', {
               serviceWorkerRegistration: registration,
-              body: 'Notification Text...',
+              body: 'Ábrele la puerta al aprendizaje!!',
               icon: 'my-icon.ico',
               actions: [
                   {
-                      action: 'Start',
-                      title: 'Start'
+                      action: 'OK',
+                      title: 'OK'
                   },
-                  {
-                      action: 'Stop',
-                      title: 'Stop'
-                  }
               ],
-              autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+              autoClose: 5000 //auto close the notification after 4 seconds (you can manually close it via hide function)
           }, function onShow(error, hide) {
               if (error) {
                   window.alert('Unable to show notification: ' + error.message);

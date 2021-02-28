@@ -81,7 +81,7 @@ export class PictoComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    console.log("object");
+    
   }
 
   lavarManos() {

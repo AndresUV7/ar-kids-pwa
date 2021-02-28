@@ -5,6 +5,8 @@ import { DetallePartida } from '../models/DetallePartida';
 import { DataService } from '../services/data.service';
 import { HIGIENE } from '../../utils/recursos';
 import Phaser from 'phaser';
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from '@angular/router';
 
 
 class NewScene extends Phaser.Scene {
@@ -33,7 +35,8 @@ class NewScene extends Phaser.Scene {
   initialTime : number;
   puntaje: number;
   gameOver : boolean;
-
+star:any;
+clock:any;
   constructor() {
     super("NewScene");
   }
@@ -44,7 +47,7 @@ class NewScene extends Phaser.Scene {
     this.contador1 = [0, 0, 0, 0, 0, 0, 0, 0];
     this.contador2 = [0, 0, 0, 0, 0, 0, 0, 0];
     this.load.path = "/assets/img/";
-    this.load.path = "/ar-kids-pwa/assets/img/";
+    // this.load.path = "/ar-kids-pwa/assets/img/";
     // this.load.image("font", "font.png");
     // this.load.json("font_json", "font.json")
 
@@ -88,6 +91,8 @@ class NewScene extends Phaser.Scene {
     this.load.image("boca_abierta_4_2", "boca-abierta_04_02.png");
 
     this.load.image("cepillo", "cepillo_dientes.png");
+    this.load.image("star", "star.png");
+    this.load.image("clock", "clock.png");
 
   
   }
@@ -108,19 +113,26 @@ class NewScene extends Phaser.Scene {
     this.timer = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
 
     // this.text = this.add.bitmapText(0, 0, 'myFont', this.formatTime(this.initialTime), 30, 10).setTint(0x3f51b5);
+    this.clock= this.add
+    .image(30, 30, "clock")
 
-    this.text = this.add.text(30, 0 ,this.formatTime(this.initialTime), {
+    
+    this.text = this.add.text(60, 0 ,this.formatTime(this.initialTime), {
       color : "#3f51b5",
       fontSize : 40,
-      fontFamily: 'Poppins',
+      fontFamily: 'Roboto',
       fontStyle: 'bold'
 
     });
 
-    this.textP = this.add.text(440, 0 ,"PUNTOS: "+this.puntaje.toString(), {
+    this.star = this.add
+    .image(605, 25, "star")
+
+
+    this.textP = this.add.text(425, 0 ,"PUNTOS: "+this.puntaje.toString(), {
       color : "#26c998",
       fontSize : 28,
-      fontFamily: 'Poppins',
+      fontFamily: 'Roboto',
       fontStyle: 'bold'
     });
     this.boca_izq_sup = this.add
@@ -559,6 +571,7 @@ class NewScene extends Phaser.Scene {
 
     if (this.gameOver){
       this.scene.pause();
+
     }
     
     
@@ -612,7 +625,9 @@ export class HygieneAntistressSkillComponent implements OnInit, DoCheck, OnDestr
   juego: Juego;
   checkpoint: boolean;
   showBar: boolean
-  constructor(private juegoService: JuegoService, private data:DataService) {
+    
+    constructor(private juegoService: JuegoService, private data:DataService,private router: Router,
+      private _snackBar: MatSnackBar, ) {
     this.showBar = false;
     this.checkpoint = false;
     this.scene = new NewScene();
@@ -663,10 +678,21 @@ export class HygieneAntistressSkillComponent implements OnInit, DoCheck, OnDestr
       });
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
+  }
+
   ngDoCheck(){
     
     if (this.scene.gameOver && !this.checkpoint){
         this.generarDetalle();
+        this.openSnackBar("GAME OVER","🚩")
+        setTimeout(() => {
+          this.router.navigate(["actividades/principal"]);
+        }, 5000);
     }
   }
 

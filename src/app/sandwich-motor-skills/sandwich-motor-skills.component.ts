@@ -2,8 +2,10 @@ import { Component, OnInit, DoCheck, OnDestroy } from "@angular/core";
 import Phaser from "phaser";
 import { Juego } from "../models/Juego";
 import { JuegoService } from "../services/juegos/juego.service";
-import { DetallePartida } from '../models/DetallePartida';
-import { DataService } from '../services/data.service';
+import { DetallePartida } from "../models/DetallePartida";
+import { DataService } from "../services/data.service";
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 class NewScene extends Phaser.Scene {
   indice: any;
@@ -50,7 +52,7 @@ class NewScene extends Phaser.Scene {
     this.track = { ok: false, objetivo: "", accion: "", on: false };
     this.trackT = { ok: false, objetivo: "", accion: "", on: false };
     this.load.path = "/assets/img/";
-    this.load.path = '/ar-kids-pwa/assets/img/'
+    // this.load.path = '/ar-kids-pwa/assets/img/'
 
     this.load.audio("cancion", ["cancion_sandwich.mp3"]);
     this.load.image("indice", "indice.png");
@@ -71,11 +73,12 @@ class NewScene extends Phaser.Scene {
   create() {
     // console.log('enter create');
 
-    const cancion = this.sound.add("cancion", {loop: true});
-    this.text = this.add.text(440, 40 ,"PAN", {
-      color : "#26c998",
-      fontSize : 35,
-      fontFamily: '"Poppins'
+    const cancion = this.sound.add("cancion", { loop: true });
+    this.text = this.add.text(440, 40, "PAN", {
+      color: "#26c998",
+      fontSize: 35,
+      fontFamily: '"Roboto',
+      fontStyle: "bold",
     });
     cancion.play();
     this.input.addPointer(1);
@@ -157,17 +160,12 @@ class NewScene extends Phaser.Scene {
     const eventos = Phaser.Input.Events;
 
     this.input.on(eventos.GAMEOBJECT_DOWN, (pointer, gameObject) => {
-      
-
-
       if (NewScene.touch) {
         if (gameObject.name == "pulgar") {
           this.pulgarPresionado = true;
-          
         }
 
         if (this.pulgarPresionado && !this.bandera) {
-          
           x = Math.floor(Math.random() * (4 - 1 + 1) + 1);
           z = Math.floor(Math.random() * (4 - 1 + 1) + 1);
           while (this.ingredientes[z] == "pan") {
@@ -231,28 +229,22 @@ class NewScene extends Phaser.Scene {
           this.track.on = true;
           this.track.objetivo = "pan";
           this.track.accion = this.track.objetivo;
-          
         } else {
           this.track.ok = false;
-          if (this.track.accion == ""){
+          if (this.track.accion == "") {
             this.track.on = false;
-
-          }else{
+          } else {
             this.track.on = true;
-
           }
           this.track.objetivo = "pan";
           if (this.pulgarPresionado) {
-            
             if (gameObject.name == this.ingredienteAux.name) {
               this.track.accion = this.ingredienteAux.name;
-
             } else if (gameObject.name != "pulgar") {
               this.track.accion = "falla";
             }
           } else {
             this.track.accion = "Suelta pulgar";
-
           }
         }
 
@@ -303,10 +295,8 @@ class NewScene extends Phaser.Scene {
           if (this.pulgarPresionado) {
             if (gameObject.name == this.ingredienteAux.name) {
               this.track.accion = this.ingredienteAux.name;
-
             } else if (gameObject.name != "pulgar") {
               this.track.accion = "falla";
-
             }
           } else {
             this.track.accion = "Suelta pulgar";
@@ -353,17 +343,15 @@ class NewScene extends Phaser.Scene {
           this.track.on = true;
           this.track.objetivo = "jamón";
           this.track.accion = this.track.objetivo;
-        } else if (this.checkT[1] && !this.track.on){
+        } else if (this.checkT[1] && !this.track.on) {
           this.track.ok = false;
           this.track.on = true;
           this.track.objetivo = "jamón";
           if (this.pulgarPresionado) {
             if (gameObject.name == this.ingredienteAux.name) {
               this.track.accion = this.ingredienteAux.name;
-
             } else if (gameObject.name != "pulgar") {
               this.track.accion = "falla";
-
             }
           } else {
             this.track.accion = "Suelta pulgar";
@@ -411,7 +399,7 @@ class NewScene extends Phaser.Scene {
           this.track.on = true;
           this.track.objetivo = "queso";
           this.track.accion = this.track.objetivo;
-        } else if (this.checkT[2] && !this.track.on){
+        } else if (this.checkT[2] && !this.track.on) {
           this.track.ok = false;
           this.track.on = true;
           this.track.objetivo = "queso";
@@ -467,14 +455,13 @@ class NewScene extends Phaser.Scene {
           this.track.on = true;
           this.track.objetivo = "tomate";
           this.track.accion = this.track.objetivo;
-        } else if (this.checkT[3] && !this.track.on){
+        } else if (this.checkT[3] && !this.track.on) {
           this.track.ok = false;
           this.track.on = true;
           this.track.objetivo = "tomate";
           if (this.pulgarPresionado) {
             if (gameObject.name == this.ingredienteAux.name) {
               this.track.accion = this.ingredienteAux.name;
-
             } else if (gameObject.name != "pulgar") {
               this.track.accion = "falla";
             }
@@ -502,14 +489,13 @@ class NewScene extends Phaser.Scene {
           this.track.on = true;
           this.track.objetivo = "pan 2";
           this.track.accion = this.track.objetivo;
-        } else if (this.checkT[4] && !this.track.on){
+        } else if (this.checkT[4] && !this.track.on) {
           this.track.ok = false;
           this.track.on = true;
           this.track.objetivo = "pan 2";
           if (this.pulgarPresionado) {
             if (gameObject.name == this.ingredienteAux.name) {
               this.track.accion = this.ingredienteAux.name;
-
             } else if (gameObject.name != "pulgar") {
               this.track.accion = "falla";
             }
@@ -534,7 +520,6 @@ class NewScene extends Phaser.Scene {
     if (!NewScene.touch) {
       this.graphics = this.add.graphics({ x: 0, y: 0 });
 
-      
       this.input.on("pointerdown", function (pointer) {
         NewScene.x_ = pointer.x;
         NewScene.y_ = pointer.y;
@@ -551,7 +536,6 @@ class NewScene extends Phaser.Scene {
             this.checkpoints[4] = true;
             this.checkpoints[5] = true;
 
-            
             this.graphicsPath.push({ x: pointer.x, y: pointer.y });
 
             // if (pointer.x>this.posiciones[y][0]-40 && pointer.x<this.posiciones[y][0]+40 && pointer.y>this.posiciones[y][1]-40 && pointer.y<this.posiciones[y][1]+40 && this.contador==0){
@@ -559,108 +543,117 @@ class NewScene extends Phaser.Scene {
             //   this.contador=1;
 
             // }
-            
-            console.log(this.graphicsPath[this.graphicsPath.length -1])
-            console.log(this.posiciones[y][0] , this.posiciones[y][1] )
-            console.log(this.graphicsPath.length)
 
-            if ( this.graphicsPath[this.graphicsPath.length -1].x < this.posiciones[y][0]  + 40 &&
-              this.graphicsPath[this.graphicsPath.length -1].y < this.posiciones[y][1]  + 40 && this.graphicsPath[this.graphicsPath.length -1].x > this.posiciones[y][0]  - 40 &&
-              this.graphicsPath[this.graphicsPath.length -1].y > this.posiciones[y][1]  - 40 && this.graphicsPath.length >120 && this.graphicsPath.length <170){
-            if (
-              pointer.x > this.posiciones[y][0]   - 40 &&
-              pointer.x < this.posiciones[y][0]  + 40 &&
-              pointer.y > this.posiciones[y][1]  - 40 &&
-              pointer.y < this.posiciones[y][1]  + 40 &&
-              this._x > this.posiciones[y][0] - 40 &&
-              this._x < this.posiciones[y][0] + 40 &&
-              this._y > this.posiciones[y][1] - 40 &&
-              this._y < this.posiciones[y][1] + 40 &&
-              this.contador == 0
-            ) {
-              this.contador = 1;
-            }
+            console.log(this.graphicsPath[this.graphicsPath.length - 1]);
+            console.log(this.posiciones[y][0], this.posiciones[y][1]);
+            console.log(this.graphicsPath.length);
 
             if (
-              this.graphicsPath.length > 100 &&
-              this.graphicsPath.length < 150 &&
-              pointer.x > this.posiciones[y][0] - 40 &&
-              pointer.x < this.posiciones[y][0] + 40 &&
-              pointer.y > this.posiciones[y][1] - 40 &&
-              pointer.y < this.posiciones[y][1] + 40 &&
-              this._x > this.posiciones[y][0] - 40 &&
-              this._x < this.posiciones[y][0] + 40 &&
-              this._y > this.posiciones[y][1] - 40 &&
-              this._y < this.posiciones[y][1] + 40 &&
-              this.contador == 2
+              this.graphicsPath[this.graphicsPath.length - 1].x <
+                this.posiciones[y][0] + 40 &&
+              this.graphicsPath[this.graphicsPath.length - 1].y <
+                this.posiciones[y][1] + 40 &&
+              this.graphicsPath[this.graphicsPath.length - 1].x >
+                this.posiciones[y][0] - 40 &&
+              this.graphicsPath[this.graphicsPath.length - 1].y >
+                this.posiciones[y][1] - 40 &&
+              this.graphicsPath.length > 120 &&
+              this.graphicsPath.length < 170
             ) {
-              this.contador = 3;
-            }
+              if (
+                pointer.x > this.posiciones[y][0] - 40 &&
+                pointer.x < this.posiciones[y][0] + 40 &&
+                pointer.y > this.posiciones[y][1] - 40 &&
+                pointer.y < this.posiciones[y][1] + 40 &&
+                this._x > this.posiciones[y][0] - 40 &&
+                this._x < this.posiciones[y][0] + 40 &&
+                this._y > this.posiciones[y][1] - 40 &&
+                this._y < this.posiciones[y][1] + 40 &&
+                this.contador == 0
+              ) {
+                this.contador = 1;
+              }
 
-            if (
-              this.graphicsPath.length > 100 &&
-              this.graphicsPath.length < 150 &&
-              pointer.x > this.posiciones[y][0] - 40 &&
-              pointer.x < this.posiciones[y][0] + 40 &&
-              pointer.y > this.posiciones[y][1] - 40 &&
-              pointer.y < this.posiciones[y][1] + 40 &&
-              this._x > this.posiciones[y][0] - 40 &&
-              this._x < this.posiciones[y][0] + 40 &&
-              this._y > this.posiciones[y][1] - 40 &&
-              this._y < this.posiciones[y][1] + 40 &&
-              this.contador == 4
-            ) {
-              this.contador = 5;
-            }
+              if (
+                this.graphicsPath.length > 100 &&
+                this.graphicsPath.length < 150 &&
+                pointer.x > this.posiciones[y][0] - 40 &&
+                pointer.x < this.posiciones[y][0] + 40 &&
+                pointer.y > this.posiciones[y][1] - 40 &&
+                pointer.y < this.posiciones[y][1] + 40 &&
+                this._x > this.posiciones[y][0] - 40 &&
+                this._x < this.posiciones[y][0] + 40 &&
+                this._y > this.posiciones[y][1] - 40 &&
+                this._y < this.posiciones[y][1] + 40 &&
+                this.contador == 2
+              ) {
+                this.contador = 3;
+              }
 
-            if (
-              this.graphicsPath.length > 100 &&
-              this.graphicsPath.length < 150 &&
-              pointer.x > this.posiciones[y][0] - 40 &&
-              pointer.x < this.posiciones[y][0] + 40 &&
-              pointer.y > this.posiciones[y][1] - 40 &&
-              pointer.y < this.posiciones[y][1] + 40 &&
-              this._x > this.posiciones[y][0] - 40 &&
-              this._x < this.posiciones[y][0] + 40 &&
-              this._y > this.posiciones[y][1] - 40 &&
-              this._y < this.posiciones[y][1] + 40 &&
-              this.contador == 6
-            ) {
-              this.contador = 7;
-            }
+              if (
+                this.graphicsPath.length > 100 &&
+                this.graphicsPath.length < 150 &&
+                pointer.x > this.posiciones[y][0] - 40 &&
+                pointer.x < this.posiciones[y][0] + 40 &&
+                pointer.y > this.posiciones[y][1] - 40 &&
+                pointer.y < this.posiciones[y][1] + 40 &&
+                this._x > this.posiciones[y][0] - 40 &&
+                this._x < this.posiciones[y][0] + 40 &&
+                this._y > this.posiciones[y][1] - 40 &&
+                this._y < this.posiciones[y][1] + 40 &&
+                this.contador == 4
+              ) {
+                this.contador = 5;
+              }
 
-            if (
-              this.graphicsPath.length > 100 &&
-              this.graphicsPath.length < 150 &&
-              pointer.x > this.posiciones[y][0] - 40 &&
-              pointer.x < this.posiciones[y][0] + 40 &&
-              pointer.y > this.posiciones[y][1] - 40 &&
-              pointer.y < this.posiciones[y][1] + 40 &&
-              this._x > this.posiciones[y][0] - 40 &&
-              this._x < this.posiciones[y][0] + 40 &&
-              this._y > this.posiciones[y][1] - 40 &&
-              this._y < this.posiciones[y][1] + 40 &&
-              this.contador == 8
-            ) {
-              this.contador = 9;
-            }
+              if (
+                this.graphicsPath.length > 100 &&
+                this.graphicsPath.length < 150 &&
+                pointer.x > this.posiciones[y][0] - 40 &&
+                pointer.x < this.posiciones[y][0] + 40 &&
+                pointer.y > this.posiciones[y][1] - 40 &&
+                pointer.y < this.posiciones[y][1] + 40 &&
+                this._x > this.posiciones[y][0] - 40 &&
+                this._x < this.posiciones[y][0] + 40 &&
+                this._y > this.posiciones[y][1] - 40 &&
+                this._y < this.posiciones[y][1] + 40 &&
+                this.contador == 6
+              ) {
+                this.contador = 7;
+              }
 
-            if (
-              this.graphicsPath.length > 100 &&
-              this.graphicsPath.length < 150 &&
-              pointer.x > this.posiciones[y][0] - 40 &&
-              pointer.x < this.posiciones[y][0] + 40 &&
-              pointer.y > this.posiciones[y][1] - 40 &&
-              pointer.y < this.posiciones[y][1] + 40 &&
-              this._x > this.posiciones[y][0] - 40 &&
-              this._x < this.posiciones[y][0] + 40 &&
-              this._y > this.posiciones[y][1] - 40 &&
-              this._y < this.posiciones[y][1] + 40 &&
-              this.contador == 10
-            ) {
-              this.contador = 11;
+              if (
+                this.graphicsPath.length > 100 &&
+                this.graphicsPath.length < 150 &&
+                pointer.x > this.posiciones[y][0] - 40 &&
+                pointer.x < this.posiciones[y][0] + 40 &&
+                pointer.y > this.posiciones[y][1] - 40 &&
+                pointer.y < this.posiciones[y][1] + 40 &&
+                this._x > this.posiciones[y][0] - 40 &&
+                this._x < this.posiciones[y][0] + 40 &&
+                this._y > this.posiciones[y][1] - 40 &&
+                this._y < this.posiciones[y][1] + 40 &&
+                this.contador == 8
+              ) {
+                this.contador = 9;
+              }
+
+              if (
+                this.graphicsPath.length > 100 &&
+                this.graphicsPath.length < 150 &&
+                pointer.x > this.posiciones[y][0] - 40 &&
+                pointer.x < this.posiciones[y][0] + 40 &&
+                pointer.y > this.posiciones[y][1] - 40 &&
+                pointer.y < this.posiciones[y][1] + 40 &&
+                this._x > this.posiciones[y][0] - 40 &&
+                this._x < this.posiciones[y][0] + 40 &&
+                this._y > this.posiciones[y][1] - 40 &&
+                this._y < this.posiciones[y][1] + 40 &&
+                this.contador == 10
+              ) {
+                this.contador = 11;
+              }
             }
-          }
           } else {
             this._y = pointer.y;
             this._x = pointer.x;
@@ -1044,12 +1037,11 @@ export class SandwichMotorSkillsComponent
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
   juego: Juego;
-  showBar: boolean
-
+  showBar: boolean;
 
   banderas: boolean[];
 
-  constructor(private juegoService: JuegoService,  private data:DataService) {
+  constructor(private juegoService: JuegoService, private data: DataService, private _snackBar: MatSnackBar, private router: Router ) {
     this.showBar = false;
     this.scene = new NewScene();
     this.banderas = [false, false, false, false, false, false];
@@ -1071,11 +1063,18 @@ export class SandwichMotorSkillsComponent
     };
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
+  }
+
   ngOnInit() {
     this.newMessage(false);
 
     this.phaserGame = new Phaser.Game(this.config);
-    this.data.currentBarState.subscribe(message => this.showBar = message);
+    this.data.currentBarState.subscribe((message) => (this.showBar = message));
 
     this.juegoService
       .selectJuego(localStorage.getItem("id_juego"))
@@ -1083,7 +1082,7 @@ export class SandwichMotorSkillsComponent
         this.juego = res;
 
         this.juego.partidas.push({
-          fecha_inicio: new Date()
+          fecha_inicio: new Date(),
         });
 
         this.juegoService.updateJuego(this.juego).subscribe((res) => {
@@ -1160,22 +1159,23 @@ export class SandwichMotorSkillsComponent
           this.scene.track.on = false;
           if (this.scene.track.ok) {
             this.banderas[5] = true;
+            this.openSnackBar("GAME OVER", "🚩");
+            setTimeout(() => {
+              this.router.navigate(["actividades/principal"]);
+            }, 5000);
           }
         }
       }
     }
-    
-   
   }
-  
-  newMessage(state:boolean) {
-    console.log("aqui")
+
+  newMessage(state: boolean) {
+    console.log("aqui");
     this.data.changeMessage(state);
   }
-  
+
   tracking(i) {
-    
-    console.log("AQUI->  "+i)
+    console.log("AQUI->  " + i);
     const detalle: DetallePartida = {
       ok: this.scene.track.ok,
 
@@ -1193,9 +1193,7 @@ export class SandwichMotorSkillsComponent
     this.juegoService.updateJuego(this.juego).subscribe((res2) => {
       console.log(res2);
     });
-
   }
-
 
   ngOnDestroy() {
     this.phaserGame.destroy(true);

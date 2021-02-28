@@ -33,6 +33,8 @@ declare function checkClick23(): any;
 import Phaser from "phaser";
 import { Juego } from "../models/Juego";
 import { JuegoService } from '../services/juegos/juego.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 class NewScene extends Phaser.Scene {
   constructor() {
     super("NewScene");
@@ -77,7 +79,8 @@ export class EncuentraloComponent implements OnInit, DoCheck {
   ];
   opVer: string[];
   juego: Juego
-  constructor(private elementRef: ElementRef, public juegoService: JuegoService) {
+  constructor(private elementRef: ElementRef, public juegoService: JuegoService,private router: Router,
+    private _snackBar: MatSnackBar,) {
     this.opVer = this.shuffle(this.opciones).slice(0, 6);
     this.par = "Nada";
     this.visible = [true, true, true, true, true, true];
@@ -423,8 +426,22 @@ export class EncuentraloComponent implements OnInit, DoCheck {
         this.visible[this.opVer.indexOf("zanahoria")] = false;
       }
     }
+
+    if (!this.visible[0] && !this.visible[1]&& !this.visible[2]&& !this.visible[3]&& !this.visible[4]&& !this.visible[5]){
+      this.visible=null;
+      this.openSnackBar("GAME OVER","🚩")
+      setTimeout(() => {
+        this.router.navigate(["actividades/principal"]);
+      }, 5000);
+    }
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
+  }
   // @HostListener('unloaded')
   ngOnDestroy() {
     console.log("saliendo");

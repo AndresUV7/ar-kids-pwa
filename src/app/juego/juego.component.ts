@@ -4,6 +4,8 @@ import { JuegoService } from "../services/juegos/juego.service";
 import { Juego } from "../models/Juego";
 import { DetallePartida } from "../models/DetallePartida";
 import { DataService } from '../services/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 class NewScene extends Phaser.Scene {
   cabeza: any;
@@ -23,6 +25,7 @@ class NewScene extends Phaser.Scene {
   mediasCorrectas: boolean;
   gorraCorrecta: boolean;
   tracker: any;
+  gameOver: any;
 
   constructor() {
     super("NewScene");
@@ -31,7 +34,7 @@ class NewScene extends Phaser.Scene {
   preload() {
     this.tracker = { error: false, objetivo: "", accion: ""};
     this.load.path = "/assets/img/";
-    this.load.path = '/ar-kids-pwa/assets/img/'
+    // this.load.path = '/ar-kids-pwa/assets/img/'
     this.load.audio("pantalones", ["pantalon_w.mp3"]);
     this.load.audio("pantalones2", ["pantalon_x_w.mp3"]);
     this.load.audio("blusa", ["blusa_w.mp3"]);
@@ -63,6 +66,7 @@ class NewScene extends Phaser.Scene {
 
   create() {
     // console.log('enter create');
+    this.gameOver = false;
     this.add.image(320, 180, "back").setDepth(-1);
     const pantalonesAudio = this.sound.add("pantalones");
     const pantalonesAudio2 = this.sound.add("pantalones2");
@@ -207,6 +211,9 @@ class NewScene extends Phaser.Scene {
     });
 
     this.input.on(eventos.DROP, (pointer, obj, target) => {
+ 
+
+      
       let bandera = false;
       this.tracker.accion = target.name;
       console.log(obj.name);
@@ -221,6 +228,9 @@ class NewScene extends Phaser.Scene {
             buzoAudio.play();
             this.correcto2 = true;
             bandera = true;
+            if (this.correcto && this.correcto2 && this.blusaCorrecta  && this.botasCorrectas  && this.gorraCorrecta  && this.mediasCorrectas){
+              this.gameOver = true;
+          }
           } else {
             buzoAudio3.play();
             this.tracker.accion = this.tracker.accion +" (falta blusa)";
@@ -242,6 +252,9 @@ class NewScene extends Phaser.Scene {
           pantalonesAudio.play();
           this.correcto = true;
           bandera = true;
+          if (this.correcto && this.correcto2 && this.blusaCorrecta  && this.botasCorrectas  && this.gorraCorrecta  && this.mediasCorrectas){
+            this.gameOver = true;
+        }
         } else {
           pantalonesAudio2.play();
           this.tracker.error = true;
@@ -258,6 +271,9 @@ class NewScene extends Phaser.Scene {
           blusaAudio.play();
           this.blusaCorrecta = true;
           bandera = true;
+          if (this.correcto && this.correcto2 && this.blusaCorrecta  && this.botasCorrectas  && this.gorraCorrecta  && this.mediasCorrectas){
+            this.gameOver = true;
+        }
         } else {
           blusaAudio2.play();
           this.tracker.error = true;
@@ -276,6 +292,9 @@ class NewScene extends Phaser.Scene {
               zapatosAudio.play();
               this.botasCorrectas = true;
               bandera = true;
+              if (this.correcto && this.correcto2 && this.blusaCorrecta  && this.botasCorrectas  && this.gorraCorrecta  && this.mediasCorrectas){
+                this.gameOver = true;
+            }
             } else {
               zapatosAudio4.play();
               this.tracker.accion = this.tracker.accion +" (falta pantalón)";
@@ -302,6 +321,9 @@ class NewScene extends Phaser.Scene {
           calcetinesAudio.play();
           this.mediasCorrectas = true;
           bandera = true;
+          if (this.correcto && this.correcto2 && this.blusaCorrecta  && this.botasCorrectas  && this.gorraCorrecta  && this.mediasCorrectas){
+            this.gameOver = true;
+        }
         } else {
           calcetinesAudio2.play();
           this.tracker.error = true;
@@ -319,6 +341,9 @@ class NewScene extends Phaser.Scene {
             gorroAudio.play();
             this.gorraCorrecta = true;
             bandera = true;
+            if (this.correcto && this.correcto2 && this.blusaCorrecta  && this.botasCorrectas  && this.gorraCorrecta  && this.mediasCorrectas){
+              this.gameOver = true;
+          }
           } else {
             gorroAudio3.play();
             this.tracker.accion =this.tracker.accion + " (falta blusa y/o buzo)";
@@ -357,7 +382,7 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
 
   checkpoints: boolean[];
 
-  constructor(private juegoService: JuegoService, private data:DataService) {
+  constructor(private juegoService: JuegoService, private data:DataService, private _snackBar: MatSnackBar, private router: Router ) {
     this.showBar = false;
     this.checkpoints = [false, false, false, false, false, false];
 
@@ -409,6 +434,13 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
       });
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
+  }
+
   ngDoCheck() {
 
     if (this.scene.tracker){
@@ -445,7 +477,18 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
       
       }
     }
+
     
+    
+    if (this.scene.gameOver){
+      this.openSnackBar("GAME OVER", "🚩");
+     setTimeout(() => {
+       this.router.navigate(["actividades/principal"]);
+     }, 5000);
+
+     this.scene.gameOver = false;
+
+    }
     
 
     // if (this.scene.tracker) {
@@ -521,6 +564,7 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
     this.data.changeMessage(state);
   }
   
+ 
   
   ngOnDestroy(){
     this.phaserGame.destroy(true);

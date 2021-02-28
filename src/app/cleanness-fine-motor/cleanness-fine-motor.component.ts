@@ -4,6 +4,8 @@ import { Juego } from '../models/Juego';
 import { DetallePartida } from '../models/DetallePartida';
 import Phaser from 'phaser';
 import { DataService } from '../services/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 class NewScene extends Phaser.Scene {
   cuchara: any;
@@ -58,7 +60,7 @@ class NewScene extends Phaser.Scene {
     this.lifes = [ null, null, null, null, null, null, null]
     this.puntaje = 0;
     this.load.path = "/assets/img/";
-    this.load.path = "/ar-kids-pwa/assets/img/";
+    // this.load.path = "/ar-kids-pwa/assets/img/";
     this.load.audio("cuchara", ["cuchara.mp3"]);
     this.load.audio("tenedor", ["tenedor.mp3"]);
     this.load.audio("plato", ["plato.mp3"]);
@@ -946,7 +948,7 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
   juego: Juego;
   checkpoint: boolean;
   showBar: boolean;
-  constructor(private juegoService: JuegoService,  private data:DataService ) {
+  constructor(private juegoService: JuegoService,  private data:DataService, private _snackBar: MatSnackBar, private router: Router ) {
     this.checkpoint = false;
     this.showBar = false;
     this.scene = new NewScene();
@@ -965,6 +967,13 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
         height: 360,
       },
     };
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
   }
 
   ngOnInit() {
@@ -999,6 +1008,10 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
     
     if (this.scene.gameOver && !this.checkpoint){
         this.generarDetalle();
+        this.openSnackBar("GAME OVER","🚩")
+        setTimeout(() => {
+          this.router.navigate(["actividades/principal"]);
+        }, 5000);
     }
   }
 

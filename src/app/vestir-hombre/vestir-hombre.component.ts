@@ -5,6 +5,7 @@ import { DetallePartida } from '../models/DetallePartida';
 import { JuegoService } from '../services/juegos/juego.service';
 import { Juego } from '../models/Juego';
 import { DataService } from '../services/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 class NewScene extends Phaser.Scene {
   // joven: any;
@@ -21,7 +22,7 @@ class NewScene extends Phaser.Scene {
   correcto: boolean[];
   aux: any[];
   tracker: any;
-
+  gameOver: any;
 
   constructor() {
     super("NewScene");
@@ -68,6 +69,7 @@ class NewScene extends Phaser.Scene {
 
   create() {
     // console.log('enter create');
+    this.gameOver = false;
     const bividiAudio1 = this.sound.add("bividi_c");
     const bividiAudio2 = this.sound.add("bividi_e_l");
     const calcetinesAudio1 = this.sound.add("calcetines_c");
@@ -214,6 +216,8 @@ class NewScene extends Phaser.Scene {
     // });
 
     this.input.on(eventos.DROP, (pointer, obj, target) => {
+
+    
       let bandera = false;
       this.tracker.accion = target.name;
       // console.log(obj.name);
@@ -229,6 +233,9 @@ class NewScene extends Phaser.Scene {
           pantalonAudio1.play();
           this.correcto[0] = true;
           bandera = true;
+          if (this.correcto[0] && this.correcto[1] && this.correcto[2]  && this.correcto[3]  && this.correcto[4]  && this.correcto[5] ){
+            this.gameOver = true;
+        }
         }else{
           pantalonAudio2.play();
           this.tracker.error = true;
@@ -246,6 +253,9 @@ class NewScene extends Phaser.Scene {
             camisetaAudio1.play();
             this.correcto[1] = true;
             bandera = true;
+            if (this.correcto[0] && this.correcto[1] && this.correcto[2]  && this.correcto[3]  && this.correcto[4]  && this.correcto[5] ){
+              this.gameOver = true;
+          }
           }else{
             camisetaAudio3.play();
             this.tracker.accion = this.tracker.accion +" (falta bividi)";
@@ -270,6 +280,9 @@ class NewScene extends Phaser.Scene {
         calcetinesAudio1.play();
         this.correcto[2] = true;
         bandera = true;
+        if (this.correcto[0] && this.correcto[1] && this.correcto[2]  && this.correcto[3]  && this.correcto[4]  && this.correcto[5] ){
+          this.gameOver = true;
+      }
       }else{
         calcetinesAudio2.play();
         this.tracker.error = true;
@@ -286,6 +299,9 @@ class NewScene extends Phaser.Scene {
           zapatosAudio1.play();
           this.correcto[3] = true;
           bandera = true;
+          if (this.correcto[0] && this.correcto[1] && this.correcto[2]  && this.correcto[3]  && this.correcto[4]  && this.correcto[5] ){
+            this.gameOver = true;
+        }
         }else{
           zapatosAudio4.play();
           this.tracker.accion = this.tracker.accion +" (falta pantalon)";
@@ -310,6 +326,9 @@ class NewScene extends Phaser.Scene {
         bividiAudio1.play();
         this.correcto[4] = true;
         bandera = true;
+        if (this.correcto[0] && this.correcto[1] && this.correcto[2]  && this.correcto[3]  && this.correcto[4]  && this.correcto[5] ){
+          this.gameOver = true;
+      }
       }else{
         bividiAudio2.play();
         this.tracker.error = true;
@@ -327,6 +346,9 @@ class NewScene extends Phaser.Scene {
           gorraAudio1.play();
           this.correcto[5] = true;
           bandera = true;
+          if (this.correcto[0] && this.correcto[1] && this.correcto[2]  && this.correcto[3]  && this.correcto[4]  && this.correcto[5] ){
+            this.gameOver = true;
+        }
         }else{
           gorraAudio3.play();
           this.tracker.accion = this.tracker.accion +" (falta bividi y/o camiseta)";
@@ -347,7 +369,12 @@ class NewScene extends Phaser.Scene {
     });
   }
 
-  update(time, delta) {}
+  update(time, delta) {
+
+   
+
+    
+  }
 }
 
 @Component({
@@ -365,7 +392,7 @@ export class VestirHombreComponent implements OnInit, OnDestroy, DoCheck {
   checkpoints: boolean[];
 
 
-  constructor(private router: Router, private juegoService: JuegoService,  private data:DataService) {
+  constructor(private router: Router, private juegoService: JuegoService,  private data:DataService, private _snackBar: MatSnackBar ) {
     this.checkpoints = [false, false, false, false, false, false];
     this.scene = new NewScene();
     this.showBar = false;
@@ -453,7 +480,27 @@ export class VestirHombreComponent implements OnInit, OnDestroy, DoCheck {
         
         }
       }
+
+     if (this.scene.gameOver){
+       this.openSnackBar("GAME OVER", "🚩");
+      setTimeout(() => {
+        this.router.navigate(["actividades/principal"]);
+      }, 5000);
+
+      this.scene.gameOver = false;
+
+     }
       
+  }
+
+
+
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
   }
 
   regresar() {

@@ -10,6 +10,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { RegisterService } from "../services/register.service";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
+declare var webNotification: any
 
 @Component({
   selector: "app-login",
@@ -93,7 +94,31 @@ export class LoginComponent implements OnInit {
         // this.service3.insertPartida(this.partida).subscribe(res => {
         //   console.log(res);
         // });
-        
+        navigator.serviceWorker.register('ngsw-worker.js').then(function(registration) {
+          webNotification.showNotification('Inicio de Sesión Exitoso', {
+              serviceWorkerRegistration: registration,
+              body: 'Bienvenid@ a otra sesión de aprendizaje...',
+              icon: 'my-icon.ico',
+              actions: [
+                  {
+                      action: 'OK',
+                      title: 'OK'
+                  },
+              ],
+              autoClose: 5000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+          }, function onShow(error, hide) {
+              if (error) {
+                  window.alert('Unable to show notification: ' + error.message);
+              } else {
+                  console.log('Notification Shown.');
+  
+                  setTimeout(function hideNotification() {
+                      console.log('Hiding notification....');
+                      hide(); //manually close the notification (you can skip this if you use the autoClose option)
+                  }, 5000);
+              }
+          });
+      });
         this.router.navigate(["actividades/principal"]);
       },
       (err) => {
@@ -138,9 +163,36 @@ export class LoginComponent implements OnInit {
       //   console.log(res);
       // });
 
+      navigator.serviceWorker.register('ngsw-worker.js').then(function(registration) {
+        webNotification.showNotification('Usuario Registrado Exitosamente', {
+            serviceWorkerRegistration: registration,
+            body: 'Gracias por unirte a AR-KIDS!!',
+            icon: 'my-icon.ico',
+            actions: [
+                {
+                    action: 'OK',
+                    title: 'OK'
+                },
+            ],
+            autoClose: 5000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+        }, function onShow(error, hide) {
+            if (error) {
+                window.alert('Unable to show notification: ' + error.message);
+            } else {
+                console.log('Notification Shown.');
+
+                setTimeout(function hideNotification() {
+                    console.log('Hiding notification....');
+                    hide(); //manually close the notification (you can skip this if you use the autoClose option)
+                }, 5000);
+            }
+        });
+    });
       this.router.navigate(["actividades/principal"]);
 
     });
+
+    
   }
 
   onSubmit() {
@@ -184,10 +236,15 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    if (this.credenciales2.contrasena == this.credenciales2.contrasena2) {
-      this.register();
-    } else {
-      this.openSnackBar("Las contraseñas no coinciden", "X");
+    if (this.credenciales2.contrasena.length < 6 || this.credenciales2.contrasena2.length <6){
+      this.openSnackBar("La contraseña debe tener al menos 6 caractéres", "X");
+
+    }else{
+      if (this.credenciales2.contrasena == this.credenciales2.contrasena2) {
+        this.register();
+      } else {
+        this.openSnackBar("Las contraseñas no coinciden", "X");
+      }
     }
   }
 
