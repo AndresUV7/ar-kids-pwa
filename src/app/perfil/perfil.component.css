@@ -1,0 +1,10 @@
+.avatar1{
+    border-radius: 50%;
+
+}
+
+.mat-card-image:first-child {
+    margin-top: -16px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}

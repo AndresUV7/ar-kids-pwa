@@ -1,19 +1,114 @@
 <a-scene arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
 vr-mode-ui="enabled: false"
 renderer="colorManagement: true; logarithmicDepthBuffer: true;">
-    <a-marker preset="hiro">
+
+<a-assets>
+    <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
+    <audio id="sound" src="/assets/audios/lavadora.mp3" response-type="arraybuffer"></audio>
+    <audio id="sound2" src="/assets/audios/escoba.mp3" response-type="arraybuffer"></audio>
+    <audio id="sound3" src="/assets/audios/licuadora.mp3" response-type="arraybuffer"></audio>
+    <audio id="sound4" src="/assets/audios/fregadero.mp3" response-type="arraybuffer"></audio>
+    <audio id="sound5" src="/assets/audios/aspiradora.mp3" response-type="arraybuffer"></audio>
+    <audio id="sound6" src="/assets/audios/microondas.mp3" response-type="arraybuffer"></audio>
+</a-assets>
+
+<a-entity  raycaster = "objects: .clickable"  cursor="fuse: false; rayOrigin: mouse" > </a-entity > 
+
+    <a-marker id="m0" type="barcode" value="0" registerevents3>
             
         <!-- Using the asset management system. -->
         <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
         <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
         <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-        <a-entity geometry="primitive:box;" material="shader:gif;src:url(/assets/img/lavadora.gif);;opacity:1"></a-entity>
+        <a-entity class="clickable" geometry="primitive:box;" scale="1.5 1.5 1.5" material="shader:gif;src:url(/assets/img/lavadora.gif);opacity:1" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000" ></a-entity>
  
 
     </a-marker> 
-<a-entity camera></a-entity>
-</a-scene>
+     <a-marker id="m10" type="barcode" value="1" registerevents3>
+            
+        <!-- Using the asset management system. -->
+        <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+        <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <a-entity geometry="primitive:box;" scale="1.5 1.5 1.5" material="shader:gif;src:url(/assets/img/microondas.gif);opacity:1" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+ 
 
+    </a-marker> 
+ <a-marker id="m4" type="barcode" value="2" registerevents3>
+            
+        <!-- Using the asset management system. -->
+        <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+        <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <a-entity geometry="primitive:box;" scale="1.5 1.5 1.5" material="shader:gif;src:url(/assets/img/licuadora.gif);opacity:1" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+ 
+
+    </a-marker> 
+ <a-marker id="m8" type="barcode" value="3" registerevents3>
+            
+        <!-- Using the asset management system. -->
+        <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+        <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <a-entity geometry="primitive:box;" scale="1.5 1.5 1.5" material="shader:gif;src:url(/assets/img/aspiradora.gif);opacity:1" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+ 
+
+    </a-marker>  
+    <a-marker id="m6" type="barcode" value="4" registerevents3>
+            
+        <!-- Using the asset management system. -->
+        <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+        <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <a-entity geometry="primitive:box;" scale="1.5 1.5 1.5" material="shader:gif;src:url(/assets/img/fregadero.gif);opacity:1" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+ 
+
+    </a-marker> 
+     <a-marker id="m2" type="barcode" value="5" noisehandler registerevents3>
+        <!-- Using the asset management system. -->
+        <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
+        <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
+        <a-entity geometry="primitive:box;" scale="1.5 1.5 1.5" material="shader:gif;src:url(/assets/img/escoba.gif);opacity:1"  animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+ 
+
+    </a-marker> 
+
+    <a-marker id="m1" type="barcode" value="6"  noisehandler registerevents3>
+
+         <a-entity class="clickable" rotation="-45 0 0" text-geometry="value: LAVADORA ; font: #optimerBoldFont; size: 0.5" material="color: #ff4080;" position="-1.3 0 0"  animation__mousedown="property: components.material.material.color; type: color; from: #26c998 ; to: #ff4080; startEvents: mouseenter; dur: 500"></a-entity>
+	</a-marker>    
+    <a-marker id="m3" type="barcode" value="7"  noisehandler registerevents3>
+
+         <a-entity class="clickable" rotation="-45 0 0"  text-geometry="value: ESCOBA ; font: #optimerBoldFont; size: 0.5" material="color: #26c998;" position="-1.3 0 0" animation__mousedown="property: components.material.material.color; type: color; from: #ff4080; to: #26c998; startEvents: mouseenter; dur: 500"></a-entity>
+	</a-marker>
+
+    <a-marker id="m5" type="barcode" value="8"  noisehandler registerevents3>
+
+         <a-entity class="clickable" rotation="-45 0 0"  text-geometry="value: LICUADORA; font: #optimerBoldFont; size: 0.5" material="color: #ff4080;" position="-1.3 0 0" animation__mousedown="property: components.material.material.color; type: color; from: #26c998 ; to: #ff4080; startEvents: mouseenter; dur: 500"></a-entity>
+	</a-marker>
+    <a-marker id="m7" type="barcode" value="9"  noisehandler registerevents3>
+
+         <a-entity class="clickable"  rotation="-45 0 0" text-geometry="value: FREGADERO; font: #optimerBoldFont; size: 0.5" material="color: #26c998;" position="-1.3 0 0"  animation__mousedown="property: components.material.material.color; type: color; from: #ff4080; to: #26c998; startEvents: mouseenter; dur: 500"></a-entity>
+	</a-marker>
+    <a-marker id="m9" type="barcode" value="10" noisehandler registerevents3>
+
+         <a-entity class="clickable"  rotation="-45 0 0"  text-geometry="value: ASPIRADORA; font: #optimerBoldFont; size: 0.5" material="color: #ff4080;" position="-1.3 0 0"animation__mousedown="property: components.material.material.color; type: color; from: #26c998 ; to: #ff4080; startEvents: mouseenter; dur: 500" ></a-entity>
+	</a-marker>
+    <a-marker id="m11" type="barcode" value="11"  noisehandler registerevents3>
+
+         <a-entity class="clickable" rotation="-45 0 0"  text-geometry="value: MICROONDAS; font: #optimerBoldFont; size: 0.5" material="color: #26c998;" position="-1.3 0 0"  animation__mousedown="property: components.material.material.color; type: color; from: #ff4080; to: #26c998; startEvents: mouseenter; dur: 500"></a-entity>
+	</a-marker>
+    <a-entity id="s1" sound="src: #sound" autoplay="false"></a-entity>
+    <a-entity id="s2" sound="src: #sound2" autoplay="false"></a-entity>
+    <a-entity id="s3" sound="src: #sound3" autoplay="false"></a-entity>
+    <a-entity id="s4" sound="src: #sound4" autoplay="false"></a-entity>
+    <a-entity id="s5" sound="src: #sound5" autoplay="false"></a-entity>
+    <a-entity id="s6" sound="src: #sound6" autoplay="false"></a-entity>
+<a-entity camera></a-entity>
+<a-entity run2="p:x"></a-entity>
+
+</a-scene>
 
 
      <!-- <a-marker emitevents="true" preset='custom'  type="pattern" url="/ar-kids-pwa/assets/img/letterB.patt"> -->

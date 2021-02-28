@@ -98,6 +98,9 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
 import { RecoverPassComponent } from './recover-pass/recover-pass.component';
 import { LostPassComponent } from './lost-pass/lost-pass.component';
+import { EncuentraloGeoComponent } from './encuentralo-geo/encuentralo-geo.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @NgModule({
   declarations: [
@@ -135,6 +138,7 @@ import { LostPassComponent } from './lost-pass/lost-pass.component';
     AyudaComponent,
     RecoverPassComponent,
     LostPassComponent,
+    EncuentraloGeoComponent,
 
   ],
   imports: [
@@ -193,6 +197,8 @@ import { LostPassComponent } from './lost-pass/lost-pass.component';
     FormsModule.withConfig({ warnOnDeprecatedNgFormSelector: "never" }),
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     SpeechRecognitionModule,
+    PdfViewerModule
+
     // BackButtonDisableModule.forRoot()
 
   ],
@@ -219,3 +225,4 @@ import { LostPassComponent } from './lost-pass/lost-pass.component';
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
+//platformBrowserDynamic().bootstrapModule(AppModule);

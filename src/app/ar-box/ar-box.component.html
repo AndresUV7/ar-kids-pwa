@@ -1,7 +1,5 @@
-<div id="gameContainer" [ngStyle]="objExp">
 
-</div>
-
+<!-- 
 
 <div  style='position: fixed; top: 10px; left:100px; text-align: center; z-index: 1;'>
     <button 
@@ -27,9 +25,11 @@
 
 <div  style='position: fixed; top: 100px; width:100%; text-align: center; z-index: 1;'>
    {{palabra}}
+</div> -->
+
+<div id="gameContainer" [ngStyle]="objExp">
+
 </div>
-
-
 
 
 <div *ngIf="hw" style='position: fixed; top: 50%; width:100%; text-align: center; z-index: 1;'>
@@ -51,12 +51,12 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;"
 gesture-detector>
 
 <a-assets>
-    <video  id='{{playList[0].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[0].ruta}}'></video>
-    <video id='{{playList[1].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[1].ruta}}'></video>
-    <video id='{{playList[2].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[2].ruta}}'></video>
-    <video id='{{playList[3].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[3].ruta}}'></video>
-    <video id='{{playList[4].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[4].ruta}}'></video>
-    <video id='{{playList[5].nombre}}' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[5].ruta}}'></video>
+    <video  id='k' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[0].ruta}}'></video>
+    <video id='a' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[1].ruta}}'></video>
+    <video id='b' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[2].ruta}}'></video>
+    <video id='c' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[3].ruta}}'></video>
+    <video id='d' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[4].ruta}}'></video>
+    <video id='f' crossorigin="anonymous"  webkit-playsinline playsinline  response-type="arraybuffer"  preload="auto" type="video/mp4" src='{{playList[5].ruta}}'></video>
           
 </a-assets>
 
@@ -76,7 +76,7 @@ gesture-detector>
     cursor="fuse: false; rayOrigin: mouse;"  videohandler>
         
         
-        <a-video gesture-handler class="clickable" [attr.src]="playList[0].id" width="1" height="1" rotation="-90 0 0"  ></a-video>
+        <a-video gesture-handler class="clickable" src="#k" width="1" height="1" rotation="-90 0 0"  ></a-video>
         
     </a-marker>
     
@@ -89,7 +89,7 @@ gesture-detector>
     cursor="fuse: false; rayOrigin: mouse;"  videohandler2>
             
               
-            <a-video gesture-handler class="clickable" [attr.src]="playList[1].id" width="1" height="1"  rotation="-90 0 0"  ></a-video>
+            <a-video gesture-handler class="clickable" src="#a" width="1" height="1"  rotation="-90 0 0"  ></a-video>
       
     </a-marker>    
 
@@ -102,7 +102,7 @@ gesture-detector>
     cursor="fuse: false; rayOrigin: mouse;"  videohandler3>
             
               
-            <a-video gesture-handler class="clickable" [attr.src]="playList[2].id" width="1" height="1"  rotation="-90 0 0"  ></a-video>
+            <a-video gesture-handler class="clickable" src="#b" width="1" height="1"  rotation="-90 0 0"  ></a-video>
       
     </a-marker>    
 
@@ -115,7 +115,7 @@ gesture-detector>
     cursor="fuse: false; rayOrigin: mouse;"  videohandler4>
             
               
-            <a-video gesture-handler class="clickable" [attr.src]="playList[3].id" width="1" height="1"  rotation="-90 0 0" ></a-video>
+            <a-video gesture-handler class="clickable" src="#c" width="1" height="1"  rotation="-90 0 0" ></a-video>
       
     </a-marker>    
 
@@ -128,7 +128,7 @@ gesture-detector>
     cursor="fuse: false; rayOrigin: mouse;"  videohandler5>
             
               
-            <a-video gesture-handler class="clickable" [attr.src]="playList[4].id" width="1" height="1"  rotation="-90 0 0" ></a-video>
+            <a-video gesture-handler class="clickable" src="#d" width="1" height="1"  rotation="-90 0 0" ></a-video>
       
     </a-marker>    
 
@@ -141,7 +141,7 @@ gesture-detector>
     cursor="fuse: false; rayOrigin: mouse;"  videohandler6>
             
               
-            <a-video gesture-handler class="clickable" [attr.src]="playList[5].id" width="1" height="1"  rotation="-90 0 0" ></a-video>
+            <a-video gesture-handler class="clickable" src="#f"  width="1" height="1"  rotation="-90 0 0" ></a-video>
       
     </a-marker>
 

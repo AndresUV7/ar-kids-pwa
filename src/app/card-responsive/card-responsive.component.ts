@@ -30,7 +30,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/A",
+          url: "https://icotar.com/initials/P",
         },
         {
           title: "AR-BOX",
@@ -38,7 +38,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/B",
+          url: "https://icotar.com/initials/A",
         },
         {
           title: "PICTOGRAM",
@@ -46,7 +46,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/C",
+          url: "https://icotar.com/initials/PIC",
         },
         {
           title: "CEPILLA2",
@@ -54,18 +54,18 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/D",
+          url: "https://icotar.com/initials/CEP",
         },
       ];
     } else if (localStorage.getItem("cat_act") == "2") {
       this.members = [
         {
-          title: "PREGUNTADOS",
+          title: "PREGUNTA2",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/E",
+          url: "https://icotar.com/initials/PR",
         },
         {
           title: "AR-BOX",
@@ -73,7 +73,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/F",
+          url: "https://icotar.com/initials/AR",
         },
         {
           title: "CLASIFÍCALO",
@@ -81,7 +81,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/G",
+          url: "https://icotar.com/initials/CLASI",
         },
         {
           title: "A VESTIR",
@@ -89,7 +89,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/H",
+          url: "https://icotar.com/initials/AV",
         },
       ];
     } else if (localStorage.getItem("cat_act") == "3") {
@@ -100,7 +100,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/I",
+          url: "https://icotar.com/initials/PRE",
         },
         {
           title: "AR-BOX",
@@ -108,7 +108,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/J",
+          url: "https://icotar.com/initials/ARBO",
         },
         {
           title: "ENCUÉNTRALO",
@@ -116,7 +116,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.Content here`,
-          url: "https://icotar.com/initials/K",
+          url: "https://icotar.com/initials/E",
         },
         {
           title: "LUNCH TIME",
@@ -130,12 +130,12 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     } else {
       this.members = [
         {
-          title: "PREGUNTADOS",
+          title: "PREGUNTA2",
           subtitle: "Subtitle",
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
       bred for hunting.Content here`,
-          url: "https://icotar.com/initials/M",
+          url: "https://icotar.com/initials/PREG",
         },
         {
           title: "AR-BOX",
@@ -143,7 +143,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
       bred for hunting.Content here`,
-          url: "https://icotar.com/initials/N",
+          url: "https://icotar.com/initials/ABO",
         },
         {
           title: "SONIGRAMA",
@@ -151,7 +151,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
       bred for hunting.Content here`,
-          url: "https://icotar.com/initials/O",
+          url: "https://icotar.com/initials/SONIG",
         },
         {
           title: "LA MESA",
@@ -159,7 +159,7 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
           content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
       bred for hunting.Content here`,
-          url: "https://icotar.com/initials/P",
+          url: "https://icotar.com/initials/LAMES",
         },
       ];
     }
@@ -171,23 +171,22 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     this.deviceInfo = !this.deviceService.isMobile();
   }
 
-  AR(){
+  AR() {
     this.router.navigate(["actividades/asistente"]);
-
   }
 
   prueba(title) {
-
     localStorage.setItem("tip_act", title);
-    
 
-    if (title == "PREGUNTA2"){
+    if (title == "PREGUNTA2") {
       if (localStorage.getItem("cat_act") == "1") {
         let juego: Juego = {
           usuario: localStorage.getItem("_id"),
-          nombre: "Preguntados: Utensilios de higiene personal",
-          descripcion: "Juego para reconocer los utensilios de higiene personal y sus usos",
+          nombre: "Pregunta2: Productos de higiene personal",
+          descripcion:
+            "Acitivdad para reconocer los productos de higiene personal y sus usos",
         };
+        
 
         this.juegoService.insertJuego(juego).subscribe((res) => {
           console.log(res);
@@ -196,61 +195,120 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
 
           this.router.navigate(["actividades/instrucciones"]);
         });
-      }else  if (localStorage.getItem("cat_act") == "2") {
-        console.log("vale")
+      } else if (localStorage.getItem("cat_act") == "2") {
+        console.log("vale");
         let juego: Juego = {
           usuario: localStorage.getItem("_id"),
-          nombre: "Preguntados: Prendas de Vestir",
-          descripcion: "Juego para reconocer las prendas de vestir y sus usos",
+          nombre: "Pregunta2: Prendas de Vestir",
+          descripcion: "Acitivdad  para reconocer las prendas de vestir y su tratamiento",
         };
-  
+
         this.juegoService.insertJuego(juego).subscribe((res) => {
           console.log(res);
-  
+
           localStorage.setItem("id_juego", res._id);
-  
+
           this.router.navigate(["actividades/instrucciones"]);
         });
-    } else
-    if (localStorage.getItem("cat_act") == "3") {
-      let juego: Juego = {
-        usuario: localStorage.getItem("_id"),
-        nombre: "Preguntados: Utensilios de Cocina",
-        descripcion: "Juego para reconocer los utensilios  de cocina y sus usos",
-      };
+      } else if (localStorage.getItem("cat_act") == "3") {
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "Pregunta2: Utensilios de Cocina",
+          descripcion:
+            "Acitivdad para reconocer los utensilios  de cocina y sus usos",
+        };
 
-      this.juegoService.insertJuego(juego).subscribe((res) => {
-        console.log(res);
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
 
-        localStorage.setItem("id_juego", res._id);
+          localStorage.setItem("id_juego", res._id);
 
-        this.router.navigate(["actividades/instrucciones"]);
-      });
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+      } else {
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "Pregunta2: Objetos para tareas hogar",
+          descripcion: "Acitivdad para reconocer objetos para las tareas del hogar",
+        };
 
-      
-    } else {
-     
-      let juego: Juego = {
-        usuario: localStorage.getItem("_id"),
-        nombre: "Preguntados: Objetos para tareas hogar",
-        descripcion: "Juego para reconocer objetos para las tareas del hogar",
-      };
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
 
-      this.juegoService.insertJuego(juego).subscribe((res) => {
-        console.log(res);
+          localStorage.setItem("id_juego", res._id);
 
-        localStorage.setItem("id_juego", res._id);
-
-        this.router.navigate(["actividades/instrucciones"]);
-      });
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+      }
     }
 
+    if (title == "AR-BOX") {
+      if (localStorage.getItem("cat_act") == "1") {
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "AR-Box: Higiene y aseo",
+          descripcion:
+            "Actividad para aprender acerca de la higiene y aseo mediante videos interactivos",
+        };
+
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
+
+          localStorage.setItem("id_juego", res._id);
+
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+      } else if (localStorage.getItem("cat_act") == "2") {
+        console.log("vale");
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "AR-Box: Vestimenta",
+          descripcion: "Actividad para aprender sobre el trato y uso de vestimenta mediante videos interactivos",
+        };
+
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
+
+          localStorage.setItem("id_juego", res._id);
+
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+      } else if (localStorage.getItem("cat_act") == "3") {
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "AR-Box: Recetas de Cocina",
+          descripcion:
+            "Actividad para aprender recetas de cocina sencillas mediante videos interactivos",
+        };
+
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
+
+          localStorage.setItem("id_juego", res._id);
+
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+      } else {
+        let juego: Juego = {
+          usuario: localStorage.getItem("_id"),
+          nombre: "AR-Box: Tareas del Hogar",
+          descripcion: "Actividad para aprender a realizar actividades básicas del hogar mediante viedos interactivos",
+        };
+
+        this.juegoService.insertJuego(juego).subscribe((res) => {
+          console.log(res);
+
+          localStorage.setItem("id_juego", res._id);
+
+          this.router.navigate(["actividades/instrucciones"]);
+        });
+      }
     }
 
     if (title == "CEPILLA2") {
       let juego: Juego = {
         usuario: localStorage.getItem("_id"),
-        nombre: "Cepillado de dientes",
+        nombre: "Cepilla2",
         descripcion: "Juego para practicar el cepillado de dientes",
       };
 
@@ -263,12 +321,11 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
       });
     }
 
-
     if (title == "A VESTIR") {
       let juego: Juego = {
         usuario: localStorage.getItem("_id"),
-        nombre: "Vestir Mujer",
-        descripcion: "Juego para aprender a vestirse (mujeres)",
+        nombre: "A Vestir",
+        descripcion: "Juego para aprender a vestirse",
       };
 
       this.juegoService.insertJuego(juego).subscribe((res) => {
@@ -281,10 +338,9 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
     }
 
     if (title == "LUNCH TIME") {
-
       let juego: Juego = {
         usuario: localStorage.getItem("_id"),
-        nombre: "Preparación de un sandwich",
+        nombre: "Lunch Time",
         descripcion: "Juego de recrear los pasos para preparar un sanduche",
       };
 
@@ -295,14 +351,12 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
 
         this.router.navigate(["actividades/instrucciones"]);
       });
-
-
     }
 
     if (title == "LA MESA") {
       let juego: Juego = {
         usuario: localStorage.getItem("_id"),
-        nombre: "Servir la mesa",
+        nombre: "La Mesa",
         descripcion: "Juego para practicar como se sirve la mesa",
       };
 
@@ -313,20 +367,73 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
 
         this.router.navigate(["actividades/instrucciones"]);
       });
+    }
 
+    if (title == "PICTOGRAM") {
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Pictogram",
+        descripcion: "Juego para repasar las actividades básicas de la higiene personal",
+      };
+
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
+
+        localStorage.setItem("id_juego", res._id);
+
+        this.router.navigate(["actividades/instrucciones"]);
+      });
+    }
+    
+    if (title == "CLASIFÍCALO") {
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Clasifícalo",
+        descripcion: "Juego para aprender a clasificar las prendas de vestir según su estado",
+      };
+
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
+
+        localStorage.setItem("id_juego", res._id);
+
+        this.router.navigate(["actividades/instrucciones"]);
+      });
     }
 
 
+    if (title == "SONIGRAMA") {
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Sonigrama",
+        descripcion: "Juego para ejercitar la memoria asociando objetos del hogar con su sonido",
+      };
 
-    if(title == "PICTOGRAM"){
-      this.router.navigate(["actividades/pictogram"]);
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
 
+        localStorage.setItem("id_juego", res._id);
 
+        this.router.navigate(["actividades/instrucciones"]);
+      });
+    }
+    
+    if (title == "ENCUÉNTRALO") {
+      let juego: Juego = {
+        usuario: localStorage.getItem("_id"),
+        nombre: "Encuéntralo",
+        descripcion: "Juego para reforzar el reconocimiento de alimentos",
+      };
+
+      this.juegoService.insertJuego(juego).subscribe((res) => {
+        console.log(res);
+
+        localStorage.setItem("id_juego", res._id);
+       
+        this.router.navigate(["actividades/instrucciones"]);
+      });
     }
 
 
   }
-
-
- 
 }

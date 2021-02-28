@@ -3,6 +3,7 @@ import Phaser from "phaser";
 import { Juego } from "../models/Juego";
 import { JuegoService } from "../services/juegos/juego.service";
 import { DetallePartida } from '../models/DetallePartida';
+import { DataService } from '../services/data.service';
 
 class NewScene extends Phaser.Scene {
   indice: any;
@@ -74,7 +75,7 @@ class NewScene extends Phaser.Scene {
     this.text = this.add.text(440, 40 ,"PAN", {
       color : "#26c998",
       fontSize : 35,
-      fontFamily: '"Potta One", cursive'
+      fontFamily: '"Poppins'
     });
     cancion.play();
     this.input.addPointer(1);
@@ -1043,10 +1044,13 @@ export class SandwichMotorSkillsComponent
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
   juego: Juego;
+  showBar: boolean
+
 
   banderas: boolean[];
 
-  constructor(private juegoService: JuegoService) {
+  constructor(private juegoService: JuegoService,  private data:DataService) {
+    this.showBar = false;
     this.scene = new NewScene();
     this.banderas = [false, false, false, false, false, false];
 
@@ -1068,7 +1072,10 @@ export class SandwichMotorSkillsComponent
   }
 
   ngOnInit() {
+    this.newMessage(false);
+
     this.phaserGame = new Phaser.Game(this.config);
+    this.data.currentBarState.subscribe(message => this.showBar = message);
 
     this.juegoService
       .selectJuego(localStorage.getItem("id_juego"))
@@ -1076,7 +1083,7 @@ export class SandwichMotorSkillsComponent
         this.juego = res;
 
         this.juego.partidas.push({
-          fecha_inicio: new Date(),
+          fecha_inicio: new Date()
         });
 
         this.juegoService.updateJuego(this.juego).subscribe((res) => {
@@ -1160,7 +1167,12 @@ export class SandwichMotorSkillsComponent
     
    
   }
-
+  
+  newMessage(state:boolean) {
+    console.log("aqui")
+    this.data.changeMessage(state);
+  }
+  
   tracking(i) {
     
     console.log("AQUI->  "+i)
@@ -1187,5 +1199,6 @@ export class SandwichMotorSkillsComponent
 
   ngOnDestroy() {
     this.phaserGame.destroy(true);
+    this.newMessage(true);
   }
 }

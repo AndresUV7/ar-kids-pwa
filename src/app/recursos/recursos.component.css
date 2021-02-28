@@ -1,0 +1,94 @@
+
+@media screen and (max-width: 700px) {
+    .example-ripple-container {
+        cursor: pointer;
+        text-align: center;
+      
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+      
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+      
+        -webkit-user-drag: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+  }
+
+  @media screen and (min-width: 701px) {
+  .example-ripple-container {
+    cursor: pointer;
+    text-align: center;
+  
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+  
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+  /** Styles to make the demo look better. */
+  .example-ripple-checkbox {
+    margin: 6px 12px 6px 0;
+  }
+  
+  .example-ripple-form-field {
+    margin: 0 12px 0 0;
+  }
+
+  .multiline {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+ .picto{
+     color: white;
+     text-decoration: underline;
+     font-weight: bold;
+     font-style: italic;
+ }
+ .picto2{
+     color: #26c998;
+     text-decoration: underline;
+     font-weight: bold;
+     font-style: italic;
+ }
+
+ .fondo1{
+    background-color: #26c998;
+
+ }
+
+ .fondo2{
+    background-color: whitesmoke;;
+
+ }
+
+ @media screen and (max-width: 700px) {
+    .picto{
+        color: white;
+        text-decoration: underline;
+        font-weight: 1000;
+        font-style: italic;
+        font-size: 12px;
+    }
+
+    .picto2{
+        color: #26c998;
+        text-decoration: underline;
+        font-weight: 1000;
+        font-style: italic;
+        font-size: 12px;
+
+    }
+ }
+

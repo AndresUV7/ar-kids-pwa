@@ -8,7 +8,7 @@ export class RegisterService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.7:3000/persona/";
+  Url="https://ar-kids.herokuapp.com/persona/";
   
   registerUser(credenciales){
     

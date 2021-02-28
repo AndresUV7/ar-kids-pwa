@@ -3,6 +3,7 @@ import { JuegoService } from '../services/juegos/juego.service';
 import { Juego } from '../models/Juego';
 import { DetallePartida } from '../models/DetallePartida';
 import Phaser from 'phaser';
+import { DataService } from '../services/data.service';
 
 class NewScene extends Phaser.Scene {
   cuchara: any;
@@ -45,6 +46,7 @@ class NewScene extends Phaser.Scene {
   platoHondoAudio: any;
   servilletaAudio: any;
   tazaAudio: any;
+  extraAudio: any;
 
   constructor() {
     super("NewScene");
@@ -64,11 +66,11 @@ class NewScene extends Phaser.Scene {
     this.load.audio("servilleta", ["servilleta.mp3"]);
     this.load.audio("taza", ["taza.mp3"]);
     this.load.audio("cuchillo", ["cuchillo.mp3"]);
+    this.load.audio("extra", ["casi_atrapa.mp3"]);
     
-
     this.load.image("fondo", "fondo-mesa.jpg");
     this.load.image("cuchara", "cuchara.png");
-    this.load.image("tenedor", "tenedor.png");
+    this.load.image("tenedor", "tenedor-x.png");
     this.load.image("cuchillo", "cuchillo.png");
     this.load.image("servilleta", "servilleta.png");
     this.load.image("vaso", "vaso.png");
@@ -93,6 +95,7 @@ class NewScene extends Phaser.Scene {
     this.platoHondoAudio =  this.sound.add("plato_hondo");
     this.servilletaAudio =  this.sound.add("servilleta");
     this.tazaAudio =  this.sound.add("taza");
+    this.extraAudio =  this.sound.add("extra");
 
     var x = 25;
     for (let i = 0; i < this.lifes.length; i++) {
@@ -873,13 +876,15 @@ class NewScene extends Phaser.Scene {
 
 
   quitarVida(){
-
     if (NewScene.touch){
       window.navigator.vibrate(200);
 
       if(this.lifes.length > 0){
         this.lifes[this.lifes.length -1].destroy();
         this.lifes.pop();
+        this.sound.stopAll();
+        this.extraAudio.play();
+
       }
     }else{
       const keyCodes = Phaser.Input.Keyboard.KeyCodes;
@@ -940,8 +945,10 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
   scene: NewScene;
   juego: Juego;
   checkpoint: boolean;
-  constructor(private juegoService: JuegoService ) {
+  showBar: boolean;
+  constructor(private juegoService: JuegoService,  private data:DataService ) {
     this.checkpoint = false;
+    this.showBar = false;
     this.scene = new NewScene();
     this.config = {
       type: Phaser.AUTO,
@@ -962,16 +969,18 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-      
+    this.newMessage(false);
+
     this.phaserGame = new Phaser.Game(this.config);
-    
+    this.data.currentBarState.subscribe(message => this.showBar = message);
+
     this.juegoService
       .selectJuego(localStorage.getItem("id_juego"))
       .subscribe((res) => {
         this.juego = res;
 
         this.juego.partidas.push({
-          fecha_inicio: new Date(),
+          fecha_inicio: new Date()
         });
 
         this.juegoService.updateJuego(this.juego).subscribe((res) => {
@@ -991,6 +1000,11 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
     if (this.scene.gameOver && !this.checkpoint){
         this.generarDetalle();
     }
+  }
+
+  newMessage(state:boolean) {
+    console.log("aqui")
+    this.data.changeMessage(state);
   }
 
   generarDetalle(){
@@ -1042,8 +1056,8 @@ export class CleannessFineMotorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-
     this.phaserGame.destroy(true);
+    this.newMessage(true);
   }
 
  

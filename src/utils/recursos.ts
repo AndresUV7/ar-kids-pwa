@@ -11,7 +11,10 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Falcohol_r.mp3?alt=media&token=9f6ca398-756d-4160-accd-f74dc11ba982'
         ],
         claves: [
-            'manos'
+            'desinfecta',
+            'desinfectamos',
+            'desinfecto',
+            'acohol'
         ],
         escala : '0.5 0.5 0.5'
     },
@@ -23,7 +26,12 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fbotiquin_r.mp3?alt=media&token=bbdf79a1-9d7a-4da7-8dfc-371db4a4c12e'
         ],
         claves: [
-            'primeros auxilios',
+            'auxilios',
+            'emergencias',
+            'emergencia',
+            'accidente',
+            'accidentes',
+            'botiquín',
         ],
         escala : '0.2 0.2 0.2'
     },
@@ -35,7 +43,9 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fcepillo_r.mp3?alt=media&token=24bcf07b-658d-4592-b381-8f7a43c817d2'
         ],
         claves: [
-            'dientes',
+            'cepillo',
+            'cepilla',
+            'cepillamos',
         ],
         escala : '0.1 0.1 0.1'
     },
@@ -60,7 +70,8 @@ export const HIGIENE: Recurso[] = [
         ],
         claves: [
             'orejas',
-            'oidos',
+            'oídos',
+            'cotonetes'
         ],
         escala : '0.3 0.3 0.3'
     },    
@@ -73,7 +84,9 @@ export const HIGIENE: Recurso[] = [
         ],
         claves: [
             'transpiración',
-            'axilas'
+            'axilas',
+            "olor",
+            'desodorante',
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -85,7 +98,7 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fducha_r.mp3?alt=media&token=48459a2f-4c64-4480-83af-154d9de397d3'
         ],
         claves: [
-            'baña'
+            'ducha'
         ],
         escala : '0.2 0.2 0.2'
     },
@@ -97,7 +110,8 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fjabon_r.mp3?alt=media&token=dfef8250-0e66-451a-b491-7031eafc44d6'
         ],
         claves: [
-            'manos'
+            'manos',
+            'jabón',
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -109,7 +123,9 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fmascarilla_r.mp3?alt=media&token=7fa01526-dc36-4516-979a-767c74c1b978'    
         ],
         claves: [
-            'virus'
+            'virus',
+            "polvo",
+            'mascarilla',
         ],
         escala : '0.5 0.5 0.5'
     },  
@@ -122,7 +138,8 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fpapel_r.mp3?alt=media&token=9e4d5044-287e-4ef0-a7f4-a6240874a65c'
         ],
         claves: [
-            'baño'
+            'baño',
+            'higiénico'
         ],
         escala : '0.1 0.1 0.1'
     },
@@ -134,8 +151,8 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fpasta_r.mp3?alt=media&token=1fdf6694-5247-403b-bbf8-60823d2480b8'    
         ],
         claves: [
-            'cepillo de dientes',
-            "cepillo dental"
+            'dientes',
+            'pasta'
         ],
         escala : '0.1 0.1 0.1',
     },
@@ -147,7 +164,16 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fpeinilla_r.mp3?alt=media&token=ba09eb35-b036-42bf-a05b-7aefbdd69dd8'
         ],
         claves: [
-            'cabello',
+            'peinar',
+            'peina',
+            'peino',
+            'arreglar',
+            'arreglamos',
+            'arreglo',
+            'desenreda',
+            'desenredamos',
+            'desenredo',
+            'peinilla'
         ],
         escala : '0.5 0.5 0.5'
     },
@@ -159,8 +185,8 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Fshampoo_r.mp3?alt=media&token=02f07e74-59d1-43b5-bca7-862096518512'
         ],
         claves: [
-            'seca',
             'cabello',
+            'shampoo'
         ],
         escala : '0.1 0.1 0.1'
     },
@@ -173,6 +199,7 @@ export const HIGIENE: Recurso[] = [
         ],
         claves: [
             'pies',
+            'talco'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -184,7 +211,12 @@ export const HIGIENE: Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhigiene%2Ftoalla_r.mp3?alt=media&token=af3629b6-510f-4027-8504-c3d49b1f3d3b'       
         ],
         claves: [
+            'secarme',
+            'secamos',
             'seca',
+            'seco',
+            'secar',
+            'toalla'
         ],
         escala : '0.5 0.5 0.5'
     }
@@ -202,7 +234,10 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Farmario_r.mp3?alt=media&token=905a4dbc-2945-4fe5-b42a-952b7bd92879'
         ],
         claves: [
-            'guarda'
+            'guarda',
+            'guardamos',
+            'guardo',
+            'armario'
         ],
         escala : '0.27 0.27 0.27'
     },
@@ -215,7 +250,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fblusa_r.mp3?alt=media&token=b3b50152-74c1-419d-9b8d-d8813e7f3dfb'
         ],
         claves: [
-            'mujer'
+            'señorita',
+            'blusa'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -228,7 +264,12 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fcalcetines_r.mp3?alt=media&token=47211b3e-5a88-4aee-975b-2655ef1a67a7'
         ],
         claves: [
-            'pies'
+            'proteger',
+            'protege',
+            'protejo',
+            'protegemos',
+            'calcetines'
+
         ],
         escala : '0.35 0.35 0.35'
     },
@@ -241,7 +282,9 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fcamisa_r.mp3?alt=media&token=446802a2-8660-4db6-8290-120e0f1f050b'
         ],
         claves: [
-            'varón'
+            'varón',
+            'hombre',
+            'camisa'
         ],
         escala : '0.8 0.8 0.8'
     },
@@ -254,7 +297,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fcamiseta_r.mp3?alt=media&token=11f32e23-5955-47b2-a858-27556f903243'
         ],
         claves: [
-            'calor'
+            'calor',
+            'camiseta'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -267,7 +311,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fcasaca_r.mp3?alt=media&token=ca540ea7-b129-40d3-ae89-42f5c6aa4fe1'
         ],
         claves: [
-            'frio'
+            'frio',
+            'casaca'
         ],
         escala : '0.25 0.25 0.25'
     },
@@ -280,8 +325,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Ffalda_r.mp3?alt=media&token=19d5cdc4-672f-4f76-83cc-8e182ca6aadb'
         ],
         claves: [
-            'mujer',
-            'piernas'
+            'mujeres',
+            'falda'
         ],
         escala : '0.15 0.15 0.15'
     },
@@ -295,7 +340,8 @@ export const VESTIR : Recurso[] = [
         ],
         claves: [
             'sol',
-            'cabeza'
+            'cabeza',
+            'gorra'
         ],
         escala : '0.1 0.1 0.1'
     },
@@ -308,7 +354,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fpantalon_r.mp3?alt=media&token=584d4d52-c175-4eba-bdfd-aaf0bc7957a1'
         ],
         claves: [
-            'piernas'
+            'piernas',
+            'pantalón'
         ],
         escala : '0.5 0.5 0.5'
     },
@@ -321,7 +368,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fplancha_r.mp3?alt=media&token=1a771c19-099a-4c8e-bb8c-d1dae15549ed'
         ],
         claves: [
-            'arrugas'
+            'arrugas',
+            'plancha'
         ],
         escala : '0.25 0.25 0.25'
     },
@@ -334,7 +382,9 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fplanchador_r.mp3?alt=media&token=13acac2a-baa4-4382-ba63-c1be8de257e6'
         ],
         claves: [
-            'plancha'
+            'planchador',
+            'plancho',
+            'planchamos',
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -347,7 +397,11 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Ftendedero_r.mp3?alt=media&token=414c2569-962f-4790-9b0b-141897b74296'
         ],
         claves: [
-            'seca'
+            'seca',
+            'secar',
+            'secamos',
+            'seco',
+            'tendedero'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -360,7 +414,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Ftina_r.mp3?alt=media&token=67aa84fb-713a-4d75-929c-98fff0592221'
         ],
         claves: [
-            'lava'
+            'lava',
+            'tina'
         ],
         escala : '0.33 0.33 0.33'
     },
@@ -373,7 +428,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fvestido_r.mp3?alt=media&token=add46b6d-ad5a-4f9a-a300-31d0eda6cbed'
         ],
         claves: [
-            'mujer'
+            'mujer',
+            'vestido'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -386,7 +442,8 @@ export const VESTIR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fvestir%2Fzapatos_r.mp3?alt=media&token=96805abb-5f58-4cb3-866e-a6fef04cbaaa'
         ],
         claves: [
-            'pies'
+            'pies',
+            'zapatos'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -402,7 +459,9 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Fcernidora_r.mp3?alt=media&token=d90f9928-c2c0-423f-b674-79af5f4216b2'
         ],
         claves: [
-            'utensilio de cocina'
+            'cernir',
+            'cernimos',
+            'cernidora'
         ],
         escala : '0.2 0.2 0.2'
     },
@@ -415,8 +474,11 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Fcocina_r.mp3?alt=media&token=626bc671-7410-4706-98b3-f64fd63e0548'
         ],
         claves: [
-            'calentar',
+            'cocinamos',
+            'cocina',
+            'cocino',
             'cocinar'
+           
         ],
         escala : '0.33 0.33 0.33'
     },
@@ -430,7 +492,9 @@ export const COCINA : Recurso[] = [
         ],
         claves: [
             'come',
-            'servi'
+            'comemos',
+            'comer',
+            'cuchara'
         ],
         escala : '0.2 0.2 0.2'
     },
@@ -443,7 +507,10 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Fcuchillo_r.mp3?alt=media&token=4010d384-05f2-4111-a3d0-0b317527fffa'
         ],
         claves: [
-            'corta'
+            'corta',
+            'cortar',
+            'cortamos',
+            'cuchillo'
         ],
         escala : '0.2 0.2 0.2'
     },
@@ -457,7 +524,11 @@ export const COCINA : Recurso[] = [
         ],
         claves: [
             'vuelta',
-            'despega'
+            'despega',
+            'despegar',
+            'despegamos',
+            'despego',
+            'espátula'
         ],
         escala : '0.35 0.35 0.35'
     },
@@ -470,7 +541,13 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Fexprimidor_r.mp3?alt=media&token=c8f9704c-7adb-4dde-8293-7aaed6972f59'
         ],
         claves: [
-            'jugo',
+            'exprime',
+            'exprimo',
+            'exprimir',
+            'exprimimos',
+            'fruta',
+            'frutas',
+            'exprimidor'
         ],
         escala : '0.25 0.25 0.25'
     },
@@ -484,6 +561,11 @@ export const COCINA : Recurso[] = [
         ],
         claves: [
             'quemadura',
+            'proteger',
+            'protejo',
+            'protege',
+            'protegemos',
+            'guantes'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -496,7 +578,11 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Folla_r.mp3?alt=media&token=41915f11-89a6-475a-9d10-b5d397332321'
         ],
         claves: [
-            'calenta',
+            'caliento',
+            'calienta',
+            'calentamos',
+            'calentar',
+            'olla'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -509,8 +595,11 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Fplato_r.mp3?alt=media&token=0c18cc3f-639d-4d3b-b20d-aa4a348a3d4c'
         ],
         claves: [
-            'servi',
-            'sirve'
+            'servir',
+            'sirvo',
+            'sirve',
+            'servimos',
+            'plato'
         ],
         escala : '0.6 0.6 0.6'
     },
@@ -523,7 +612,12 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Frayador_r.mp3?alt=media&token=5c816d1f-aa08-4064-8edf-35c5ad5fa8cc'
         ],
         claves: [
-            'pica',
+            'rayar',
+            'rayo',
+            'rayamos',
+            'raya',
+            'rallador'
+        
         ],
         escala : '0.6 0.6 0.6'
     },
@@ -536,9 +630,11 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Frodillo_r.mp3?alt=media&token=46673d7a-874e-43ef-8972-d0dcd1f9dd83'
         ],
         claves: [
-            'pan',
-            'torta',
-            'amasar'
+            'amasar',
+            'amaso',
+            'amasamos',
+            'amasa',
+            'rodillo'
         ],
         escala : '0.25 0.25 0.25'
     },
@@ -551,7 +647,10 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Fsarten_r.mp3?alt=media&token=f526b2f7-5114-47d8-ac85-0381accb059c'
         ],
         claves: [
-            'frei',
+            'freír',
+            'freímos',
+            'sartén'
+
         ],
         escala : '0.25 0.25 0.25'
     },
@@ -565,6 +664,10 @@ export const COCINA : Recurso[] = [
         ],
         claves: [
             'pica',
+            'picar',
+            'picamos',
+            'pico',
+            'tabla'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -577,8 +680,14 @@ export const COCINA : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fcocina%2Ftenedor_r.mp3?alt=media&token=f0087c73-7231-4ecf-9dc7-4a471ffb49c9'
         ],
         claves: [
-            'sosten',
-            'sujet'
+            'sostener',
+            'sostengo',
+            'sostiene',
+            'sujeta',
+            'sujeto',
+            'sujetamos',
+            'sujetar',
+            'tenedor'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -592,6 +701,9 @@ export const COCINA : Recurso[] = [
         ],
         claves: [
             'bebida',
+            'agua',
+            'jugo',
+            'vaso'
         ],
         escala : '0.5 0.5 0.5'
     },
@@ -609,6 +721,7 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'polvo',
+            'aspiradora'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -622,7 +735,10 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'basura',
-            'recicla'
+            'recicla',
+            'reciclamos',
+            'reciclo',
+            'basurero'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -636,7 +752,8 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'bebida',
-            'café'
+            'café',
+            'cafetera'
         ],
         escala : '0.7 0.7 0.7'
     },
@@ -650,6 +767,10 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'desinfecta',
+            'desinfecto',
+            'desinfectamos',
+            'desinfectar',
+            'desinfectante'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -663,6 +784,10 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'barre',
+            'barrer',
+            'barremos',
+            'piso',
+            'escoba'
         ],
         escala : '0.5 0.5 0.5'
     },
@@ -676,6 +801,9 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'frega',
+            'fregar',
+            'fregamos',
+            'esponja'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -689,6 +817,10 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'plato',
+            'platos',
+            'vaso',
+            'vasos',
+            'fregadero'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -701,7 +833,8 @@ export const HOGAR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhogar%2Fguantes_l_r.mp3?alt=media&token=44d45777-0494-4473-bd0c-3527a0fb6c25'
         ],
         claves: [
-            'limpia',
+            'manos',
+            'guantes'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -715,6 +848,7 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'ropa',
+            'lavadora'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -728,7 +862,8 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'jugo',
-            'batido'
+            'batido',
+            'licuadora'
         ],
         escala : '0.4 0.4 0.4'
     },
@@ -741,7 +876,11 @@ export const HOGAR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhogar%2Fmicroondas_r.mp3?alt=media&token=2e274488-b3b0-48d6-921a-0439a4429e56'
         ],
         claves: [
-            'calenta'
+            'calentar',
+            'caliento',
+            'calentamos',
+            'calienta',
+            'microondas'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -754,7 +893,10 @@ export const HOGAR : Recurso[] = [
             'https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/audio%2Fhogar%2Frecogedor_r.mp3?alt=media&token=87adeac0-86a1-4f9a-bd0b-65ed986d20f5'
         ],
         claves: [
-            'recoge'
+            'recoge',
+            'recogemos',
+            'recoger',
+            'recogedor'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -768,8 +910,16 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'congela',
+            'congelamos',
+            'congelar',
             'conserva',
-            'enfría'
+            'conservar',
+            'conservamos',
+            'enfría',
+            'enfríamos',
+            'enfríar',
+            'refrigerador',
+            'refrigeradora'
         ],
         escala : '0.3 0.3 0.3'
     },
@@ -783,7 +933,7 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'pan',
-            'tosta'
+            'tostadora'
         ],
         escala : '0.25 0.25 0.25'
     },
@@ -797,6 +947,13 @@ export const HOGAR : Recurso[] = [
         ],
         claves: [
             'mojado',
+            'limpia',
+            'limpiamos',
+            'limpiar',
+            'trapear',
+            'trapeo',
+            'trapeamos',
+            'trapeador'
         ],
         escala : '0.2 0.2 0.2'
     }

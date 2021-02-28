@@ -6,6 +6,7 @@ export interface Juego {
     usuario : string;
     nombre : string;
     descripcion : string;
+    updated ?: string;
     partidas ?: Partida[],
     recursos ?: Recurso[],
     estado?: number

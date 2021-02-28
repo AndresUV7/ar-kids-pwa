@@ -24,8 +24,8 @@
           <a mat-list-item routerLink="." (click)="irAdmin()"><mat-icon>settings</mat-icon>Administración</a>
           <a mat-list-item routerLink="." (click)="irHistorial()" ><mat-icon>history</mat-icon>Historial</a>
           <!-- <a mat-list-item routerLink="." ><mat-icon>signal_cellular_alt</mat-icon>Estadísticas</a> -->
-          <a mat-list-item routerLink="." ><mat-icon>file_copy</mat-icon>Recursos</a>
-          <a mat-list-item routerLink="." ><mat-icon>help_outline</mat-icon>Ayuda</a>
+          <a mat-list-item routerLink="." (click)="irRecursos()"><mat-icon>file_copy</mat-icon>Recursos</a>
+          <a mat-list-item routerLink="." (click)="irAyuda()" ><mat-icon>help_outline</mat-icon>Ayuda</a>
           <a mat-list-item routerLink="." (click)="logOut()" ><mat-icon>exit_to_app</mat-icon>Salir</a>
         </mat-nav-list>
       </mat-sidenav>

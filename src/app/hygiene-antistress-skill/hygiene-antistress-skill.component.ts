@@ -99,11 +99,11 @@ class NewScene extends Phaser.Scene {
     // this.cache.bitmapFont.add('myFont', Phaser.GameObjects.RetroFont.Parse(this, fontConfig));
     
 
-    const cancion = this.sound.add("cancion");
+    const cancion = this.sound.add("cancion",  {loop: true});
     cancion.play();
 
     this.puntaje = 0; 
-    this.initialTime = 180;
+    this.initialTime = 240;
   
     this.timer = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
 
@@ -112,15 +112,15 @@ class NewScene extends Phaser.Scene {
     this.text = this.add.text(30, 0 ,this.formatTime(this.initialTime), {
       color : "#3f51b5",
       fontSize : 40,
-      fontFamily: '"Potta One", cursive',
+      fontFamily: 'Poppins',
       fontStyle: 'bold'
 
     });
 
-    this.textP = this.add.text(460, 0 ,"PUNTOS: "+this.puntaje.toString(), {
+    this.textP = this.add.text(440, 0 ,"PUNTOS: "+this.puntaje.toString(), {
       color : "#26c998",
-      fontSize : 30,
-      fontFamily: '"Potta One", cursive',
+      fontSize : 28,
+      fontFamily: 'Poppins',
       fontStyle: 'bold'
     });
     this.boca_izq_sup = this.add
@@ -649,7 +649,7 @@ export class HygieneAntistressSkillComponent implements OnInit, DoCheck, OnDestr
         this.juego = res;
 
         this.juego.partidas.push({
-          fecha_inicio: new Date(),
+          fecha_inicio: new Date()
         });
 
         this.juegoService.updateJuego(this.juego).subscribe((res) => {

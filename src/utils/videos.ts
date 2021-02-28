@@ -120,8 +120,8 @@ export const HIGIENE_VIDEOS : Video[] = [
 export const VESTIR_VIDEOS : Video[] = [
     {
         nombre: "Prendas",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fvestir%2Fprendas.mp4?alt=media&token=2a937a4c-fb8b-449c-93ff-46e2ef085da1",
-        checkpoints : [32, 71],
+        ruta : "../../assets/video/prendas.mp4",
+        checkpoints : [36, 133],
         preguntas : [
             "¿En que parte del cuerpo va esta prenda de vestir",
             "Completa: Esta prenda de vestir se llama .... "
@@ -137,7 +137,7 @@ export const VESTIR_VIDEOS : Video[] = [
     
     {
         nombre: "Tender",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fvestir%2Ftender%20ropa.mp4?alt=media&token=7f6d7112-d407-4f55-9019-292a91712d7e",
+        ruta : "../../assets/video/tender ropa.mp4",
         checkpoints : [31, 67],
         preguntas : [
             "¿Que pinzas dejan menos marcas?",
@@ -155,15 +155,15 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Planchar",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fvestir%2Fplanchar.mp4?alt=media&token=4458a3a2-4367-452f-9a8d-6133a12539e5",
-        checkpoints : [17, 94],
+        ruta : "../../assets/video/planchar.mp4",
+        checkpoints : [48, 94],
         preguntas : [
             "¿Que parte de la camisa se plancha primero?",
             "Completa: Cuando planchamos debemos tener cuidado con los ...",
 
         ],
         respuestas1 : [
-            "Solapas",
+            "Cuello",
             "Puños"
         ],
         respuestas2 : [
@@ -173,7 +173,7 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Lavar",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fvestir%2Flavar.mp4?alt=media&token=8ac821f1-d5d7-49c2-b6b1-4479e270d598",
+        ruta : "../../assets/video/lavar.mp4",
         checkpoints : [27, 91],
         preguntas : [
             "¿Como separamos la ropa para lavar?",
@@ -191,8 +191,8 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Doblar",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fvestir%2Fdoblar.mp4?alt=media&token=dcec2941-075b-4880-b793-089b45679aa0",
-        checkpoints : [109, 76],
+        ruta : "../../assets/video/doblar.mp4",
+        checkpoints : [110, 133],
         preguntas : [
             "¿En cuántos trozos doblamos la camiseta de adulto",
             "Completa: Doblamos la ropa para tener nuestro armario más ....",
@@ -209,8 +209,8 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Cordones",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fvestir%2Fcordones.mp4?alt=media&token=5a435b8e-2373-4fb0-a74a-c9add22dd5b8",
-        checkpoints : [67, 75],
+        ruta : "../../assets/video/cordones.mp4",
+        checkpoints : [26, 44],
         preguntas : [
             "¿Con qué dedos sujetamos el cordón?",
             "Completa: En este último paso, apretamos los ....",
@@ -229,7 +229,7 @@ export const VESTIR_VIDEOS : Video[] = [
 export const COCINA_VIDEOS : Video[] = [
     {
         nombre: "Batido",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fcocina%2Fbatido.mp4?alt=media&token=f3e8aec4-63f0-4dcc-b759-c8cb2f669f5d",
+        ruta : "../../assets/video/batido.mp4",
         checkpoints : [36, 71],
         preguntas : [
             "¿Cuántas cucharadas de miel se pone en el batido?",
@@ -246,7 +246,7 @@ export const COCINA_VIDEOS : Video[] = [
     
     {
         nombre: "Ensalada",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fcocina%2Fpancakes.mp4?alt=media&token=3aae2ae1-794d-40cd-aef8-f3de1125b42a",
+        ruta : "../../assets/video/ensalada fruta.mp4",
         checkpoints : [87, 187],
         preguntas : [
             "¿Que quitamos de las frutas?",
@@ -264,7 +264,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Pancakes",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fcocina%2Fpancakes.mp4?alt=media&token=3aae2ae1-794d-40cd-aef8-f3de1125b42a",
+        ruta : "../../assets/video/pancakes.mp4",
         checkpoints : [33, 57],
         preguntas : [
             "¿Cuántos minutos dejamos reposar la mezcla?",
@@ -282,7 +282,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Sanduche",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fcocina%2Fsandwich.mp4?alt=media&token=7353aeb1-f322-492c-89ee-505e61e566c7",
+        ruta : "../../assets/video/sandwich.mp4",
         checkpoints : [32, 96],
         preguntas : [
             "¿Que ingredientes tenemos que lavar?",
@@ -300,7 +300,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Sopa",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fcocina%2Fsopa.mp4?alt=media&token=41694150-d583-41a9-9d6c-14f438d7c6e4",
+        ruta : "../../assets/video/sopa.mp4",
         checkpoints : [62, 126],
         preguntas : [
             "¿Cuántos minutos dejamos cocinar estas verduras?",
@@ -318,7 +318,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Pollo",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fcocina%2Ftortas%20pollo.mp4?alt=media&token=28307c1f-5aed-4e7a-ad1c-06f2d42ecd2d",
+        ruta : "../../assets/video/tortas pollo.mp4",
         checkpoints : [22, 119],
         preguntas : [
             "¿Cuántas libras de pechuga de pollo necesitamos",
@@ -338,7 +338,7 @@ export const COCINA_VIDEOS : Video[] = [
 export const HOGAR_VIDEOS : Video[] = [
     {
         nombre: "Barrer",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fhogar%2Fbarrer.mp4?alt=media&token=eab213f7-c5e8-43a0-b19a-2409eee86ef0",
+        ruta : "../../assets/video/barrer.mp4",
         checkpoints : [43, 70],
         preguntas : [
             "¿Como se llama cuando eliminamos el detergente con agua?",
@@ -355,7 +355,7 @@ export const HOGAR_VIDEOS : Video[] = [
     
     {
         nombre: "Cama",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fhogar%2Fcama.mp4?alt=media&token=4d257c77-2969-4d22-9903-78341f557f67",
+        ruta : "../../assets/video/cama.mp4",
         checkpoints : [32, 72],
         preguntas : [
             "¿Que retiramos primero para tender la cama?",
@@ -373,8 +373,8 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Limpieza",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fhogar%2Flimpieza.mp4?alt=media&token=b7386625-d0aa-490f-bbed-2cd9fef03bae",
-        checkpoints : [55, 96],
+        ruta : "../../assets/video/limpieza.mp4",
+        checkpoints : [58, 96],
         preguntas : [
             "¿Cómo limpiamos los cristales?",
             "Completa: Para sacar brillo a los cristales se usa ...",
@@ -391,11 +391,11 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Mesa",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fhogar%2Fmesa.mp4?alt=media&token=9f8fc5ef-c174-4a4a-8b75-59653b329ff7",
+        ruta : "../../assets/video/mesa.mp4",
         checkpoints : [36, 172],
         preguntas : [
             "¿Que se pone primero para servir la mesa?",
-            "Completa: La servilleta va de lado del tenedor ....",
+            "Completa: La servilleta va de lado del ....",
 
         ],
         respuestas1 : [
@@ -409,7 +409,7 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Platos",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fhogar%2Fplatos.mp4?alt=media&token=6e401a54-d121-4ab2-ac2b-837280e8476f",
+        ruta : "../../assets/video/platos.mp4",
         checkpoints : [44, 150],
         preguntas : [
             "¿Con que lavamos cada pieza?",
@@ -427,8 +427,8 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Reciclar",
-        ruta : "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/videos%2Fhogar%2Freciclar.mp4?alt=media&token=d8be35ba-74ca-4d51-ba89-0e1d605dd805",
-        checkpoints : [141, 249],
+        ruta : "../../assets/video/reciclar.mp4",
+        checkpoints : [141, 252],
         preguntas : [
             "¿Podemos colocar botellas de mermelada en el basurero azul?",
             "Completa: Cuidar nuestro planeta es responsabilidad de ....",

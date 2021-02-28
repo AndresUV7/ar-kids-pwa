@@ -381,6 +381,8 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   ngOnInit() {
+    this.newMessage(false);
+
     this.phaserGame = new Phaser.Game(this.config);
 
     this.data.currentBarState.subscribe(message => this.showBar = message);
@@ -390,7 +392,7 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
         this.juego = res;
 
         this.juego.partidas.push({
-          fecha_inicio: new Date(),
+          fecha_inicio: new Date()
         });
         
         
@@ -514,8 +516,15 @@ export class JuegoComponent implements OnInit, DoCheck, OnDestroy {
     }
   }
 
+  newMessage(state:boolean) {
+    console.log("aqui")
+    this.data.changeMessage(state);
+  }
+  
   
   ngOnDestroy(){
     this.phaserGame.destroy(true);
+    this.newMessage(true);
+
   }
 }

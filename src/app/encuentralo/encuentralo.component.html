@@ -1,46 +1,299 @@
+<div class="chip">
+  <mat-chip-list aria-label="Fish selection">
+    <!-- <mat-chip>{{par}}</mat-chip> -->
+    <mat-chip>LISTA:</mat-chip>
+    <mat-chip [fxShow]="visible[0]" color="accent" selected>{{opVer[0].toUpperCase()}}</mat-chip>
+    <mat-chip [fxShow]="visible[1]" color="primary" selected>{{opVer[1].toUpperCase()}}</mat-chip>
+    <mat-chip [fxShow]="visible[2]" color="accent" selected>{{opVer[2].toUpperCase()}}</mat-chip>
+    <mat-chip [fxShow]="visible[3]" color="primary" selected>{{opVer[3].toUpperCase()}}</mat-chip>
+    <mat-chip [fxShow]="visible[4]" color="accent" selected>{{opVer[4].toUpperCase()}}</mat-chip>
+    <mat-chip [fxShow]="visible[5]" color="primary" selected>{{opVer[5].toUpperCase()}}</mat-chip>
+  </mat-chip-list>
+</div>
+
+
 <a-scene
-arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; videoTexture: true;"
-vr-mode-ui="enabled: false"
-gesture-detector
-renderer="colorManagement: true; logarithmicDepthBuffer: true;"
-    >
+  arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; "
+  vr-mode-ui="enabled: false"
+  renderer="colorManagement: true; logarithmicDepthBuffer: true;"
+>
 
-    <a-entity  raycaster = "objects: .clickable"  cursor="fuse: false; rayOrigin: mouse" > </a-entity > 
+  <a-entity
+    raycaster="objects: .clickable"
+    cursor="fuse: false; rayOrigin: mouse"
+  >
+  </a-entity>
 
-          <a-entity
-            gltf-model="url(../../assets/3d/frutas/fresa.glb)"
-            scale="1 1 1"
-            position="0 0 0"
-            look-at="[gps-camera]"
-            [attr.gps-entity-place]="positions"
-            
-          ></a-entity>
-          
-          <a-entity
+  <a-entity
+    id="fresa"
+    gltf-model="url(../../assets/3d/frutas/fresa.glb)"
+    scale="1 1 1"
+    position="0 0 0"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: fresa"
+  ></a-entity> 
 
-            gltf-model="url(../../assets/3d/plato/lechuga.glb)"
-            scale="1 1 1"
-            position="2 1 0"
-            look-at="[gps-camera]"
-            [attr.gps-entity-place]="positions"
-            clickhandler
-            class="clickable"
-          ></a-entity>
+  <a-entity
+    id="banana"
+    gltf-model="url(../../assets/3d/frutas/banana.glb)"
+    scale="1 1 1"
+    position="0 2 4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: banana"
+  ></a-entity> 
 
-          <a-entity
+  <a-entity
+    id="kiwi"
+    gltf-model="url(../../assets/3d/frutas/kiwi.glb)"
+    scale="1 1 1"
+    position="2 -5 -4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: kiwi"
+  ></a-entity> 
 
-          gltf-model="url(../../assets/3d/plato/aguacate.glb)"
-          scale="1 1 1"
-          position="6 2 0"
-          look-at="[gps-camera]"
-          [attr.gps-entity-place]="positions"
-          clickhandler
-          class="clickable"
-        ></a-entity>
 
-        
-      <a-camera gps-camera rotation-reader> </a-camera>
+  <a-entity
+    id="manzana"
+    gltf-model="url(../../assets/3d/frutas/manzana.glb)"
+    scale="1 1 1"
+    position="2 4 8"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: manzana"
+  ></a-entity> 
 
-    
+  <a-entity
+    id="naranja"
+    gltf-model="url(../../assets/3d/frutas/naranja.glb)"
+    scale="1 1 1"
+    position="4 0 -8"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: naranja"
+  ></a-entity> 
 
-    </a-scene>
+  <a-entity
+    id="pina"
+    gltf-model="url(../../assets/3d/frutas/piña.glb)"
+    scale="1 1 1"
+    position="-3 6 0"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: pina"
+  ></a-entity> 
+
+
+  <a-entity
+    id="sandia"
+    gltf-model="url(../../assets/3d/frutas/sandia.glb)"
+    scale="1 1 1"
+    position="6 0 -4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: sandia"
+  ></a-entity> 
+
+
+  <a-entity
+    id="uvas"
+    gltf-model="url(../../assets/3d/frutas/uvas.glb)"
+    scale="1 1 1"
+    position="6 8 4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: uvas"
+  ></a-entity> 
+
+  <a-entity
+    id="aceite"
+    gltf-model="url(../../assets/3d/desayuno/aceite.glb)"
+    scale="1 1 1"
+    position="-8 8 4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: aceite"
+  ></a-entity> 
+
+  <a-entity
+    id="cocoa"
+    gltf-model="url(../../assets/3d/desayuno/cocoa.glb)"
+    scale="1 1 1"
+    position="-4 2 -8"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: cocoa"
+  ></a-entity> 
+
+  <a-entity
+    id="huevo"
+    gltf-model="url(../../assets/3d/desayuno/huevo.glb)"
+    scale="1 1 1"
+    position="-2 4 0"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: huevo"
+  ></a-entity> 
+
+  <a-entity
+    id="leche"
+    gltf-model="url(../../assets/3d/desayuno/leche.glb)"
+    scale="1 1 1"
+    position="4 -6 0"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: leche"
+  ></a-entity>
+
+  <a-entity
+    id="mani"
+    gltf-model="url(../../assets/3d/desayuno/mani.glb)"
+    scale="1 1 1"
+    position="3 -6 4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: mani"
+  ></a-entity> 
+
+  <a-entity
+    id="pan"
+    gltf-model="url(../../assets/3d/desayuno/pan.glb)"
+    scale="1 1 1"
+    position="6 3 -4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: pan"
+  ></a-entity> 
+
+  <a-entity
+    id="salsa"
+    gltf-model="url(../../assets/3d/desayuno/salsa.glb)"
+    scale="1 1 1"
+    position="8 8 2"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: salsa"
+  ></a-entity> 
+
+  <a-entity
+    id="yogurt"
+    gltf-model="url(../../assets/3d/desayuno/yogurt.glb)"
+    scale="1 1 1"
+    position="-6 -6 -2"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: yogurt"
+  ></a-entity> 
+
+  <a-entity
+    id="aguacate"
+    gltf-model="url(../../assets/3d/plato/aguacate.glb)"
+    scale="1 1 1"
+    position="-5 -2 0"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: aguacate"
+  ></a-entity> 
+
+  <a-entity
+    id="carne"
+    gltf-model="url(../../assets/3d/plato/carne.glb)"
+    scale="1 1 1"
+    position="-4 6 2"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: carne"
+  ></a-entity> 
+
+  <a-entity
+    id="lechuga"
+    gltf-model="url(../../assets/3d/plato/lechuga.glb)"
+    scale="1 1 1"
+    position="8 6 -3"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: lechuga"
+  ></a-entity> 
+
+  <a-entity
+    id="papa"
+    gltf-model="url(../../assets/3d/plato/papa.glb)"
+    scale="1 1 1"
+    position="-2 -2 -2"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: papa"
+  ></a-entity> 
+
+  <a-entity
+    id="pollo"
+    gltf-model="url(../../assets/3d/plato/pollo.glb)"
+    scale="1 1 1"
+    position="6 4 -2"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: pollo"
+  ></a-entity> 
+
+  <a-entity
+    id="tomate"
+    gltf-model="url(../../assets/3d/plato/tomate.glb)"
+    scale="1 1 1"
+    position="-6 8 -4"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: tomate"
+  ></a-entity> 
+
+  <a-entity
+    id="verdura"
+    gltf-model="url(../../assets/3d/plato/verdura.glb)"
+    scale="1 1 1"
+    position="-5 -7 1"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: verdura"
+  ></a-entity> 
+
+  <a-entity
+    id="zanahoria"
+    gltf-model="url(../../assets/3d/plato/zanahoria.glb)"
+    scale="1 1 1"
+    position="-8 5 -1"
+    look-at="[gps-camera]"
+    [attr.gps-entity-place]="positions"
+    class="clickable"
+    clickhandler="obj: zanahoria"
+  ></a-entity> 
+  
+
+
+  <a-camera gps-camera  rotation-reader> </a-camera>
+</a-scene>
+
+<!-- animation="property: position; to: 1 8 0; dur: 4000; easing: linear; loop: true" -->

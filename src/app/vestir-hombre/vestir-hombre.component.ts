@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { DetallePartida } from '../models/DetallePartida';
 import { JuegoService } from '../services/juegos/juego.service';
 import { Juego } from '../models/Juego';
+import { DataService } from '../services/data.service';
 
 class NewScene extends Phaser.Scene {
   // joven: any;
@@ -359,13 +360,15 @@ export class VestirHombreComponent implements OnInit, OnDestroy, DoCheck {
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
   juego: Juego;
+  showBar: boolean
 
   checkpoints: boolean[];
 
 
-  constructor(private router: Router, private juegoService: JuegoService) {
+  constructor(private router: Router, private juegoService: JuegoService,  private data:DataService) {
     this.checkpoints = [false, false, false, false, false, false];
     this.scene = new NewScene();
+    this.showBar = false;
 
     this.config = {
       type: Phaser.AUTO,
@@ -385,15 +388,17 @@ export class VestirHombreComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   ngOnInit() {
-    this.phaserGame = new Phaser.Game(this.config);
+    this.newMessage(false);
 
+    this.phaserGame = new Phaser.Game(this.config);
+    this.data.currentBarState.subscribe(message => this.showBar = message);
     this.juegoService
       .selectJuego(localStorage.getItem("id_juego"))
       .subscribe((res) => {
         this.juego = res;
 
         this.juego.partidas.push({
-          fecha_inicio: new Date(),
+          fecha_inicio: new Date()
         });
         
         
@@ -487,5 +492,13 @@ export class VestirHombreComponent implements OnInit, OnDestroy, DoCheck {
   
   ngOnDestroy(){
     this.phaserGame.destroy(true);
+    this.newMessage(true);
+
   }
+
+  newMessage(state:boolean) {
+    console.log("aqui")
+    this.data.changeMessage(state);
+  }
+  
 }

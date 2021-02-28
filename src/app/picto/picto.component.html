@@ -1,16 +1,62 @@
+<!-- <div  style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+     <button 
+     (click)="lavarManos()">
+         MANOS
+     </button>
+ </div> -->
+
+
+ <div class="example-button-container" style='position: fixed; top: 10%; left:3%; z-index: 1;'>
+     <button  
+     (click)="lavarManos()" mat-fab color="primary" aria-label="Example icon button with a home icon">
+       <mat-icon>wash</mat-icon>
+     
+   </button>
+   </div> 
+
+ <div class="example-button-container" style='position: fixed; top: 35%; left:3%; z-index: 1;'>
+     <button  
+     (click)="lavarDientes()" mat-fab color="primary" aria-label="Example icon button with a home icon">
+       <mat-icon>emoji_emotions</mat-icon>
+     
+   </button>
+   </div>
+
+   
+   
+   <div class="example-button-container" style='position: fixed; top: 60%; left:3%; z-index: 1;'>
+     <button  
+     (click)="irBano()" mat-fab color="primary" aria-label="Example icon button with a home icon">
+       <mat-icon>shower</mat-icon>
+     
+   </button>
+   </div>
+ 
+ <!-- <div  style='position: fixed; top: 40px; width:100%; text-align: center; z-index: 1;'>
+     <button 
+     (click)="lavarDientes()">
+         DIENTES
+     </button>
+ </div><div  style='position: fixed; top: 70px; width:100%; text-align: center; z-index: 1;'>
+     <button 
+     (click)="irBano()">
+         DUCHA
+     </button>
+ </div> -->
+  
 <a-scene arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
 vr-mode-ui="enabled: false"
 renderer="colorManagement: true; logarithmicDepthBuffer: true;">
    
       <a-assets>
-          <img id="my-image" crossorigin="anonymous" src='{{ruta}}'>
+          <!-- <img id="my-image" crossorigin="anonymous" src='{{ruta}}'>
           <img id="my-image2" crossorigin="anonymous" src='{{ruta2}}'>
           <img id="my-image3" crossorigin="anonymous" src='{{ruta3}}'>
           <img id="my-image4" crossorigin="anonymous" src='{{ruta4}}'>
           <img id="my-image5" crossorigin="anonymous" src='{{ruta5}}'>
           <img id="my-image6" crossorigin="anonymous" src='{{ruta6}}'>
           <img id="my-image7" crossorigin="anonymous" src='{{ruta7}}'>
-          <img id="my-image8" crossorigin="anonymous" src='{{ruta8}}'>
+          <img id="my-image8" crossorigin="anonymous" src='{{ruta8}}'> -->
           <!-- <audio id="audio" src="/ar-kids-pwa/assets/img/dientes.mp3" response-type="arraybuffer"></audio> -->
           <!-- <audio id="audio" src="/assets/audios/dientes1.mp3" response-type="arraybuffer"></audio>
           <audio id="audio2" src="/assets/audios/dientes2.mp3" response-type="arraybuffer"></audio>
@@ -31,13 +77,13 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <audio id="audio8" src="/assets/audios/ducha8.mp3" response-type="arraybuffer"></audio> -->
           
 
-          
+<!--           
           <audio id="audio" src="/assets/audios/manos1.mp3" response-type="arraybuffer"></audio>
           <audio id="audio2" src="/assets/audios/manos2.mp3" response-type="arraybuffer"></audio>
           <audio id="audio3" src="/assets/audios/manos3.mp3" response-type="arraybuffer"></audio>
           <audio id="audio4" src="/assets/audios/manos4.mp3" response-type="arraybuffer"></audio>
           <audio id="audio5" src="/assets/audios/manos5.mp3" response-type="arraybuffer"></audio>
-          <audio id="audio6" src="/assets/audios/manos6.mp3" response-type="arraybuffer"></audio>
+          <audio id="audio6" src="/assets/audios/manos6.mp3" response-type="arraybuffer"></audio> -->
 
           <!-- <video id="penguin-sledding" src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75"></video> -->
           
@@ -50,9 +96,9 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0"  class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio; on: click" ></a-entity>
+          <a-entity  position="0 1 0"  class="clickable" geometry="primitive: plane; height: 2; width: 2;" [attr.material]="ruta" rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio" ></a-entity>
           <a-entity id="cylinderGroup"></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-sphere radius="0.10" color="#26c998"></a-sphere>
 
      </a-marker>   
      
@@ -63,9 +109,9 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image2" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio2; on: click" ></a-entity>
+          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;"  [attr.material]="ruta2" rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio2" ></a-entity>
           <a-entity id="cylinderGroup2"></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-sphere radius="0.10" color="#26c998"></a-sphere>
           
      </a-marker>   
      
@@ -77,9 +123,9 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image3" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio3; on: click" ></a-entity>
+          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;"  [attr.material]="ruta3"  rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio3" ></a-entity>
           <a-entity id="cylinderGroup3"></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-sphere radius="0.10" color="#26c998"></a-sphere>
           
      </a-marker>      
      
@@ -90,9 +136,9 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image4" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio4; on: click" ></a-entity>
+          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;"  [attr.material]="ruta4"  rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio4" ></a-entity>
           <a-entity id="cylinderGroup4"></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-sphere radius="0.10" color="#26c998"></a-sphere>
           
      </a-marker>      
      
@@ -103,9 +149,9 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image5" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio5; on: click" ></a-entity>
+          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;"  [attr.material]="ruta5"  rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio5" ></a-entity>
           <a-entity id="cylinderGroup5"></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-sphere radius="0.10" color="#26c998"></a-sphere>
           
      </a-marker>     
      
@@ -117,30 +163,30 @@ renderer="colorManagement: true; logarithmicDepthBuffer: true;">
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image6" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio6; on: click" ></a-entity>
+          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;"  [attr.material]="ruta6"  rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio6" ></a-entity>
           <a-entity id="cylinderGroup6"></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-sphere radius="0.10" color="#26c998"></a-sphere>
      </a-marker>     
      
-     <a-marker *ngIf="!manos" id="m6" type="barcode" value="6" registerevents>
+     <a-marker id="m6" type="barcode" value="6" registerevents>
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  *ngIf="!manos" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image7" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio7; on: click" ></a-entity>
+          <a-entity  *ngIf="!manos" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;"  [attr.material]="ruta7"  rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio7" ></a-entity>
           <a-entity id="cylinderGroup7"></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-sphere *ngIf="!manos" radius="0.10" color="#26c998"></a-sphere>
      </a-marker>   
      
-     <a-marker *ngIf="!manos" id="m7" type="barcode" value="7" registerevents>
+     <a-marker  id="m7" type="barcode" value="7" registerevents>
         
           <!-- Using the asset management system. -->
           <!-- <a-plane src="#my-image" height="1" width="1" rotation="-90 0 0"></a-plane> -->
           <!-- <a-video src="https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/solterito.mp4?alt=media&token=95bb1002-10df-4b4d-ad18-513ae2908a75" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
           <!-- <a-video src="#penguin-sledding" width="1" height="1" rotation="-90 0 0" video-handler></a-video> -->
-          <a-entity  position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;" material="src: #my-image8" rotation="-90 0 0" crossOrigin="anonymous" sound="src: #audio8; on: click" ></a-entity>
-          <a-sphere radius="0.10" color="red"></a-sphere>
+          <a-entity  *ngIf="!manos" position="0 1 0" class="clickable" geometry="primitive: plane; height: 2; width: 2;"  [attr.material]="ruta8"  rotation="-90 0 0" crossOrigin="anonymous" [attr.sound]="audio8" ></a-entity>
+          <a-sphere  *ngIf="!manos" radius="0.10" color="#26c998"></a-sphere>
      </a-marker>  
      
 

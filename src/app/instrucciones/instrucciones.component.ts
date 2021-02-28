@@ -11,7 +11,9 @@ import { Juego } from "../models/Juego";
 export class InstruccionesComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-
+  instruccion1: string;
+  instruccion2: string;
+  instruccion3: string;
   juego: Juego;
   juego2: Juego;
 
@@ -22,6 +24,9 @@ export class InstruccionesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.instruccion1 = "A"
+    this.instruccion2 = "B"
+    this.instruccion3 = "C"
     this.juegoService
       .selectJuego(localStorage.getItem("id_juego"))
       .subscribe((res) => {
@@ -59,6 +64,28 @@ export class InstruccionesComponent implements OnInit {
 
     if (localStorage.getItem("tip_act") == "PREGUNTA2") {
       this.router.navigate(["actividades/asistente"]);
+    }
+
+    if (localStorage.getItem("tip_act") == "CLASIFÍCALO") {
+      this.router.navigate(["actividades/clasificalo"]);
+    }
+
+    if (localStorage.getItem("tip_act") == "ENCUÉNTRALO") {
+      this.router.navigate(["actividades/encuentralo"]).then(() => {
+        window.location.reload();
+      });
+    }
+
+    if (localStorage.getItem("tip_act") == "SONIGRAMA") {
+      this.router.navigate(["actividades/sonigram"]);
+    }
+
+    if (localStorage.getItem("tip_act") == "AR-BOX") {
+      this.router.navigate(["actividades/ar-box"]);
+    }
+
+    if (localStorage.getItem("tip_act") == "PICTOGRAM") {
+      this.router.navigate(["actividades/pictogram"]);
     }
     // this.router.navigate(['actividades/vestir']);
   }

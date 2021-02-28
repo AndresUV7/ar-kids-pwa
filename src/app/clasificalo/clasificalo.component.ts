@@ -7,7 +7,10 @@ import {
 } from "@angular/core";
 declare function movimiento(): any;
 declare function validar(): any;
-import Phaser from 'phaser';
+import Phaser from "phaser";
+import { OnDestroy } from '@angular/core';
+import { JuegoService } from '../services/juegos/juego.service';
+import { Juego } from '../models/Juego';
 class NewScene extends Phaser.Scene {
   cursor: any;
   recta: any;
@@ -16,8 +19,14 @@ class NewScene extends Phaser.Scene {
   recta4: any;
   rectas: any[];
   prenda: any;
+  prendas: any[];
   destinos: any[];
   rand: number;
+  audio1: any;
+  audio2: any;
+  audio3: any;
+  audio4: any;
+  randArray: number[];
 
   constructor() {
     super("NewScene");
@@ -25,6 +34,11 @@ class NewScene extends Phaser.Scene {
 
   preload() {
     this.load.path = "/assets/img/";
+    this.load.audio("audio1", ["ropa_arrugada.mp3"]);
+    this.load.audio("audio2", ["ropa_doblada.mp3"]);
+    this.load.audio("audio3", ["ropa_mojada.mp3"]);
+    this.load.audio("audio4", ["ropa_sucia.mp3"]);
+
     this.load.image("armario", "armario.png");
     this.load.image("planchar", "planchar.png");
     this.load.image("tendedero", "tendedero.png");
@@ -39,57 +53,22 @@ class NewScene extends Phaser.Scene {
     this.load.image("pantalon_sucio", "pantalon sucio.png");
     this.rectas = [null, null, null, null, null, null, null, null];
     this.destinos = [null, null, null, null];
-    this.destinos = [null, null, null, null];
+    this.prendas = [null, null, null, null];
+    this.randArray = [null];
+    this.rand = -1;
+
   }
 
   create() {
+    this.audio1 =  this.sound.add("audio1");
+    this.audio2 =  this.sound.add("audio2");
+    this.audio3 =  this.sound.add("audio3");
+    this.audio4 =  this.sound.add("audio4");
+
     this.destinos[0] = this.physics.add.image(55, 60, "armario");
     this.destinos[1] = this.physics.add.image(595, 60, "lavar");
     this.destinos[2] = this.physics.add.image(583, 315, "planchar");
     this.destinos[3] = this.physics.add.image(65, 315, "tendedero");
-
-    this.rand = Math.floor(Math.random() * (7 - 0) + 0);
-
-    switch (this.rand) {
-      case 0:
-        this.prenda = this.physics.add.image(315, 60, "camisa_doblada");
-        this.prenda.name = "camisa_doblada";
-
-        break;
-      case 1:
-        this.prenda = this.physics.add.image(315, 60, "camiseta_arrugada");
-        this.prenda.name = "camiseta_arrugada";
-
-        break;
-      case 2:
-        this.prenda = this.physics.add.image(315, 60, "camiseta_mojada");
-        this.prenda.name = "camiseta_mojada";
-        break;
-      case 3:
-        this.prenda = this.physics.add.image(315, 60, "casaca_sucia");
-        this.prenda.name =  "casaca_sucia";
-        break;
-      case 4:
-        this.prenda = this.physics.add.image(315, 60, "pantalon_mojado");
-        this.prenda.name =  "pantalon_mojado";
-        break;
-      case 5:
-        this.prenda = this.physics.add.image(315, 60, "pantalon_arrugado");
-        this.prenda.name =  "pantalon_arrugado";
-        break;
-      case 6:
-        this.prenda = this.physics.add.image(315, 60, "pantalon_doblado");
-        this.prenda.name =  "pantalon_doblado";
-        break;
-      case 7:
-        this.prenda = this.physics.add.image(315, 60, "pantalon_doblado");
-        this.prenda.name =  "pantalon_doblado";
-        break;
-
-      default:
-        break;
-    }
-
 
     // this.jean = this.physics.add.image(350, 50, "jean")
     this.recta = this.add.rectangle(0, 0, 1300, 20, 0x6666ff);
@@ -118,6 +97,8 @@ class NewScene extends Phaser.Scene {
     this.physics.add.existing(this.rectas[5]);
     this.physics.add.existing(this.rectas[6]);
     this.physics.add.existing(this.rectas[7]);
+
+    this.asignacion();
 
     this.recta.body.immovable = true;
     this.recta.body.moves = false;
@@ -152,6 +133,7 @@ class NewScene extends Phaser.Scene {
     // this.prenda.body.setCollideWorldBounds(true)
     // this.recta.body.setCollideWorldBounds(true)
     // this.recta2.body.setCollideWorldBounds(true)
+
     this.physics.add.collider(this.prenda, this.recta);
     this.physics.add.collider(this.prenda, this.recta2);
     this.physics.add.collider(this.prenda, this.recta3);
@@ -164,17 +146,162 @@ class NewScene extends Phaser.Scene {
     this.physics.add.collider(this.prenda, this.rectas[5]);
     this.physics.add.collider(this.prenda, this.rectas[6]);
     this.physics.add.collider(this.prenda, this.rectas[7]);
-
   }
 
   update() {
 
-    if(this.prenda.x > 25 && this.prenda.x < 75 && this.prenda.y > 60 && this.prenda.y < 80  ){
+    // if (!this.checkpoint){
+    //   this.inicializa();
+    // }
+    if (this.randArray.length !== 4 ) {
+      console.log(this.prenda.name, this.prenda.x, this.prenda.y)
+      if (
+        this.prenda.name == "pantalon_doblado" ||
+        this.prenda.name == "camisa_doblada"
+      ) {
+        if (
+          this.prenda.x > 25 &&
+          this.prenda.x < 75 &&
+          this.prenda.y > 60 &&
+          this.prenda.y < 80
+        ) {
+          this.randArray.push(this.rand);
+          this.asignacion();
+          this.colliders();
+        }
+      } else if (
+        this.prenda.name == "pantalon_arrugado" ||
+        this.prenda.name == "camiseta_arrugada"
+      ) {
+        if (
+          this.prenda.x > 555 &&
+          this.prenda.x < 609 &&
+          this.prenda.y > 300 &&
+          this.prenda.y < 335
+        ) {
+          this.randArray.push(this.rand);
+          this.asignacion();
+          this.colliders();
+        }
+      } else if (
+        this.prenda.name == "pantalon_sucio" ||
+        this.prenda.name == "casaca_sucia"
+      ) {
+        if (
+          this.prenda.x > 565 &&
+          this.prenda.x < 615 &&
+          this.prenda.y > 55 &&
+          this.prenda.y < 80
+        ) {
+          this.randArray.push(this.rand);
+          this.asignacion();
+          this.colliders();
+        }
+      } else if (
+        this.prenda.name == "pantalon_mojado" ||
+        this.prenda.name == "camiseta_mojada"
+      ) {
+        if (
+          this.prenda.x > 30 &&
+          this.prenda.x < 95 &&
+          this.prenda.y > 310 &&
+          this.prenda.y < 335
+        ) {
+          this.randArray.push(this.rand);
+          this.asignacion();
+          this.colliders();
+        }
+      }
+    }
+  }
 
-      this.prenda.destroy();
+  asignacion() {
+    // while(this.randArray.length < 5){
+    // do {
+    // this.checkpoint = true;
+    do{
+      this.rand = Math.floor(Math.random() * (7 - 0) + 0);
+    }while(this.randArray.includes(this.rand))
+
+    if (this.rand == 0) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "camisa_doblada")
+        .setScale(1.2);
+
+      this.prendas[this.randArray.length-1].name = "camisa_doblada";
+      this.audio2.play();
+
+    } else if (this.rand == 1) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "camiseta_arrugada")
+        .setScale(1.2);
+      this.prendas[this.randArray.length-1].name = "camiseta_arrugada";
+      this.audio1.play();
+
+    } else if (this.rand == 2) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "camiseta_mojada")
+        .setScale(1.2);
+      this.prendas[this.randArray.length-1].name = "camiseta_mojada";
+      this.audio3.play();
+
+    } else if (this.rand == 3) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "casaca_sucia")
+        .setScale(1.2);
+      this.prendas[this.randArray.length-1].name = "casaca_sucia";
+      this.audio4.play();
+
+    } else if (this.rand == 4) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "pantalon_mojado")
+        .setScale(1.2);
+      this.prendas[this.randArray.length-1].name = "pantalon_mojado";
+      this.audio3.play();
+
+    } else if (this.rand == 5) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "pantalon_arrugado")
+        .setScale(1.2);
+      this.prendas[this.randArray.length-1].name = "pantalon_arrugado";
+      this.audio1.play();
+
+    } else if (this.rand == 6) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "pantalon_doblado")
+        .setScale(1.2);
+      this.prendas[this.randArray.length-1].name = "pantalon_doblado";
+      this.audio2.play();
+
+    } else if (this.rand == 7) {
+      this.prendas[this.randArray.length-1] = this.physics.add
+        .image(315, 60, "pantalon_sucio")
+        .setScale(1.2);
+      this.prendas[this.randArray.length-1].name = "pantalon_sucio";
+      this.audio4.play();
 
     }
 
+    this.prenda= this.prendas[this.randArray.length-1];
+    // this.randArray.push(this.rand);
+
+    // console.log(this.prenda.name);
+  }
+
+
+  colliders() {
+    this.physics.add.collider(this.prenda, this.recta);
+    this.physics.add.collider(this.prenda, this.recta2);
+    this.physics.add.collider(this.prenda, this.recta3);
+    this.physics.add.collider(this.prenda, this.recta4);
+    this.physics.add.collider(this.prenda, this.rectas[0]);
+    this.physics.add.collider(this.prenda, this.rectas[1]);
+    this.physics.add.collider(this.prenda, this.rectas[2]);
+    this.physics.add.collider(this.prenda, this.rectas[3]);
+    this.physics.add.collider(this.prenda, this.rectas[4]);
+    this.physics.add.collider(this.prenda, this.rectas[5]);
+    this.physics.add.collider(this.prenda, this.rectas[6]);
+    this.physics.add.collider(this.prenda, this.rectas[7]);
   }
 
   izquierda() {
@@ -193,8 +320,6 @@ class NewScene extends Phaser.Scene {
   abajo() {
     this.prenda.body.setVelocityY(50);
   }
-
- 
 }
 
 @Component({
@@ -202,14 +327,15 @@ class NewScene extends Phaser.Scene {
   templateUrl: "./clasificalo.component.html",
   styleUrls: ["./clasificalo.component.css"],
 })
-export class ClasificaloComponent implements OnInit, DoCheck {
+export class ClasificaloComponent implements OnInit, DoCheck, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
   scene: NewScene;
 
   checkpoints: boolean[];
+  juego: Juego;
 
-  constructor() {
+  constructor(public juegoService: JuegoService) {
     this.scene = new NewScene();
 
     this.config = {
@@ -230,6 +356,26 @@ export class ClasificaloComponent implements OnInit, DoCheck {
   }
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
+
+    this.juegoService
+      .selectJuego(localStorage.getItem("id_juego"))
+      .subscribe((res) => {
+        this.juego = res;
+
+        this.juego.partidas.push({
+          fecha_inicio: new Date()
+        });
+
+        this.juegoService.updateJuego(this.juego).subscribe((res) => {
+          this.juego = res;
+
+          localStorage.setItem(
+            "id_partida",
+            this.juego.partidas.slice(-1)[0]._id
+          );
+        });
+      });
+    // window.onbeforeunload = () => this.ngOnDestroy();
   }
 
   ngDoCheck() {
@@ -256,4 +402,8 @@ export class ClasificaloComponent implements OnInit, DoCheck {
   }
 
   probar() {}
+
+  ngOnDestroy(){
+    this.phaserGame.destroy(true);
+  }
 }

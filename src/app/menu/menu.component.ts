@@ -68,11 +68,19 @@ export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
     this.router.navigate(["actividades/admin-users"]);
 
   }
+  
+  irRecursos(){
+    this.router.navigate(["actividades/recursos"]);
+
+  }
 
   prueba(){
-    this.router.navigate(['actividades/perfil']);
+    this.router.navigate(['actividades/perfil'])
+    // .then(() => {
+    //   window.location.reload();
+    // });
+
   }
-  
   
   irPremios(){
     this.router.navigate(['actividades/premios']);
@@ -84,6 +92,10 @@ export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
   
   irHistorial(){
     this.router.navigate(["actividades/historial"]);
+  } 
+   
+  irAyuda(){
+    this.router.navigate(["actividades/ayuda"]);
   }
 
 

@@ -1,120 +1,143 @@
-<mat-card class="example-card">
-  <img mat-card-image [src]="avatar" alt="Photo of a Shiba Inu" />
-</mat-card>
-<div fxLayout="row" fxLayoutGap="3%">
-  <mat-form-field class="example-full-width">
-    <mat-label>Cédula</mat-label>
-    <input readonly [(ngModel)]="usuario.cedula" matInput placeholder="" />
-  </mat-form-field>
-</div>
-<div fxLayout="row" fxLayoutGap="3%">
-  <mat-form-field class="example-full-width">
-    <mat-label>Nombre</mat-label>
-    <input readonly [(ngModel)]="usuario.nombre" matInput placeholder="" />
-  </mat-form-field>
-</div>
-<div fxLayout="row" fxLayoutGap="3%">
-  <mat-form-field class="example-full-width">
-    <mat-label>Apellido</mat-label>
-    <input readonly [(ngModel)]="usuario.apellido" matInput placeholder="" />
-  </mat-form-field>
-</div>
-<div fxLayout="row" fxLayoutGap="3%">
-  <mat-radio-group
-    [disabled]="true"
-    aria-label="Select an option"
-    fxLayout="row"
-    fxLayoutGap="10%"
-    class="radio"
-  >
-    <mat-label>Sexo</mat-label>
-
-    <mat-radio-button
-      value="M"
-      [checked]="usuario.sexo == 'M' ? true : false"
-      matTooltip="Masculino"
-      matTooltipPosition="above"
-      >M</mat-radio-button
-    >
-    <mat-radio-button
-      value="F"
-      [checked]="usuario.sexo == 'F' ? true : false"
-      matTooltip="Femenino"
-      matTooltipPosition="above"
-      >F</mat-radio-button
-    >
-  </mat-radio-group>
-</div>
 <br />
-<mat-divider></mat-divider>
-<mat-slide-toggle [disabled]="emailBlock" (change)="toggle($event)"
-  >Cambiar email</mat-slide-toggle
->
 <br />
-<div *ngIf="showEmail" fxLayout="row" fxLayoutGap="3%">
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input
-      matInput
-      [formControl]="emailFormControl"
-      [errorStateMatcher]="matcher"
-      [(ngModel)]="usuario.email"
-    />
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error
-      *ngIf="
-        emailFormControl.hasError('email') &&
-        !emailFormControl.hasError('required')
-      "
-    >
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
 
-  <br />
-</div>
+<div fxLayout="row" fxLayoutGap="3%">
+  <div></div>
+  <div fxLayout="column" fxLayoutGap="3%">
+    <mat-card class="example-card">
+      <img
+        class="avatar1"
+        mat-card-image
+        [src]="avatar"
+        alt="Avatar"
+      />
+    </mat-card>
+  </div>
+  <div fxLayout="column" fxLayoutGap="3%">
+    <div fxLayout="row" fxLayoutGap="3%">
+      <mat-form-field class="example-full-width">
+        <mat-label>Cédula</mat-label>
+        <input readonly [(ngModel)]="usuario.cedula" matInput placeholder="" />
+      </mat-form-field>
+      <mat-radio-group
+        [disabled]="true"
+        aria-label="Select an option"
+        fxLayout="row"
+        fxLayoutGap="10%"
+        class="radio"
+      >
+        <mat-label>Sexo</mat-label>
 
-<mat-divider></mat-divider>
-<div>
-  <form class="example-form" [formGroup]="profileForm" #formDirective="ngForm">
-    <mat-slide-toggle [disabled]="contraBlock" (change)="toggle2($event)"
-      >Cambiar contraseña</mat-slide-toggle
-    >
-    <br />
-    <div *ngIf="showContra">
-
-      <div fxLayout="row" fxLayoutGap="3%">
+        <mat-radio-button
+          value="M"
+          [checked]="usuario.sexo == 'M' ? true : false"
+          matTooltip="Masculino"
+          matTooltipPosition="above"
+          >M</mat-radio-button
+        >
+        <mat-radio-button
+          value="F"
+          [checked]="usuario.sexo == 'F' ? true : false"
+          matTooltip="Femenino"
+          matTooltipPosition="above"
+          >F</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+    
+    <div fxLayout="row" fxLayoutGap="3%">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input readonly [(ngModel)]="usuario.nombre" matInput placeholder="" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Apellido</mat-label>
+        <input
+          readonly
+          [(ngModel)]="usuario.apellido"
+          matInput
+          placeholder=""
+        />
+      </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayoutGap="3%">
+      <mat-slide-toggle [disabled]="emailBlock" (change)="toggle($event)"
+        >Cambiar email</mat-slide-toggle
+      >
+      <br />
+      <div *ngIf="showEmail" fxLayout="row" fxLayoutGap="3%">
+        <br />
         <mat-form-field class="example-full-width">
-          <mat-label>Nueva Contraseña</mat-label>
+          <mat-label>Email</mat-label>
           <input
-          [(ngModel)]="credenciales2.contrasena"
-            type="password"
             matInput
-            placeholder="Contraseña"
-            formControlName="contrasena"
-            class="form-control"
+            [formControl]="emailFormControl"
+            [errorStateMatcher]="matcher"
+            [(ngModel)]="usuario.email"
           />
-          <mat-icon matSuffix>vpn_key</mat-icon>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error
+            *ngIf="
+              emailFormControl.hasError('email') &&
+              !emailFormControl.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
-      </div>
-      <div  fxLayout="row" fxLayoutGap="3%">
-        <mat-form-field class="example-full-width">
-          <mat-label>Nueva Contraseña</mat-label>
-          <input
-          [(ngModel)]="credenciales2.contrasena2"
-            type="password"
-            matInput
-            placeholder="Repetir contraseña"
-            formControlName="contrasena2"
-            class="form-control"
-          />
-          <mat-icon matSuffix>vpn_key</mat-icon>
-        </mat-form-field>
-        <br>
       </div>
     </div>
-  </form>
+    <div  fxLayout="column" fxLayoutGap="3%">
+      <div>
+        <form
+          class="example-form"
+          [formGroup]="profileForm"
+          #formDirective="ngForm"
+        >
+          <mat-slide-toggle [disabled]="contraBlock" (change)="toggle2($event)"
+            >Cambiar contraseña</mat-slide-toggle
+          >
+          <br />
+          <div *ngIf="showContra">
+            <div fxLayout="row" fxLayoutGap="3%">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nueva Contraseña</mat-label>
+                <input
+                  [(ngModel)]="credenciales2.contrasena"
+                  type="password"
+                  matInput
+                  placeholder="Contraseña"
+                  formControlName="contrasena"
+                  class="form-control"
+                />
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="3%">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nueva Contraseña</mat-label>
+                <input
+                  [(ngModel)]="credenciales2.contrasena2"
+                  type="password"
+                  matInput
+                  placeholder="Repetir contraseña"
+                  formControlName="contrasena2"
+                  class="form-control"
+                />
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+              <br />
+            </div>
+          </div>
+        </form>
+      </div>
+  
+    </div>
+  </div>
+
 </div>
+<br /><br />
+<mat-divider></mat-divider>

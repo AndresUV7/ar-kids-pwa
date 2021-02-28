@@ -6,37 +6,29 @@ fxFlexFill>
     <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Pantalla horizontal</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
+        
         <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperNext>Next</button>
+          <p>{{instruccion1}}</p>
+          <button mat-button matStepperNext>SIGUIENTE</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Buscar ropa</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                 required>
-        </mat-form-field>
         <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <p>{{instruccion2}}</p>
+          <button mat-button matStepperPrevious>ATRÁS</button>
+          <button mat-button matStepperNext>SIGUIENTE</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Vestir al personaje</ng-template>
-      <p>You are now done.</p>
+      <p>{{instruccion3}}</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="jugar()">Jugar</button>
+        <button mat-button matStepperPrevious>ATRÁS</button>
+        <button mat-button (click)="jugar()">JUGAR</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

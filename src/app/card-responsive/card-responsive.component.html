@@ -1,8 +1,7 @@
 <div fxLayout.fxFlex.gt-md="row" fxLayout.xs="column" fxLayoutAlign.gt-sm="space-around center" fxLayoutGap="25px" fxFlexFill>  
   <mat-card *ngFor="let member of members" fxFlex="calc(20%-25px)" fxFlex.sm="calc(20%-25px)" >
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{member.title}}</mat-card-title>
+      <mat-card-title class="titulo">{{member.title}}</mat-card-title>
       <mat-card-subtitle>{{member.subtitle}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]="member.url" alt="Photo of {{member.title}}">
@@ -11,6 +10,6 @@
         {{member.content}}
       </p>
     </mat-card-content>
-    <button mat-flat-button color="accent" (click)="prueba(member.title)" >Basic</button>
+    <button mat-flat-button color="accent" (click)="prueba(member.title)" >JUGAR</button>
   </mat-card>
 </div>

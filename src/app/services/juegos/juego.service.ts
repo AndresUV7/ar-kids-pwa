@@ -9,7 +9,7 @@ export class JuegoService {
 
   constructor(private http:HttpClient) { }
 
-  Url="https://192.168.100.7:3000/juego";
+  Url="https://ar-kids.herokuapp.com/juego";
 
 
   insertJuego(juego:Juego){

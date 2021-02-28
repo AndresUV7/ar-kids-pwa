@@ -5,6 +5,7 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { auditTime, tap } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { Juego } from '../models/Juego';
 
 @Component({
   selector: 'app-historial',
@@ -23,16 +24,29 @@ export class HistorialComponent {
   modalOpen = false;
   aux: string;
   aux2: string;
-  private historial: Historial[];
+  private historial: any[];
 
 
   constructor(private historialService: HistorialService) {
     this.aux = "";
     this.aux2 = "";
-  this.historialService.selectHistorial(localStorage.getItem("_id"))
+    this.historialService.selectHistorial(localStorage.getItem("_id"))
       .subscribe((res) => {
         this.historial = res;
-        console.log(this.historial);
+        console.log("histo",this.historial)
+        for (let index = 0; index < this.historial.length; index++) {
+          for (let index2 = 0; index2< this.historial[index].partidas.length; index2++) {
+            this.historial[index].partidas[index2].nombre = this.historial[index].nombre;           
+          }
+        }
+        let result = this.historial.map(a => a.partidas);
+        console.log("histo2",result)
+        var merged = [].concat.apply([], result);
+        console.log(merged);
+        this.historial = merged;
+        console.log("histo3", this.historial)
+        this.historial.sort((d1, d2) => new Date(d1.fecha_inicio).getTime() - new Date(d2.fecha_inicio).getTime());
+        this.historial.reverse();
         this.array = this.historial.slice(0,27);
       })
   }
@@ -49,6 +63,14 @@ export class HistorialComponent {
 
   prependItems(startIndex, endIndex) {
     this.addItems(startIndex, endIndex, "unshift");
+  }
+
+  convertir(d){
+    return new Date(d).toLocaleString('es-US', { timeZone: 'America/Guayaquil' });
+  }
+
+  arr(s: string){
+    return s.replace(/\s/g, '')
   }
 
   onScrollDown(ev) {
@@ -97,12 +119,17 @@ export class HistorialComponent {
   
   convertirDate2(d: string){
 
-    if (this.aux2 === d.substring(0,10)+' / '+d.substring(11,16)){
-      return "";
+    let h = Number(d.substring(11,13))-5;
+    let hs;
+    if (h<10){
+      hs = "0"+ h;
     }else{
-      this.aux2 = d.substring(0,10)+' / '+d.substring(11,16);
-      return this.aux2;
+      hs = h;
     }
+
+    this.aux = d.substring(0,10)+' / '+hs+d.substring(13,16);
+    return this.aux;
+
   }
 }
 

@@ -1,17 +1,60 @@
 
-<div  style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+<!-- <div  style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
     <button [disabled]="started"
     (click)="start()">
         HABLAR...
     </button>
+</div> -->
+
+<div class="example-button-container" style='position: fixed; top: 5%; left:3%; z-index: 1;'>
+  <button [disabled]="started" 
+  (click)="start()" mat-fab color="accent" aria-label="Example icon button with a home icon">
+    <mat-icon>record_voice_over</mat-icon>
+  
+</button>
 </div>
 
-<div  style='position: fixed; top: 40px; width:100%; text-align: center; z-index: 1;'>
+<div class="example-button-container"  style='position: fixed; top: 30%; left:3%;z-index: 1;'>
+  <button [disabled]="nextCtrl" 
+  (click)="siguiente()" mat-fab color="accent" aria-label="Example icon button with a home icon">
+    <mat-icon>shuffle</mat-icon>
+  </button>
+</div>
+
+
+<div class="example-button-container" style='position: fixed; top: 55%;left:3%;  z-index: 1;'>
+  <button [disabled]="nextCtrl2" 
+  (click)="repetir()" mat-fab color="accent" aria-label="Example icon button with a home icon">
+    <mat-icon>replay</mat-icon>
+  </button>
+</div>
+
+<div class="example-button-container" style='position: fixed; top: 80%; left:3%; z-index: 1;'>
+  <button [disabled]="nextCtrl3" 
+    (click)="preguntar()" mat-fab color="primary"  aria-label="Example icon button with a home icon">
+    <mat-icon>help_outline</mat-icon>
+  </button>
+</div>
+<!-- <div  style='position: fixed; top: 40px; width:100%; text-align: center; z-index: 1;'>
     <button [disabled]="nextCtrl"
     (click)="siguiente()">
         SIGUENTE
     </button>
-</div>
+</div> -->
+
+<!-- <div  style='position: fixed; top: 70px; width:100%; text-align: center; z-index: 1;'>
+    <button [disabled]="nextCtrl2"
+    (click)="repetir()">
+        REPETIR
+    </button>
+</div> -->
+
+<!-- <div  style='position: fixed; top: 100px; width:100%; text-align: center; z-index: 1;'>
+    <button [disabled]="nextCtrl3"
+    (click)="preguntar()">
+        PREGUNTAR
+    </button>
+</div> -->
 
 <a-scene 
 

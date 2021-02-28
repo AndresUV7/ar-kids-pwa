@@ -26,6 +26,9 @@ import { HistorialComponent } from './historial/historial.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { RecoverPassComponent } from './recover-pass/recover-pass.component';
 import { SonigramComponent } from './sonigram/sonigram.component';
+import { EncuentraloGeoComponent } from './encuentralo-geo/encuentralo-geo.component';
+import { AyudaComponent } from './ayuda/ayuda.component';
+import { RecursosComponent } from './recursos/recursos.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent, canActivate: [LoggedGuard] },
@@ -62,6 +65,8 @@ const routes: Routes = [
   { path: "actividades/edit-users", component: EditUserComponent },
   { path: "actividades/historial", component: HistorialComponent },
   { path: "actividades/perfil", component: PerfilComponent},
+  { path: "actividades/ayuda", component: AyudaComponent},
+  { path: "actividades/recursos", component: RecursosComponent},
 
 
     ],

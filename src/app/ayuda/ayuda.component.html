@@ -1,1 +1,19 @@
-<p>ayuda works!</p>
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Contacto para ayuda y soporte:
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>info</mat-icon>
+
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <a href="mailto:arkids2021.info@gmail.com">arkids2021.info@gmail.com</a>
+  </mat-expansion-panel>
+  <br>
+<pdf-viewer [src]="pdfSrc" 
+[render-text]="true"
+style="display: block;"
+[original-size]="false"
+[autoresize]="true"
+></pdf-viewer>
