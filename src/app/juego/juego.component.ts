@@ -30,8 +30,8 @@ class NewScene extends Phaser.Scene {
 
   preload() {
     this.tracker = { error: false, objetivo: "", accion: ""};
-    // this.load.path = '/ar-kids-pwa/assets/img/'
     this.load.path = "/assets/img/";
+    this.load.path = '/ar-kids-pwa/assets/img/'
     this.load.audio("pantalones", ["pantalon_w.mp3"]);
     this.load.audio("pantalones2", ["pantalon_x_w.mp3"]);
     this.load.audio("blusa", ["blusa_w.mp3"]);

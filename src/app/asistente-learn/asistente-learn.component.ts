@@ -161,7 +161,7 @@ change() {
     this.isLoaded = true;
   }
 
-  preguntar(termino) {
+  preguntar() {
     this.esPregunta = true;
     this.started = true;
     this.nextCtrl=true;

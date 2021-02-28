@@ -43,8 +43,8 @@ class NewScene extends Phaser.Scene {
     this.gameOver = false;
     this.contador1 = [0, 0, 0, 0, 0, 0, 0, 0];
     this.contador2 = [0, 0, 0, 0, 0, 0, 0, 0];
-    // this.load.path = "/ar-kids-pwa/assets/img/";
     this.load.path = "/assets/img/";
+    this.load.path = "/ar-kids-pwa/assets/img/";
     // this.load.image("font", "font.png");
     // this.load.json("font_json", "font.json")
 
