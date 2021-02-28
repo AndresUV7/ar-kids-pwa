@@ -19,6 +19,7 @@
     <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
     <script
       type="text/javascript"
@@ -27,6 +28,7 @@
     <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     <!-- <script type = "text/javascript" src="node_modules/simple-web-notification/web-notification.js" > </script>   -->
     <script src="https://cdn.jsdelivr.net/npm/danfojs@0.1.1/dist/index.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script>
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
@@ -53,8 +55,9 @@
     <noscript
       >Please enable JavaScript to continue using this application.</noscript
     >
-  <script src="runtime.a8ef3a8272419c2e2c66.js" defer></script><script src="polyfills-es5.d30832bf70493aed5d6c.js" nomodule defer></script><script src="polyfills.b948c5521048b3f55fad.js" defer></script><script src="scripts.8b708259c11dc649ffd1.js" defer></script><script src="main.925c0b094d8addd82f87.js" defer></script></body>
+  <script src="runtime.a8ef3a8272419c2e2c66.js" defer></script><script src="polyfills-es5.c2a4ae8357ad8be68d23.js" nomodule defer></script><script src="polyfills.0c51cd5c25a264ad81b5.js" defer></script><script src="scripts.d07b675c85bcc4c03eff.js" defer></script><script src="main.e010649ecaa870260357.js" defer></script></body>
 
+  
   <!-- <script>
     let ban = false;
    
@@ -213,43 +216,37 @@
         p: { type: "string" },
       },
       init: function () {
-        
+        this.det = this.data.p;
         this.m0 = document.querySelector("#m0");
         this.m1 = document.querySelector("#m1");
         this.m2 = document.querySelector("#m2");
         this.m3 = document.querySelector("#m3");
         this.m4 = document.querySelector("#m4");
         this.m5 = document.querySelector("#m5");
-        if (this.data.p === "dientes") {
           this.m6 = document.querySelector("#m6");
           this.m7 = document.querySelector("#m7");
-        }
         this.p0 = new THREE.Vector3();
         this.p1 = new THREE.Vector3();
         this.p2 = new THREE.Vector3();
         this.p3 = new THREE.Vector3();
         this.p4 = new THREE.Vector3();
         this.p5 = new THREE.Vector3();
-        if (this.data.p === "dientes") {
           this.p6 = new THREE.Vector3();
           this.p7 = new THREE.Vector3();
-        }
 
         let geometry = new THREE.CylinderGeometry(0.05, 0.05, 1, 12);
         geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0.5, 0));
         geometry.applyMatrix(
           new THREE.Matrix4().makeRotationX(THREE.Math.degToRad(90))
         );
-        let material = new THREE.MeshLambertMaterial({ color: 0xff0000 });
+        let material = new THREE.MeshLambertMaterial({ color: 0x26c998});
         this.cylinder = new THREE.Mesh(geometry, material);
         this.cylinder2 = new THREE.Mesh(geometry, material);
         this.cylinder3 = new THREE.Mesh(geometry, material);
         this.cylinder4 = new THREE.Mesh(geometry, material);
         this.cylinder5 = new THREE.Mesh(geometry, material);
-        if (this.data.p === "dientes") {
         this.cylinder6 = new THREE.Mesh(geometry, material);
         this.cylinder7 = new THREE.Mesh(geometry, material);
-        }
         this.cylinderGroup = document.querySelector("#cylinderGroup").object3D;
         this.cylinderGroup2 = document.querySelector(
           "#cylinderGroup2"
@@ -264,23 +261,19 @@
           "#cylinderGroup5"
         ).object3D;
 
-        if (this.data.p === "dientes") {
           this.cylinderGroup6 = document.querySelector(
             "#cylinderGroup6"
           ).object3D;
           this.cylinderGroup7 = document.querySelector(
             "#cylinderGroup7"
           ).object3D;
-        }
         this.cylinderGroup.add(this.cylinder);
         this.cylinderGroup2.add(this.cylinder2);
         this.cylinderGroup3.add(this.cylinder3);
         this.cylinderGroup4.add(this.cylinder4);
         this.cylinderGroup5.add(this.cylinder5);
-        if (this.data.p === "dientes") {
           this.cylinderGroup6.add(this.cylinder6);
           this.cylinderGroup7.add(this.cylinder7);
-        }
       },
 
       tick: function (time, deltaTime) {
@@ -340,7 +333,7 @@
                     this.cylinder5.visible = true;
                   }
 
-                  if (this.data.p === "dientes") {
+                  if (this.det === "dientes" || this.det === "ducha") {
                     if (markerVisible["m6"]) {
                       this.m6.object3D.getWorldPosition(this.p6);
                       let distance6 = this.p5.distanceTo(this.p6);
@@ -367,6 +360,11 @@
                     } else {
                       this.cylinder6.visible = false;
                     }
+                  }else{
+                    this.cylinder7.visible = false;
+                    this.cylinder6.visible = false;
+                    
+
                   }
                 } else {
                   this.cylinder5.visible = false;
@@ -404,6 +402,9 @@
         //   this.cylinder3.visible = false;
         //     this.cylinder4.visible = false;
         // }
+      },
+      qux2: function (term) {
+        this.det = term;
       },
     });
   </script>
@@ -696,12 +697,194 @@
 
   <script>
     AFRAME.registerComponent("clickhandler", {
+      schema: {
+        obj: { type: "string" },
+      },
       init: function () {
+        this.objCtrl = null;
+        console.log("entra")
         this.el.addEventListener("click", (e) => {
-          e.preventDefault();
-          console.log("si detecta");
+          // e.preventDefault();
+          console.log(this.data.obj);
+          this.objCtrl = this.data.obj;
         });
       },
-    });
+      limpiar:function(){
+        this.objCtrl = null;
+
+      }
+      
+    }); 
+
   </script>
+
+<script>
+  let markerVisible3 = {
+      m0: false,
+      m1: false,
+      m2: false,
+      m3: false,
+      m4: false,
+      m5: false,
+      m6: false,
+      m7: false,
+      m8: false,
+      m9: false,
+      m10: false,
+      m11: false,
+    };
+  AFRAME.registerComponent('noisehandler', {
+    init: function () {
+        let marker = this.el;
+
+        marker.addEventListener("markerFound", function () {
+          markerVisible3[marker.id] = true;
+        });
+
+        marker.addEventListener("markerLost", function () {
+          markerVisible3[marker.id] = false;
+        });
+      },
+      tick: function () {
+        var entity = document.querySelector("#s1");
+        var entity2 = document.querySelector("#s2");
+        var entity3 = document.querySelector("#s3");
+        var entity4 = document.querySelector("#s4");
+        var entity5 = document.querySelector("#s5");
+        var entity6 = document.querySelector("#s6");
+
+        if (markerVisible3["m1"]) {
+          entity.components.sound.playSound();
+
+        }else if (markerVisible3["m3"]){
+          entity2.components.sound.playSound();          
+        }else if (markerVisible3["m5"]){
+          entity3.components.sound.playSound();          
+        }else if (markerVisible3["m7"]){
+          entity4.components.sound.playSound();          
+        }else if (markerVisible3["m9"]){
+          entity5.components.sound.playSound();          
+        }else if (markerVisible3["m11"]){
+          entity6.components.sound.playSound();          
+        }else{
+          entity.components.sound.stopSound();
+          entity2.components.sound.stopSound();
+          entity3.components.sound.stopSound();
+          entity4.components.sound.stopSound();
+          entity5.components.sound.stopSound();
+          entity6.components.sound.stopSound();
+        }
+        
+      }
+  
+  });
+  </script>
+
+<script>
+  let markerVisible4 = {
+    m0: false,
+    m1: false,
+    m2: false,
+    m3: false,
+    m4: false,
+    m5: false,
+    m6: false,
+    m7: false,
+    m8: false,
+    m9: false,
+    m10: false,
+    m11: false,
+  };
+
+  AFRAME.registerComponent("registerevents3", {
+    init: function () {
+      let marker = this.el;
+
+      marker.addEventListener("markerFound", function () {
+        markerVisible4[marker.id] = true;
+      });
+
+      marker.addEventListener("markerLost", function () {
+        markerVisible4[marker.id] = false;
+      });
+    },
+  });
+  AFRAME.registerComponent("run2", {
+    schema: {
+      p: { type: "string" },
+    },
+    init: function () {
+      this.det = this.data.p;
+      this.conta = 0;
+      this.par1 = false;
+      this.par2 = false;
+      this.par3 = false;
+      this.par4 = false;
+      this.par5 = false;
+      this.par6 = false;
+      this.m0 = document.querySelector("#m0");
+      this.m1 = document.querySelector("#m1");
+      this.m2 = document.querySelector("#m2");
+      this.m3 = document.querySelector("#m3");
+      this.m4 = document.querySelector("#m4");
+      this.m5 = document.querySelector("#m5");
+      this.m6 = document.querySelector("#m6");
+      this.m7 = document.querySelector("#m7");
+      this.m8 = document.querySelector("#m8");
+      this.m9 = document.querySelector("#m9");
+      this.m10 = document.querySelector("#m10");
+      this.m11 = document.querySelector("#m11");
+     
+
+    },
+
+    tick: function (time, deltaTime) {
+
+      if(countItemsTrue(markerVisible4) == 2){
+
+        if (markerVisible4["m0"] && markerVisible4["m1"]) {
+          this.conta++;
+          this.par1 =true;
+        }else if (markerVisible4["m2"] && markerVisible4["m3"]) {
+          this.conta++;
+          this.par2 =true;
+  
+        }else if (markerVisible4["m4"] && markerVisible4["m5"] ) {
+          this.conta++;
+          this.par3 =true;
+  
+        }else if (markerVisible4["m6"] && markerVisible4["m7"]) {
+          this.conta++;
+          this.par4 =true;
+  
+        }else if (markerVisible4["m8"] && markerVisible4["m9"]) {
+          this.conta++;
+          this.par5 =true;
+  
+        }else if (markerVisible4["m10"] && markerVisible4["m11"] && countItemsTrue(markerVisible4) == 2) {
+          this.conta++;
+          this.par6 =true;
+  
+        }
+      }
+
+    },
+    qux3: function (term) {
+      this.det = term;
+    },
+  });
+
+  function countItemsTrue(arry){
+   var result = 0;
+   for (var prop in arry) {
+      if (Object.prototype.hasOwnProperty.call(arry, prop)) {
+          if(arry[prop] == true){
+            result++;
+         }       
+      }
+    }
+    return result;
+
+  }
+</script>
 </html>
