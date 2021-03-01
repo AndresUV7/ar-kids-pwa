@@ -388,7 +388,20 @@ export class ArBoxComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   ngOnInit() {
     this.hw = false;
-    this.playList = HOGAR_VIDEOS;
+    
+    if (localStorage.getItem("cat_act") == "1") {
+      this.playList = HIGIENE_VIDEOS
+    }else if (localStorage.getItem("cat_act") == "2") {
+      this.playList = VESTIR_VIDEOS
+    }if (localStorage.getItem("cat_act") == "3") {
+      this.playList = COCINA_VIDEOS
+    }if (localStorage.getItem("cat_act") == "4") {
+      this.playList = HOGAR_VIDEOS
+    }
+    
+
+
+
     this.scene.redirect = 3;
     this.timeMins = [0, 0];
     this.timeMinsAux = [0, 0];
