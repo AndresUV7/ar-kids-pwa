@@ -28,7 +28,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": ["src/ar-kids-pwa/assets/js/prueba.js"]
+            "scripts": ["src/assets/js/prueba.js"]
           },
           "configurations": {
             "production": {
