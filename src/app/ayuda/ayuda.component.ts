@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ayuda.component.css']
 })
 export class AyudaComponent implements OnInit {
-  pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+  pdfSrc = "https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/manual.pdf?alt=media&token=cf5e1c8f-3a5d-44ef-89bc-2cc058aa622a";
   constructor() { }
 
   ngOnInit() {
