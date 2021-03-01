@@ -59,8 +59,8 @@ class NewScene extends Phaser.Scene {
  
     this.lifes = [ null, null, null, null, null, null, null]
     this.puntaje = 0;
-    // this.load.path = "/assets/img/";
-    this.load.path = "/ar-kids-pwa/assets/img/";
+    this.load.path = "/assets/img/";
+    // this.load.path = "/ar-kids-pwa/assets/img/";
     this.load.audio("cuchara", ["cuchara.mp3"]);
     this.load.audio("tenedor", ["tenedor.mp3"]);
     this.load.audio("plato", ["plato.mp3"]);
