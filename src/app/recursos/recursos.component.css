@@ -47,7 +47,7 @@
   }
 
   .multiline {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto";
   }
 
  .picto{
@@ -55,12 +55,16 @@
      text-decoration: underline;
      font-weight: bold;
      font-style: italic;
+    font-family: "Roboto";
+
  }
  .picto2{
      color: #26c998;
      text-decoration: underline;
      font-weight: bold;
      font-style: italic;
+    font-family: "Roboto";
+
  }
 
  .fondo1{

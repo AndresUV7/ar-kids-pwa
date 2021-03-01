@@ -30,11 +30,11 @@
           <mat-tab label="Iniciar sesión">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  #formDirective="ngForm" >
             <mat-form-field class="example-full-width">
-              <mat-label>Cédula</mat-label>
+              <mat-label>Usuario</mat-label>
               <input
                 [(ngModel)]="credenciales.cedula"
                 matInput
-                placeholder="Cédula"
+                placeholder="Usuario"
                 formControlName="cedula"
                 required [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }"
                 class="form-control"
@@ -74,11 +74,11 @@
           <mat-tab label="Registrarse">
             <form [formGroup]="registerForm2" (ngSubmit)="onSubmit2()" #formDirective2="ngForm">
             <mat-form-field class="example-full-width">
-              <mat-label>Cédula</mat-label>
+              <mat-label>Usuario</mat-label>
               <input
               [(ngModel)]="credenciales2.cedula"
               matInput
-              placeholder="Cédula"
+              placeholder="Usuario"
               formControlName="cedula"
               required [ngClass]="{ 'is-invalid': submitted2 && f2.cedula.errors }"
               class="form-control"

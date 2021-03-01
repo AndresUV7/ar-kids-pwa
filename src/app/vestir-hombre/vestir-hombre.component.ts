@@ -32,7 +32,7 @@ class NewScene extends Phaser.Scene {
     this.tracker = { error: false, objetivo: "", accion: ""};
     this.correcto = [false, false, false, false, false, false];
 
-    this.load.path = "/assets/img/";
+    this.load.path = "/ar-kids-pwa/assets/img/";
 
     this.load.audio("bividi_c", ["bividi_c.mp3"]);
     this.load.audio("bividi_e_l", ["bividi_e_l.mp3"]);

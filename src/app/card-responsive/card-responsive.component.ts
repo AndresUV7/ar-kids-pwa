@@ -27,33 +27,33 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
         {
           title: "PREGUNTA2",
           subtitle: "Higiene",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `PREGUNTA2 es una actividad basada en Realidad Aumentada, orientada a
+           estimular el habla o lenguaje oral del participante, al mismo tiempo que se trabaja 
+           en su precepción audiovisual con respecto
+          a los productos de higiene personal.`,
           url: "https://icotar.com/initials/P",
         },
         {
           title: "AR-BOX",
           subtitle: "Higiene",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `AR-BOX es una actividad basada en Realidad Aumentada, enfocada en fortalecer
+          habilidades como la comprensión, la lecto-escritura y al mismo tiempo la motricidad fina; todo
+          esto enfocado a temas de aseo y cuidado personal.`,
           url: "https://icotar.com/initials/A",
         },
         {
           title: "PICTOGRAM",
           subtitle: "Higiene",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `PICTOGRAM es una actividad basada en Realidad Aumentada, enfocada en desarrollar 
+          la capacidades de razonamiento y memoria del participante, aplicando esta habilidad a procesos básicos
+          de higiene personal.`,
           url: "https://icotar.com/initials/PIC",
         },
         {
           title: "CEPILLA2",
           subtitle: "Higiene",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `CEPILLA2 es un videojuego 2D orientado a poner en práctica el cepillado de dientes y a su vez mejorar
+          la coordinación ojo-mano del participante.`,
           url: "https://icotar.com/initials/CEP",
         },
       ];
@@ -62,33 +62,33 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
         {
           title: "PREGUNTA2",
           subtitle: "Vestir",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `PREGUNTA2 es una actividad basada en Realidad Aumentada, orientada a
+          estimular el habla o lenguaje oral del participante, al mismo tiempo que se trabaja 
+          en su precepción audiovisual con respecto
+         a las prendas de vestir y su tratamiento.`,
           url: "https://icotar.com/initials/PR",
         },
         {
           title: "AR-BOX",
           subtitle: "Vestir",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `AR-BOX es una actividad basada en Realidad Aumentada, enfocada en fortalecer
+          habilidades como la comprensión, la lecto-escritura y al mismo tiempo la motricidad fina; todo
+          esto enfocado a temas de vestimenta.`,
           url: "https://icotar.com/initials/AR",
         },
         {
           title: "CLASIFÍCALO",
           subtitle: "Vestir",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `CLASIFÍCALO es una actividad basada en Realidad Aumentada, enfocada en desarrollar 
+          la capacidad de razonamiento del participante, aplicando esta habilidad al tratamiento de las prendas de
+          vestir en sus distintos estados.`,
           url: "https://icotar.com/initials/CLASI",
         },
         {
           title: "A VESTIR",
           subtitle: "Vestir",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `A VESTIR es un videojuego 2D orientado a ilustrar el proceso de vestirse y a su vez mejorar
+          la compresión que el participante tiene sobre el mismo.`,
           url: "https://icotar.com/initials/AV",
         },
       ];
@@ -97,33 +97,33 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
         {
           title: "PREGUNTA2",
           subtitle: "Cocina",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `PREGUNTA2 es una actividad basada en Realidad Aumentada, orientada a
+          estimular el habla o lenguaje oral del participante, al mismo tiempo que se trabaja 
+          en su precepción audiovisual con respecto
+         a los utensilios de cocina y su uso.`,
           url: "https://icotar.com/initials/PRE",
         },
         {
           title: "AR-BOX",
           subtitle: "Cocina",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `AR-BOX es una actividad basada en Realidad Aumentada, enfocada en fortalecer
+          habilidades como la comprensión, la lecto-escritura y al mismo tiempo la motricidad fina; todo
+          esto enfocado a recetas de cocina.`,
           url: "https://icotar.com/initials/ARBO",
         },
         {
           title: "ENCUÉNTRALO",
           subtitle: "Cocina",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `CLASIFÍCALO es una actividad basada en Realidad Aumentada, enfocada en desarrollar 
+          la capacidad de razonamiento del participante, aplicando esta habilidad al reconocimiento de alimentos e ingredientes de 
+          cocina.`,
           url: "https://icotar.com/initials/E",
         },
         {
           title: "LUNCH TIME",
           subtitle: "Cocina",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.Content here`,
+          content: `LUNCH TIME es un videojuego 2D orientado a ilustrar el proceso de elaboración de un sandwich y a su vez mejorar
+          la comprensión y motricidad fina del participante.`,
           url: "https://icotar.com/initials/L",
         },
       ];
@@ -132,33 +132,31 @@ export class CardResponsiveComponent implements OnInit, DoCheck {
         {
           title: "PREGUNTA2",
           subtitle: "Hogar",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.Content here`,
+          content: `PREGUNTA2 es una actividad basada en Realidad Aumentada, orientada a
+          estimular el habla o lenguaje oral del participante, al mismo tiempo que se trabaja 
+          en su precepción audiovisual con respecto
+         a los artefactos del hogar.`,
           url: "https://icotar.com/initials/PREG",
         },
         {
           title: "AR-BOX",
           subtitle: "Hogar",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.Content here`,
+          content: `AR-BOX es una actividad basada en Realidad Aumentada, enfocada en fortalecer
+          habilidades como la comprensión, la lecto-escritura y al mismo tiempo la motricidad fina; todo
+          esto enfocado a repasar las tareas del hogar.`,
           url: "https://icotar.com/initials/ABO",
         },
         {
           title: "SONIGRAMA",
           subtitle: "Hogar",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.Content here`,
+          content: `SONIGRAMA es una actividad colaborativa basada en Realidad Aumentada, enfocada en desarrollar 
+          la capacidad de memoria audiovisual del participante, aplicando esta habilidad al reconocimiento de artefactos del hogar`,
           url: "https://icotar.com/initials/SONIG",
         },
         {
           title: "LA MESA",
           subtitle: "Hogar",
-          content: `Content hereThe Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.Content here`,
+          content: `LA MESA es un videojuego 2D orientado a poner en práctica el proceso de servir la mesa y a su vez y trabajar la motricidad fina del participante.`,
           url: "https://icotar.com/initials/LAMES",
         },
       ];

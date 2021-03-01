@@ -10,6 +10,7 @@ import { UsersService } from '../services/usuarios/users.service';
 import { Persona } from '../models/Persona';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { JuegoService } from '../services/juegos/juego.service';
+import { Router } from '@angular/router';
 declare function danfo(res): any;
 
 /**
@@ -34,7 +35,7 @@ export class UsersListComponent implements OnInit{
   @ViewChild(MatSort, { static: true } ) sort: MatSort;
   
 
-  constructor(private dialog: MatDialog, public userService: UsersService, public juegoService: JuegoService) {
+  constructor(private dialog: MatDialog, public userService: UsersService, public juegoService: JuegoService, private router: Router) {
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
@@ -72,7 +73,15 @@ export class UsersListComponent implements OnInit{
   }
 
   ngOnInit(){
+    
+    
+    if(localStorage.getItem('_id') !== "5f93a20963fbc40d60297073"){
 
+    
+      this.router.navigate(["actividades/principal"]);
+      // this try to go to currentRoute.url but don't change the location.
+    
+    }
 
     this.paginator._intl.itemsPerPageLabel="Usuarios por página";
 
@@ -159,7 +168,6 @@ export class UsersListComponent implements OnInit{
     this.userService.insertPersona(result).subscribe(res =>{
       console.log(res);
       this.userService.selectPersonas().subscribe(res =>{
-        console.log("1111 adhaodho")
         this.dataSource.data = res;
      
  
@@ -191,19 +199,25 @@ export class UsersListComponent implements OnInit{
 
       if (result){
         this.dataSource.data.forEach(row1 => {
-          if (this.selection.isSelected(row1)){
+
+          if( row1._id !== "5f93a20963fbc40d60297073"){
+          
+            if (this.selection.isSelected(row1)){
             
-            this.userService.deletePersona(row1).subscribe(res =>{
-              this.elim = true;
-              console.log(res);
-              this.userService.selectPersonas().subscribe(res =>{
-                this.elim = false;
-                this.dataSource.data = res;
+              this.userService.deletePersona(row1).subscribe(res =>{
+                 this.elim = true;
+                 console.log(res);
+                 this.userService.selectPersonas().subscribe(res =>{
+                   this.elim = false;
+                   this.dataSource.data = res;
+                    
+                })
                  
-             })
-              
-            });
+               });
+             } 
+          
           }
+
         
         })
         

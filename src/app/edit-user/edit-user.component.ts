@@ -6,6 +6,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Persona } from '../models/Persona';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UsersService } from '../services/usuarios/users.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -52,7 +53,7 @@ export class EditUserComponent implements OnInit {
   titulo = 'Nuevo Usuario';
   // options: string[] = ['One', 'Two', 'Three'];
   // filteredOptions: Observable<string[]>;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<EditUserComponent>, private formBuilder: FormBuilder, private userService: UsersService) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<EditUserComponent>, private formBuilder: FormBuilder,  private _snackBar: MatSnackBar,private userService: UsersService) { 
     this.del = false;
 
   }
@@ -70,10 +71,10 @@ export class EditUserComponent implements OnInit {
    console.log(this.usuario)
     this.registerForm = this.formBuilder.group({
       cedula: ["", Validators.required],
-      nombre: ["", Validators.required],
-      apellido: ["", Validators.required],
-      fecha_nacimiento: ["", Validators.required],
-      sexo: ["", Validators.required],
+      nombre: ["", Validators.required,],
+      apellido: ["", Validators.required,],
+      fecha_nacimiento: ["", Validators.required,],
+      sexo: ["", Validators.required,],
     });
 
     // this.filteredOptions = this.myControl.valueChanges
@@ -89,10 +90,22 @@ export class EditUserComponent implements OnInit {
   //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
   // }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: "top",
+    });
+  }
+
   onSubmit(){
     this.submitted = true;
     console.log("guardar")
-    this.dialogRef.close(this.usuario);
+    if (!this.registerForm.invalid && this.usuario.cedula.length > 5) {
+      
+      this.dialogRef.close(this.usuario);
+    }else if (this.usuario.cedula.length < 6){
+      this.openSnackBar("El usuario debe tener mínimo 6 caractéres","X")
+    }
   
 
   }

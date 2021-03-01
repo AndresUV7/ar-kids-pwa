@@ -14,7 +14,7 @@ export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
 
   showBar = false;
   showSide = true;
-
+  showAdmin = false;
   // showBar = false;
 
   mobileQuery: MediaQueryList;
@@ -44,6 +44,10 @@ export class MenuComponent implements OnDestroy, OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(){
+
+    if (localStorage.getItem("_id")=="5f93a20963fbc40d60297073"){
+      this.showAdmin = true;
+    }
 
     this.data.currentBarState.subscribe(message => this.showSide = message)
     this.changeDetectorRef.detectChanges();

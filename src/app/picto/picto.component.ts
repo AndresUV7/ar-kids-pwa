@@ -51,12 +51,12 @@ export class PictoComponent implements OnInit, DoCheck {
     this.ruta7 = "";
     this.ruta8 = "";
 
-    this.audio = "src:url(/assets/audios/manos1.mp3); on:click"
-    this.audio2 = "src:url(/assets/audios/manos2.mp3); on:click"
-    this.audio3 = "src:url(/assets/audios/manos3.mp3); on:click"
-    this.audio4 = "src:url(/assets/audios/manos4.mp3); on:click"
-    this.audio5 = "src:url(/assets/audios/manos5.mp3); on:click"
-    this.audio6 = "src:url(/assets/audios/manos6.mp3); on:click"
+    this.audio = "src:url(/ar-kids-pwa/assets/audios/manos1.mp3); on:click"
+    this.audio2 = "src:url(/ar-kids-pwa/assets/audios/manos2.mp3); on:click"
+    this.audio3 = "src:url(/ar-kids-pwa/assets/audios/manos3.mp3); on:click"
+    this.audio4 = "src:url(/ar-kids-pwa/assets/audios/manos4.mp3); on:click"
+    this.audio5 = "src:url(/ar-kids-pwa/assets/audios/manos5.mp3); on:click"
+    this.audio6 = "src:url(/ar-kids-pwa/assets/audios/manos6.mp3); on:click"
     this.audio7 = ""
     this.audio8 = ""
  
@@ -104,12 +104,12 @@ export class PictoComponent implements OnInit, DoCheck {
     this.ruta8 = "";
 
     
-    this.audio = "src:url(/assets/audios/manos1.mp3); on:click"
-    this.audio2 = "src:url(/assets/audios/manos2.mp3); on:click"
-    this.audio3 = "src:url(/assets/audios/manos3.mp3); on:click"
-    this.audio4 = "src:url(/assets/audios/manos4.mp3); on:click"
-    this.audio5 = "src:url(/assets/audios/manos5.mp3); on:click"
-    this.audio6 = "src:url(/assets/audios/manos6.mp3); on:click"
+    this.audio = "src:url(/ar-kids-pwa/assets/audios/manos1.mp3); on:click"
+    this.audio2 = "src:url(/ar-kids-pwa/assets/audios/manos2.mp3); on:click"
+    this.audio3 = "src:url(/ar-kids-pwa/assets/audios/manos3.mp3); on:click"
+    this.audio4 = "src:url(/ar-kids-pwa/assets/audios/manos4.mp3); on:click"
+    this.audio5 = "src:url(/ar-kids-pwa/assets/audios/manos5.mp3); on:click"
+    this.audio6 = "src:url(/ar-kids-pwa/assets/audios/manos6.mp3); on:click"
     this.audio7 = ""
     this.audio8 = ""
     changeActivity("manos");
@@ -137,14 +137,14 @@ export class PictoComponent implements OnInit, DoCheck {
       "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/pictogramas%2Fdientes%2Fsecotoalla.jpg?alt=media&token=63e87e27-c807-4f89-bfbe-c597619b8bf2)";
   
       
-    this.audio = "src:url(/assets/audios/dientes1.mp3); on:click"
-    this.audio2 = "src:url(/assets/audios/dientes2.mp3); on:click"
-    this.audio3 = "src:url(/assets/audios/dientes3.mp3); on:click"
-    this.audio4 = "src:url(/assets/audios/dientes4.mp3); on:click"
-    this.audio5 = "src:url(/assets/audios/dientes5.mp3); on:click"
-    this.audio6 = "src:url(/assets/audios/dientes6.mp3); on:click"
-    this.audio7 = "src:url(/assets/audios/dientes7.mp3); on:click"
-    this.audio8 = "src:url(/assets/audios/dientes8.mp3); on:click"
+    this.audio = "src:url(/ar-kids-pwa/assets/audios/dientes1.mp3); on:click"
+    this.audio2 = "src:url(/ar-kids-pwa/assets/audios/dientes2.mp3); on:click"
+    this.audio3 = "src:url(/ar-kids-pwa/assets/audios/dientes3.mp3); on:click"
+    this.audio4 = "src:url(/ar-kids-pwa/assets/audios/dientes4.mp3); on:click"
+    this.audio5 = "src:url(/ar-kids-pwa/assets/audios/dientes5.mp3); on:click"
+    this.audio6 = "src:url(/ar-kids-pwa/assets/audios/dientes6.mp3); on:click"
+    this.audio7 = "src:url(/ar-kids-pwa/assets/audios/dientes7.mp3); on:click"
+    this.audio8 = "src:url(/ar-kids-pwa/assets/audios/dientes8.mp3); on:click"
 
       
     changeActivity("dientes");
@@ -171,14 +171,14 @@ export class PictoComponent implements OnInit, DoCheck {
     this.ruta8 =
       "src: url(https://firebasestorage.googleapis.com/v0/b/arkids-da65c.appspot.com/o/pictogramas%2Fducha%2Fvestirse_2.jpg?alt=media&token=6a37e14a-2406-4f5f-a069-f4bbd389b64e)";
    
-      this.audio = "src:url(/assets/audios/ducha1.mp3); on:click"
-      this.audio2 = "src:url(/assets/audios/ducha2.mp3); on:click"
-      this.audio3 = "src:url(/assets/audios/ducha3.mp3); on:click"
-      this.audio4 = "src:url(/assets/audios/ducha4.mp3); on:click"
-      this.audio5 = "src:url(/assets/audios/ducha5.mp3); on:click"
-      this.audio6 = "src:url(/assets/audios/ducha6.mp3); on:click"
-      this.audio7 = "src:url(/assets/audios/ducha7.mp3); on:click"
-      this.audio8 = "src:url(/assets/audios/ducha8.mp3); on:click"
+      this.audio = "src:url(/ar-kids-pwa/assets/audios/ducha1.mp3); on:click"
+      this.audio2 = "src:url(/ar-kids-pwa/assets/audios/ducha2.mp3); on:click"
+      this.audio3 = "src:url(/ar-kids-pwa/assets/audios/ducha3.mp3); on:click"
+      this.audio4 = "src:url(/ar-kids-pwa/assets/audios/ducha4.mp3); on:click"
+      this.audio5 = "src:url(/ar-kids-pwa/assets/audios/ducha5.mp3); on:click"
+      this.audio6 = "src:url(/ar-kids-pwa/assets/audios/ducha6.mp3); on:click"
+      this.audio7 = "src:url(/ar-kids-pwa/assets/audios/ducha7.mp3); on:click"
+      this.audio8 = "src:url(/ar-kids-pwa/assets/audios/ducha8.mp3); on:click"
       changeActivity("ducha");
   
     }
