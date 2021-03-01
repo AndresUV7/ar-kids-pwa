@@ -167,19 +167,19 @@ class NewScene extends Phaser.Scene {
       .image(320, 250, "palabra1")
       .setDisplaySize(400, 100);
     this.palabra2 = this.add
-      .image(320, 250, "palabra2")
+      .image(320, 240, "palabra2")
       .setDisplaySize(400, 100);
     this.palabra3 = this.add
-      .image(320, 250, "palabra3")
+      .image(320, 240, "palabra3")
       .setDisplaySize(400, 100);
     this.palabra4 = this.add
-      .image(320, 250, "palabra4")
+      .image(320, 240, "palabra4")
       .setDisplaySize(400, 100);
     this.palabra5 = this.add
-      .image(320, 250, "palabra5")
+      .image(320, 240, "palabra5")
       .setDisplaySize(400, 100);
     this.palabra6 = this.add
-      .image(320, 250, "palabra6")
+      .image(320, 240, "palabra6")
       .setDisplaySize(400, 100);
 
     if (this.positions[this.rand]) {
@@ -391,18 +391,26 @@ export class ArBoxComponent implements OnInit, AfterViewChecked, OnDestroy {
     
     if (localStorage.getItem("cat_act") == "1") {
       this.playList = HIGIENE_VIDEOS
+    this.scene.redirect = 0;
+
     }else if (localStorage.getItem("cat_act") == "2") {
+
       this.playList = VESTIR_VIDEOS
+    this.scene.redirect = 1;
+
     }if (localStorage.getItem("cat_act") == "3") {
       this.playList = COCINA_VIDEOS
+      this.scene.redirect = 2;
+  
     }if (localStorage.getItem("cat_act") == "4") {
       this.playList = HOGAR_VIDEOS
+    this.scene.redirect = 3;
+
     }
     
 
 
 
-    this.scene.redirect = 3;
     this.timeMins = [0, 0];
     this.timeMinsAux = [0, 0];
     ArBoxComponent.respondio = [false, false, false, false, false, false];
