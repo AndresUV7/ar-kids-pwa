@@ -4,7 +4,7 @@ export const HIGIENE_VIDEOS : Video[] = [
     
     {
         nombre: "k",
-        ruta : "../../assets/video/alimentacion.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/alimentacion.mp4",
         checkpoints : [16, 48],
         preguntas : [
             "¿Debemos lavarnos las manos después de ir al baño?",
@@ -23,7 +23,7 @@ export const HIGIENE_VIDEOS : Video[] = [
 
     {
         nombre: "a",
-        ruta : "../../assets/video/ducha.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/ducha.mp4",
         checkpoints : [17, 94],
         preguntas : [
             "¿Cada que tiempo hay que ducharse?",
@@ -42,7 +42,7 @@ export const HIGIENE_VIDEOS : Video[] = [
 
     {
         nombre: "b",
-        ruta : "../../assets/video/higiene general.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/higiene general.mp4",
         checkpoints : [38, 131],
         preguntas : [
             "¿Cuál es el mejor lugar para empezar con nuestra higiene personal?",
@@ -61,7 +61,7 @@ export const HIGIENE_VIDEOS : Video[] = [
 
     {
         nombre: "c",
-        ruta : "../../assets/video/manos.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/manos.mp4",
         checkpoints : [11, 76],
         preguntas : [
             "¿Con qué nos lavamos las manos?",
@@ -80,7 +80,7 @@ export const HIGIENE_VIDEOS : Video[] = [
     
     {
         nombre: "d",
-        ruta : "../../assets/video/dientes.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/dientes.mp4",
         checkpoints : [14, 85],
         preguntas : [
             "¿Cuantas veces al día debemos cepillar nuestros dientes?",
@@ -99,7 +99,7 @@ export const HIGIENE_VIDEOS : Video[] = [
 
     {
         nombre: "f",
-        ruta : "../../assets/video/primeros auxilios.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/primeros auxilios.mp4",
         checkpoints : [67, 75],
         preguntas : [
             "¿Cuantos minutos debemos colocar hielo si nos golpeamos?",
@@ -120,7 +120,7 @@ export const HIGIENE_VIDEOS : Video[] = [
 export const VESTIR_VIDEOS : Video[] = [
     {
         nombre: "Prendas",
-        ruta : "../../assets/video/prendas.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/prendas.mp4",
         checkpoints : [36, 133],
         preguntas : [
             "¿En que parte del cuerpo va esta prenda de vestir",
@@ -137,7 +137,7 @@ export const VESTIR_VIDEOS : Video[] = [
     
     {
         nombre: "Tender",
-        ruta : "../../assets/video/tender ropa.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/tender ropa.mp4",
         checkpoints : [31, 67],
         preguntas : [
             "¿Que pinzas dejan menos marcas?",
@@ -155,7 +155,7 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Planchar",
-        ruta : "../../assets/video/planchar.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/planchar.mp4",
         checkpoints : [48, 94],
         preguntas : [
             "¿Que parte de la camisa se plancha primero?",
@@ -173,7 +173,7 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Lavar",
-        ruta : "../../assets/video/lavar.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/lavar.mp4",
         checkpoints : [27, 91],
         preguntas : [
             "¿Como separamos la ropa para lavar?",
@@ -191,7 +191,7 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Doblar",
-        ruta : "../../assets/video/doblar.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/doblar.mp4",
         checkpoints : [110, 133],
         preguntas : [
             "¿En cuántos trozos doblamos la camiseta de adulto",
@@ -209,7 +209,7 @@ export const VESTIR_VIDEOS : Video[] = [
 
     {
         nombre: "Cordones",
-        ruta : "../../assets/video/cordones.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/cordones.mp4",
         checkpoints : [26, 44],
         preguntas : [
             "¿Con qué dedos sujetamos el cordón?",
@@ -229,7 +229,7 @@ export const VESTIR_VIDEOS : Video[] = [
 export const COCINA_VIDEOS : Video[] = [
     {
         nombre: "Batido",
-        ruta : "../../assets/video/batido.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/batido.mp4",
         checkpoints : [36, 71],
         preguntas : [
             "¿Cuántas cucharadas de miel se pone en el batido?",
@@ -246,7 +246,7 @@ export const COCINA_VIDEOS : Video[] = [
     
     {
         nombre: "Ensalada",
-        ruta : "../../assets/video/ensalada fruta.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/ensalada fruta.mp4",
         checkpoints : [87, 187],
         preguntas : [
             "¿Que quitamos de las frutas?",
@@ -264,7 +264,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Pancakes",
-        ruta : "../../assets/video/pancakes.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/pancakes.mp4",
         checkpoints : [33, 57],
         preguntas : [
             "¿Cuántos minutos dejamos reposar la mezcla?",
@@ -282,7 +282,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Sanduche",
-        ruta : "../../assets/video/sandwich.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/sandwich.mp4",
         checkpoints : [32, 96],
         preguntas : [
             "¿Que ingredientes tenemos que lavar?",
@@ -300,7 +300,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Sopa",
-        ruta : "../../assets/video/sopa.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/sopa.mp4",
         checkpoints : [62, 126],
         preguntas : [
             "¿Cuántos minutos dejamos cocinar estas verduras?",
@@ -318,7 +318,7 @@ export const COCINA_VIDEOS : Video[] = [
 
     {
         nombre: "Pollo",
-        ruta : "../../assets/video/tortas pollo.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/tortas pollo.mp4",
         checkpoints : [22, 119],
         preguntas : [
             "¿Cuántas libras de pechuga de pollo necesitamos",
@@ -338,7 +338,7 @@ export const COCINA_VIDEOS : Video[] = [
 export const HOGAR_VIDEOS : Video[] = [
     {
         nombre: "Barrer",
-        ruta : "../../assets/video/barrer.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/barrer.mp4",
         checkpoints : [43, 70],
         preguntas : [
             "¿Como se llama cuando eliminamos el detergente con agua?",
@@ -355,7 +355,7 @@ export const HOGAR_VIDEOS : Video[] = [
     
     {
         nombre: "Cama",
-        ruta : "../../assets/video/cama.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/cama.mp4",
         checkpoints : [32, 72],
         preguntas : [
             "¿Que retiramos primero para tender la cama?",
@@ -373,7 +373,7 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Limpieza",
-        ruta : "../../assets/video/limpieza.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/limpieza.mp4",
         checkpoints : [58, 96],
         preguntas : [
             "¿Cómo limpiamos los cristales?",
@@ -391,7 +391,7 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Mesa",
-        ruta : "../../assets/video/mesa.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/mesa.mp4",
         checkpoints : [36, 172],
         preguntas : [
             "¿Que se pone primero para servir la mesa?",
@@ -409,7 +409,7 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Platos",
-        ruta : "../../assets/video/platos.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/platos.mp4",
         checkpoints : [44, 150],
         preguntas : [
             "¿Con que lavamos cada pieza?",
@@ -427,7 +427,7 @@ export const HOGAR_VIDEOS : Video[] = [
 
     {
         nombre: "Reciclar",
-        ruta : "../../assets/video/reciclar.mp4",
+        ruta : "../../ar-kids-pwa/assets/video/reciclar.mp4",
         checkpoints : [141, 252],
         preguntas : [
             "¿Podemos colocar botellas de mermelada en el basurero azul?",
