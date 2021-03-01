@@ -48,7 +48,7 @@ class NewScene extends Phaser.Scene {
   platoHondoAudio: any;
   servilletaAudio: any;
   tazaAudio: any;
-  extraAudio: any;
+  // extraAudio: any;
 
   constructor() {
     super("NewScene");
@@ -68,7 +68,8 @@ class NewScene extends Phaser.Scene {
     this.load.audio("servilleta", ["servilleta.mp3"]);
     this.load.audio("taza", ["taza.mp3"]);
     this.load.audio("cuchillo", ["cuchillo.mp3"]);
-    this.load.audio("extra", ["casi_atrapa.mp3"]);
+    // this.load.audio("extra", ["casi_atrapa.mp3"]);
+    
     
     this.load.image("fondo", "fondo-mesa.jpg");
     this.load.image("cuchara", "cuchara.png");
@@ -97,7 +98,7 @@ class NewScene extends Phaser.Scene {
     this.platoHondoAudio =  this.sound.add("plato_hondo");
     this.servilletaAudio =  this.sound.add("servilleta");
     this.tazaAudio =  this.sound.add("taza");
-    this.extraAudio =  this.sound.add("extra");
+    // this.extraAudio =  this.sound.add("extra");
 
     var x = 25;
     for (let i = 0; i < this.lifes.length; i++) {
@@ -884,8 +885,8 @@ class NewScene extends Phaser.Scene {
       if(this.lifes.length > 0){
         this.lifes[this.lifes.length -1].destroy();
         this.lifes.pop();
-        this.sound.stopAll();
-        this.extraAudio.play();
+        // this.sound.stopAll();
+        // this.extraAudio.play();
 
       }
     }else{
