@@ -119,6 +119,8 @@ export class LoginComponent implements OnInit {
               }
           });
       });
+        this.openSnackBar("Cargando...", "X");
+
         this.router.navigate(["actividades/principal"]);
       },
       (err) => {
@@ -131,7 +133,7 @@ export class LoginComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 3000,
+      duration: 4000,
       verticalPosition: "top",
     });
   }
@@ -151,6 +153,7 @@ export class LoginComponent implements OnInit {
       if (!res.sms) {
         localStorage.setItem("token", res.token);
         localStorage.setItem("_id", res._id);
+        localStorage.setItem("gender", res.gender);
       } else {
         this.openSnackBar(res.sms, "X");
       }
@@ -188,6 +191,7 @@ export class LoginComponent implements OnInit {
             }
         });
     });
+      this.openSnackBar("Cargando...", "X");
       this.router.navigate(["actividades/principal"]);
 
     });
