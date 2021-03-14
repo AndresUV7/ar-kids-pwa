@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.openSnackBar("Cargando...", "X");
     this.service.login(this.credenciales).subscribe(
       (res) => {
         //console.log(res);
@@ -119,7 +120,6 @@ export class LoginComponent implements OnInit {
               }
           });
       });
-        this.openSnackBar("Cargando...", "X");
 
         this.router.navigate(["actividades/principal"]);
       },
@@ -147,6 +147,8 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
+    this.openSnackBar("Cargando...", "X");
+
     this.service3.registerUser(this.credenciales2).subscribe((res) => {
       console.log(res);
 
@@ -191,7 +193,6 @@ export class LoginComponent implements OnInit {
             }
         });
     });
-      this.openSnackBar("Cargando...", "X");
       this.router.navigate(["actividades/principal"]);
 
     });
