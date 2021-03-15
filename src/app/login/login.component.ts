@@ -133,7 +133,7 @@ export class LoginComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 4000,
+      duration: 3000,
       verticalPosition: "top",
     });
   }
